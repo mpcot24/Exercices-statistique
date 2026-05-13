@@ -1,0 +1,290 @@
+# ============================================================
+# Script de conversion LaTeX (.Rnw) -> Quarto (.qmd)
+# Recueil d'exercices ACT2000
+# ============================================================
+
+# --- Configuration : où sont les fichiers ---
+
+# Dossier où se trouvent les fichiers source de Marie-Pier
+dossier_source <- "C:/Users/RYZ7/Documents/ACT2000/ACT2000-exercices-master/ACT2000-exercices-master"
+
+# Dossiers où on va écrire les fichiers .qmd
+dossier_chapitres <- "chapitres"
+dossier_solutions <- "solutions"
+
+# ============================================================
+# Étape 2 : Lire un fichier .Rnw
+# ============================================================
+
+# Construire le chemin complet vers base.Rnw
+fichier_test <- file.path(dossier_source, "base.Rnw")
+
+# Lire toutes les lignes du fichier
+contenu <- readLines(fichier_test, encoding = "UTF-8")
+
+# Combien de lignes le fichier contient-il ?
+length(contenu)
+
+# ============================================================
+# Étape 3 : Trouver les exercices dans le contenu
+# ============================================================
+
+# Trouver les NUMÉROS de ligne où commencent les exercices
+debuts <- grep("\\\\begin\\{exercice\\}", contenu)
+
+# Trouver les NUMÉROS de ligne où finissent les exercices
+fins <- grep("\\\\end\\{exercice\\}", contenu)
+
+# Combien d'exercices a-t-on trouvés ?
+length(debuts)
+length(fins)
+
+# ============================================================
+# Étape 4 : Extraire le contenu du premier exercice
+# ============================================================
+
+# Extraire toutes les lignes du premier exercice
+exo1 <- contenu[debuts[1]:fins[1]]
+
+# Combien de lignes fait ce premier exercice ?
+length(exo1)
+
+# Afficher le contenu
+exo1
+# ============================================================
+# Étape 5 : Séparer les 3 parties de l'exercice (énoncé / rep / sol)
+# ============================================================
+
+# Trouver les lignes où sont les balises dans exo1
+ligne_rep_debut <- grep("\\\\begin\\{rep\\}", exo1)
+ligne_rep_fin   <- grep("\\\\end\\{rep\\}", exo1)
+ligne_sol_debut <- grep("\\\\begin\\{sol\\}", exo1)
+ligne_sol_fin   <- grep("\\\\end\\{sol\\}", exo1)
+
+# L'énoncé : tout ce qui est entre \begin{exercice} (ligne 1) et \begin{rep} (exclu)
+enonce <- exo1[2:(ligne_rep_debut - 1)]
+
+# La réponse courte : tout ce qui est entre \begin{rep} et \end{rep} (exclus)
+reponse <- exo1[(ligne_rep_debut + 1):(ligne_rep_fin - 1)]
+
+# La solution : tout ce qui est entre \begin{sol} et \end{sol} (exclus)
+solution <- exo1[(ligne_sol_debut + 1):(ligne_sol_fin - 1)]
+
+# Vérifier visuellement
+enonce
+reponse
+solution
+# ============================================================
+# Étape 6 : Fonction de conversion LaTeX -> Quarto (version 2)
+# ============================================================
+
+latex_vers_quarto <- function(texte) {
+  
+  # On garde le texte sous forme de vecteur de lignes
+  # (Si on nous donne un seul gros texte, on le redécoupe)
+  if (length(texte) == 1) {
+    texte <- strsplit(texte, "\n")[[1]]
+  }
+  
+  # --- 1. Transformer les listes \begin{enumerate} ... \end{enumerate} ---
+  
+  resultat <- character()        # vecteur vide pour stocker le résultat
+  dans_liste <- FALSE            # est-ce qu'on est dans une liste ?
+  compteur_item <- 1             # numéro de l'item courant
+  
+  for (i in 1:length(texte)) {
+    ligne <- texte[i]
+    
+    if (grepl("\\\\begin\\{(enumerate|inparaenum|itemize)\\}", ligne)) {
+      # Début de liste : on rentre, on remet le compteur à 1
+      dans_liste <- TRUE
+      compteur_item <- 1
+      # On NE garde PAS cette ligne dans le résultat
+      
+     } else if (grepl("\\\\end\\{(enumerate|inparaenum|itemize)\\}", ligne)) {
+      # Fin de liste : on sort
+      dans_liste <- FALSE
+      # On NE garde PAS cette ligne dans le résultat
+      
+    } else if (dans_liste && grepl("\\\\item", ligne)) {
+      # On est dans une liste et c'est un \item : on remplace par a), b), c)...
+      lettre <- letters[compteur_item]
+      ligne_modifiee <- gsub("\\\\item ?", paste0(lettre, ") "), ligne)
+      resultat <- c(resultat, ligne_modifiee, "")  # on ajoute une ligne vide après
+      compteur_item <- compteur_item + 1
+      
+    } else {
+      # Ligne normale, on la garde telle quelle
+      resultat <- c(resultat, ligne)
+    }
+  }
+  
+  # --- 2. Coller toutes les lignes en un seul gros texte pour les autres remplacements ---
+  
+  texte <- paste(resultat, collapse = "\n")
+  
+  # --- 3. Environnements mathématiques ---
+  
+  texte <- gsub("\\\\begin\\{displaymath\\}", "$$", texte)
+  texte <- gsub("\\\\end\\{displaymath\\}",   "$$", texte)
+  
+  texte <- gsub("\\\\begin\\{equation\\*?\\}", "$$", texte)
+  texte <- gsub("\\\\end\\{equation\\*?\\}",   "$$", texte)
+  
+  texte <- gsub("\\\\begin\\{align\\*?\\}", "$$\n\\\\begin{aligned}", texte)
+  texte <- gsub("\\\\end\\{align\\*?\\}",   "\\\\end{aligned}\n$$", texte)
+  
+  # --- 4. Commandes de texte ---
+  
+  texte <- gsub("\\\\mbox\\{", "\\\\text{", texte)
+  texte <- gsub("~", " ", texte)
+  texte <- gsub(" *\\\\, *\\\\, *", "\n\n", texte)
+  
+  # Supprimer les commentaires LaTeX (% jusqu'à fin de ligne)
+  texte <- gsub("%[^\n]*", "", texte)
+  
+  # Supprimer les espaces en début de ligne (mais garder les lignes vides)
+  texte <- gsub("(^|\n) +", "\\1", texte)  
+  # --- 5. Retirer \begin{exercice} et \end{exercice} si présents ---
+  
+  texte <- gsub("\\\\begin\\{exercice\\} ?", "", texte)
+  texte <- gsub("\\\\end\\{exercice\\}",     "", texte)
+  
+  return(texte)
+}
+
+# --- Tester sur notre énoncé ---
+enonce_quarto <- latex_vers_quarto(enonce)
+cat(enonce_quarto)
+reponse_quarto <- latex_vers_quarto(reponse)
+cat(reponse_quarto)
+
+
+# ============================================================
+# Étape 7 : Assembler le bloc Quarto complet pour l'exercice 1
+# ============================================================
+
+num_chap <- 1
+num_exo <- 1
+
+id_ex  <- paste0("sec-ex-",  num_chap, "-", num_exo)
+id_sol <- paste0("sec-sol-", num_chap, "-", num_exo)
+
+bloc_exercice <- paste0(
+  "## Exercice ", num_chap, ".", num_exo, " {#", id_ex, " .unnumbered}\n",
+  "\n",
+  enonce_quarto, "\n",
+  "\n",
+  "::: {.callout-tip collapse=\"true\" title=\"Éléments de réponse\"}\n",
+  reponse_quarto, "\n",
+  ":::\n",
+  "\n",
+  "[📖 Voir la solution complète](../solutions/sol_chap", num_chap, ".qmd#", id_sol, ")\n"
+)
+
+cat(bloc_exercice)
+
+
+# ============================================================
+# Étape 8 : Boucle sur tous les exercices du chapitre
+# ============================================================
+
+# Numéro du chapitre (pour l'instant en dur, on le rendra dynamique plus tard)
+num_chap <- 1
+
+# Préparer un vecteur vide pour stocker tous les blocs d'exercices
+tous_les_exercices <- character()
+toutes_les_solutions <- character()
+
+# Boucle sur les 22 exercices
+for (i in 1:length(debuts)) {
+  
+  # --- 1. Extraire l'exercice i ---
+  exo <- contenu[debuts[i]:fins[i]]
+  
+  # --- 2. Trouver les positions des balises ---
+  ligne_rep_debut <- grep("\\\\begin\\{rep\\}", exo)
+  ligne_rep_fin   <- grep("\\\\end\\{rep\\}", exo)
+  ligne_sol_debut <- grep("\\\\begin\\{sol\\}", exo)
+  ligne_sol_fin   <- grep("\\\\end\\{sol\\}", exo)
+  
+  # --- 3. Extraire les 3 parties ---
+  enonce   <- exo[2:(ligne_rep_debut - 1)]
+  reponse  <- exo[(ligne_rep_debut + 1):(ligne_rep_fin - 1)]
+  solution <- exo[(ligne_sol_debut + 1):(ligne_sol_fin - 1)]
+  
+  # --- 4. Transformer chaque partie en Quarto ---
+  enonce_q   <- latex_vers_quarto(enonce)
+  reponse_q  <- latex_vers_quarto(reponse)
+  solution_q <- latex_vers_quarto(solution)
+  
+  # --- 5. Construire les identifiants ---
+  id_ex  <- paste0("sec-ex-",  num_chap, "-", i)
+  id_sol <- paste0("sec-sol-", num_chap, "-", i)
+  
+  # --- 6. Bloc Quarto pour l'énoncé (avec callout réponse et lien solution) ---
+  bloc_exo <- paste0(
+    "## Exercice ", num_chap, ".", i, " {#", id_ex, " .unnumbered}\n\n",
+    "\n",
+    enonce_q, "\n",
+    "\n",
+    "::: {.callout-tip collapse=\"true\" title=\"Éléments de réponse\"}\n",
+    reponse_q, "\n",
+    ":::\n",
+    "\n",
+    "[📖 Voir la solution complète](../solutions/sol_chap", num_chap, ".qmd#", id_sol, ")\n",
+    "\n"
+  )
+  
+  # --- 7. Bloc Quarto pour la solution (avec lien retour vers l'énoncé) ---
+  bloc_sol <- paste0(
+    "## Solution ", num_chap, ".", i, " {#", id_sol, " .unnumbered}\n",
+    "\n",
+    "[← Retour à l'énoncé](../chapitres/Chap", num_chap, ".qmd#", id_ex, ")\n",
+    "\n",
+    solution_q, "\n",
+    "\n"
+  )
+  
+  # --- 8. Ajouter au vecteur cumulatif ---
+  tous_les_exercices <- c(tous_les_exercices, bloc_exo)
+  toutes_les_solutions <- c(toutes_les_solutions, bloc_sol)
+}
+
+# Message de confirmation
+cat("✅ Boucle terminée :", length(debuts), "exercices traités.\n")
+cat(tous_les_exercices[3])
+# doit retourner TRUE TRUE 
+file.copy("chapitres/Chap1.qmd", "chapitres/Chap1_BACKUP_manuel.qmd", overwrite = TRUE)
+file.copy("solutions/sol_chap1.qmd", "solutions/sol_chap1_BACKUP_manuel.qmd", overwrite = TRUE)
+
+# ============================================================
+# Étape 9 : Écrire les fichiers .qmd
+# ============================================================
+
+# --- Construire le contenu complet de Chap1.qmd ---
+contenu_chap1 <- paste0(
+  "---\n",
+  "title: \"Modèles statistiques de base\"\n",
+  "---\n",
+  "\n",
+  paste(tous_les_exercices, collapse = "")
+)
+
+# Écrire dans le fichier
+writeLines(contenu_chap1, "chapitres/Chap1.qmd")
+
+# --- Construire le contenu complet de sol_chap1.qmd ---
+contenu_sol1 <- paste0(
+  "---\n",
+  "title: \"Solutions — Modèles statistiques de base\"\n",
+  "---\n",
+  "\n",
+  paste(toutes_les_solutions, collapse = "")
+)
+
+# Écrire dans le fichier
+writeLines(contenu_sol1, "solutions/sol_chap1.qmd")
+
+cat("✅ Fichiers écrits : chapitres/Chap1.qmd et solutions/sol_chap1.qmd\n")
+

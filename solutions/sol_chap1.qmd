@@ -1,0 +1,279 @@
+---
+title: "Solutions — Modèles statistiques de base"
+---
+
+## Solution 1.1 {#sec-sol-1-1 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-1)
+
+a) Les progrès en médecine ont affecté grandement la probabilité
+   de détection précoce du cancer du sein, donc la probabilité de
+   survie. Il y a donc une tendance à la baisse, et ces données
+   ne sont pas identiquement distribuées dans le temps.
+
+b) Puisque chaque lancer est indépendant et identiquement
+   distribué, les 20 lancers sont considérés comme un échantillon
+   aléatoire de taille 20 de lancers de dé.
+   
+## Solution 1.2 {#sec-sol-1-2 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-2)
+
+
+a) Il faudrait utiliser une distribution continue non négative sur l'intervalle $[0,\infty)$ étant donné que la perte financière est nécessairement positive et qu'il n'y a pas de borne supérieure naturelle. Des bons exemples de lois pourraient être : gamma, lognormale, Pareto.
+
+b) La distribution adéquate est la loi binomiale négative. Considérant que chaque sac est indépendant des autres et a une probabilité $p$ d'être contaminé, la distribution est une loi binomiale négative avec paramètres $r=15$ et $p$ inconnu.
+
+c) La loi binomiale est appropriée. Considérant que chaque sac est indépendant des autres et a une probabilité $p$ d'être contaminé, le nombre total de sacs contaminés suit une loi binomiale avec paramètres de taille $n=15$ et probabilité $p$ inconnu.
+
+d) Le contexte est conforme à une distribution normale. La majorité des conducteurs vont tendre vers une vitesse moyenne malgré que certains vont conduire beaucoup plus vite ou lentement; une distribution en forme de cloche semble donc appropriée. La moyenne $\mu$ et la variance $\sigma^2$ de la vitesse réelle des véhicules à cet endroit précis sur l'autoroute sont inconnues.
+
+e) Le contexte suggère une loi Normale. Les câbles devraient avoir une résistance près de $\mu$, soit celle donnée par le producteur. L'écart-type $\sigma$ dépendra de la qualité de la précision de la fabrication, et est inconnu.
+
+
+## Solution 1.3 {#sec-sol-1-3 .unnumbered}
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-3)
+
+
+**a)** On a directement $$f(x) = F^\prime(x) = \alpha \beta x^{\alpha
+        - 1} e^{-\beta x^{\alpha}}.$$
+        
+**b)** On a
+
+$$ 
+     \begin{aligned}
+        \esp{X}
+        &= \int_0^\infty x f(x)\, dx \\
+        &= \int_0^\infty \alpha \beta x^{\alpha} e^{-\beta x^{\alpha}}\,
+        dx.
+      \end{aligned} 
+$$
+  On effectue le changement de variable $y = \beta x^{\alpha}$,
+      d'où $dy = \bm{\alpha \beta x^{\alpha - 1}\, dx}$ et $x = \left(\frac{y}{\beta}\right)^{\frac{1}{\alpha}}$ et donc
+      $$
+      \begin{aligned}
+        \esp{X} &= \int_0^\infty \bm{\alpha \beta x^{\alpha - 1}} x e^{-\beta x^{\alpha}}\,
+        \bm{dx} \\
+        &= \frac{1}{\beta^{1/\alpha}}
+        \int_0^\infty y^{1/\alpha} e^{-y} \,dy \\
+        &= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}}
+        \int_0^\infty \frac{1}{\Gamma(1 + \frac{1}{\alpha})}\,
+        y^{1/\alpha} e^{-y} \,dy \\
+        &= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}}
+      \end{aligned}
+      $$
+      puisque l'intégrande ci-dessus est la fonction de densité de
+      probabilité d'une loi gamma de paramètre de forme $\alpha = 1 +
+      \frac{1}{\alpha}$ et de paramètre d'échelle $\beta = 1$. En
+      procédant exactement de la même façon, on trouve
+      $$
+      \begin{aligned}
+        \esp{X^2}
+        &= \int_0^\infty x^2 f(x)\, dx \\
+        &= \int_0^\infty \alpha \beta x^{\alpha + 1} e^{-\beta x^{\alpha}}\,
+        dx \\
+        &= \frac{1}{\beta^{2/\alpha}}
+        \int_0^\infty y^{2/\alpha} e^{-y} \, dy \\
+        &= \frac{\Gamma(1 + \frac{2}{\alpha})}{\beta^{2/\alpha}}.
+      \end{aligned}
+      $$
+      Par conséquent,
+      $$
+        \var{X} = \frac{\Gamma(1 + \frac{2}{\alpha}) -
+          \Gamma(1 + \frac{1}{\alpha})^2}{\beta^{2/\alpha}}.
+      $$
+
+## Solution 1.4 {#sec-sol-1-4 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-4)
+
+Soit $X$ une variable aléatoire avec distribution Beta$(\alpha,\beta)$. Alors,
+
+$$
+\begin{aligned}
+\ex(X) & = \int_0^1 x \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\d x\\
+&=\int_0^1  \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x.
+\end{aligned}
+$$
+
+Cette intégrale peut être résolue en reconnaissant la forme similaire à une distribution Beta$(\alpha+1,\beta)$ intégrée sur son domaine, mais avec les mauvaises constantes. On divise et multiplie par les constantes nécessaires pour trouver une intégrale avec valeur de 1.
+
+$$
+\begin{aligned}
+\ex(X) & =\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)}\frac{\Gamma(\alpha+1)}{\Gamma(\alpha+1+\beta)} \int_0^1  \frac{\Gamma(\alpha+1+\beta)}{\Gamma(\alpha+1)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x\\
+&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha+1+\beta)}\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)}\\
+&= \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta)\Gamma(\alpha+\beta)}\frac{ \alpha \Gamma(\alpha) }{\Gamma(\alpha)}\\
+&=\frac{\alpha}{\alpha+\beta}.
+\end{aligned}
+$$
+
+
+De plus,
+$$
+\begin{aligned}
+\ex\{X^2\} & = \int_0^1 x^2 \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\d x\\
+&=\int_0^1  \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha+1}(1-x)^{\beta-1}\d x\\
+& =\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)}\frac{\Gamma(\alpha+2)}{\Gamma(\alpha+2+\beta)} \int_0^1  \frac{\Gamma(\alpha+2+\beta)}{\Gamma(\alpha+2)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x\\
+&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha+2+\beta)}\frac{\Gamma(\alpha+2)}{\Gamma(\alpha)}\\
+&= \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta+1)\Gamma(\alpha+\beta+1)}\frac{ (\alpha+1) \Gamma(\alpha+1) }{\Gamma(\alpha)}\\
+&= \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta+1)(\alpha+\beta)\Gamma(\alpha+\beta)}\frac{ (\alpha+1)\alpha \Gamma(\alpha) }{\Gamma(\alpha)}\\
+&= \frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha+\beta)}.
+\end{aligned}
+$$
+La variance peut alors être calculée ainsi :
+
+$$
+\begin{aligned}
+\vr(X) &= \ex(X^2) - \{ \ex(X)\}^2 \\
+&= \frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha+\beta)}-\frac{\alpha^2}{(\alpha+\beta)^2} \\
+&= \frac{\alpha}{\alpha+\beta}\left[\frac{\alpha+1}{\alpha+\beta+1}-\frac{\alpha}{\alpha+\beta}\right]\\
+&= \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}
+\end{aligned}
+$$
+
+## Solution 1.5 {#sec-sol-1-5 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-5)
+
+Soit $X$ une variable aléatoire Poisson avec paramètre $\lambda>0$. Sa fonction génératrice des moments, pour tout $t \in \mathbb{R}$, est donnée par
+$$
+\begin{aligned}
+M_X(t) = \ex (e^{tX}) = \sum_{k=0}^\infty e^{tk}\frac{\lambda^k e^{-\lambda}}{k!} =  e^{-\lambda}\sum_{k=0}^\infty \frac{\{\lambda e^t\}^k}{k!}.
+\end{aligned}
+$$
+L'équation de droite est la série de Taylor de $\exp(\lambda e^t)$. Ainsi,
+$$
+M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.
+$$
+La $k$e dérivée de $M$ évaluée à $t=0$ donne le $k$e moment de $X$. Ainsi, 
+$$
+\ex(X) = M^\prime_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda e^t\right|_{t=0} = \lambda
+$$
+de façon similaire,
+$$
+\begin{aligned}
+\ex(X^2) & = M^{\prime \prime}_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda^2 e^{2t}+\exp\{\lambda(e^t-1)\}\times \lambda e^{t}\right|_{t=0} = \lambda^2+\lambda
+\end{aligned}
+$$
+Alors,
+$$
+\vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \lambda^2+\lambda-\lambda^2=\lambda.
+$$
+
+## Solution 1.6 {#sec-sol-1-6 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-6)
+
+**a)** Le support de $Y$ est $[0,2]$, donc $F(y)=0$ pour $y<0$ et $F(y)=1$ pour $y>2$. Pour $0\leq y <1$,
+$$
+F(y)=\Pr[Y\leq y]=\int_0^y x\d x = \frac{y^2}{2}.
+$$
+Pour $1\leq y <2$,
+$$
+F(y)=\Pr[Y\leq y]=\int_0^1 x\d x +\int_1^y (2-x)\d x = 1-\frac{(2-y)^2}{2}.
+$$
+Ainsi la fonction de répartition de $Y$ est
+$$
+F(y)= \begin{cases}
+0, & y<0\\
+y^2/2, & 0\leq y<1\\
+1- (2-y)^2/2, & 1\leq y <2\\
+1, & y>2.
+\end{cases}
+$$
+
+**b)** On souhaite trouver la probabilité que $10000 Y$ se situe entre 8 500 et 11 500:
+$$
+\begin{aligned}
+\Pr[8500<10000Y\leq 11500] & = \Pr[0.85<Y\leq 1.15]\\
+&=F(1.15)-F(0.85)\\
+&=1- \frac{(2-1.15)^2}{2}-\frac{0.85^2}{2}=0.2775.
+\end{aligned}
+$$
+
+**c)** On désire trouver l'espérance du revenu, qui est de 2,10 \$ par litre, donc $\ex[2.10\times 10000Y]=21000\ex[Y]$. On a
+$$
+\begin{aligned}
+\ex[Y]&=\int_0^1 y^2\d y +\int_1^2 y(2-y)\d y\\
+&=\left.\frac{y^3}{3}\right|_0^1+\left.y^2-\frac{y^3}{3}\right|_1^2\\
+&=\frac{1}{3}+4-\frac{2^3}{3}-1+\frac{1}{3} = 1.
+\end{aligned}
+$$
+Ainsi, l'espérance de revenu mensuel est de 21 000 \$.
+
+## Solution 1.7 {#sec-sol-1-7 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-7)
+
+On doit trouver le point où la fonction $f(c) = \esp{(X - c)^2}$
+    atteint son minimum. Pour ce faire, il faut dériver par rapport à $c$. Or, $\frac{\text{d}}{\text{d}c} f(c) = -2 \esp{X - c} = 0$
+    lorsque $\esp{X} - c = 0$, soit $c = \esp{X} = \mu$. De plus, il
+    s'agit bien d'un minimum puisque $\frac{\text{d}^2}{\text{d}^2c} f(c)= 2 > 0$
+    pour tout $c$.
+    
+## Solution 1.8 {#sec-sol-1-8 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-8)
+
+**a)** On a
+$$
+      \begin{aligned}
+        M_Y(t)
+        &= \esp{e^{Yt}} \\
+        &= \esp{e^{(aX + b)t}} \\
+        &= \esp{e^{aXt} e^{bt}} \\
+        &= e^{bt} \esp{e^{aXt}} \\
+        &= e^{bt} M_X(at).
+      \end{aligned}
+$$
+**b)** On a
+$$
+\begin{aligned}
+M_Y(t) &= \esp{e^{Yt}} \\
+       &= \esp{e^{(X_1 + \dots + X_n) t}} \\
+       &= \esp{e^{X_1 t} \cdots e^{X_n t}}
+\end{aligned}
+$$
+
+et, par indépendance entre les variables aléatoires,
+
+$$
+\begin{aligned}
+M_Y(t) &= \esp{e^{X_1 t}} \cdots \esp{e^{X_n t}} \\
+       &= \prod_{j=1}^n M_{X_j}(t).
+\end{aligned}
+$$
+      Si, en plus, les variables aléatoires $X_1, \dots, X_n$ sont
+      identiquement distribuées comme $X$, alors $M_Y(t) =
+      (M_X(t))^n$.
+
+## Solution 1.9 {#sec-sol-1-9 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-9)
+
+La Loi faible des grands nombres indique que, lorsque $n\to\infty$, $\bar X_n\stackrel{P}{\to}\ex[X]$, où $X_1,\ldots,X_n$ est une suite de variables aléatoires indépendantes et identiquement ditribuées. Cependant, le résultat tient seulement si $\ex[X^2] < \infty$, ce qui n'est pas le cas ici puisque
+$$
+\begin{aligned}
+\ex[X^2]=\int_{10}^\infty \frac{200}{x^3}x^2 \d x =\int_{10}^\infty \frac{200}{x} \d x = \left. 200\ln(x)\right|_{10}^\infty = \infty.
+\end{aligned}
+$$
+Ainsi, il n'est pas possible d'appliquer la WLLN dans ce cas.
+
+
+## Solution 1.10 {#sec-sol-1-10 .unnumbered}
+
+[← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-10)
+
+Si $X$ a la même distribution que $X_1, \ldots , X_n$ et $\vr(X)<\infty$, la loi faible des grands nombres implique que, quand $n \to \infty$,
+
+$$
+\frac{1}{n} \, \sum_{i=1}^n X_i
+$$
+
+converge en probabilité vers $\esp{X}$. Puisque $X$ suit une distribution Beta avec paramètres $\alpha=1$ et $\beta=4$,  $\esp{X}=\alpha/(\alpha+\beta)=1/5$ et 
+$$
+\var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}<\infty.
+$$ 
+Donc, la WLLN s'applique et $\bar X_n$ converge en probabilité vers 1/5.
+
+

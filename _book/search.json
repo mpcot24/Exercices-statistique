@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ACT2000 — Recueil d’exercices",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n\nCode\n1 + 1\n\n\n[1] 2",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html",
+    "href": "chapitres/Chap1.html",
+    "title": "1  Modèles statistiques de base",
+    "section": "",
+    "text": "Exercice 1.1\nEst-ce que les énoncés suivants constituent des exemples d’échantillon aléatoire ? Justifiez votre réponse.\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-1",
+    "href": "chapitres/Chap1.html#sec-ex-1-1",
+    "title": "1  Modèles statistiques de base",
+    "section": "",
+    "text": "Le nombre annuel de cas de cancer du sein causant un décès au Québec entre 1970 et 2018.\nLe résultat de 20 lancers de dés non truqués lors d’une partie d’un jeu de société.\n\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\n\nnon\noui",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-2",
+    "href": "chapitres/Chap1.html#sec-ex-1-2",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.2",
+    "text": "Exercice 1.2\nDans chacun des cas suivants, identifiez la loi de probabilité qui serait la plus appropriée selon le contexte de l’énoncé. Justifiez votre choix et spécifiez quels paramètres sont connus et lesquels sont inconnus.\n\nLa perte financière du propriétaire d’une maison rasée par les flammes.\nLe nombre de sacs de grains de café devant être examinés avant de trouver 15 sacs contaminés.\nLe nombre de sacs de grains de café contaminés parmi 15 sacs examinés.\nLa vitesse réelle d’un véhicule à un endroit spécifique sur l’autoroute.\nLa véritable résistance d’un câble utilisé dans un ordinateur.\n\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\n\nGamma, lognormale, pareto\nBinomiale négative\nBinomiale\nNormale\nNormale\n\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-3",
+    "href": "chapitres/Chap1.html#sec-ex-1-3",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.3",
+    "text": "Exercice 1.3\nLa distribution de Weibull est fréquemment utilisée en assurance IARD pour la modélisation des montants de sinistres, entre autres. Sa fonction de répartition est\n\\[\nF(x) = 1 - e^{-\\beta x^\\alpha}, \\quad x &gt; 0, \\alpha &gt; 0, \\beta &gt; 0.\n\\]\na) Déterminer la fonction de densité de probabilité de la Weibull.\nb) Calculer l’espérance et la variance de la Weibull.\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\na) \\(f(x) = \\alpha \\beta x^{\\alpha - 1}e^{-\\beta x^{\\alpha}}\\)\nb) \\(\\esp{X} = \\beta^{-1/\\alpha} \\Gamma(1 + 1/\\alpha)\\), \\(\\var{X} = \\beta^{-2/\\alpha} (\\Gamma(1 + 2/\\alpha) - \\Gamma(1 + 1/\\alpha)^2)\\)\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-4",
+    "href": "chapitres/Chap1.html#sec-ex-1-4",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.4",
+    "text": "Exercice 1.4\nObtenir l’expression de \\(\\Esp{X}\\) et \\(\\Var{X}\\) quand la variable aléatoire \\(X\\) suit une distribution Beta\\((\\alpha,\\beta)\\).\n\n\n\n\n\n\nIndices\n\n\n\n\n\ni. Pour tout \\(\\alpha &gt; 0\\), \\(\\Gamma(\\alpha+1) = \\alpha\\Gamma(\\alpha).\\)\nii. Si \\(f\\) est une densité, alors \\(\\int_\\mathbb{R}f(x)\\d x=1\\).\n\n\n\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\n\\(\\ex(X)=\\alpha/(\\alpha+\\beta)\\) et \\(\\Var{X}=(\\alpha\\beta)/\\{(\\alpha+\\beta)^2(\\alpha+\\beta+1)\\}\\)\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-5",
+    "href": "chapitres/Chap1.html#sec-ex-1-5",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.5",
+    "text": "Exercice 1.5\nCalculer la fonction génératrice des moments \\(M\\) d’une distribution de Poisson avec paramètre \\(\\lambda&gt;0\\). Utilisez \\(M\\) pour montrer que l’espérance et la variance d’une variable aléatoire Poisson sont égales.\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\n\\(M_X(t) = \\exp\\{\\lambda(e^t-1)\\}\\) pour tout \\(t \\in \\mathbb{R}\\).\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-6",
+    "href": "chapitres/Chap1.html#sec-ex-1-6",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.6",
+    "text": "Exercice 1.6\nUne station service opère deux pompes à essence. Chacune d’entre elles peut produire jusqu’à 10 000 litres d’essence par mois. La quantité totale d’essence pompée à la station chaque mois est une variable aléatoire \\(Y\\), mesurée en 10 000 litres, avec fonction de densité de probabilité donnée par \\[\nf(y)=\\begin{cases}\ny, & 0\\leq y&lt;1,\\\\\n2-y, & 1\\leq y &lt;2,\\\\\n0, &\\mbox{ailleurs.}\n\\end{cases}\n\\]\na) Trouver la fonction de répartition \\(F\\) de \\(Y\\). b) Calculer la probabilité que la station service pompe entre 8 500 et 11 500 litres d’essence dans un mois. c) Quel est le revenu mensuel espéré si la station service vend son essence au prix de 2,10 $ le litre?\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\na) \\[\nF(y)= \\begin{cases}\n0, & y&lt;0\\\\\ny^2/2, & 0\\leq y&lt;1\\\\\n1- (2-y)^2/2, & 1\\leq y &lt;2\\\\\n1, & y&gt;2.\n\\end{cases}\n\\]\nb) 0.2775\nc) 21 000\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-7",
+    "href": "chapitres/Chap1.html#sec-ex-1-7",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.7",
+    "text": "Exercice 1.7\nSoit \\(X\\) une variable aléatoire de moyenne \\(\\mu\\) et de variance \\(\\sigma^2\\). Déterminer la valeur de \\(c\\) qui minimise \\(\\esp{(X -\n    c)^2}\\).\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\n\\(c = \\mu\\)\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-8",
+    "href": "chapitres/Chap1.html#sec-ex-1-8",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.8",
+    "text": "Exercice 1.8\nSoit \\(M_X(t)\\) la fonction génératrice des moments de la variable aléatoire \\(X\\).\na) Soit \\(Y = aX + b\\), où \\(a\\) et \\(b\\) sont des constantes quelconques. Démontrer que \\[\n      M_Y(t) = e^{bt} M_{X}(at).\n\\] b) Soient \\(X_1, \\ldots, X_n\\) des variables aléatoires indépendantes et \\(Y = X_1 + \\dots + X_n\\). Démontrer que \\[\n      M_Y(t) = \\prod_{j=1}^n M_{X_j}(t).\n\\]\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\na) Par les propriétés de l’exponentielle.\nb) Par indépendance des espérances.\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-9",
+    "href": "chapitres/Chap1.html#sec-ex-1-9",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.9",
+    "text": "Exercice 1.9\nSoit \\(X_1,\\ldots,X_n\\) un échantillon aléatoire tiré d’une distribution avec densité \\[\nf(x) = \\left\\{ \\begin{array}{ll}\n\\frac{200}{x^3},& \\quad x\\geq 10\\\\\n0, & \\quad \\mbox{ailleurs}\\\\\n\\end{array}\\right.\n\\] Est-ce qu’il est possible d’utiliser la Loi faible des grands nombres pour cet exemple? Justifiez.\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\nNon.\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "chapitres/Chap1.html#sec-ex-1-10",
+    "href": "chapitres/Chap1.html#sec-ex-1-10",
+    "title": "1  Modèles statistiques de base",
+    "section": "Exercice 1.10",
+    "text": "Exercice 1.10\nSoit \\(X_1,\\ldots,X_n\\) un échantillon aléatoire tiré d’une distribution avec densité \\[\nf(x)=4(1-x)^3, \\quad \\mbox{ pour } 0\\leq x\\leq 1.\n\\] Montrer que \\(\\bar X_n\\) converge en probabilité vers une contante et trouver cette constante.\n\n\n\n\n\n\nÉléments de réponse\n\n\n\n\n\n1/5\n\n\n\n📖 Voir la solution complète",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html",
+    "href": "solutions/sol_chap1.html",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "",
+    "text": "Solution 1.1\n← Retour à l’énoncé",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-1",
+    "href": "solutions/sol_chap1.html#sec-sol-1-1",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "",
+    "text": "Les progrès en médecine ont affecté grandement la probabilité de détection précoce du cancer du sein, donc la probabilité de survie. Il y a donc une tendance à la baisse, et ces données ne sont pas identiquement distribuées dans le temps.\nPuisque chaque lancer est indépendant et identiquement distribué, les 20 lancers sont considérés comme un échantillon aléatoire de taille 20 de lancers de dé.",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-2",
+    "href": "solutions/sol_chap1.html#sec-sol-1-2",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.2",
+    "text": "Solution 1.2\n← Retour à l’énoncé\n\nIl faudrait utiliser une distribution continue non négative sur l’intervalle \\([0,\\infty)\\) étant donné que la perte financière est nécessairement positive et qu’il n’y a pas de borne supérieure naturelle. Des bons exemples de lois pourraient être : gamma, lognormale, Pareto.\nLa distribution adéquate est la loi binomiale négative. Considérant que chaque sac est indépendant des autres et a une probabilité \\(p\\) d’être contaminé, la distribution est une loi binomiale négative avec paramètres \\(r=15\\) et \\(p\\) inconnu.\nLa loi binomiale est appropriée. Considérant que chaque sac est indépendant des autres et a une probabilité \\(p\\) d’être contaminé, le nombre total de sacs contaminés suit une loi binomiale avec paramètres de taille \\(n=15\\) et probabilité \\(p\\) inconnu.\nLe contexte est conforme à une distribution normale. La majorité des conducteurs vont tendre vers une vitesse moyenne malgré que certains vont conduire beaucoup plus vite ou lentement; une distribution en forme de cloche semble donc appropriée. La moyenne \\(\\mu\\) et la variance \\(\\sigma^2\\) de la vitesse réelle des véhicules à cet endroit précis sur l’autoroute sont inconnues.\nLe contexte suggère une loi Normale. Les câbles devraient avoir une résistance près de \\(\\mu\\), soit celle donnée par le producteur. L’écart-type \\(\\sigma\\) dépendra de la qualité de la précision de la fabrication, et est inconnu.",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-3",
+    "href": "solutions/sol_chap1.html#sec-sol-1-3",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.3",
+    "text": "Solution 1.3\n← Retour à l’énoncé\na) On a directement \\[f(x) = F^\\prime(x) = \\alpha \\beta x^{\\alpha\n        - 1} e^{-\\beta x^{\\alpha}}.\\]\nb) On a\n\\[\n     \\begin{aligned}\n        \\esp{X}\n        &= \\int_0^\\infty x f(x)\\, dx \\\\\n        &= \\int_0^\\infty \\alpha \\beta x^{\\alpha} e^{-\\beta x^{\\alpha}}\\,\n        dx.\n      \\end{aligned}\n\\] On effectue le changement de variable \\(y = \\beta x^{\\alpha}\\), d’où \\(dy = \\bm{\\alpha \\beta x^{\\alpha - 1}\\, dx}\\) et \\(x = \\left(\\frac{y}{\\beta}\\right)^{\\frac{1}{\\alpha}}\\) et donc \\[\n      \\begin{aligned}\n        \\esp{X} &= \\int_0^\\infty \\bm{\\alpha \\beta x^{\\alpha - 1}} x e^{-\\beta x^{\\alpha}}\\,\n        \\bm{dx} \\\\\n        &= \\frac{1}{\\beta^{1/\\alpha}}\n        \\int_0^\\infty y^{1/\\alpha} e^{-y} \\,dy \\\\\n        &= \\frac{\\Gamma(1 + \\frac{1}{\\alpha})}{\\beta^{1/\\alpha}}\n        \\int_0^\\infty \\frac{1}{\\Gamma(1 + \\frac{1}{\\alpha})}\\,\n        y^{1/\\alpha} e^{-y} \\,dy \\\\\n        &= \\frac{\\Gamma(1 + \\frac{1}{\\alpha})}{\\beta^{1/\\alpha}}\n      \\end{aligned}\n      \\] puisque l’intégrande ci-dessus est la fonction de densité de probabilité d’une loi gamma de paramètre de forme \\(\\alpha = 1 +\n      \\frac{1}{\\alpha}\\) et de paramètre d’échelle \\(\\beta = 1\\). En procédant exactement de la même façon, on trouve \\[\n      \\begin{aligned}\n        \\esp{X^2}\n        &= \\int_0^\\infty x^2 f(x)\\, dx \\\\\n        &= \\int_0^\\infty \\alpha \\beta x^{\\alpha + 1} e^{-\\beta x^{\\alpha}}\\,\n        dx \\\\\n        &= \\frac{1}{\\beta^{2/\\alpha}}\n        \\int_0^\\infty y^{2/\\alpha} e^{-y} \\, dy \\\\\n        &= \\frac{\\Gamma(1 + \\frac{2}{\\alpha})}{\\beta^{2/\\alpha}}.\n      \\end{aligned}\n      \\] Par conséquent, \\[\n        \\var{X} = \\frac{\\Gamma(1 + \\frac{2}{\\alpha}) -\n          \\Gamma(1 + \\frac{1}{\\alpha})^2}{\\beta^{2/\\alpha}}.\n      \\]",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-4",
+    "href": "solutions/sol_chap1.html#sec-sol-1-4",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.4",
+    "text": "Solution 1.4\n← Retour à l’énoncé\nSoit \\(X\\) une variable aléatoire avec distribution Beta\\((\\alpha,\\beta)\\). Alors,\n\\[\n\\begin{aligned}\n\\ex(X) & = \\int_0^1 x \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}x^{\\alpha-1}(1-x)^{\\beta-1}\\d x\\\\\n&=\\int_0^1  \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}x^{\\alpha}(1-x)^{\\beta-1}\\d x.\n\\end{aligned}\n\\]\nCette intégrale peut être résolue en reconnaissant la forme similaire à une distribution Beta\\((\\alpha+1,\\beta)\\) intégrée sur son domaine, mais avec les mauvaises constantes. On divise et multiplie par les constantes nécessaires pour trouver une intégrale avec valeur de 1.\n\\[\n\\begin{aligned}\n\\ex(X) & =\\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)}\\frac{\\Gamma(\\alpha+1)}{\\Gamma(\\alpha+1+\\beta)} \\int_0^1  \\frac{\\Gamma(\\alpha+1+\\beta)}{\\Gamma(\\alpha+1)\\Gamma(\\beta)}x^{\\alpha}(1-x)^{\\beta-1}\\d x\\\\\n&=\\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha+1+\\beta)}\\frac{\\Gamma(\\alpha+1)}{\\Gamma(\\alpha)}\\\\\n&= \\frac{\\Gamma(\\alpha+\\beta)}{(\\alpha+\\beta)\\Gamma(\\alpha+\\beta)}\\frac{ \\alpha \\Gamma(\\alpha) }{\\Gamma(\\alpha)}\\\\\n&=\\frac{\\alpha}{\\alpha+\\beta}.\n\\end{aligned}\n\\]\nDe plus, \\[\n\\begin{aligned}\n\\ex\\{X^2\\} & = \\int_0^1 x^2 \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}x^{\\alpha-1}(1-x)^{\\beta-1}\\d x\\\\\n&=\\int_0^1  \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}x^{\\alpha+1}(1-x)^{\\beta-1}\\d x\\\\\n& =\\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)}\\frac{\\Gamma(\\alpha+2)}{\\Gamma(\\alpha+2+\\beta)} \\int_0^1  \\frac{\\Gamma(\\alpha+2+\\beta)}{\\Gamma(\\alpha+2)\\Gamma(\\beta)}x^{\\alpha}(1-x)^{\\beta-1}\\d x\\\\\n&=\\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha+2+\\beta)}\\frac{\\Gamma(\\alpha+2)}{\\Gamma(\\alpha)}\\\\\n&= \\frac{\\Gamma(\\alpha+\\beta)}{(\\alpha+\\beta+1)\\Gamma(\\alpha+\\beta+1)}\\frac{ (\\alpha+1) \\Gamma(\\alpha+1) }{\\Gamma(\\alpha)}\\\\\n&= \\frac{\\Gamma(\\alpha+\\beta)}{(\\alpha+\\beta+1)(\\alpha+\\beta)\\Gamma(\\alpha+\\beta)}\\frac{ (\\alpha+1)\\alpha \\Gamma(\\alpha) }{\\Gamma(\\alpha)}\\\\\n&= \\frac{(\\alpha+1)\\alpha}{(\\alpha+\\beta+1)(\\alpha+\\beta)}.\n\\end{aligned}\n\\] La variance peut alors être calculée ainsi :\n\\[\n\\begin{aligned}\n\\vr(X) &= \\ex(X^2) - \\{ \\ex(X)\\}^2 \\\\\n&= \\frac{(\\alpha+1)\\alpha}{(\\alpha+\\beta+1)(\\alpha+\\beta)}-\\frac{\\alpha^2}{(\\alpha+\\beta)^2} \\\\\n&= \\frac{\\alpha}{\\alpha+\\beta}\\left[\\frac{\\alpha+1}{\\alpha+\\beta+1}-\\frac{\\alpha}{\\alpha+\\beta}\\right]\\\\\n&= \\frac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha+\\beta+1)}\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-5",
+    "href": "solutions/sol_chap1.html#sec-sol-1-5",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.5",
+    "text": "Solution 1.5\n← Retour à l’énoncé\nSoit \\(X\\) une variable aléatoire Poisson avec paramètre \\(\\lambda&gt;0\\). Sa fonction génératrice des moments, pour tout \\(t \\in \\mathbb{R}\\), est donnée par \\[\n\\begin{aligned}\nM_X(t) = \\ex (e^{tX}) = \\sum_{k=0}^\\infty e^{tk}\\frac{\\lambda^k e^{-\\lambda}}{k!} =  e^{-\\lambda}\\sum_{k=0}^\\infty \\frac{\\{\\lambda e^t\\}^k}{k!}.\n\\end{aligned}\n\\] L’équation de droite est la série de Taylor de \\(\\exp(\\lambda e^t)\\). Ainsi, \\[\nM_X(t) = e^{-\\lambda}e^{\\lambda e^t} = \\exp\\{\\lambda(e^t-1)\\}.\n\\] La \\(k\\)e dérivée de \\(M\\) évaluée à \\(t=0\\) donne le \\(k\\)e moment de \\(X\\). Ainsi, \\[\n\\ex(X) = M^\\prime_X(0) = \\left.\\exp\\{\\lambda(e^t-1)\\}\\times \\lambda e^t\\right|_{t=0} = \\lambda\n\\] de façon similaire, \\[\n\\begin{aligned}\n\\ex(X^2) & = M^{\\prime \\prime}_X(0) = \\left.\\exp\\{\\lambda(e^t-1)\\}\\times \\lambda^2 e^{2t}+\\exp\\{\\lambda(e^t-1)\\}\\times \\lambda e^{t}\\right|_{t=0} = \\lambda^2+\\lambda\n\\end{aligned}\n\\] Alors, \\[\n\\vr(X) = \\ex(X^2) - \\{\\ex(X)\\}^2 = \\lambda^2+\\lambda-\\lambda^2=\\lambda.\n\\]",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-6",
+    "href": "solutions/sol_chap1.html#sec-sol-1-6",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.6",
+    "text": "Solution 1.6\n← Retour à l’énoncé\na) Le support de \\(Y\\) est \\([0,2]\\), donc \\(F(y)=0\\) pour \\(y&lt;0\\) et \\(F(y)=1\\) pour \\(y&gt;2\\). Pour \\(0\\leq y &lt;1\\), \\[\nF(y)=\\Pr[Y\\leq y]=\\int_0^y x\\d x = \\frac{y^2}{2}.\n\\] Pour \\(1\\leq y &lt;2\\), \\[\nF(y)=\\Pr[Y\\leq y]=\\int_0^1 x\\d x +\\int_1^y (2-x)\\d x = 1-\\frac{(2-y)^2}{2}.\n\\] Ainsi la fonction de répartition de \\(Y\\) est \\[\nF(y)= \\begin{cases}\n0, & y&lt;0\\\\\ny^2/2, & 0\\leq y&lt;1\\\\\n1- (2-y)^2/2, & 1\\leq y &lt;2\\\\\n1, & y&gt;2.\n\\end{cases}\n\\]\nb) On souhaite trouver la probabilité que \\(10000 Y\\) se situe entre 8 500 et 11 500: \\[\n\\begin{aligned}\n\\Pr[8500&lt;10000Y\\leq 11500] & = \\Pr[0.85&lt;Y\\leq 1.15]\\\\\n&=F(1.15)-F(0.85)\\\\\n&=1- \\frac{(2-1.15)^2}{2}-\\frac{0.85^2}{2}=0.2775.\n\\end{aligned}\n\\]\nc) On désire trouver l’espérance du revenu, qui est de 2,10 $ par litre, donc \\(\\ex[2.10\\times 10000Y]=21000\\ex[Y]\\). On a \\[\n\\begin{aligned}\n\\ex[Y]&=\\int_0^1 y^2\\d y +\\int_1^2 y(2-y)\\d y\\\\\n&=\\left.\\frac{y^3}{3}\\right|_0^1+\\left.y^2-\\frac{y^3}{3}\\right|_1^2\\\\\n&=\\frac{1}{3}+4-\\frac{2^3}{3}-1+\\frac{1}{3} = 1.\n\\end{aligned}\n\\] Ainsi, l’espérance de revenu mensuel est de 21 000 $.",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-7",
+    "href": "solutions/sol_chap1.html#sec-sol-1-7",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.7",
+    "text": "Solution 1.7\n← Retour à l’énoncé\nOn doit trouver le point où la fonction \\(f(c) = \\esp{(X - c)^2}\\) atteint son minimum. Pour ce faire, il faut dériver par rapport à \\(c\\). Or, \\(\\frac{\\text{d}}{\\text{d}c} f(c) = -2 \\esp{X - c} = 0\\) lorsque \\(\\esp{X} - c = 0\\), soit \\(c = \\esp{X} = \\mu\\). De plus, il s’agit bien d’un minimum puisque \\(\\frac{\\text{d}^2}{\\text{d}^2c} f(c)= 2 &gt; 0\\) pour tout \\(c\\).",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-8",
+    "href": "solutions/sol_chap1.html#sec-sol-1-8",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.8",
+    "text": "Solution 1.8\n← Retour à l’énoncé\na) On a \\[\n      \\begin{aligned}\n        M_Y(t)\n        &= \\esp{e^{Yt}} \\\\\n        &= \\esp{e^{(aX + b)t}} \\\\\n        &= \\esp{e^{aXt} e^{bt}} \\\\\n        &= e^{bt} \\esp{e^{aXt}} \\\\\n        &= e^{bt} M_X(at).\n      \\end{aligned}\n\\] b) On a \\[\n\\begin{aligned}\nM_Y(t) &= \\esp{e^{Yt}} \\\\\n       &= \\esp{e^{(X_1 + \\dots + X_n) t}} \\\\\n       &= \\esp{e^{X_1 t} \\cdots e^{X_n t}}\n\\end{aligned}\n\\]\net, par indépendance entre les variables aléatoires,\n\\[\n\\begin{aligned}\nM_Y(t) &= \\esp{e^{X_1 t}} \\cdots \\esp{e^{X_n t}} \\\\\n       &= \\prod_{j=1}^n M_{X_j}(t).\n\\end{aligned}\n\\] Si, en plus, les variables aléatoires \\(X_1, \\dots, X_n\\) sont identiquement distribuées comme \\(X\\), alors \\(M_Y(t) =\n      (M_X(t))^n\\).",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-9",
+    "href": "solutions/sol_chap1.html#sec-sol-1-9",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.9",
+    "text": "Solution 1.9\n← Retour à l’énoncé\nLa Loi faible des grands nombres indique que, lorsque \\(n\\to\\infty\\), \\(\\bar X_n\\stackrel{P}{\\to}\\ex[X]\\), où \\(X_1,\\ldots,X_n\\) est une suite de variables aléatoires indépendantes et identiquement ditribuées. Cependant, le résultat tient seulement si \\(\\ex[X^2] &lt; \\infty\\), ce qui n’est pas le cas ici puisque \\[\n\\begin{aligned}\n\\ex[X^2]=\\int_{10}^\\infty \\frac{200}{x^3}x^2 \\d x =\\int_{10}^\\infty \\frac{200}{x} \\d x = \\left. 200\\ln(x)\\right|_{10}^\\infty = \\infty.\n\\end{aligned}\n\\] Ainsi, il n’est pas possible d’appliquer la WLLN dans ce cas.",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  },
+  {
+    "objectID": "solutions/sol_chap1.html#sec-sol-1-10",
+    "href": "solutions/sol_chap1.html#sec-sol-1-10",
+    "title": "2  Solutions — Modèles statistiques de base",
+    "section": "Solution 1.10",
+    "text": "Solution 1.10\n← Retour à l’énoncé\nSi \\(X\\) a la même distribution que \\(X_1, \\ldots , X_n\\) et \\(\\vr(X)&lt;\\infty\\), la loi faible des grands nombres implique que, quand \\(n \\to \\infty\\),\n\\[\n\\frac{1}{n} \\, \\sum_{i=1}^n X_i\n\\]\nconverge en probabilité vers \\(\\esp{X}\\). Puisque \\(X\\) suit une distribution Beta avec paramètres \\(\\alpha=1\\) et \\(\\beta=4\\), \\(\\esp{X}=\\alpha/(\\alpha+\\beta)=1/5\\) et \\[\n\\var{X}=\\frac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha+\\beta+1)}=\\frac{4}{5^2\\times 6}=\\frac{2}{75}&lt;\\infty.\n\\] Donc, la WLLN s’applique et \\(\\bar X_n\\) converge en probabilité vers 1/5.",
+    "crumbs": [
+      "Solutions",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Solutions — Modèles statistiques de base</span>"
+    ]
+  }
+]
