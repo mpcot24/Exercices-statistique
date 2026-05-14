@@ -213,6 +213,18 @@ window.Quarto = {
   <li><a href="#sec-sol-1-8" id="toc-sec-sol-1-8" class="nav-link" data-scroll-target="#sec-sol-1-8">Solution 1.8</a></li>
   <li><a href="#sec-sol-1-9" id="toc-sec-sol-1-9" class="nav-link" data-scroll-target="#sec-sol-1-9">Solution 1.9</a></li>
   <li><a href="#sec-sol-1-10" id="toc-sec-sol-1-10" class="nav-link" data-scroll-target="#sec-sol-1-10">Solution 1.10</a></li>
+  <li><a href="#sec-sol-1-11" id="toc-sec-sol-1-11" class="nav-link" data-scroll-target="#sec-sol-1-11">Solution 1.11</a></li>
+  <li><a href="#sec-sol-1-12" id="toc-sec-sol-1-12" class="nav-link" data-scroll-target="#sec-sol-1-12">Solution 1.12</a></li>
+  <li><a href="#sec-sol-1-13" id="toc-sec-sol-1-13" class="nav-link" data-scroll-target="#sec-sol-1-13">Solution 1.13</a></li>
+  <li><a href="#sec-sol-1-14" id="toc-sec-sol-1-14" class="nav-link" data-scroll-target="#sec-sol-1-14">Solution 1.14</a></li>
+  <li><a href="#sec-sol-1-15" id="toc-sec-sol-1-15" class="nav-link" data-scroll-target="#sec-sol-1-15">Solution 1.15</a></li>
+  <li><a href="#sec-sol-1-16" id="toc-sec-sol-1-16" class="nav-link" data-scroll-target="#sec-sol-1-16">Solution 1.16</a></li>
+  <li><a href="#sec-sol-1-17" id="toc-sec-sol-1-17" class="nav-link" data-scroll-target="#sec-sol-1-17">Solution 1.17</a></li>
+  <li><a href="#sec-sol-1-18" id="toc-sec-sol-1-18" class="nav-link" data-scroll-target="#sec-sol-1-18">Solution 1.18</a></li>
+  <li><a href="#sec-sol-1-19" id="toc-sec-sol-1-19" class="nav-link" data-scroll-target="#sec-sol-1-19">Solution 1.19</a></li>
+  <li><a href="#sec-sol-1-20" id="toc-sec-sol-1-20" class="nav-link" data-scroll-target="#sec-sol-1-20">Solution 1.20</a></li>
+  <li><a href="#sec-sol-1-21" id="toc-sec-sol-1-21" class="nav-link" data-scroll-target="#sec-sol-1-21">Solution 1.21</a></li>
+  <li><a href="#sec-sol-1-22" id="toc-sec-sol-1-22" class="nav-link" data-scroll-target="#sec-sol-1-22">Solution 1.22</a></li>
   </ul>
 </nav>
     </div>
@@ -241,74 +253,39 @@ window.Quarto = {
 <section id="sec-sol-1-1" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-1">Solution 1.1</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-1">← Retour à l’énoncé</a></p>
-<ol type="a">
-<li><p>Les progrès en médecine ont affecté grandement la probabilité de détection précoce du cancer du sein, donc la probabilité de survie. Il y a donc une tendance à la baisse, et ces données ne sont pas identiquement distribuées dans le temps.</p></li>
-<li><p>Puisque chaque lancer est indépendant et identiquement distribué, les 20 lancers sont considérés comme un échantillon aléatoire de taille 20 de lancers de dé.</p></li>
-</ol>
+<p><strong>a)</strong> Les progrès en médecine ont affecté grandement la probabilité de détection précoce du cancer du sein, donc la probabilité de survie. Il y a donc une tendance à la baisse, et ces données ne sont pas identiquement distribuées dans le temps.</p>
+<p><strong>b)</strong> Puisque chaque lancer est indépendant et identiquement distribué, les 20 lancers sont considérés comme un échantillon aléatoire de taille 20 de lancers de dé.</p>
 </section>
 <section id="sec-sol-1-2" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-2">Solution 1.2</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-2">← Retour à l’énoncé</a></p>
-<ol type="a">
-<li><p>Il faudrait utiliser une distribution continue non négative sur l’intervalle <span class="math inline">\([0,\infty)\)</span> étant donné que la perte financière est nécessairement positive et qu’il n’y a pas de borne supérieure naturelle. Des bons exemples de lois pourraient être : gamma, lognormale, Pareto.</p></li>
-<li><p>La distribution adéquate est la loi binomiale négative. Considérant que chaque sac est indépendant des autres et a une probabilité <span class="math inline">\(p\)</span> d’être contaminé, la distribution est une loi binomiale négative avec paramètres <span class="math inline">\(r=15\)</span> et <span class="math inline">\(p\)</span> inconnu.</p></li>
-<li><p>La loi binomiale est appropriée. Considérant que chaque sac est indépendant des autres et a une probabilité <span class="math inline">\(p\)</span> d’être contaminé, le nombre total de sacs contaminés suit une loi binomiale avec paramètres de taille <span class="math inline">\(n=15\)</span> et probabilité <span class="math inline">\(p\)</span> inconnu.</p></li>
-<li><p>Le contexte est conforme à une distribution normale. La majorité des conducteurs vont tendre vers une vitesse moyenne malgré que certains vont conduire beaucoup plus vite ou lentement; une distribution en forme de cloche semble donc appropriée. La moyenne <span class="math inline">\(\mu\)</span> et la variance <span class="math inline">\(\sigma^2\)</span> de la vitesse réelle des véhicules à cet endroit précis sur l’autoroute sont inconnues.</p></li>
-<li><p>Le contexte suggère une loi Normale. Les câbles devraient avoir une résistance près de <span class="math inline">\(\mu\)</span>, soit celle donnée par le producteur. L’écart-type <span class="math inline">\(\sigma\)</span> dépendra de la qualité de la précision de la fabrication, et est inconnu.</p></li>
-</ol>
+<p><strong>a)</strong> Il faudrait utiliser une distribution continue non négative sur l’intervalle <span class="math inline">\([0,\infty)\)</span> étant donné que la perte financière est nécessairement positive et qu’il n’y a pas de borne supérieure naturelle. Des bons exemples de lois pourraient être : gamma, lognormale, Pareto.</p>
+<p><strong>b)</strong> La distribution adéquate est la loi binomiale négative. Considérant que chaque sac est indépendant des autres et a une probabilité <span class="math inline">\(p\)</span> d’être contaminé, la distribution est une loi binomiale négative avec paramètres <span class="math inline">\(r=15\)</span> et <span class="math inline">\(p\)</span> inconnu.</p>
+<p><strong>c)</strong> La loi binomiale est appropriée. Considérant que chaque sac est indépendant des autres et a une probabilité <span class="math inline">\(p\)</span> d’être contaminé, le nombre total de sacs contaminés suit une loi binomiale avec paramètres de taille <span class="math inline">\(n=15\)</span> et probabilité <span class="math inline">\(p\)</span> inconnu.</p>
+<p><strong>d)</strong> Le contexte est conforme à une distribution normale. La majorité des conducteurs vont tendre vers une vitesse moyenne malgré que certains vont conduire beaucoup plus vite ou lentement ; une distribution en forme de cloche semble donc appropriée. La moyenne <span class="math inline">\(\mu\)</span> et la variance <span class="math inline">\(\sigma^2\)</span> de la vitesse réelle des véhicules à cet endroit précis sur l’autoroute sont inconnues.</p>
+<p><strong>e)</strong> Le contexte suggère une loi Normale. Les câbles devraient avoir une résistance près de <span class="math inline">\(\mu\)</span>, soit celle donnée par le producteur. L’écart-type <span class="math inline">\(\sigma\)</span> dépendra de la qualité de la précision de la fabrication, et est inconnu.</p>
 </section>
 <section id="sec-sol-1-3" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-3">Solution 1.3</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-3">← Retour à l’énoncé</a></p>
-<p><strong>a)</strong> On a directement <span class="math display">\[f(x) = F^\prime(x) = \alpha \beta x^{\alpha
-        - 1} e^{-\beta x^{\alpha}}.\]</span></p>
-<p><strong>b)</strong> On a</p>
-<p><span class="math display">\[
-     \begin{aligned}
-        \esp{X}
-        &amp;= \int_0^\infty x f(x)\, dx \\
-        &amp;= \int_0^\infty \alpha \beta x^{\alpha} e^{-\beta x^{\alpha}}\,
-        dx.
-      \end{aligned}
+<p><strong>a)</strong> On a directement <span class="math inline">\(f(x) = F^\prime(x) = \alpha \beta x^{\alpha - 1} e^{-\beta x^{\alpha}}\)</span>.</p>
+<p><strong>b)</strong> On a <span class="math display">\[
+\begin{aligned} \esp{X} &amp;= \int_0^\infty x f(x)\, dx \\ &amp;= \int_0^\infty \alpha \beta x^{\alpha} e^{-\beta x^{\alpha}}\, dx. \end{aligned}
 \]</span> On effectue le changement de variable <span class="math inline">\(y = \beta x^{\alpha}\)</span>, d’où <span class="math inline">\(dy = \bm{\alpha \beta x^{\alpha - 1}\, dx}\)</span> et <span class="math inline">\(x = \left(\frac{y}{\beta}\right)^{\frac{1}{\alpha}}\)</span> et donc <span class="math display">\[
-      \begin{aligned}
-        \esp{X} &amp;= \int_0^\infty \bm{\alpha \beta x^{\alpha - 1}} x e^{-\beta x^{\alpha}}\,
-        \bm{dx} \\
-        &amp;= \frac{1}{\beta^{1/\alpha}}
-        \int_0^\infty y^{1/\alpha} e^{-y} \,dy \\
-        &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}}
-        \int_0^\infty \frac{1}{\Gamma(1 + \frac{1}{\alpha})}\,
-        y^{1/\alpha} e^{-y} \,dy \\
-        &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}}
-      \end{aligned}
-      \]</span> puisque l’intégrande ci-dessus est la fonction de densité de probabilité d’une loi gamma de paramètre de forme <span class="math inline">\(\alpha = 1 +
-      \frac{1}{\alpha}\)</span> et de paramètre d’échelle <span class="math inline">\(\beta = 1\)</span>. En procédant exactement de la même façon, on trouve <span class="math display">\[
-      \begin{aligned}
-        \esp{X^2}
-        &amp;= \int_0^\infty x^2 f(x)\, dx \\
-        &amp;= \int_0^\infty \alpha \beta x^{\alpha + 1} e^{-\beta x^{\alpha}}\,
-        dx \\
-        &amp;= \frac{1}{\beta^{2/\alpha}}
-        \int_0^\infty y^{2/\alpha} e^{-y} \, dy \\
-        &amp;= \frac{\Gamma(1 + \frac{2}{\alpha})}{\beta^{2/\alpha}}.
-      \end{aligned}
-      \]</span> Par conséquent, <span class="math display">\[
-        \var{X} = \frac{\Gamma(1 + \frac{2}{\alpha}) -
-          \Gamma(1 + \frac{1}{\alpha})^2}{\beta^{2/\alpha}}.
-      \]</span></p>
+\begin{aligned} \esp{X} &amp;= \int_0^\infty \bm{\alpha \beta x^{\alpha - 1}} x e^{-\beta x^{\alpha}}\, \bm{dx} \\ &amp;= \frac{1}{\beta^{1/\alpha}} \int_0^\infty y^{1/\alpha} e^{-y} \,dy \\ &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \int_0^\infty \frac{1}{\Gamma(1 + \frac{1}{\alpha})}\, y^{1/\alpha} e^{-y} \,dy \\ &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \end{aligned}
+\]</span> puisque l’intégrande ci-dessus est la fonction de densité de probabilité d’une loi gamma de paramètre de forme <span class="math inline">\(\alpha = 1 + \frac{1}{\alpha}\)</span> et de paramètre d’échelle <span class="math inline">\(\beta = 1\)</span>. En procédant exactement de la même façon, on trouve <span class="math display">\[
+\begin{aligned} \esp{X^2} &amp;= \int_0^\infty x^2 f(x)\, dx \\ &amp;= \int_0^\infty \alpha \beta x^{\alpha + 1} e^{-\beta x^{\alpha}}\, dx \\ &amp;= \frac{1}{\beta^{2/\alpha}} \int_0^\infty y^{2/\alpha} e^{-y} \, dy \\ &amp;= \frac{\Gamma(1 + \frac{2}{\alpha})}{\beta^{2/\alpha}}. \end{aligned}
+\]</span> Par conséquent, <span class="math display">\[ \var{X} = \frac{\Gamma(1 + \frac{2}{\alpha}) - \Gamma(1 + \frac{1}{\alpha})^2}{\beta^{2/\alpha}}. \]</span></p>
 </section>
 <section id="sec-sol-1-4" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-4">Solution 1.4</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-4">← Retour à l’énoncé</a></p>
-<p>Soit <span class="math inline">\(X\)</span> une variable aléatoire avec distribution Beta<span class="math inline">\((\alpha,\beta)\)</span>. Alors,</p>
-<p><span class="math display">\[
+<p>Soit <span class="math inline">\(X\)</span> une variable aléatoire avec distribution Beta<span class="math inline">\((\alpha,\beta)\)</span>. Alors, <span class="math display">\[
 \begin{aligned}
 \ex(X) &amp; = \int_0^1 x \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\d x\\
 &amp;=\int_0^1  \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x.
 \end{aligned}
-\]</span></p>
-<p>Cette intégrale peut être résolue en reconnaissant la forme similaire à une distribution Beta<span class="math inline">\((\alpha+1,\beta)\)</span> intégrée sur son domaine, mais avec les mauvaises constantes. On divise et multiplie par les constantes nécessaires pour trouver une intégrale avec valeur de 1.</p>
-<p><span class="math display">\[
+\]</span> Cette intégrale peut être résolue en reconnaissant la forme similaire à une distribution Beta<span class="math inline">\((\alpha+1,\beta)\)</span> intégrée sur son domaine, mais avec les mauvaises constantes. On divise et multiplie par les constantes nécessaires pour trouver une intégrale avec valeur de 1. <span class="math display">\[
 \begin{aligned}
 \ex(X) &amp; =\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)}\frac{\Gamma(\alpha+1)}{\Gamma(\alpha+1+\beta)} \int_0^1  \frac{\Gamma(\alpha+1+\beta)}{\Gamma(\alpha+1)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x\\
 &amp;=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha+1+\beta)}\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)}\\
@@ -326,8 +303,7 @@ window.Quarto = {
 &amp;= \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta+1)(\alpha+\beta)\Gamma(\alpha+\beta)}\frac{ (\alpha+1)\alpha \Gamma(\alpha) }{\Gamma(\alpha)}\\
 &amp;= \frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha+\beta)}.
 \end{aligned}
-\]</span> La variance peut alors être calculée ainsi :</p>
-<p><span class="math display">\[
+\]</span> La variance peut alors être calculée ainsi : <span class="math display">\[
 \begin{aligned}
 \vr(X) &amp;= \ex(X^2) - \{ \ex(X)\}^2 \\
 &amp;= \frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha+\beta)}-\frac{\alpha^2}{(\alpha+\beta)^2} \\
@@ -358,31 +334,12 @@ M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.
 <section id="sec-sol-1-6" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-6">Solution 1.6</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-6">← Retour à l’énoncé</a></p>
-<p><strong>a)</strong> Le support de <span class="math inline">\(Y\)</span> est <span class="math inline">\([0,2]\)</span>, donc <span class="math inline">\(F(y)=0\)</span> pour <span class="math inline">\(y&lt;0\)</span> et <span class="math inline">\(F(y)=1\)</span> pour <span class="math inline">\(y&gt;2\)</span>. Pour <span class="math inline">\(0\leq y &lt;1\)</span>, <span class="math display">\[
-F(y)=\Pr[Y\leq y]=\int_0^y x\d x = \frac{y^2}{2}.
-\]</span> Pour <span class="math inline">\(1\leq y &lt;2\)</span>, <span class="math display">\[
-F(y)=\Pr[Y\leq y]=\int_0^1 x\d x +\int_1^y (2-x)\d x = 1-\frac{(2-y)^2}{2}.
-\]</span> Ainsi la fonction de répartition de <span class="math inline">\(Y\)</span> est <span class="math display">\[
-F(y)= \begin{cases}
-0, &amp; y&lt;0\\
-y^2/2, &amp; 0\leq y&lt;1\\
-1- (2-y)^2/2, &amp; 1\leq y &lt;2\\
-1, &amp; y&gt;2.
-\end{cases}
-\]</span></p>
+<p><strong>a)</strong> Le support de <span class="math inline">\(Y\)</span> est <span class="math inline">\([0,2]\)</span>, donc <span class="math inline">\(F(y)=0\)</span> pour <span class="math inline">\(y&lt;0\)</span> et <span class="math inline">\(F(y)=1\)</span> pour <span class="math inline">\(y&gt;2\)</span>. Pour <span class="math inline">\(0\leq y &lt;1\)</span>, <span class="math display">\[ F(y)=\Pr[Y\leq y]=\int_0^y x\d x = \frac{y^2}{2}. \]</span> Pour <span class="math inline">\(1\leq y &lt;2\)</span>, <span class="math display">\[ F(y)=\Pr[Y\leq y]=\int_0^1 x\d x +\int_1^y (2-x)\d x = 1-\frac{(2-y)^2}{2}. \]</span> Ainsi la fonction de répartition de <span class="math inline">\(Y\)</span> est <span class="math display">\[ F(y)= \begin{cases} 0, &amp; y&lt;0\\ y^2/2, &amp; 0\leq y&lt;1\\ 1- (2-y)^2/2, &amp; 1\leq y &lt;2\\ 1, &amp; y&gt;2. \end{cases} \]</span></p>
 <p><strong>b)</strong> On souhaite trouver la probabilité que <span class="math inline">\(10000 Y\)</span> se situe entre 8 500 et 11 500: <span class="math display">\[
-\begin{aligned}
-\Pr[8500&lt;10000Y\leq 11500] &amp; = \Pr[0.85&lt;Y\leq 1.15]\\
-&amp;=F(1.15)-F(0.85)\\
-&amp;=1- \frac{(2-1.15)^2}{2}-\frac{0.85^2}{2}=0.2775.
-\end{aligned}
+\begin{aligned} \Pr[8500&lt;10000Y\leq 11500] &amp; = \Pr[0.85&lt;Y\leq 1.15]\\ &amp;=F(1.15)-F(0.85)\\ &amp;=1- \frac{(2-1.15)^2}{2}-\frac{0.85^2}{2}=0.2775. \end{aligned}
 \]</span></p>
 <p><strong>c)</strong> On désire trouver l’espérance du revenu, qui est de 2,10 $ par litre, donc <span class="math inline">\(\ex[2.10\times 10000Y]=21000\ex[Y]\)</span>. On a <span class="math display">\[
-\begin{aligned}
-\ex[Y]&amp;=\int_0^1 y^2\d y +\int_1^2 y(2-y)\d y\\
-&amp;=\left.\frac{y^3}{3}\right|_0^1+\left.y^2-\frac{y^3}{3}\right|_1^2\\
-&amp;=\frac{1}{3}+4-\frac{2^3}{3}-1+\frac{1}{3} = 1.
-\end{aligned}
+\begin{aligned} \ex[Y]&amp;=\int_0^1 y^2\d y +\int_1^2 y(2-y)\d y\\ &amp;=\left.\frac{y^3}{3}\right|_0^1+\left.y^2-\frac{y^3}{3}\right|_1^2\\ &amp;=\frac{1}{3}+4-\frac{2^3}{3}-1+\frac{1}{3} = 1. \end{aligned}
 \]</span> Ainsi, l’espérance de revenu mensuel est de 21 000 $.</p>
 </section>
 <section id="sec-sol-1-7" class="level2 unnumbered">
@@ -394,29 +351,15 @@ y^2/2, &amp; 0\leq y&lt;1\\
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-8">Solution 1.8</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-8">← Retour à l’énoncé</a></p>
 <p><strong>a)</strong> On a <span class="math display">\[
-      \begin{aligned}
-        M_Y(t)
-        &amp;= \esp{e^{Yt}} \\
-        &amp;= \esp{e^{(aX + b)t}} \\
-        &amp;= \esp{e^{aXt} e^{bt}} \\
-        &amp;= e^{bt} \esp{e^{aXt}} \\
-        &amp;= e^{bt} M_X(at).
-      \end{aligned}
-\]</span> <strong>b)</strong> On a <span class="math display">\[
-\begin{aligned}
-M_Y(t) &amp;= \esp{e^{Yt}} \\
-       &amp;= \esp{e^{(X_1 + \dots + X_n) t}} \\
-       &amp;= \esp{e^{X_1 t} \cdots e^{X_n t}}
-\end{aligned}
+\begin{aligned} M_Y(t) &amp;= \esp{e^{Yt}} \\ &amp;= \esp{e^{(aX + b)t}} \\ &amp;= \esp{e^{aXt} e^{bt}} \\ &amp;= e^{bt} \esp{e^{aXt}} \\ &amp;= e^{bt} M_X(at). \end{aligned}
+\]</span></p>
+<p><strong>b)</strong> On a <span class="math display">\[
+\begin{aligned} M_Y(t) &amp;= \esp{e^{Yt}}\\ &amp;= \esp{e^{(X_1 + \dots + X_n) t}}\\ &amp;= \esp{e^{X_1 t} \cdots e^{X_n t}} \\ \end{aligned}
 \]</span></p>
 <p>et, par indépendance entre les variables aléatoires,</p>
 <p><span class="math display">\[
-\begin{aligned}
-M_Y(t) &amp;= \esp{e^{X_1 t}} \cdots \esp{e^{X_n t}} \\
-       &amp;= \prod_{j=1}^n M_{X_j}(t).
-\end{aligned}
-\]</span> Si, en plus, les variables aléatoires <span class="math inline">\(X_1, \dots, X_n\)</span> sont identiquement distribuées comme <span class="math inline">\(X\)</span>, alors <span class="math inline">\(M_Y(t) =
-      (M_X(t))^n\)</span>.</p>
+\begin{aligned} M_Y(t) &amp;= \esp{e^{X_1t}} \cdots \esp{e^{X_nt}} \\ &amp;= \prod_{i = j}^n M_{X_j}(t). \end{aligned}
+\]</span> Si, en plus, les variables aléatoires <span class="math inline">\(X_1, \dots, X_n\)</span> sont identiquement distribuées comme <span class="math inline">\(X\)</span>, alors <span class="math inline">\(M_Y(t) = (M_X(t))^n\)</span>.</p>
 </section>
 <section id="sec-sol-1-9" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-9">Solution 1.9</h2>
@@ -430,13 +373,310 @@ M_Y(t) &amp;= \esp{e^{X_1 t}} \cdots \esp{e^{X_n t}} \\
 <section id="sec-sol-1-10" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-10">Solution 1.10</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-10">← Retour à l’énoncé</a></p>
-<p>Si <span class="math inline">\(X\)</span> a la même distribution que <span class="math inline">\(X_1, \ldots , X_n\)</span> et <span class="math inline">\(\vr(X)&lt;\infty\)</span>, la loi faible des grands nombres implique que, quand <span class="math inline">\(n \to \infty\)</span>,</p>
-<p><span class="math display">\[
-\frac{1}{n} \, \sum_{i=1}^n X_i
-\]</span></p>
-<p>converge en probabilité vers <span class="math inline">\(\esp{X}\)</span>. Puisque <span class="math inline">\(X\)</span> suit une distribution Beta avec paramètres <span class="math inline">\(\alpha=1\)</span> et <span class="math inline">\(\beta=4\)</span>, <span class="math inline">\(\esp{X}=\alpha/(\alpha+\beta)=1/5\)</span> et <span class="math display">\[
+<p>Si <span class="math inline">\(X\)</span> a la même distribution que <span class="math inline">\(X_1, \ldots , X_n\)</span> et <span class="math inline">\(\vr(X)&lt;\infty\)</span>, la loi faible des grands nombres implique que, quand <span class="math inline">\(n \to \infty\)</span>, $ , _{i=1}^n X_i $ converge en probabilité vers <span class="math inline">\(\esp{X}\)</span>. Puisque <span class="math inline">\(X\)</span> suit une distribution Beta avec paramètres <span class="math inline">\(\alpha=1\)</span> et <span class="math inline">\(\beta=4\)</span>, <span class="math inline">\(\esp{X}=\alpha/(\alpha+\beta)=1/5\)</span> et <span class="math display">\[
 \var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}&lt;\infty.
 \]</span> Donc, la WLLN s’applique et <span class="math inline">\(\bar X_n\)</span> converge en probabilité vers 1/5.</p>
+</section>
+<section id="sec-sol-1-11" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-11">Solution 1.11</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-11">← Retour à l’énoncé</a></p>
+<p>Puisque <span class="math inline">\(X_{(1)}\)</span> est la plus petite valeur de l’échantillon, on a que <span class="math display">\[
+\begin{aligned}
+F_{X_{(1)}}(x)
+&amp;= \prob{X_{(1)} \leq x} \\
+&amp;= 1 - \prob{X_{(1)} &gt; x} \\
+&amp;= 1 - \prob{X_1 &gt; x, X_2 &gt; x, \dots, X_n &gt; x}.
+\end{aligned}
+\]</span> Or, les variables aléatoires <span class="math inline">\(X_1, \dots, X_n\)</span> sont indépendantes et identiquement distribuées, d’où <span class="math display">\[
+\begin{aligned}
+F_{X_{(1)}}(x)
+&amp;= 1 - \prob{X_1 &gt; x} \prob{X_2 &gt; x} \cdots \prob{X_n &gt; x} \\
+&amp;= 1 - (\prob{X &gt; x})^n \\
+&amp;= 1 - (1 -  F_X(x))^n.
+\end{aligned}
+\]</span></p>
+</section>
+<section id="sec-sol-1-12" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-12">Solution 1.12</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-12">← Retour à l’énoncé</a></p>
+<p>On cherche la probabilité que la plus grande valeur de l’échantillon soit supérieure à 3, soit le complément de la probabilité que toutes les valeurs de l’échantillon soient inférieures à 3: <span class="math display">\[
+\begin{aligned}
+\prob{X_{(4)} &gt; 3}
+&amp;= 1 - \prob{X_{(4)} \leq 3} \\
+&amp;= 1 - \prob{X_1 \leq 3} \prob{X_2 \leq 3}
+\prob{X_3 \leq 3} \prob{X_4 \leq 3} \\
+&amp;= 1 - (F_X(3))^4.
+\end{aligned}
+\]</span> Or, on aura reconnu en <span class="math inline">\(f(x)\)</span> la densité d’une loi exponentielle de paramètre <span class="math inline">\(\lambda = 1\)</span>. Par conséquent, <span class="math inline">\(F_X(x) = 1 - e^{-x}\)</span> et <span class="math inline">\(\prob{X_{(4)} &gt; 3} = 1 - (1 - e^{-3})^4\)</span>.</p>
+</section>
+<section id="sec-sol-1-13" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-13">Solution 1.13</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-13">← Retour à l’énoncé</a></p>
+<p>Soit <span class="math inline">\(m\)</span> la médiane de la distribution. On cherche <span class="math inline">\(\prob{X_{(1)}
+&gt; m}\)</span>. Avec le résultat de l’exercice <strong>[à compléter]</strong>, <span class="math display">\[
+\begin{aligned}
+\prob{X_{(1)} &gt; m}
+&amp;= 1 - \prob{X_{(1)} \leq m} \\
+&amp;= 1 - F_{X_{(1)}}(m) \\
+&amp;= 1 - (1 - (1 - F_X(m))^3)\\
+&amp;= (1 - F_X(m))^3 \\
+&amp;= \frac{1}{8},
+\end{aligned}
+\]</span> car <span class="math inline">\(F_X(m) = 1 - F_X(m) = 1/2\)</span> par définition de la médiane. Le type de distribution ne joue donc aucun rôle dans cet exercice.</p>
+</section>
+<section id="sec-sol-1-14" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-14">Solution 1.14</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-14">← Retour à l’énoncé</a></p>
+<p>On a que <span class="math inline">\(X\)</span> est distribuée uniformément sur <span class="math inline">\(\{1, \dots, 6\}\)</span>, d’où <span class="math inline">\(F_X(x) = x/6\)</span>, <span class="math inline">\(x = 1, \dots, 6\)</span>. De l’exercice <strong>[à compléter]</strong>, on a que <span class="math display">\[
+\begin{aligned}
+F_{X_{(1)}}(x)
+&amp;= 1 - (1 - F_X(x))^5 \\
+&amp;= 1 - \left( 1 - \frac{x}{6} \right)^5
+\end{aligned}
+\]</span> comme la taille d’échantillon est <span class="math inline">\(n = 5\)</span>. Par conséquent, la fonction de masse de probabilité du minimum est <span class="math display">\[
+\begin{aligned}
+\prob{X_{(1)} = x}
+&amp;= \lim_{y \rightarrow x^+} F_{X_{(1)}}(y) -
+\lim_{y \rightarrow x^-} F_{X_{(1)}}(y) \\
+&amp;= \prob{X_{(1)} \leq x} - \prob{X_{(1)} &lt; x} \\
+&amp;= \prob{X_{(1)} \leq x} - \prob{X_{(1)} \leq (x - 1)} \\
+&amp;= F_{X_{(1)}}(x) - F_{X_{(1)}}(x - 1) \\
+&amp;= \left(1 - \frac{x-1}{6} \right)^5 -
+\bigg( 1 - \frac{x}{6} \bigg)^5 \\
+&amp;= \left(\frac{7 - x}{6}\right)^5 -
+\left(\frac{6 - x}{6}\right)^5.
+\end{aligned}
+\]</span></p>
+</section>
+<section id="sec-sol-1-15" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-15">Solution 1.15</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-15">← Retour à l’énoncé</a></p>
+<p>De l’exercice <strong>[à compléter]</strong>, on a <span class="math display">\[
+\begin{aligned}
+F_{X_{(1)}}(x)
+&amp;= 1 - (1 - F_X(x))^n \\
+&amp;= 1 - (e^{-\beta x^\alpha})^n \\
+&amp;= 1 - e^{-n \beta x^\alpha},
+\end{aligned}
+\]</span> d’où <span class="math inline">\(X_{(1)} \sim \text{Weibull}(\alpha, n \beta)\)</span>. Ainsi, la fonction de densité de probabilité du minimum de l’échantillon est <span class="math display">\[
+f_{X_{(1)}}(x) = n \beta \alpha x^{\alpha - 1} e^{-n \beta x^\alpha}
+\]</span> et l’espérance est <span class="math display">\[
+\esp{X_{(1)}} = \frac{\Gamma(1 + 1/\alpha)}{(n \beta)^{\frac{1}{\alpha}}}.
+\]</span></p>
+</section>
+<section id="sec-sol-1-16" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-16">Solution 1.16</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-16">← Retour à l’énoncé</a></p>
+<p>À partir de la fonction de répartition, on a <span class="math display">\[
+\begin{aligned}
+F_{X_{(1)}, X_{(n)}}(x,y)&amp;= \prob{X_{(1)} \leq x, X_{(n)} \leq y} \\
+&amp;= \prob{X_{(n)} \leq y} - \prob{X_{(1)} &gt; x, X_{(n)} \leq y} \\
+&amp;= \prob{X_1 \leq y, \dots, X_n \leq y} - \prob{x &lt; X_1 \leq y, \dots, x &lt; X_n \leq y} \\
+&amp;= (F(y))^n - (F(y)-F(x))^n, \quad \text{car iid.}
+\end{aligned}
+\]</span> Donc, pour <span class="math inline">\(x &lt; y\)</span>, <span class="math display">\[
+f_{X_{(1)}, X_{(n)}}(x,y) = \frac{\d F_{X_{(1)}, X_{(n)}}(x,y)}{\d x \d y} = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y).
+\]</span></p>
+</section>
+<section id="sec-sol-1-17" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-17">Solution 1.17</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-17">← Retour à l’énoncé</a></p>
+<p>On pose <span class="math display">\[
+r = y - x \text{  et } t= \frac{x + y}{2}
+\]</span> ce qui est équivalent à <span class="math display">\[
+x = -\frac{r}{2} + t \text{  et }
+y = \frac{r}{2} + t.
+\]</span> Le jacobien de la transformation de <span class="math inline">\((x, y)\)</span> vers <span class="math inline">\((r, t)\)</span> est <span class="math display">\[
+J =  \begin{vmatrix}
+-1/2 &amp; 1 \\
+1/2  &amp; 1
+\end{vmatrix}
+= -1.
+\]</span> On a donc que la densité conjointe de l’étendue <span class="math inline">\(R\)</span> et de la mi-étendue <span class="math inline">\(T\)</span> est <span class="math display">\[
+f_{R, T}(r, t) = n (n - 1)
+\left(
+F_X\left(t + \frac{r}{2}\right) -
+F_X\left(t - \frac{r}{2}\right)
+\right)^{n - 2}
+f_X\left(t + \frac{r}{2}\right)
+f_X\left(t - \frac{r}{2}\right),
+\]</span> pour <span class="math inline">\(r &gt; 0\)</span> et <span class="math inline">\(-\infty &lt; t &lt; \infty\)</span>.</p>
+</section>
+<section id="sec-sol-1-18" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-18">Solution 1.18</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-18">← Retour à l’énoncé</a></p>
+<p>Ici, <span class="math inline">\(f_X(x)=1\)</span> pour <span class="math inline">\(x\in(0,1)\)</span> et <span class="math inline">\(F_X(x)=x\)</span>, pour <span class="math inline">\(x\in(0,1)\)</span>. Selon l’exercice <strong>[à compléter]</strong>, on trouve que <span class="math display">\[
+\begin{aligned}
+f_{R, T}(r, t) &amp;= n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
+f_X(t + r/2) f_X(t - r/2)\\
+&amp;= n (n - 1)\{ (t + r/2) - (t - r/2)\}^{n - 2}\\
+&amp;= n (n - 1) r^{n-2},
+\end{aligned}
+\]</span> pour <span class="math inline">\(0 &lt; r &lt; 1\)</span> et <span class="math inline">\(t + r/2 \in(0,1)\)</span> et <span class="math inline">\(t - r/2\in(0,1)\)</span>.Ainsi, <span class="math display">\[
+\begin{aligned}
+t + \frac{r}{2} &lt; 1 &amp;\implies \; t &lt; 1 - \frac{r}{2} \\
+t - \frac{r}{2} &gt; 0 &amp;\implies \; t &gt; \frac{r}{2} \\
+&amp;\implies \frac{r}{2} &lt; t &lt; 1 - \frac{r}{2}.
+\end{aligned}
+\]</span> Par conséquent, <span class="math display">\[
+\begin{aligned}
+f_R(r) &amp;= n (n - 1) r^{n - 2} \int_{r/2}^{1 - r/2} dt \\
+&amp;= n (n - 1) r^{n - 2} (1 - r), \quad 0 &lt; r &lt; 1.
+\end{aligned}
+\]</span></p>
+</section>
+<section id="sec-sol-1-19" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-19">Solution 1.19</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-19">← Retour à l’énoncé</a></p>
+<p>Soit <span class="math inline">\(R\)</span> l’étendue de l’échantillon aléatoire. Avec l’exercice <strong>[à compléter]</strong>, on sait que <span class="math display">\[
+f_R(x) = n (n - 1) x^{n - 2} (1 - x), \text{ pour } x\in(0,1).
+\]</span> Par conséquent <span class="math display">\[
+\begin{aligned}
+\Prob{R \leq \frac{1}{2}}
+&amp;= \int_{0}^{1/2} f_X(x)\, dx\\
+&amp;= (4)(3)\int_{0}^{1/2} x^2 (1 - x)\, dx\\
+&amp;= \frac{5}{16}.
+\end{aligned}
+\]</span></p>
+</section>
+<section id="sec-sol-1-20" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-20">Solution 1.20</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-20">← Retour à l’énoncé</a></p>
+On a que <span class="math inline">\(X \sim \text{Bêta}(1, 2)\)</span>, c’est-à-dire que <span class="math inline">\(f_X(x) =
+2(1 - x)\)</span>, <span class="math inline">\(0 &lt; x &lt; 1\)</span>. Soit <span class="math inline">\(X_1, X_2\)</span> un échantillon aléatoire tiré de cette densité. Par indépendance, on a <span class="math display">\[
+\begin{aligned}
+f_{X_1 X_2}(x_1, x_2)
+&amp;= f_{X_1}(x) f_{X_2}(x) \\
+&amp;= 4 (1 - x_1)(1 - x_2).
+\end{aligned}
+\]</span> On cherche <span class="math inline">\(\prob{X_2 \geq 2X_1 \cup X_1 \geq 2X_2}\)</span>. Par définition, <span class="math display">\[
+\prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
+= \iint\limits_{\mathcal{R}} f_{X_1 X_2}(x_1, x_2) \, dx_2\, dx_1,
+\]</span> où <span class="math inline">\(\mathcal{R}\)</span> est la région du domaine de définition de <span class="math inline">\(f_{X_1X_2}\)</span> telle que <span class="math inline">\(x_1 &gt; 2x_2\)</span> ou <span class="math inline">\(x_2 &gt; 2x_1\)</span>. Cette région est représentée à la figure <strong>[à compléter]</strong>. On a donc <span class="math display">\[
+\begin{aligned}
+\prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
+&amp;= 4 \int_0^{1/2} \int_{2x_1}^1 (1 - x_1)(1 - x_2)\, dx_2\,dx_1 \\
+&amp;\phantom{=}
++ 4 \int_0^{1/2} \int_{2x_2}^1 (1 - x_1)(1 - x_2)\, dx_1\,dx_2 \\
+&amp;= 4 \int_0^{1/2} (1 - x_1)
+\left(
+\frac{1}{2} - 2x_1 + 2x_1^2
+\right)\, dx_1 \\
+&amp;\phantom{=}
++ 4 \int_0^{1/2} (1 - x_2)
+\left(
+\frac{1}{2} - 2x_2 + 2x_2^2
+\right)\, dx_2 \\
+&amp;= \frac{7}{12}.
+\end{aligned}
+\]</span>
+</section>
+<section id="sec-sol-1-21" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-21">Solution 1.21</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-21">← Retour à l’énoncé</a></p>
+<p>Soit <span class="math inline">\(T = (X_{(1)} + X_{(n)})/2\)</span> la mi-étendue et <span class="math inline">\(R\)</span> l’étendue. On sait que, pour <span class="math inline">\(r &gt; 0\)</span> et <span class="math inline">\(-\infty &lt; t &lt; \infty\)</span>, <span class="math display">\[
+f_{RT}(r, t) = n(n-1)r^{n - 2}.
+\]</span> On doit calculer la densité marginale de <span class="math inline">\(T\)</span>. Il faut voir que le domaine de <span class="math inline">\(R\)</span> (et donc le domaine d’intégration) dépend indirectement de <span class="math inline">\(T\)</span>.</p>
+<p>Le domaine de <span class="math inline">\(T\)</span> est d’abord <span class="math inline">\(0 \leq t \leq 1\)</span> comme <span class="math inline">\(X_{(1)}\)</span> et <span class="math inline">\(X_{(n)}\)</span> sont chacun au maximum 1. Leur somme donne au maximum 2. On conclut que $T = (0, 1) $.</p>
+<p>Alors, si <span class="math inline">\(0 \leq t \leq 1/2\)</span>, on doit avoir <span class="math inline">\(0 &lt; r &lt; 2t\)</span>. Par contre, si <span class="math inline">\(1/2 &lt; t &lt; 1\)</span>, il faut que <span class="math inline">\(0 &lt;
+r &lt; 2(1-t)\)</span>. On obtient <span class="math display">\[
+\begin{aligned}
+f_T(t) &amp;=
+\begin{cases}
+n(2t)^{n-1}, &amp; 0 &lt; t &lt; 1/2 \\
+n(2(1 - t))^{n - 1}, &amp; 1/2 &lt; t &lt; 1.
+\end{cases}
+\end{aligned}
+\]</span> Ainsi, <span class="math display">\[
+\begin{aligned}
+\esp{T} &amp;= 2^{n - 1} n
+\left(
+\int_0^{1/2}t^n\,dt +
+\int_{1/2}^1 t (1 - t)^{n - 1}\, dt
+\right) \\
+&amp;= 2^{n-1}n
+\left(
+\frac{0,5^{n+1}}{n+1} +
+\int_{1/2}^1 t (1 - t)^{n - 1}\, dt
+\right)
+\end{aligned}
+\]</span></p>
+<p>Pour l’intégrale entre <span class="math inline">\(t = \frac{1}{2}\)</span> et <span class="math inline">\(t = 1\)</span>, on utiliser l’intégration par parties en posant <span class="math inline">\(u = t\)</span> et <span class="math inline">\(\text{d}v = (1 - t)^{n-1}\text{d}t\)</span>. Ainsi, on obtient <span class="math display">\[
+\begin{aligned}
+\esp{T} &amp;= 2^{n-1}n
+\left(
+\frac{0,5^{n+1}}{n+1} +
+\left[\frac{t(1-t)^n}{n}\right]_{\frac{1}{2}}^1 +
+\int_{1/2}^1 \frac{(1-t)^n}{n}\, dt
+\right)\\
+&amp;= 2^{n-1}n
+\left(
+\frac{0,5^{n+1}}{n+1} +
+\frac{1}{2^{n+1}n} +
+\frac{1}{n(n+1)2^{n+1}}
+\right)\\
+&amp;= 2^{n-1}n
+\left(
+\frac{0,5^{n+1}}{n+1} +
+\frac{n+2}{2^{n+1}n(n+1)}
+\right)\\
+&amp;= \frac{1}{2}
+\end{aligned}
+\]</span></p>
+</section>
+<section id="sec-sol-1-22" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-22">Solution 1.22</h2>
+<p><a href="../chapitres/Chap1.html#sec-ex-1-22">← Retour à l’énoncé</a></p>
+<p>On sait que <span class="math inline">\(X_i \sim U(0, 1)\)</span>. On trouve la fonction de répartition du minimum <span class="math inline">\(X_{(1)}\)</span> avec <span class="math display">\[
+F_{X_{(1)}}(x)= 1 - (1 - F_X(x))^n = 1 - (1-x)^n ,
+\]</span> d’où sa fonction de densité est <span class="math display">\[
+f_{X_{(1)}}(x)=\frac{\d}{\d x} F_{X_{(1)}}(x) = n(1-x)^{n-1}
+\]</span> qui peut se réécrire sous la forme <span class="math display">\[
+f_{X_{(1)}}(x)=\frac{\Gamma(1+n)}{\Gamma(1)\Gamma(n)}x^{1-1}(1-x)^{n-1}.
+\]</span> On remarque que <span class="math inline">\(X_{(1)} \sim \text{Bêta}(1, n)\)</span>. De la même façon pour <span class="math inline">\(X_{(n)}\)</span>, <span class="math display">\[
+F_{X_{(n)}}(x)= (F_X(x))^n =x^n \text{ et }f_{X_{(n)}}(x)=\frac{\d}{\d x} F_{X_{(n)}}(x) = n x^{n-1}
+\]</span> qui peut se réécrire sous la forme <span class="math display">\[
+f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
+\]</span> On remarque que <span class="math inline">\(X_{(n)} \sim \text{Bêta}(n, 1)\)</span>. Ainsi, depuis l’exercice <strong>[à compléter]</strong>, la densité conjointe de <span class="math inline">\((X_{(1)},X_{(n)})\)</span> peut être exprimée comme suit, pour <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>, <span class="math display">\[
+f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.
+\]</span> Ainsi, <span class="math display">\[
+\Esp{X_{(1)}X_{(n)}} = n (n - 1) \int_0^1 x \int_x^1
+y(y - x)^{n-2}\,dy\,dx.
+\]</span> L’intégrale intérieure ci-dessus se résoud par parties en posant <span class="math inline">\(u = y\)</span> et <span class="math inline">\(dv = (y - x)^{n - 2}\,dy\)</span>. On obtient alors <span class="math display">\[
+\begin{aligned}
+\Esp{X_{(1)}X_{(n)}} &amp;= n(n - 1) \int_0^1 x
+\left(
+\frac{(y-x)^{n-1}y}{n - 1} -
+\frac{1}{n - 1} \int_x^1 (y - x)^{n - 1}\, dy
+\right)\, dx\\
+&amp;= n \int_0^1 x (1 - x)^{n-1}\, dx -
+\int_0^1 x (1 - x)^n \,dx \\
+&amp;= \frac{1}{n+1} - \frac{1}{(n+1)(n+2)}\\
+&amp;= \frac{1}{n+2},
+\end{aligned}
+\]</span> en intégrant une seconde fois par parties. Par conséquent, <span class="math display">\[
+\begin{aligned}
+\Cov{X_{(1)}, X_{(n)}} &amp;= \Esp{X_{(1)} X_{(n)}} -
+\Esp{X_{(1)}}\Esp{X_{(n)}} \\
+&amp;= \frac{1}{n + 2} -
+\left(
+\frac{1}{n + 1}
+\right)
+\left(
+\frac{n}{n + 1}
+\right) \\
+&amp;= \frac{1}{(n + 1)^2 (n + 2)}.
+\end{aligned}
+\]</span> <strong>a)</strong> On a <span class="math display">\[
+\begin{aligned} \Esp{R} &amp;= \Esp{X_{(n)}} - \Esp{X_{(1)}}\\ &amp;= \frac{n}{n+1} - \frac{1}{n+1}\\ &amp;= \frac{n-1}{n+1} \end{aligned}
+\]</span> et <span class="math display">\[
+\begin{aligned} \Var{R} &amp;= \Var{X_{(1)}} + \Var{X_{(n)}} - 2\, \Cov{X_{(1)}, X_{(n)}}\\ &amp;= \frac{n}{(n+1)^2(n+2)} + \frac{n}{(n+1)^2(n+2)} - \frac{2}{(n+1)^2(n+2)} \\ &amp;=\frac{2n-2}{(n+1)^2(n+2)}. \end{aligned}
+\]</span></p>
+<p><strong>b)</strong> On a <span class="math display">\[
+\begin{aligned} \Esp{T} &amp;= \frac{\Esp{X_{(1)}} + \Esp{X_{(n)}}}{2}\\ &amp;= \frac{1}{2}\left(\frac{n}{n+1} + \frac{1}{n+1}\right)\\ &amp;= \frac{1}{2} \end{aligned}
+\]</span> et <span class="math display">\[
+\begin{aligned} \Var{T} &amp;= \frac{\Var{X_{(1)}}+\Var{X_{(n)}} + 2\,\Cov{X_{(1)}, X_{(n)}}}{4}\\ &amp;= \frac{1}{4} \left[ \frac{n}{(n+1)^2(n+2)} + \frac{n}{(n+1)^2(n+2)} + \frac{2}{(n+1)^2(n+2)} \right] \\ &amp;= \frac{1}{2(n+1)(n+2)}. \end{aligned}
+\]</span></p>
 
 
 </section>

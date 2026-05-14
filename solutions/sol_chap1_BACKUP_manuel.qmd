@@ -236,7 +236,7 @@ et $\prob{X_{(4)} > 3} = 1 - (1 - e^{-3})^4$.
 
 Soit $m$ la médiane de la distribution. On cherche $\prob{X_{(1)}
 > m}$. Avec le résultat de
-l'exercice **[à compléter]**,
+l'exercice [voir Exercice TODO-echantillon:min],
 $$
 \begin{aligned}
 \prob{X_{(1)} > m}
@@ -256,7 +256,7 @@ type de distribution ne joue donc aucun rôle dans cet exercice.
 
 On a que $X$ est distribuée uniformément sur $\{1, \dots, 6\}$,
 d'où $F_X(x) = x/6$, $x = 1, \dots, 6$. De
-l'exercice **[à compléter]**, on a
+l'exercice [voir Exercice TODO-echantillon:min], on a
 que
 $$
 \begin{aligned}
@@ -286,7 +286,7 @@ $$
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-15)
 
-De l'exercice **[à compléter]**, on
+De l'exercice [voir Exercice TODO-echantillon:min], on
 a
 $$
 \begin{aligned}
@@ -370,7 +370,7 @@ pour $r > 0$ et $-\infty < t < \infty$.
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-18)
 
-Ici, $f_X(x)=1$ pour $x\in(0,1)$ et $F_X(x)=x$, pour $x\in(0,1)$. Selon l'exercice **[à compléter]**, on trouve que
+Ici, $f_X(x)=1$ pour $x\in(0,1)$ et $F_X(x)=x$, pour $x\in(0,1)$. Selon l'exercice [voir Exercice TODO-etendue], on trouve que
 $$
 \begin{aligned}
 f_{R, T}(r, t) &= n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
@@ -408,7 +408,7 @@ $$
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-19)
 
-Soit $R$ l'étendue de l'échantillon aléatoire. Avec l'exercice **[à compléter]**, on sait que
+Soit $R$ l'étendue de l'échantillon aléatoire. Avec l'exercice [voir Exercice TODO-etendueunif], on sait que
 $$
 f_R(x) = n (n - 1) x^{n - 2} (1 - x), \text{ pour } x\in(0,1).
 $$
@@ -444,7 +444,7 @@ $$
 $$
 où $\mathcal{R}$ est la région du domaine de définition de
 $f_{X_1X_2}$ telle que $x_1 > 2x_2$ ou $x_2 > 2x_1$. Cette région
-est représentée à la figure **[à compléter]**. On a
+est représentée à la figure [voir TODO-fig:echantillon:domaine]. On a
 donc
 $$
 \begin{aligned}
@@ -569,7 +569,7 @@ qui peut se réécrire sous la forme
 $$
 f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
 $$
-On remarque que $X_{(n)} \sim \text{Bêta}(n, 1)$. Ainsi, depuis l'exercice **[à compléter]**, la densité conjointe de $(X_{(1)},X_{(n)})$ peut être exprimée comme suit, pour $0<x<y<1$,
+On remarque que $X_{(n)} \sim \text{Bêta}(n, 1)$. Ainsi, depuis l'exercice [voir Exercice TODO-conjointe], la densité conjointe de $(X_{(1)},X_{(n)})$ peut être exprimée comme suit, pour $0<x<y<1$,
 $$
 f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.
 $$
