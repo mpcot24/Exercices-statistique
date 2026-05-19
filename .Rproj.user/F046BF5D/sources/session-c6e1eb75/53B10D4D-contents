@@ -1,0 +1,383 @@
+---
+title: "Modèles statistiques de base"
+---
+
+## Exercice 1.1 {#sec-ex-1-1 .unnumbered}
+
+
+Est-ce que les énoncés suivants constituent des exemples d'échantillon aléatoire? Justifiez votre réponse.
+
+**a)** Le nombre annuel de cas de cancer du sein causant un décès au Québec entre 1970 et 2018.
+
+**b)** Le résultat de 20 lancers de dés non truqués lors d'une partie d'un jeu de société.
+
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+a) non \, \, b) oui 
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-1)
+
+## Exercice 1.2 {#sec-ex-1-2 .unnumbered}
+
+
+Dans chacun des cas suivants, identifiez la loi de probabilité qui serait la plus appropriée selon le contexte de l'énoncé. Justifiez votre choix et spécifiez quels paramètres sont connus et lesquels sont inconnus.
+
+**a)** La perte financière du propriétaire d'une maison rasée par les flammes.
+
+**b)** Le nombre de sacs de grains de café devant être examinés avant de trouver 15 sacs contaminés.
+
+**c)** Le nombre de sacs de grains de café contaminés parmi 15 sacs examinés.
+
+**d)** La vitesse réelle d'un véhicule à un endroit spécifique sur l'autoroute.
+
+**e)** La véritable résistance d'un câble utilisé dans un ordinateur.
+
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+a) Gamma, lognormale, pareto \, \, b) Binomiale négative \, \, c) Binomiale \, \, d) Normale \, \, e) Normale
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-2)
+
+## Exercice 1.3 {#sec-ex-1-3 .unnumbered}
+
+
+La distribution de Weibull est fréquemment utilisée en assurance
+IARD pour la modélisation des montants de sinistres, entre autres.
+Sa fonction de répartition est
+$$
+F(x) = 1 - e^{-\beta x^\alpha}, \quad x > 0, \alpha > 0, \beta > 0.
+$$
+**a)** Déterminer la fonction de densité de probabilité de la Weibull.
+
+**b)** Calculer l'espérance et la variance de la Weibull.
+
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+**a)** $f(x) = \alpha \beta x^{\alpha - 1}e^{-\beta x^{\alpha}}$
+
+**b)** $\esp{X} = \beta^{-1/\alpha} \Gamma(1 + 1/\alpha)$, 
+
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-3)
+
+## Exercice 1.4 {#sec-ex-1-4 .unnumbered}
+
+
+Obtenir l'expression de $\Esp{X}$ et $\Var{X}$ quand la variable aléatoire $X$ suit une distribution Beta$(\alpha,\beta)$. [Indices:
+**a)** [i.] Pour tout $\alpha > 0$, $\Gamma(\alpha+1) = \alpha\Gamma(\alpha)$.
+
+**b)** [ii.] Si $f$ est une densité, alors $\int_\mathbb{R}f(x)\d x=1$.]
+
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$\ex(X)=\alpha/(\alpha+\beta)$ et $\Var{X}=(\alpha\beta)/\{(\alpha+\beta)^2(\alpha+\beta+1)\}$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-4)
+
+## Exercice 1.5 {#sec-ex-1-5 .unnumbered}
+
+
+Calculer la fonction génératrice des moments $M$ d'une distribution de Poisson avec paramètre $\lambda>0$. Utilisez $M$ pour montrer que l'espérance et la variance d'une variable aléatoire Poisson sont égales.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$M_X(t) = \exp\{\lambda(e^t-1)\}$ pour tout $t \in \mathbb{R}$.
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-5)
+
+## Exercice 1.6 {#sec-ex-1-6 .unnumbered}
+
+
+Une station service opère deux pompes à essence. Chacune d'entre elles peut produire jusqu'à 10 000 litres d'essence par mois. La quantité totale d'essence pompée à la station chaque mois est une variable aléatoire $Y$, mesurée en 10 000 litres, avec fonction de densité de probabilité donnée par
+$$
+f(y)=\begin{cases}
+y, & 0\leq y<1,\\
+2-y, & 1\leq y <2,\\
+0, &\text{ailleurs.}
+\end{cases}
+$$
+**a)** Trouver la fonction de répartition $F$ de $Y$.
+
+**b)** Calculer la probabilité que la station service pompe entre 8 500 et 11 500 litres d'essence dans un mois.
+
+**c)** Quel est le revenu mensuel espéré si la station service vend son essence au prix de 2,10 \$ le litre ?
+
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+a) $$
+F(y)= \begin{cases}
+0, & y<0\\
+y^2/2, & 0\leq y<1\\
+1- (2-y)^2/2, & 1\leq y <2\\
+1, & y>2.
+\end{cases}
+$$
+
+
+b) 0.2775 \, \, c) 21 000
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-6)
+
+## Exercice 1.7 {#sec-ex-1-7 .unnumbered}
+
+
+
+Soit $X$ une variable aléatoire de moyenne $\mu$ et de variance
+$\sigma^2$. Déterminer la valeur de $c$ qui minimise $\esp{(X -
+c)^2}$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$c = \mu$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-7)
+
+## Exercice 1.8 {#sec-ex-1-8 .unnumbered}
+
+
+Soit $M_X(t)$ la fonction génératrice des moments de la variable
+aléatoire $X$.
+**a)** Soit $Y = aX + b$, où $a$ et $b$ sont des constantes quelconques. Démontrer que $$ M_Y(t) = e^{bt} M_{X}(at). $$
+
+**b)** Soient $X_1, \ldots, X_n$ des variables aléatoires indépendantes et $Y = X_1 + \dots + X_n$. Démontrer que $$ M_Y(t) = \prod_{j=1}^n M_{X_j}(t). $$
+
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+a) Par les propriétés de l'exponentielle. \, \, b) Par indépendance des espérances.
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-8)
+
+## Exercice 1.9 {#sec-ex-1-9 .unnumbered}
+
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire tiré d'une distribution avec densité
+$$
+f(x) = \left\{ \begin{array}{ll}
+\frac{200}{x^3},& \quad x\geq 10\\
+0, & \quad \text{ailleurs}\\
+\end{array}\right.
+$$
+Est-ce qu'il est possible d'utiliser la Loi faible des grands nombres pour cet exemple? Justifiez.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+Non.
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-9)
+
+## Exercice 1.10 {#sec-ex-1-10 .unnumbered}
+
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire tiré d'une distribution avec densité
+$$
+f(x)=4(1-x)^3, \quad \text{ pour } 0\leq x\leq 1.
+$$
+Montrer que $\bar X_n$ converge en probabilité vers une contante et trouver cette constante.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+1/5
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-10)
+
+## Exercice 1.11 {#sec-ex-1-11 .unnumbered}
+
+
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire tiré d'une loi avec
+fonction de répartition $F_X(\cdot)$ et $X_{(1)} \leq \dots \leq
+X_{(n)}$ les statistiques d'ordre correspondantes. Trouver la
+fonction de répartition de $X_{(1)} = \min (X_1, \dots X_n)$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$F_{X_{(1)}}(x) = 1 - (1 -  F_X(x))^n$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-11)
+
+## Exercice 1.12 {#sec-ex-1-12 .unnumbered}
+
+
+Soient $X_{(1)} \leq X_{(2)} \leq X_{(3)} \leq X_{(4)}$ les
+statistiques d'ordre d'un échantillon aléatoire de taille $4$ issu
+d'une distribution avec fonction de densité de probabilité $f(x) =
+e^{-x}$, $0 < x < \infty$. Calculer $\prob{X_{(4)} > 3}$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$1 - (1 - e^{-3})^4$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-12)
+
+## Exercice 1.13 {#sec-ex-1-13 .unnumbered}
+
+
+Soit $X_1, X_2, X_3$ un échantillon aléatoire issu d'une loi bêta de
+paramètres $\alpha = 2$ et $\beta = 1$. Calculer la probabilité que
+la plus petite valeur de l'échantillon soit supérieure à la médiane
+(théorique) de la distribution.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$1/8$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-13)
+
+## Exercice 1.14 {#sec-ex-1-14 .unnumbered}
+
+
+Soit $X$ une variable aléatoire discrète avec fonction de masse de
+probabilité $\prob{X = x} = 1/6$, $x = 1, 2, 3, 4, 5, 6$. Démontrer
+que la fonction de masse de probabilité du minimum d'un échantillon
+aléatoire de taille $5$ issu de cette distribution est
+$$
+\Prob{X_{(1)} = x} =
+\left(
+\frac{7 - x}{6}
+\right)^5 -
+\left(
+\frac{6 - x}{6}
+\right)^5, \quad x = 1, 2, 3, 4, 5, 6.
+$$
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+Utiliser la discontinuité de la variable aléatoire discrète.
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-14)
+
+## Exercice 1.15 {#sec-ex-1-15 .unnumbered}
+
+
+Soient $X_{(1)} \leq \dots \leq X_{(n)}$ les statistiques d'ordre
+d'un échantillon aléatoire tiré d'une loi de Weibull, dont la
+fonction de répartition est $F_X(x) = 1 - e^{-\beta x^\alpha}$.
+Calculer la fonction de répartition, la fonction de densité et
+l'espérance de $X_{(1)}$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$X_{(1)} \sim \text{Weibull}(\alpha, n\beta)$.
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-15)
+
+## Exercice 1.16 {#sec-ex-1-16 .unnumbered}
+
+
+
+Soit un échantillon aléatoire $X_1,\ldots,X_n$ tiré d'une distribution $F$ avec densité $f(x)$, pour $x\in\mathbb{R}$. Trouver la fonction de densité conjointe de $X_{(1)}=\min (X_1, \dots X_n)$ et de $X_{(n)}= \max (X_1, \dots X_n)$, $f_{X_{(1)}, X_{(n)}}(x,y)$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$f_{X_{(1)}, X_{(n)}}(x,y) = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y), \quad x<y$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-16)
+
+## Exercice 1.17 {#sec-ex-1-17 .unnumbered}
+
+
+
+Soit un échantillon aléatoire $X_1,\ldots,X_n$. L'\emph{étendue} (ou \emph{dispersion}) empirique est
+$$
+R = X_{(n)} - X_{(1)},
+$$
+et la \emph{mi-étendue} (ou \emph{mi-dispersion}) empirique est
+$$
+T = \frac{X_{(1)} + X_{(n)}}{2}.
+$$
+En utilisant le fait que la densité conjointe de $X_{(1)}$ et de $X_{(n)}$ est donnée, pour $x<y$, par
+$$
+f_{X_{(1)}, X_{(n)}}(x,y) = n (n - 1) (F_X(y) - F_X(x))^{n - 2}  f_X(x) f_X(y),
+$$
+trouver la distribution conjointe de $(R,T)$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$f_{R, T}(r, t) = n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
+f_X(t + r/2) f_X(t - r/2),$ 
+
+pour $r > 0$ et $-\infty < t < \infty$.
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-17)
+
+## Exercice 1.18 {#sec-ex-1-18 .unnumbered}
+
+
+
+Si $X \sim \mathcal{U}(0, 1)$, montrer que la densité de l'étendue est
+$ f_R(r) = n (n - 1) r^{n - 2} (1 - r),$ 
+pour $0 < r < 1$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-18)
+
+## Exercice 1.19 {#sec-ex-1-19 .unnumbered}
+
+
+Calculer la probabilité que l'étendue d'un échantillon aléatoire
+de taille $4$ issu d'une loi uniforme sur l'intervalle $(0, 1)$ soit
+inférieure à $1/2$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$5/16$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-19)
+
+## Exercice 1.20 {#sec-ex-1-20 .unnumbered}
+
+
+Si un échantillon de taille $2$ est tiré d'une loi bêta avec
+paramètres $\alpha = 1$ et $\beta = 2$, quelle est la probabilité
+que l'une des deux valeurs de l'échantillon soit au moins deux fois
+plus grande que l'autre? (\emph{Astuce}: intégrer la densité
+conjointe des deux valeurs de l'échantillon au-dessus de la surface
+correspondant à la probabilité recherchée.)
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$7/12$
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-20)
+
+## Exercice 1.21 {#sec-ex-1-21 .unnumbered}
+
+
+Soit $X \sim \mathcal{U}(0, 1)$. Calculer l'espérance de la mi-étendue $T = (X_{(1)} + X_{(n)})/2$ d'un
+échantillon de taille $n$ issu de cette distribution.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+$1/2$.
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-21)
+
+## Exercice 1.22 {#sec-ex-1-22 .unnumbered}
+
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une loi uniforme
+sur l'intervalle $(0, 1)$.
+**a)** Calculer la moyenne et la variance de $R = X_{(n)} - X_{(1)}$.
+
+**b)** Calculer la moyenne et la variance de $T = (X_{(1)} + X_{(n)})/2$.
+
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+**a)** $\esp{R} = (n - 1)/(n + 1)$ et $\var{R} = (2n - 2)/[(n + 1)^2 (n + 2)]$.
+
+**b)** $\esp{T} = 1/2$ et $\var{T} = 1/[2 (n + 1)(n + 2)]$.
+
+:::
+
+[📖 Voir la solution complète](../solutions/sol_chap1.qmd#sec-sol-1-22)
+
+

@@ -319,23 +319,16 @@ window.Quarto = {
 \begin{aligned}
 M_X(t) = \ex (e^{tX}) = \sum_{k=0}^\infty e^{tk}\frac{\lambda^k e^{-\lambda}}{k!} =  e^{-\lambda}\sum_{k=0}^\infty \frac{\{\lambda e^t\}^k}{k!}.
 \end{aligned}
-\]</span> L’équation de droite est la série de Taylor de <span class="math inline">\(\exp(\lambda e^t)\)</span>. Ainsi, <span class="math display">\[
-M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.
-\]</span> La <span class="math inline">\(k\)</span>e dérivée de <span class="math inline">\(M\)</span> évaluée à <span class="math inline">\(t=0\)</span> donne le <span class="math inline">\(k\)</span>e moment de <span class="math inline">\(X\)</span>. Ainsi, <span class="math display">\[
-\ex(X) = M^\prime_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda e^t\right|_{t=0} = \lambda
-\]</span> de façon similaire, <span class="math display">\[
+\]</span> L’équation de droite est la série de Taylor de <span class="math inline">\(\exp(\lambda e^t)\)</span>. Ainsi,<span class="math display">\[M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.\]</span>La <span class="math inline">\(k\)</span>e dérivée de <span class="math inline">\(M\)</span> évaluée à <span class="math inline">\(t=0\)</span> donne le <span class="math inline">\(k\)</span>e moment de <span class="math inline">\(X\)</span>. Ainsi, <span class="math display">\[\ex(X) = M^\prime_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda e^t\right|_{t=0} = \lambda\]</span>de façon similaire, <span class="math display">\[
 \begin{aligned}
 \ex(X^2) &amp; = M^{\prime \prime}_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda^2 e^{2t}+\exp\{\lambda(e^t-1)\}\times \lambda e^{t}\right|_{t=0} = \lambda^2+\lambda
 \end{aligned}
-\]</span> Alors, <span class="math display">\[
-\vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \lambda^2+\lambda-\lambda^2=\lambda.
-\]</span></p>
+\]</span> Alors,<span class="math display">\[\vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \lambda^2+\lambda-\lambda^2=\lambda.\]</span></p>
 </section>
 <section id="sec-sol-1-6" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-6">Solution 1.6</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-6">← Retour à l’énoncé</a></p>
-<p><strong>a)</strong> Le support de <span class="math inline">\(Y\)</span> est <span class="math inline">\([0,2]\)</span>, donc <span class="math inline">\(F(y)=0\)</span> pour <span class="math inline">\(y&lt;0\)</span> et <span class="math inline">\(F(y)=1\)</span> pour <span class="math inline">\(y&gt;2\)</span>. Pour <span class="math inline">\(0\leq y &lt;1\)</span>, <span class="math display">\[ F(y)=\Pr[Y\leq y]=\int_0^y x\d x = \frac{y^2}{2}. \]</span> Pour <span class="math inline">\(1\leq y &lt;2\)</span>, <span class="math display">\[ F(y)=\Pr[Y\leq y]=\int_0^1 x\d x +\int_1^y (2-x)\d x = 1-\frac{(2-y)^2}{2}. \]</span> Ainsi la fonction de répartition de <span class="math inline">\(Y\)</span> est <span class="math display">\[ F(y)= \begin{cases} 0, &amp; y&lt;0\\ y^2/2, &amp; 0\leq y&lt;1\\ 1- (2-y)^2/2, &amp; 1\leq y &lt;2\\ 1, &amp; y&gt;2. \end{cases} \]</span></p>
-<p><strong>b)</strong> On souhaite trouver la probabilité que <span class="math inline">\(10000 Y\)</span> se situe entre 8 500 et 11 500: <span class="math display">\[
+<p><strong>a)</strong> Le support de <span class="math inline">\(Y\)</span> est <span class="math inline">\([0,2]\)</span>, donc <span class="math inline">\(F(y)=0\)</span> pour <span class="math inline">\(y&lt;0\)</span> et <span class="math inline">\(F(y)=1\)</span> pour <span class="math inline">\(y&gt;2\)</span>. Pour <span class="math inline">\(0\leq y &lt;1\)</span>, <span class="math display">\[ F(y)=\Pr[Y\leq y]=\int_0^y x\d x = \frac{y^2}{2}. \]</span> Pour <span class="math inline">\(1\leq y &lt;2\)</span>, <span class="math display">\[ F(y)=\Pr[Y\leq y]=\int_0^1 x\d x +\int_1^y (2-x)\d x = 1-\frac{(2-y)^2}{2}. \]</span> Ainsi la fonction de répartition de <span class="math inline">\(Y\)</span> est <span class="math display">\[ F(y)= \begin{cases} 0, &amp; y&lt;0\\ y^2/2, &amp; 0\leq y&lt;1\\ 1- (2-y)^2/2, &amp; 1\leq y &lt;2\\ 1, &amp; y&gt;2. \end{cases} \]</span> <strong>b)</strong> On souhaite trouver la probabilité que <span class="math inline">\(10000 Y\)</span> se situe entre 8 500 et 11 500: <span class="math display">\[
 \begin{aligned} \Pr[8500&lt;10000Y\leq 11500] &amp; = \Pr[0.85&lt;Y\leq 1.15]\\ &amp;=F(1.15)-F(0.85)\\ &amp;=1- \frac{(2-1.15)^2}{2}-\frac{0.85^2}{2}=0.2775. \end{aligned}
 \]</span></p>
 <p><strong>c)</strong> On désire trouver l’espérance du revenu, qui est de 2,10 $ par litre, donc <span class="math inline">\(\ex[2.10\times 10000Y]=21000\ex[Y]\)</span>. On a <span class="math display">\[
@@ -373,9 +366,7 @@ M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.
 <section id="sec-sol-1-10" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-10">Solution 1.10</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-10">← Retour à l’énoncé</a></p>
-<p>Si <span class="math inline">\(X\)</span> a la même distribution que <span class="math inline">\(X_1, \ldots , X_n\)</span> et <span class="math inline">\(\vr(X)&lt;\infty\)</span>, la loi faible des grands nombres implique que, quand <span class="math inline">\(n \to \infty\)</span>, $ , _{i=1}^n X_i $ converge en probabilité vers <span class="math inline">\(\esp{X}\)</span>. Puisque <span class="math inline">\(X\)</span> suit une distribution Beta avec paramètres <span class="math inline">\(\alpha=1\)</span> et <span class="math inline">\(\beta=4\)</span>, <span class="math inline">\(\esp{X}=\alpha/(\alpha+\beta)=1/5\)</span> et <span class="math display">\[
-\var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}&lt;\infty.
-\]</span> Donc, la WLLN s’applique et <span class="math inline">\(\bar X_n\)</span> converge en probabilité vers 1/5.</p>
+<p>Si <span class="math inline">\(X\)</span> a la même distribution que <span class="math inline">\(X_1, \ldots , X_n\)</span> et <span class="math inline">\(\vr(X)&lt;\infty\)</span>, la loi faible des grands nombres implique que, quand <span class="math inline">\(n \to \infty\)</span>,<span class="math inline">\(\frac{1}{n} \, \sum_{i=1}^n X_i\)</span>converge en probabilité vers <span class="math inline">\(\esp{X}\)</span>. Puisque <span class="math inline">\(X\)</span> suit une distribution Beta avec paramètres <span class="math inline">\(\alpha=1\)</span> et <span class="math inline">\(\beta=4\)</span>, <span class="math inline">\(\esp{X}=\alpha/(\alpha+\beta)=1/5\)</span> et <span class="math display">\[\var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}&lt;\infty.\]</span> Donc, la WLLN s’applique et <span class="math inline">\(\bar X_n\)</span> converge en probabilité vers 1/5.</p>
 </section>
 <section id="sec-sol-1-11" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-11">Solution 1.11</h2>
@@ -413,7 +404,7 @@ F_{X_{(1)}}(x)
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-13">Solution 1.13</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-13">← Retour à l’énoncé</a></p>
 <p>Soit <span class="math inline">\(m\)</span> la médiane de la distribution. On cherche <span class="math inline">\(\prob{X_{(1)}
-&gt; m}\)</span>. Avec le résultat de l’exercice <strong>[à compléter]</strong>, <span class="math display">\[
+&gt; m}\)</span>. Avec le résultat de l’exercice <a href="../chapitres/Chap1.html#sec-ex-1-11">11</a>, <span class="math display">\[
 \begin{aligned}
 \prob{X_{(1)} &gt; m}
 &amp;= 1 - \prob{X_{(1)} \leq m} \\
@@ -427,7 +418,7 @@ F_{X_{(1)}}(x)
 <section id="sec-sol-1-14" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-14">Solution 1.14</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-14">← Retour à l’énoncé</a></p>
-<p>On a que <span class="math inline">\(X\)</span> est distribuée uniformément sur <span class="math inline">\(\{1, \dots, 6\}\)</span>, d’où <span class="math inline">\(F_X(x) = x/6\)</span>, <span class="math inline">\(x = 1, \dots, 6\)</span>. De l’exercice <strong>[à compléter]</strong>, on a que <span class="math display">\[
+<p>On a que <span class="math inline">\(X\)</span> est distribuée uniformément sur <span class="math inline">\(\{1, \dots, 6\}\)</span>, d’où <span class="math inline">\(F_X(x) = x/6\)</span>, <span class="math inline">\(x = 1, \dots, 6\)</span>. De l’exercice <a href="../chapitres/Chap1.html#sec-ex-1-11">11</a>, on a que <span class="math display">\[
 \begin{aligned}
 F_{X_{(1)}}(x)
 &amp;= 1 - (1 - F_X(x))^5 \\
@@ -451,7 +442,7 @@ F_{X_{(1)}}(x)
 <section id="sec-sol-1-15" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-15">Solution 1.15</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-15">← Retour à l’énoncé</a></p>
-<p>De l’exercice <strong>[à compléter]</strong>, on a <span class="math display">\[
+<p>De l’exercice <a href="../chapitres/Chap1.html#sec-ex-1-11">11</a>, on a <span class="math display">\[
 \begin{aligned}
 F_{X_{(1)}}(x)
 &amp;= 1 - (1 - F_X(x))^n \\
@@ -474,19 +465,13 @@ F_{X_{(1)}, X_{(n)}}(x,y)&amp;= \prob{X_{(1)} \leq x, X_{(n)} \leq y} \\
 &amp;= \prob{X_1 \leq y, \dots, X_n \leq y} - \prob{x &lt; X_1 \leq y, \dots, x &lt; X_n \leq y} \\
 &amp;= (F(y))^n - (F(y)-F(x))^n, \quad \text{car iid.}
 \end{aligned}
-\]</span> Donc, pour <span class="math inline">\(x &lt; y\)</span>, <span class="math display">\[
-f_{X_{(1)}, X_{(n)}}(x,y) = \frac{\d F_{X_{(1)}, X_{(n)}}(x,y)}{\d x \d y} = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y).
-\]</span></p>
+\]</span> Donc, pour <span class="math inline">\(x &lt; y\)</span>,<span class="math display">\[f_{X_{(1)}, X_{(n)}}(x,y) = \frac{\d F_{X_{(1)}, X_{(n)}}(x,y)}{\d x \d y} = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y).\]</span></p>
 </section>
 <section id="sec-sol-1-17" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-17">Solution 1.17</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-17">← Retour à l’énoncé</a></p>
-<p>On pose <span class="math display">\[
-r = y - x \text{  et } t= \frac{x + y}{2}
-\]</span> ce qui est équivalent à <span class="math display">\[
-x = -\frac{r}{2} + t \text{  et }
-y = \frac{r}{2} + t.
-\]</span> Le jacobien de la transformation de <span class="math inline">\((x, y)\)</span> vers <span class="math inline">\((r, t)\)</span> est <span class="math display">\[
+<p>On pose <span class="math display">\[r = y - x \text{  et } t= \frac{x + y}{2}\]</span>ce qui est équivalent à<span class="math display">\[    x = -\frac{r}{2} + t \text{  et }
+y = \frac{r}{2} + t.\]</span>Le jacobien de la transformation de <span class="math inline">\((x, y)\)</span> vers <span class="math inline">\((r, t)\)</span> est <span class="math display">\[
 J =  \begin{vmatrix}
 -1/2 &amp; 1 \\
 1/2  &amp; 1
@@ -505,7 +490,7 @@ f_X\left(t - \frac{r}{2}\right),
 <section id="sec-sol-1-18" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-18">Solution 1.18</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-18">← Retour à l’énoncé</a></p>
-<p>Ici, <span class="math inline">\(f_X(x)=1\)</span> pour <span class="math inline">\(x\in(0,1)\)</span> et <span class="math inline">\(F_X(x)=x\)</span>, pour <span class="math inline">\(x\in(0,1)\)</span>. Selon l’exercice <strong>[à compléter]</strong>, on trouve que <span class="math display">\[
+<p>Ici, <span class="math inline">\(f_X(x)=1\)</span> pour <span class="math inline">\(x\in(0,1)\)</span> et <span class="math inline">\(F_X(x)=x\)</span>, pour <span class="math inline">\(x\in(0,1)\)</span>. Selon l’exercice <a href="../chapitres/Chap1.html#sec-ex-1-17">17</a>, on trouve que <span class="math display">\[
 \begin{aligned}
 f_{R, T}(r, t) &amp;= n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
 f_X(t + r/2) f_X(t - r/2)\\
@@ -528,7 +513,7 @@ f_R(r) &amp;= n (n - 1) r^{n - 2} \int_{r/2}^{1 - r/2} dt \\
 <section id="sec-sol-1-19" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-19">Solution 1.19</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-19">← Retour à l’énoncé</a></p>
-<p>Soit <span class="math inline">\(R\)</span> l’étendue de l’échantillon aléatoire. Avec l’exercice <strong>[à compléter]</strong>, on sait que <span class="math display">\[
+<p>Soit <span class="math inline">\(R\)</span> l’étendue de l’échantillon aléatoire. Avec l’exercice <a href="../chapitres/Chap1.html#sec-ex-1-18">18</a>, on sait que <span class="math display">\[
 f_R(x) = n (n - 1) x^{n - 2} (1 - x), \text{ pour } x\in(0,1).
 \]</span> Par conséquent <span class="math display">\[
 \begin{aligned}
@@ -542,7 +527,7 @@ f_R(x) = n (n - 1) x^{n - 2} (1 - x), \text{ pour } x\in(0,1).
 <section id="sec-sol-1-20" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-20">Solution 1.20</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-20">← Retour à l’énoncé</a></p>
-On a que <span class="math inline">\(X \sim \text{Bêta}(1, 2)\)</span>, c’est-à-dire que <span class="math inline">\(f_X(x) =
+<p>On a que <span class="math inline">\(X \sim \text{Bêta}(1, 2)\)</span>, c’est-à-dire que <span class="math inline">\(f_X(x) =
 2(1 - x)\)</span>, <span class="math inline">\(0 &lt; x &lt; 1\)</span>. Soit <span class="math inline">\(X_1, X_2\)</span> un échantillon aléatoire tiré de cette densité. Par indépendance, on a <span class="math display">\[
 \begin{aligned}
 f_{X_1 X_2}(x_1, x_2)
@@ -552,7 +537,7 @@ f_{X_1 X_2}(x_1, x_2)
 \]</span> On cherche <span class="math inline">\(\prob{X_2 \geq 2X_1 \cup X_1 \geq 2X_2}\)</span>. Par définition, <span class="math display">\[
 \prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
 = \iint\limits_{\mathcal{R}} f_{X_1 X_2}(x_1, x_2) \, dx_2\, dx_1,
-\]</span> où <span class="math inline">\(\mathcal{R}\)</span> est la région du domaine de définition de <span class="math inline">\(f_{X_1X_2}\)</span> telle que <span class="math inline">\(x_1 &gt; 2x_2\)</span> ou <span class="math inline">\(x_2 &gt; 2x_1\)</span>. Cette région est représentée à la figure <strong>[à compléter]</strong>. On a donc <span class="math display">\[
+\]</span> où <span class="math inline">\(\mathcal{R}\)</span> est la région du domaine de définition de <span class="math inline">\(f_{X_1X_2}\)</span> telle que <span class="math inline">\(x_1 &gt; 2x_2\)</span> ou <span class="math inline">\(x_2 &gt; 2x_1\)</span>. Cette région est représentée à la figure <a href="#fig-echantillon-domaine">2.1</a>. On a donc <span class="math display">\[
 \begin{aligned}
 \prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
 &amp;= 4 \int_0^{1/2} \int_{2x_1}^1 (1 - x_1)(1 - x_2)\, dx_2\,dx_1 \\
@@ -569,7 +554,23 @@ f_{X_1 X_2}(x_1, x_2)
 \right)\, dx_2 \\
 &amp;= \frac{7}{12}.
 \end{aligned}
-\]</span>
+\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-echantillon-domaine" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-echantillon-domaine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="sol_chap1_files/figure-html/fig-echantillon-domaine-1.png" id="fig-echantillon-domaine" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-echantillon-domaine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>: Domaine de définition de <span class="math inline">\(f_{X_1X_2}(x_1, x_2) =  4 (1
+- x_1)(1 - x_2)\)</span>, <span class="math inline">\(x_1, x_2 \in (0, 1)\)</span>. Les zones hachurées représentent les aires où <span class="math inline">\(x_2 &gt; 2x_1\)</span> ou <span class="math inline">\(x_1 &gt; 2x_2\)</span>.}</p>
 </section>
 <section id="sec-sol-1-21" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-21">Solution 1.21</h2>
@@ -627,19 +628,9 @@ n(2(1 - t))^{n - 1}, &amp; 1/2 &lt; t &lt; 1.
 <section id="sec-sol-1-22" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-sol-1-22">Solution 1.22</h2>
 <p><a href="../chapitres/Chap1.html#sec-ex-1-22">← Retour à l’énoncé</a></p>
-<p>On sait que <span class="math inline">\(X_i \sim U(0, 1)\)</span>. On trouve la fonction de répartition du minimum <span class="math inline">\(X_{(1)}\)</span> avec <span class="math display">\[
-F_{X_{(1)}}(x)= 1 - (1 - F_X(x))^n = 1 - (1-x)^n ,
-\]</span> d’où sa fonction de densité est <span class="math display">\[
-f_{X_{(1)}}(x)=\frac{\d}{\d x} F_{X_{(1)}}(x) = n(1-x)^{n-1}
-\]</span> qui peut se réécrire sous la forme <span class="math display">\[
-f_{X_{(1)}}(x)=\frac{\Gamma(1+n)}{\Gamma(1)\Gamma(n)}x^{1-1}(1-x)^{n-1}.
-\]</span> On remarque que <span class="math inline">\(X_{(1)} \sim \text{Bêta}(1, n)\)</span>. De la même façon pour <span class="math inline">\(X_{(n)}\)</span>, <span class="math display">\[
-F_{X_{(n)}}(x)= (F_X(x))^n =x^n \text{ et }f_{X_{(n)}}(x)=\frac{\d}{\d x} F_{X_{(n)}}(x) = n x^{n-1}
-\]</span> qui peut se réécrire sous la forme <span class="math display">\[
-f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
-\]</span> On remarque que <span class="math inline">\(X_{(n)} \sim \text{Bêta}(n, 1)\)</span>. Ainsi, depuis l’exercice <strong>[à compléter]</strong>, la densité conjointe de <span class="math inline">\((X_{(1)},X_{(n)})\)</span> peut être exprimée comme suit, pour <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>, <span class="math display">\[
-f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.
-\]</span> Ainsi, <span class="math display">\[
+<p>On sait que <span class="math inline">\(X_i \sim U(0, 1)\)</span>. On trouve la fonction de répartition du minimum <span class="math inline">\(X_{(1)}\)</span> avec<span class="math display">\[   F_{X_{(1)}}(x)= 1 - (1 - F_X(x))^n = 1 - (1-x)^n ,\]</span> d’où sa fonction de densité est<span class="math display">\[   f_{X_{(1)}}(x)=\frac{\d}{\d x} F_{X_{(1)}}(x) = n(1-x)^{n-1}\]</span> qui peut se réécrire sous la forme <span class="math display">\[ f_{X_{(1)}}(x)=\frac{\Gamma(1+n)}{\Gamma(1)\Gamma(n)}x^{1-1}(1-x)^{n-1}.
+\]</span> On remarque que <span class="math inline">\(X_{(1)} \sim \text{Bêta}(1, n)\)</span>. De la même façon pour <span class="math inline">\(X_{(n)}\)</span>,<span class="math display">\[   F_{X_{(n)}}(x)= (F_X(x))^n =x^n \text{ et }f_{X_{(n)}}(x)=\frac{\d}{\d x} F_{X_{(n)}}(x) = n x^{n-1}\]</span> qui peut se réécrire sous la forme <span class="math display">\[ f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
+\]</span> On remarque que <span class="math inline">\(X_{(n)} \sim \text{Bêta}(n, 1)\)</span>. Ainsi, depuis l’exercice <a href="../chapitres/Chap1.html#sec-ex-1-16">16</a>, la densité conjointe de <span class="math inline">\((X_{(1)},X_{(n)})\)</span> peut être exprimée comme suit, pour <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>,<span class="math display">\[f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.\]</span>Ainsi, <span class="math display">\[
 \Esp{X_{(1)}X_{(n)}} = n (n - 1) \int_0^1 x \int_x^1
 y(y - x)^{n-2}\,dy\,dx.
 \]</span> L’intégrale intérieure ci-dessus se résoud par parties en posant <span class="math inline">\(u = y\)</span> et <span class="math inline">\(dv = (y - x)^{n - 2}\,dy\)</span>. On obtient alors <span class="math display">\[

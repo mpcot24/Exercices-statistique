@@ -3,7 +3,7 @@
     "path": "~/ACT2000/Exercices-statistique/convertir.R",
     "project_path": "convertir.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "1902414060",
     "contents": "",
     "dirty": false,
     "created": 1778771469015.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "316,0",
-        "scrollLine": "159"
+        "cursorPosition": "3,0",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1778774731,
+    "lastKnownWriteTime": 1779228104,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1778774731983,
+    "last_content_update": 1779228104567,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -95,31 +95,19 @@ $$
 M_X(t) = \ex (e^{tX}) = \sum_{k=0}^\infty e^{tk}\frac{\lambda^k e^{-\lambda}}{k!} =  e^{-\lambda}\sum_{k=0}^\infty \frac{\{\lambda e^t\}^k}{k!}.
 \end{aligned}
 $$
-L'équation de droite est la série de Taylor de $\exp(\lambda e^t)$. Ainsi,
-$$
-M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.
-$$
-La $k$e dérivée de $M$ évaluée à $t=0$ donne le $k$e moment de $X$. Ainsi, 
-$$
-\ex(X) = M^\prime_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda e^t\right|_{t=0} = \lambda
-$$
-de façon similaire,
+L'équation de droite est la série de Taylor de $\exp(\lambda e^t)$. Ainsi,$$M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.$$La $k$e dérivée de $M$ évaluée à $t=0$ donne le $k$e moment de $X$. Ainsi, $$\ex(X) = M^\prime_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda e^t\right|_{t=0} = \lambda$$de façon similaire,
 $$
 \begin{aligned}
 \ex(X^2) & = M^{\prime \prime}_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda^2 e^{2t}+\exp\{\lambda(e^t-1)\}\times \lambda e^{t}\right|_{t=0} = \lambda^2+\lambda
 \end{aligned}
 $$
-Alors,
-$$
-\vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \lambda^2+\lambda-\lambda^2=\lambda.
-$$
+Alors,$$\vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \lambda^2+\lambda-\lambda^2=\lambda.$$
 
 ## Solution 1.6 {#sec-sol-1-6 .unnumbered}
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-6)
 
 **a)** Le support de $Y$ est $[0,2]$, donc $F(y)=0$ pour $y<0$ et $F(y)=1$ pour $y>2$. Pour $0\leq y <1$, $$ F(y)=\Pr[Y\leq y]=\int_0^y x\d x = \frac{y^2}{2}. $$ Pour $1\leq y <2$, $$ F(y)=\Pr[Y\leq y]=\int_0^1 x\d x +\int_1^y (2-x)\d x = 1-\frac{(2-y)^2}{2}. $$ Ainsi la fonction de répartition de $Y$ est $$ F(y)= \begin{cases} 0, & y<0\\ y^2/2, & 0\leq y<1\\ 1- (2-y)^2/2, & 1\leq y <2\\ 1, & y>2. \end{cases} $$
-
 **b)** On souhaite trouver la probabilité que $10000 Y$ se situe entre 8 500 et 11 500: $$
 \begin{aligned} \Pr[8500<10000Y\leq 11500] & = \Pr[0.85<Y\leq 1.15]\\ &=F(1.15)-F(0.85)\\ &=1- \frac{(2-1.15)^2}{2}-\frac{0.85^2}{2}=0.2775. \end{aligned}
 $$
@@ -133,11 +121,8 @@ $$ Ainsi, l'espérance de revenu mensuel est de 21 000 \$.
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-7)
 
-On doit trouver le point où la fonction $f(c) = \esp{(X - c)^2}$
-atteint son minimum. Pour ce faire, il faut dériver par rapport à $c$. Or, $\frac{\text{d}}{\text{d}c} f(c) = -2 \esp{X - c} = 0$
-lorsque $\esp{X} - c = 0$, soit $c = \esp{X} = \mu$. De plus, il
-s'agit bien d'un minimum puisque $\frac{\text{d}^2}{\text{d}^2c} f(c)= 2 > 0$
-pour tout $c$.
+On doit trouver le point où la fonction $f(c) = \esp{(X - c)^2}$    atteint son minimum. Pour ce faire, il faut dériver par rapport à $c$. Or, $\frac{\text{d}}{\text{d}c} f(c) = -2 \esp{X - c} = 0$    lorsque $\esp{X} - c = 0$, soit $c = \esp{X} = \mu$. De plus, il
+s'agit bien d'un minimum puisque $\frac{\text{d}^2}{\text{d}^2c} f(c)= 2 > 0$    pour tout $c$.
 
 ## Solution 1.8 {#sec-sol-1-8 .unnumbered}
 
@@ -174,14 +159,7 @@ Ainsi, il n'est pas possible d'appliquer la WLLN dans ce cas.
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-10)
 
-Si $X$ a la même distribution que $X_1, \ldots , X_n$ et $\vr(X)<\infty$, la loi faible des grands nombres implique que, quand $n \to \infty$,
-$
-\frac{1}{n} \, \sum_{i=1}^n X_i
-$
-converge en probabilité vers $\esp{X}$. Puisque $X$ suit une distribution Beta avec paramètres $\alpha=1$ et $\beta=4$,  $\esp{X}=\alpha/(\alpha+\beta)=1/5$ et 
-$$
-\var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}<\infty.
-$$ 
+Si $X$ a la même distribution que $X_1, \ldots , X_n$ et $\vr(X)<\infty$, la loi faible des grands nombres implique que, quand $n \to \infty$,$\frac{1}{n} \, \sum_{i=1}^n X_i$converge en probabilité vers $\esp{X}$. Puisque $X$ suit une distribution Beta avec paramètres $\alpha=1$ et $\beta=4$,  $\esp{X}=\alpha/(\alpha+\beta)=1/5$ et $$\var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}<\infty.$$ 
 Donc, la WLLN s'applique et $\bar X_n$ converge en probabilité vers 1/5.
 
 ## Solution 1.11 {#sec-sol-1-11 .unnumbered}
@@ -227,8 +205,7 @@ $$
 \end{aligned}
 $$
 Or, on aura reconnu en $f(x)$ la densité d'une loi exponentielle
-de paramètre $\lambda = 1$. Par conséquent, $F_X(x) = 1 - e^{-x}$
-et $\prob{X_{(4)} > 3} = 1 - (1 - e^{-3})^4$.
+de paramètre $\lambda = 1$. Par conséquent, $F_X(x) = 1 - e^{-x}$    et $\prob{X_{(4)} > 3} = 1 - (1 - e^{-3})^4$.
 
 ## Solution 1.13 {#sec-sol-1-13 .unnumbered}
 
@@ -236,7 +213,7 @@ et $\prob{X_{(4)} > 3} = 1 - (1 - e^{-3})^4$.
 
 Soit $m$ la médiane de la distribution. On cherche $\prob{X_{(1)}
 > m}$. Avec le résultat de
-l'exercice [voir Exercice TODO-echantillon:min],
+l'exercice [11](#sec-ex-1-11),
 $$
 \begin{aligned}
 \prob{X_{(1)} > m}
@@ -256,7 +233,7 @@ type de distribution ne joue donc aucun rôle dans cet exercice.
 
 On a que $X$ est distribuée uniformément sur $\{1, \dots, 6\}$,
 d'où $F_X(x) = x/6$, $x = 1, \dots, 6$. De
-l'exercice [voir Exercice TODO-echantillon:min], on a
+l'exercice [11](#sec-ex-1-11), on a
 que
 $$
 \begin{aligned}
@@ -286,7 +263,7 @@ $$
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-15)
 
-De l'exercice [voir Exercice TODO-echantillon:min], on
+De l'exercice [11](#sec-ex-1-11), on
 a
 $$
 \begin{aligned}
@@ -319,25 +296,14 @@ F_{X_{(1)}, X_{(n)}}(x,y)&= \prob{X_{(1)} \leq x, X_{(n)} \leq y} \\
 &= (F(y))^n - (F(y)-F(x))^n, \quad \text{car iid.}
 \end{aligned}
 $$
-Donc, pour $x < y$,
-$$
-f_{X_{(1)}, X_{(n)}}(x,y) = \frac{\d F_{X_{(1)}, X_{(n)}}(x,y)}{\d x \d y} = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y).
-$$
+Donc, pour $x < y$,$$f_{X_{(1)}, X_{(n)}}(x,y) = \frac{\d F_{X_{(1)}, X_{(n)}}(x,y)}{\d x \d y} = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y).$$
 
 ## Solution 1.17 {#sec-sol-1-17 .unnumbered}
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-17)
 
-On pose 
-$$
-r = y - x \text{  et } t= \frac{x + y}{2}
-$$
-ce qui est équivalent à
-$$
-x = -\frac{r}{2} + t \text{  et }
-y = \frac{r}{2} + t.
-$$
-Le jacobien de la transformation de $(x, y)$ vers $(r, t)$ est
+On pose $$r = y - x \text{  et } t= \frac{x + y}{2}$$ce qui est équivalent à$$    x = -\frac{r}{2} + t \text{  et }
+y = \frac{r}{2} + t.$$Le jacobien de la transformation de $(x, y)$ vers $(r, t)$ est
 $$
 J =  \begin{vmatrix}
 -1/2 & 1 \\
@@ -370,7 +336,7 @@ pour $r > 0$ et $-\infty < t < \infty$.
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-18)
 
-Ici, $f_X(x)=1$ pour $x\in(0,1)$ et $F_X(x)=x$, pour $x\in(0,1)$. Selon l'exercice [voir Exercice TODO-etendue], on trouve que
+Ici, $f_X(x)=1$ pour $x\in(0,1)$ et $F_X(x)=x$, pour $x\in(0,1)$. Selon l'exercice [17](#sec-ex-1-17), on trouve que
 $$
 \begin{aligned}
 f_{R, T}(r, t) &= n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
@@ -408,7 +374,7 @@ $$
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-19)
 
-Soit $R$ l'étendue de l'échantillon aléatoire. Avec l'exercice [voir Exercice TODO-etendueunif], on sait que
+Soit $R$ l'étendue de l'échantillon aléatoire. Avec l'exercice [18](#sec-ex-1-18), on sait que
 $$
 f_R(x) = n (n - 1) x^{n - 2} (1 - x), \text{ pour } x\in(0,1).
 $$
@@ -444,7 +410,7 @@ $$
 $$
 où $\mathcal{R}$ est la région du domaine de définition de
 $f_{X_1X_2}$ telle que $x_1 > 2x_2$ ou $x_2 > 2x_1$. Cette région
-est représentée à la figure [voir TODO-fig:echantillon:domaine]. On a
+est représentée à la figure **[à compléter]**. On a
 donc
 $$
 \begin{aligned}
@@ -549,31 +515,11 @@ $$
 
 [← Retour à l'énoncé](../chapitres/Chap1.qmd#sec-ex-1-22)
 
-On sait que $X_i \sim U(0, 1)$. On trouve la fonction de répartition du minimum $X_{(1)}$ avec
-$$
-F_{X_{(1)}}(x)= 1 - (1 - F_X(x))^n = 1 - (1-x)^n ,
-$$
-d'où sa fonction de densité est
-$$
-f_{X_{(1)}}(x)=\frac{\d}{\d x} F_{X_{(1)}}(x) = n(1-x)^{n-1}
-$$
-qui peut se réécrire sous la forme
-$$
-f_{X_{(1)}}(x)=\frac{\Gamma(1+n)}{\Gamma(1)\Gamma(n)}x^{1-1}(1-x)^{n-1}.
-$$
-On remarque que $X_{(1)} \sim \text{Bêta}(1, n)$. De la même façon pour $X_{(n)}$,
-$$
-F_{X_{(n)}}(x)= (F_X(x))^n =x^n \text{ et }f_{X_{(n)}}(x)=\frac{\d}{\d x} F_{X_{(n)}}(x) = n x^{n-1}
-$$
-qui peut se réécrire sous la forme
-$$
-f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
-$$
-On remarque que $X_{(n)} \sim \text{Bêta}(n, 1)$. Ainsi, depuis l'exercice [voir Exercice TODO-conjointe], la densité conjointe de $(X_{(1)},X_{(n)})$ peut être exprimée comme suit, pour $0<x<y<1$,
-$$
-f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.
-$$
-Ainsi,
+On sait que $X_i \sim U(0, 1)$. On trouve la fonction de répartition du minimum $X_{(1)}$ avec$$   F_{X_{(1)}}(x)= 1 - (1 - F_X(x))^n = 1 - (1-x)^n ,$$   d'où sa fonction de densité est$$   f_{X_{(1)}}(x)=\frac{\d}{\d x} F_{X_{(1)}}(x) = n(1-x)^{n-1}$$ qui peut se réécrire sous la forme
+$$ f_{X_{(1)}}(x)=\frac{\Gamma(1+n)}{\Gamma(1)\Gamma(n)}x^{1-1}(1-x)^{n-1}.
+$$ On remarque que $X_{(1)} \sim \text{Bêta}(1, n)$. De la même façon pour $X_{(n)}$,$$   F_{X_{(n)}}(x)= (F_X(x))^n =x^n \text{ et }f_{X_{(n)}}(x)=\frac{\d}{\d x} F_{X_{(n)}}(x) = n x^{n-1}$$ qui peut se réécrire sous la forme
+$$ f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
+$$ On remarque que $X_{(n)} \sim \text{Bêta}(n, 1)$. Ainsi, depuis l'exercice [16](#sec-ex-1-16), la densité conjointe de $(X_{(1)},X_{(n)})$ peut être exprimée comme suit, pour $0<x<y<1$,$$f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.$$Ainsi,
 $$
 \Esp{X_{(1)}X_{(n)}} = n (n - 1) \int_0^1 x \int_x^1
 y(y - x)^{n-2}\,dy\,dx.
