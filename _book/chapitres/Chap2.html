@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Modèles statistiques de base – ACT2000 — Recueil d'exercices</title>
+<title>2&nbsp; Distributions d’échantillonnage – ACT2000 — Recueil d'exercices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapitres/Chap2.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../solutions/sol_chap1.html" rel="next">
+<link href="../chapitres/Chap1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -129,7 +163,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/Chap1.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/Chap1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/Chap1.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/Chap2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
@@ -171,13 +205,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapitres/Chap1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapitres/Chap1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapitres/Chap2.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapitres/Chap2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span></a>
   </div>
 </li>
@@ -216,37 +250,39 @@ window.Quarto = {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#sec-ex-1-1" id="toc-sec-ex-1-1" class="nav-link active" data-scroll-target="#sec-ex-1-1">Exercice 1.1</a></li>
-  <li><a href="#sec-ex-1-2" id="toc-sec-ex-1-2" class="nav-link" data-scroll-target="#sec-ex-1-2">Exercice 1.2</a></li>
-  <li><a href="#sec-ex-1-3" id="toc-sec-ex-1-3" class="nav-link" data-scroll-target="#sec-ex-1-3">Exercice 1.3</a></li>
-  <li><a href="#sec-ex-1-4" id="toc-sec-ex-1-4" class="nav-link" data-scroll-target="#sec-ex-1-4">Exercice 1.4</a></li>
-  <li><a href="#sec-ex-1-5" id="toc-sec-ex-1-5" class="nav-link" data-scroll-target="#sec-ex-1-5">Exercice 1.5</a></li>
-  <li><a href="#sec-ex-1-6" id="toc-sec-ex-1-6" class="nav-link" data-scroll-target="#sec-ex-1-6">Exercice 1.6</a></li>
-  <li><a href="#sec-ex-1-7" id="toc-sec-ex-1-7" class="nav-link" data-scroll-target="#sec-ex-1-7">Exercice 1.7</a></li>
-  <li><a href="#sec-ex-1-8" id="toc-sec-ex-1-8" class="nav-link" data-scroll-target="#sec-ex-1-8">Exercice 1.8</a></li>
-  <li><a href="#sec-ex-1-9" id="toc-sec-ex-1-9" class="nav-link" data-scroll-target="#sec-ex-1-9">Exercice 1.9</a></li>
-  <li><a href="#sec-ex-1-10" id="toc-sec-ex-1-10" class="nav-link" data-scroll-target="#sec-ex-1-10">Exercice 1.10</a></li>
-  <li><a href="#sec-ex-1-11" id="toc-sec-ex-1-11" class="nav-link" data-scroll-target="#sec-ex-1-11">Exercice 1.11</a></li>
-  <li><a href="#sec-ex-1-12" id="toc-sec-ex-1-12" class="nav-link" data-scroll-target="#sec-ex-1-12">Exercice 1.12</a></li>
-  <li><a href="#sec-ex-1-13" id="toc-sec-ex-1-13" class="nav-link" data-scroll-target="#sec-ex-1-13">Exercice 1.13</a></li>
-  <li><a href="#sec-ex-1-14" id="toc-sec-ex-1-14" class="nav-link" data-scroll-target="#sec-ex-1-14">Exercice 1.14</a></li>
-  <li><a href="#sec-ex-1-15" id="toc-sec-ex-1-15" class="nav-link" data-scroll-target="#sec-ex-1-15">Exercice 1.15</a></li>
-  <li><a href="#sec-ex-1-16" id="toc-sec-ex-1-16" class="nav-link" data-scroll-target="#sec-ex-1-16">Exercice 1.16</a></li>
-  <li><a href="#sec-ex-1-17" id="toc-sec-ex-1-17" class="nav-link" data-scroll-target="#sec-ex-1-17">Exercice 1.17</a></li>
-  <li><a href="#sec-ex-1-18" id="toc-sec-ex-1-18" class="nav-link" data-scroll-target="#sec-ex-1-18">Exercice 1.18</a></li>
-  <li><a href="#sec-ex-1-19" id="toc-sec-ex-1-19" class="nav-link" data-scroll-target="#sec-ex-1-19">Exercice 1.19</a></li>
-  <li><a href="#sec-ex-1-20" id="toc-sec-ex-1-20" class="nav-link" data-scroll-target="#sec-ex-1-20">Exercice 1.20</a></li>
-  <li><a href="#sec-ex-1-21" id="toc-sec-ex-1-21" class="nav-link" data-scroll-target="#sec-ex-1-21">Exercice 1.21</a></li>
-  <li><a href="#sec-ex-1-22" id="toc-sec-ex-1-22" class="nav-link" data-scroll-target="#sec-ex-1-22">Exercice 1.22</a></li>
+  <li><a href="#sec-ex-2-1" id="toc-sec-ex-2-1" class="nav-link active" data-scroll-target="#sec-ex-2-1">Exercice 2.1</a></li>
+  <li><a href="#sec-ex-2-2" id="toc-sec-ex-2-2" class="nav-link" data-scroll-target="#sec-ex-2-2">Exercice 2.2</a></li>
+  <li><a href="#sec-ex-2-3" id="toc-sec-ex-2-3" class="nav-link" data-scroll-target="#sec-ex-2-3">Exercice 2.3</a></li>
+  <li><a href="#sec-ex-2-4" id="toc-sec-ex-2-4" class="nav-link" data-scroll-target="#sec-ex-2-4">Exercice 2.4</a></li>
+  <li><a href="#sec-ex-2-5" id="toc-sec-ex-2-5" class="nav-link" data-scroll-target="#sec-ex-2-5">Exercice 2.5</a></li>
+  <li><a href="#sec-ex-2-6" id="toc-sec-ex-2-6" class="nav-link" data-scroll-target="#sec-ex-2-6">Exercice 2.6</a></li>
+  <li><a href="#sec-ex-2-7" id="toc-sec-ex-2-7" class="nav-link" data-scroll-target="#sec-ex-2-7">Exercice 2.7</a></li>
+  <li><a href="#sec-ex-2-8" id="toc-sec-ex-2-8" class="nav-link" data-scroll-target="#sec-ex-2-8">Exercice 2.8</a></li>
+  <li><a href="#sec-ex-2-9" id="toc-sec-ex-2-9" class="nav-link" data-scroll-target="#sec-ex-2-9">Exercice 2.9</a></li>
+  <li><a href="#sec-ex-2-10" id="toc-sec-ex-2-10" class="nav-link" data-scroll-target="#sec-ex-2-10">Exercice 2.10</a></li>
+  <li><a href="#sec-ex-2-11" id="toc-sec-ex-2-11" class="nav-link" data-scroll-target="#sec-ex-2-11">Exercice 2.11</a></li>
+  <li><a href="#sec-ex-2-12" id="toc-sec-ex-2-12" class="nav-link" data-scroll-target="#sec-ex-2-12">Exercice 2.12</a></li>
+  <li><a href="#sec-ex-2-13" id="toc-sec-ex-2-13" class="nav-link" data-scroll-target="#sec-ex-2-13">Exercice 2.13</a></li>
+  <li><a href="#sec-ex-2-14" id="toc-sec-ex-2-14" class="nav-link" data-scroll-target="#sec-ex-2-14">Exercice 2.14</a></li>
+  <li><a href="#sec-ex-2-15" id="toc-sec-ex-2-15" class="nav-link" data-scroll-target="#sec-ex-2-15">Exercice 2.15</a></li>
+  <li><a href="#sec-ex-2-16" id="toc-sec-ex-2-16" class="nav-link" data-scroll-target="#sec-ex-2-16">Exercice 2.16</a></li>
+  <li><a href="#sec-ex-2-17" id="toc-sec-ex-2-17" class="nav-link" data-scroll-target="#sec-ex-2-17">Exercice 2.17</a></li>
+  <li><a href="#sec-ex-2-18" id="toc-sec-ex-2-18" class="nav-link" data-scroll-target="#sec-ex-2-18">Exercice 2.18</a></li>
+  <li><a href="#sec-ex-2-19" id="toc-sec-ex-2-19" class="nav-link" data-scroll-target="#sec-ex-2-19">Exercice 2.19</a></li>
+  <li><a href="#sec-ex-2-20" id="toc-sec-ex-2-20" class="nav-link" data-scroll-target="#sec-ex-2-20">Exercice 2.20</a></li>
+  <li><a href="#sec-ex-2-21" id="toc-sec-ex-2-21" class="nav-link" data-scroll-target="#sec-ex-2-21">Exercice 2.21</a></li>
+  <li><a href="#sec-ex-2-22" id="toc-sec-ex-2-22" class="nav-link" data-scroll-target="#sec-ex-2-22">Exercice 2.22</a></li>
+  <li><a href="#sec-ex-2-23" id="toc-sec-ex-2-23" class="nav-link" data-scroll-target="#sec-ex-2-23">Exercice 2.23</a></li>
+  <li><a href="#sec-ex-2-24" id="toc-sec-ex-2-24" class="nav-link" data-scroll-target="#sec-ex-2-24">Exercice 2.24</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/Chap1.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/Chap1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/Chap1.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/Chap2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></h1>
 </div>
 
 
@@ -263,11 +299,9 @@ window.Quarto = {
 </header>
 
 
-<section id="sec-ex-1-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-1">Exercice 1.1</h2>
-<p>Est-ce que les énoncés suivants constituent des exemples d’échantillon aléatoire? Justifiez votre réponse.</p>
-<p><strong>a)</strong> Le nombre annuel de cas de cancer du sein causant un décès au Québec entre 1970 et 2018.</p>
-<p><strong>b)</strong> Le résultat de 20 lancers de dés non truqués lors d’une partie d’un jeu de société.</p>
+<section id="sec-ex-2-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-1">Exercice 2.1</h2>
+<p>Soit <span class="math inline">\(\bar{X}_{5}\)</span> la moyenne d’un échantillon de taille <span class="math inline">\(5\)</span> tiré d’une distribution normale avec moyenne <span class="math inline">\(10\)</span> et variance <span class="math inline">\(125\)</span>. Trouver la constante <span class="math inline">\(c\)</span> telle que <span class="math inline">\(\prob{\bar{X}_{5} &lt; c} = 0,90\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -280,22 +314,16 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>non , , b) oui</li>
-</ol>
+<p><span class="math inline">\(16,41\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-1">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-1">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-2" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-2">Exercice 1.2</h2>
-<p>Dans chacun des cas suivants, identifiez la loi de probabilité qui serait la plus appropriée selon le contexte de l’énoncé. Justifiez votre choix et spécifiez quels paramètres sont connus et lesquels sont inconnus.</p>
-<p><strong>a)</strong> La perte financière du propriétaire d’une maison rasée par les flammes.</p>
-<p><strong>b)</strong> Le nombre de sacs de grains de café devant être examinés avant de trouver 15 sacs contaminés.</p>
-<p><strong>c)</strong> Le nombre de sacs de grains de café contaminés parmi 15 sacs examinés.</p>
-<p><strong>d)</strong> La vitesse réelle d’un véhicule à un endroit spécifique sur l’autoroute.</p>
-<p><strong>e)</strong> La véritable résistance d’un câble utilisé dans un ordinateur.</p>
+<section id="sec-ex-2-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-2">Exercice 2.2</h2>
+<p>Si <span class="math inline">\(\bar{X}_n\)</span> est la moyenne d’un échantillon de taille <span class="math inline">\(n\)</span> tiré d’une distribution normale de moyenne <span class="math inline">\(\mu\)</span> et de variance <span class="math inline">\(100\)</span>, trouver la valeur de <span class="math inline">\(n\)</span> telle que <span class="math inline">\(\Prob{\mu - 5 &lt; \bar{X}_n &lt; \mu +
+5} = 0,954\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -308,20 +336,15 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>Gamma, lognormale, pareto , , b) Binomiale négative , , c) Binomiale , , d) Normale , , e) Normale</li>
-</ol>
+<p><span class="math inline">\(16\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-2">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-2">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-3" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-3">Exercice 1.3</h2>
-<p>La distribution de Weibull est fréquemment utilisée en assurance IARD pour la modélisation des montants de sinistres, entre autres. Sa fonction de répartition est <span class="math display">\[
-F(x) = 1 - e^{-\beta x^\alpha}, \quad x &gt; 0, \alpha &gt; 0, \beta &gt; 0.
-\]</span> <strong>a)</strong> Déterminer la fonction de densité de probabilité de la Weibull.</p>
-<p><strong>b)</strong> Calculer l’espérance et la variance de la Weibull.</p>
+<section id="sec-ex-2-3" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-3">Exercice 2.3</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_{25}\)</span> un échantillon aléatoire issu d’une distribution <span class="math inline">\(\mathcal{N}(0, 16)\)</span> et <span class="math inline">\(Y_1, \dots, Y_{25}\)</span> un échantillon aléatoire issu d’une distribution <span class="math inline">\(\mathcal{N}(1, 9)\)</span>. Les deux échantillons sont indépendants. Soient <span class="math inline">\(\bar{X}_{25}\)</span> et <span class="math inline">\(\bar{Y}_{25}\)</span> les moyennes des deux échantillons. Calculer la probabilité <span class="math inline">\(\prob{\bar{X}_{25} &gt; \bar{Y}_{25}}\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -334,32 +357,41 @@ F(x) = 1 - e^{-\beta x^\alpha}, \quad x &gt; 0, \alpha &gt; 0, \beta &gt; 0.
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>a)</strong> <span class="math inline">\(f(x) = \alpha \beta x^{\alpha - 1}e^{-\beta x^{\alpha}}\)</span> <strong>b)</strong> <span class="math inline">\(\esp{X} = \beta^{-1/\alpha} \Gamma(1 + 1/\alpha)\)</span>,</p>
+<p><span class="math inline">\(0,159\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-3">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-3">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-4" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-4">Exercice 1.4</h2>
-<p>Obtenir l’expression de <span class="math inline">\(\Esp{X}\)</span> et <span class="math inline">\(\Var{X}\)</span> quand la variable aléatoire <span class="math inline">\(X\)</span> suit une distribution Beta<span class="math inline">\((\alpha,\beta)\)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Indices">
+<section id="sec-ex-2-4" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-4">Exercice 2.4</h2>
+<p>Soit <span class="math inline">\(Y_1,\ldots,Y_8\)</span> un échantillon aléatoire issu d’une distribution <span class="math inline">\(\mathcal{N}(0,1)\)</span> et <span class="math display">\[
+\bar Y= (Y_1+\cdots+Y_7)/7.
+\]</span> Quelle est la distribution des statistiques suivantes? Justifiez vos réponses.</p>
+<p><strong>a)</strong> <span class="math inline">\(W = \sum_{i=1}^7 Y_i^2\)</span> <strong>b)</strong> <span class="math inline">\(U = \sum_{i=1}^7 (Y_i-\bar Y)^2\)</span> <strong>c)</strong> <span class="math inline">\(Y_8^2+U\)</span> <strong>d)</strong> <span class="math inline">\(\sqrt{7} Y_8/\sqrt{W}\)</span> <strong>e)</strong> <span class="math inline">\(\sqrt{6}Y_8/\sqrt{U}\)</span> <strong>f)</strong> <span class="math inline">\(3(7\bar Y^2+Y_8^2)/U\)</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Indices
+Éléments de réponse
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>i.</strong> Pour tout <span class="math inline">\(\alpha &gt; 0\)</span>, <span class="math inline">\(\Gamma(\alpha+1) = \alpha\Gamma(\alpha)\)</span>.</p>
-<p><strong>ii.</strong> Si <span class="math inline">\(f\)</span> est une densité, alors <span class="math inline">\(\int_\mathbb{R}f(x)\d x=1\)</span>.</p>
+<p><strong>a)</strong> <span class="math inline">\(\chi^2(7)\)</span> <strong>b)</strong> <span class="math inline">\(\chi^2(6)\)</span> <strong>c)</strong> <span class="math inline">\(\chi^2(7)\)</span> <strong>d)</strong> <span class="math inline">\(t(7)\)</span> <strong>e)</strong> <span class="math inline">\(t(6)\)</span> <strong>f)</strong> <span class="math inline">\(F(2, 6)\)</span></p>
 </div>
 </div>
 </div>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-4">📖 Voir solution</a></p>
+</section>
+<section id="sec-ex-2-5" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-5">Exercice 2.5</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une loi normale de moyenne <span class="math inline">\(\mu\)</span> et variance <span class="math inline">\(\sigma^2\)</span>. Trouver la moyenne et la variance de la statistique <span class="math display">\[
+S^2_n = \frac{1}{(n-1)}\sum_{i=1}^n (X_i - \bar{X})^2.
+\]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -372,15 +404,15 @@ Indices
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(\ex(X)=\alpha/(\alpha+\beta)\)</span> et <span class="math inline">\(\Var{X}=(\alpha\beta)/\{(\alpha+\beta)^2(\alpha+\beta+1)\}\)</span></p>
+<p><span class="math inline">\(\esp{S^2_n} = \sigma^2\)</span>, <span class="math inline">\(\var{S^2_n} = 2 \sigma^4/(n-1)\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-4">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-5">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-5" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-5">Exercice 1.5</h2>
-<p>Calculer la fonction génératrice des moments <span class="math inline">\(M\)</span> d’une distribution de Poisson avec paramètre <span class="math inline">\(\lambda&gt;0\)</span>. Utilisez <span class="math inline">\(M\)</span> pour montrer que l’espérance et la variance d’une variable aléatoire Poisson sont égales.</p>
+<section id="sec-ex-2-6" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-6">Exercice 2.6</h2>
+<p>Soit <span class="math inline">\(S^2_6\)</span> la variance d’un échantillon de taille <span class="math inline">\(6\)</span> d’une distribution normale de moyenne <span class="math inline">\(\mu\)</span> et de variance <span class="math inline">\(10\)</span>. Calculer <span class="math inline">\(\prob{2,30 &lt; S^2_6 &lt; 22,2}\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -393,21 +425,15 @@ Indices
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(M_X(t) = \exp\{\lambda(e^t-1)\}\)</span> pour tout <span class="math inline">\(t \in \mathbb{R}\)</span>.</p>
+<p><span class="math inline">\(0,90\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-5">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-6">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-6" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-6">Exercice 1.6</h2>
-<p>Une station service opère deux pompes à essence. Chacune d’entre elles peut produire jusqu’à 10 000 litres d’essence par mois. La quantité totale d’essence pompée à la station chaque mois est une variable aléatoire <span class="math inline">\(Y\)</span>, mesurée en 10 000 litres, avec fonction de densité de probabilité donnée par<span class="math display">\[f(y)=\begin{cases}
-y, &amp; 0\leq y&lt;1,\\
-2-y, &amp; 1\leq y &lt;2,\\
-0, &amp;\text{ailleurs.}
-\end{cases}\]</span><strong>a)</strong> Trouver la fonction de répartition <span class="math inline">\(F\)</span> de <span class="math inline">\(Y\)</span>.</p>
-<p><strong>b)</strong> Calculer la probabilité que la station service pompe entre 8 500 et 11 500 litres d’essence dans un mois.</p>
-<p><strong>c)</strong> Quel est le revenu mensuel espéré si la station service vend son essence au prix de 2,10 $ le litre ?</p>
+<section id="sec-ex-2-7" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-7">Exercice 2.7</h2>
+<p>Trouvez la fonction de densité de probabilité de <span class="math inline">\(S_n^2\)</span>, la variance échantillonale d’un échantillon de taille <span class="math inline">\(n\)</span> d’une distribution <span class="math inline">\(\mathcal{N}(0,\sigma^2)\)</span>. Est-ce que la distribution échantillonale de <span class="math inline">\(S_n^2\)</span> fait partie d’une famille de distributions connues ? Utilisez ce résultat pour trouver la moyenne et la variance de <span class="math inline">\(S_n^2\)</span>. [*Truc: Considérez <span class="math inline">\((n-1)S_n^2/\sigma^2\sim \chi^2_{(n-1)*\)</span> et utilisez la méthode de la fonction de répartition pour obtenir la densité de la variable aléatoire transformée.}]</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -420,23 +446,23 @@ y, &amp; 0\leq y&lt;1,\\
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li><span class="math display">\[F(y)= \begin{cases}
-0, &amp; y&lt;0\\
-y^2/2, &amp; 0\leq y&lt;1\\
-1- (2-y)^2/2, &amp; 1\leq y &lt;2\\
-1, &amp; y&gt;2.
-\end{cases}\]</span>,, b) 0.2775 , , c) 21 000</li>
-</ol>
+<pre><code>    **a)** Oui. $S^2_n \sim Ga(n-1/2, 2\sigma^2 / (n-1))$ donc $\esp{S^2_n} = \sigma^2$ et $\var{S^2_n} = \frac{2\sigma^4}{n-1}$.</code></pre>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-6">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-7">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-7" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-7">Exercice 1.7</h2>
-<p>Soit <span class="math inline">\(X\)</span> une variable aléatoire de moyenne <span class="math inline">\(\mu\)</span> et de variance <span class="math inline">\(\sigma^2\)</span>. Déterminer la valeur de <span class="math inline">\(c\)</span> qui minimise <span class="math inline">\(\esp{(X -
-c)^2}\)</span>.</p>
+<section id="sec-ex-2-8" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-8">Exercice 2.8</h2>
+<p>Soit <span class="math inline">\(Z \sim \mathcal{N}(0, 1)\)</span> avec fonction de densité de probabilité <span class="math display">\[
+\begin{aligned}
+\phi(z) &amp;= \frac{1}{\sqrt{2 \pi}}\, e^{-\frac{1}{2}\, z^2}, \quad
+- \infty &lt; z &lt; \infty, \\
+\intertext{et fonction de répartition}
+\Phi(z) &amp;= \int_{-\infty}^z \phi(x)\, dx.
+\end{aligned}
+\]</span> Exprimer les fonctions de densité et de répartition de <span class="math inline">\(X = \mu +
+\sigma Z\)</span> en fonction de <span class="math inline">\(\phi(\cdot)\)</span> et <span class="math inline">\(\Phi(\cdot)\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -449,16 +475,16 @@ c)^2}\)</span>.</p>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(c = \mu\)</span></p>
+<p><span class="math inline">\(f_X(x) = \sigma^{-1} \phi((x - \mu)/\sigma)\)</span>, <span class="math inline">\(F_X(x) = \Phi((x - \mu)/\sigma)\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-7">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-8">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-8" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-8">Exercice 1.8</h2>
-<p>Soit <span class="math inline">\(M_X(t)\)</span> la fonction génératrice des moments de la variable aléatoire <span class="math inline">\(X\)</span>. <strong>a)</strong> Soit <span class="math inline">\(Y = aX + b\)</span>, où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont des constantes quelconques. Démontrer que <span class="math display">\[ M_Y(t) = e^{bt} M_{X}(at). \]</span></p>
-<p><strong>b)</strong> Soient <span class="math inline">\(X_1, \ldots, X_n\)</span> des variables aléatoires indépendantes et <span class="math inline">\(Y = X_1 + \dots + X_n\)</span>. Démontrer que <span class="math display">\[ M_Y(t) = \prod_{j=1}^n M_{X_j}(t). \]</span></p>
+<section id="sec-ex-2-9" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-9">Exercice 2.9</h2>
+<p>Soit la variable aléatoire <span class="math inline">\(Z \sim \mathcal{N}(0, 1)\)</span>. Démontrer que <span class="math inline">\(Z^2 \sim
+\chi^2(1)\)</span> avec la technique de la fonction génératrice des moments. (<em>Note</em>: il faut intégrer pour trouver la fonction génératrice des moments de <span class="math inline">\(Z^2\)</span>.)</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -471,20 +497,18 @@ c)^2}\)</span>.</p>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>Par les propriétés de l’exponentielle. , , b) Par indépendance des espérances.</li>
-</ol>
+<pre><code>Démo</code></pre>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-8">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-9">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-9" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-9">Exercice 1.9</h2>
-<p>Soit <span class="math inline">\(X_1,\ldots,X_n\)</span> un échantillon aléatoire tiré d’une distribution avec densité<span class="math display">\[f(x) = \left\{ \begin{array}{ll}
-\frac{200}{x^3},&amp; \quad x\geq 10\\
-0, &amp; \quad \text{ailleurs}\\
-\end{array}\right.\]</span>Est-ce qu’il est possible d’utiliser la Loi faible des grands nombres pour cet exemple? Justifiez.</p>
+<section id="sec-ex-2-10" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-10">Exercice 2.10</h2>
+<p><strong>a)</strong> Soit <span class="math inline">\(X \sim \mathcal{N}(0, \sigma^2)\)</span>. Trouver la distribution de <span class="math inline">\(Y =
+X^2\)</span>. <strong>b)</strong> Soient <span class="math inline">\(X_1\)</span> et <span class="math inline">\(X_2\)</span> deux variables aléatoires indépendantes chacune distribuée selon une loi normale centrée réduite. Trouver la distribution de <span class="math display">\[
+Y = \frac{(X_1 - X_2)^2}{2}.
+\]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -497,15 +521,16 @@ c)^2}\)</span>.</p>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Non.</p>
+<p><strong>a)</strong> Gamma<span class="math inline">\((1/2, 2\sigma^2)\)</span> <strong>b)</strong> <span class="math inline">\(\chi^2(1)\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-9">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-10">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-10" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-10">Exercice 1.10</h2>
-<p>Soit <span class="math inline">\(X_1,\ldots,X_n\)</span> un échantillon aléatoire tiré d’une distribution avec densité<span class="math display">\[f(x)=4(1-x)^3, \quad \text{ pour } 0\leq x\leq 1.\]</span>Montrer que <span class="math inline">\(\bar X_n\)</span> converge en probabilité vers une contante et trouver cette constante.</p>
+<section id="sec-ex-2-11" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-11">Exercice 2.11</h2>
+<p>Soit <span class="math inline">\(T\)</span> une variable aléatoire distribuée selon une loi <em>t</em> avec <span class="math inline">\(10\)</span> degrés de liberté.</p>
+<p><strong>a)</strong> Trouver <span class="math inline">\(\prob{\abs{T} &gt; 2,228}\)</span> à l’aide d’une table de la loi <em>t</em>. <strong>b)</strong> Répéter la partie a) à l’aide de . La fonction <code>pt(x, n)</code> donne la valeur de la fonction de répartition en <code>x</code> d’une loi <em>t</em> avec <code>n</code> degrés de liberté.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -518,16 +543,16 @@ c)^2}\)</span>.</p>
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>1/5</p>
+<p><span class="math inline">\(0,05\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-10">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-11">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-11" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-11">Exercice 1.11</h2>
-<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire tiré d’une loi avec fonction de répartition <span class="math inline">\(F_X(\cdot)\)</span> et <span class="math inline">\(X_{(1)} \leq \dots \leq
-X_{(n)}\)</span> les statistiques d’ordre correspondantes. Trouver la fonction de répartition de <span class="math inline">\(X_{(1)} = \min (X_1, \dots X_n)\)</span>.</p>
+<section id="sec-ex-2-12" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-12">Exercice 2.12</h2>
+<p>Soit <span class="math inline">\(T\)</span> une variable aléatoire distribuée selon une loi <em>t</em> avec <span class="math inline">\(14\)</span> degrés de liberté.</p>
+<p><strong>a)</strong> Trouver la valeur de <span class="math inline">\(b\)</span> tel que <span class="math inline">\(\prob{-b &lt; T &lt; b} = 0,90\)</span> à l’aide d’une table de la loi <em>t</em>. <strong>b)</strong> Répéter la partie a) à l’aide . La fonction <code>qt(p, n)</code> retourne le <code>p</code>{} quantile d’une loi <em>t</em> avec <code>n</code> degrés de liberté, c’est-à-dire la valeur de <span class="math inline">\(x\)</span> où la fonction de répartition vaut <code>p</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -540,16 +565,22 @@ X_{(n)}\)</span> les statistiques d’ordre correspondantes. Trouver la fonction
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(F_{X_{(1)}}(x) = 1 - (1 -  F_X(x))^n\)</span></p>
+<p><span class="math inline">\(1,761\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-11">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-12">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-12" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-12">Exercice 1.12</h2>
-<p>Soient <span class="math inline">\(X_{(1)} \leq X_{(2)} \leq X_{(3)} \leq X_{(4)}\)</span> les statistiques d’ordre d’un échantillon aléatoire de taille <span class="math inline">\(4\)</span> issu d’une distribution avec fonction de densité de probabilité <span class="math inline">\(f(x) =
-e^{-x}\)</span>, <span class="math inline">\(0 &lt; x &lt; \infty\)</span>. Calculer <span class="math inline">\(\prob{X_{(4)} &gt; 3}\)</span>.</p>
+<section id="sec-ex-2-13" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-13">Exercice 2.13</h2>
+<p>Soit <span class="math inline">\(U \sim \chi^2(r_1)\)</span> et <span class="math inline">\(V \sim \chi^2(r_2)\)</span>, deux variables aléatoires indépendantes.</p>
+<p><strong>a)</strong> Démontrer que la densité de <span class="math display">\[
+F = \frac{U/r_1}{V/r_2}
+\]</span> est <span class="math display">\[
+f(x) =
+\frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+\Gamma(r_1/2) \Gamma(r_2/2) (1 + r_1 x/r_2)^{(r_1 + r_2)/2}}.
+\]</span> <strong>b)</strong> Calculer <span class="math inline">\(\esp{F}\)</span>. <strong>c)</strong> Calculer <span class="math inline">\(\var{F}\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -562,15 +593,15 @@ e^{-x}\)</span>, <span class="math inline">\(0 &lt; x &lt; \infty\)</span>. Calc
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(1 - (1 - e^{-3})^4\)</span></p>
+<p> <strong>a)</strong> Démo <strong>b)</strong> <span class="math inline">\(r_2/(r_2 - 2)\)</span> <strong>c)</strong> <span class="math inline">\(2 [r_2^2 (r_2 + r_1 - 2)]/[r_1 (r_2 - 2)^2 (r_2 - 4)]\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-12">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-13">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-13" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-13">Exercice 1.13</h2>
-<p>Soit <span class="math inline">\(X_1, X_2, X_3\)</span> un échantillon aléatoire issu d’une loi bêta de paramètres <span class="math inline">\(\alpha = 2\)</span> et <span class="math inline">\(\beta = 1\)</span>. Calculer la probabilité que la plus petite valeur de l’échantillon soit supérieure à la médiane (théorique) de la distribution.</p>
+<section id="sec-ex-2-14" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-14">Exercice 2.14</h2>
+<p>Soit <span class="math inline">\(F\)</span> une variable aléatoire distribuée selon une loi <em>F</em> avec <span class="math inline">\(\nu_1\)</span> et <span class="math inline">\(\nu_2\)</span> degrés de liberté (dans l’ordre). Démontrer que <span class="math inline">\(1/F\)</span> est aussi distribuée selon une loi <em>F</em>, mais avec <span class="math inline">\(\nu_2\)</span> et <span class="math inline">\(\nu_1\)</span> degrés de liberté.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -583,23 +614,17 @@ e^{-x}\)</span>, <span class="math inline">\(0 &lt; x &lt; \infty\)</span>. Calc
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(1/8\)</span></p>
+<pre><code> **a)** Démo: réutiliser la définition de la loi F</code></pre>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-13">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-14">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-14" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-14">Exercice 1.14</h2>
-<p>Soit <span class="math inline">\(X\)</span> une variable aléatoire discrète avec fonction de masse de probabilité <span class="math inline">\(\prob{X = x} = 1/6\)</span>, <span class="math inline">\(x = 1, 2, 3, 4, 5, 6\)</span>. Démontrer que la fonction de masse de probabilité du minimum d’un échantillon aléatoire de taille <span class="math inline">\(5\)</span> issu de cette distribution est <span class="math display">\[
-\Prob{X_{(1)} = x} =
-\left(
-\frac{7 - x}{6}
-\right)^5 -
-\left(
-\frac{6 - x}{6}
-\right)^5, \quad x = 1, 2, 3, 4, 5, 6.
-\]</span></p>
+<section id="sec-ex-2-15" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-15">Exercice 2.15</h2>
+<p>Si <span class="math inline">\(F\)</span> a une distribution <em>F</em> avec paramètres <span class="math inline">\(\nu_1 = 5\)</span> et <span class="math inline">\(\nu_2
+= 10\)</span>, trouver <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> de sorte que <span class="math inline">\(\prob{F \leq a} = 0,05\)</span> et <span class="math inline">\(\prob{F \leq b} = 0,95\)</span>. Les quantiles de la loi <em>F</em> peuvent être trouvés soit dans une table, soit à l’aide de la fonction <code>qf(x, v1, v2)</code> de . (<em>Astuce</em>: en travaillant avec une table, utiliser le fait que <span class="math inline">\(\prob{F \leq a} = \prob{F^{-1}
+\geq a^{-1}} = 1 - \prob{F^{-1} \leq a^{-1}}\)</span>.)</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -612,15 +637,15 @@ e^{-x}\)</span>, <span class="math inline">\(0 &lt; x &lt; \infty\)</span>. Calc
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Utiliser la discontinuité de la variable aléatoire discrète.</p>
+<p><span class="math inline">\(a = 0,211\)</span> et <span class="math inline">\(b = 3,33\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-14">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-15">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-15" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-15">Exercice 1.15</h2>
-<p>Soient <span class="math inline">\(X_{(1)} \leq \dots \leq X_{(n)}\)</span> les statistiques d’ordre d’un échantillon aléatoire tiré d’une loi de Weibull, dont la fonction de répartition est <span class="math inline">\(F_X(x) = 1 - e^{-\beta x^\alpha}\)</span>. Calculer la fonction de répartition, la fonction de densité et l’espérance de <span class="math inline">\(X_{(1)}\)</span>.</p>
+<section id="sec-ex-2-16" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-16">Exercice 2.16</h2>
+<p>Soit <span class="math inline">\(T = W/\sqrt{V/r}\)</span>, où <span class="math inline">\(W\)</span> et <span class="math inline">\(V\)</span> sont des variables aléatoires indépendantes avec une distribution, respectivement, normale centrée réduite et khi carré avec <span class="math inline">\(r\)</span> degrés de liberté. Démontrer que la distribution de <span class="math inline">\(T^2\)</span> est <span class="math inline">\(F\)</span> avec <span class="math inline">\(1\)</span> et <span class="math inline">\(r\)</span> degrés de liberté.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -633,15 +658,16 @@ e^{-x}\)</span>, <span class="math inline">\(0 &lt; x &lt; \infty\)</span>. Calc
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(X_{(1)} \sim \text{Weibull}(\alpha, n\beta)\)</span>.</p>
+<p>Démo</p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-15">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-16">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-16" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-16">Exercice 1.16</h2>
-<p>Soit un échantillon aléatoire <span class="math inline">\(X_1,\ldots,X_n\)</span> tiré d’une distribution <span class="math inline">\(F\)</span> avec densité <span class="math inline">\(f(x)\)</span>, pour <span class="math inline">\(x\in\mathbb{R}\)</span>. Trouver la fonction de densité conjointe de <span class="math inline">\(X_{(1)}=\min (X_1, \dots X_n)\)</span> et de <span class="math inline">\(X_{(n)}= \max (X_1, \dots X_n)\)</span>, <span class="math inline">\(f_{X_{(1)}, X_{(n)}}(x,y)\)</span>.</p>
+<section id="sec-ex-2-17" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-17">Exercice 2.17</h2>
+<p>Démontrer à l’aide du Théorème central limite que la distribution gamma avec paramètre de forme <span class="math inline">\(\alpha\)</span> entier et paramètre d’échelle <span class="math inline">\(\beta\)</span> tend vers la distribution normale avec moyenne <span class="math inline">\(\alpha\beta\)</span> et variance <span class="math inline">\(\alpha\beta^2\)</span> lorsque <span class="math inline">\(\alpha\)</span> tend vers l’infini. (<em>Astuce</em>: définir <span class="math inline">\(Y = X_1 + \dots +
+X_\alpha\)</span> où <span class="math inline">\(X_i \sim \text{Exponentielle}(\beta)\)</span> et trouver la distribution asymptotique de <span class="math inline">\(Y\)</span>.)</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -654,21 +680,17 @@ e^{-x}\)</span>, <span class="math inline">\(0 &lt; x &lt; \infty\)</span>. Calc
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(f_{X_{(1)}, X_{(n)}}(x,y) = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y), \quad x&lt;y\)</span></p>
+<p><span class="math inline">\(\lim_{\alpha \rightarrow \infty} Y \sim
+N\left(\alpha\beta, \alpha\beta^2\right)\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-16">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-17">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-17" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-17">Exercice 1.17</h2>
-<p>Soit un échantillon aléatoire <span class="math inline">\(X_1,\ldots,X_n\)</span>. L’<em>étendue</em> (ou <em>dispersion</em>) empirique est <span class="math display">\[
-R = X_{(n)} - X_{(1)},
-\]</span> et la <em>mi-étendue</em> (ou <em>mi-dispersion</em>) empirique est <span class="math display">\[
-T = \frac{X_{(1)} + X_{(n)}}{2}.
-\]</span> En utilisant le fait que la densité conjointe de <span class="math inline">\(X_{(1)}\)</span> et de <span class="math inline">\(X_{(n)}\)</span> est donnée, pour <span class="math inline">\(x&lt;y\)</span>, par <span class="math display">\[
-f_{X_{(1)}, X_{(n)}}(x,y) = n (n - 1) (F_X(y) - F_X(x))^{n - 2}  f_X(x) f_X(y),
-\]</span> trouver la distribution conjointe de <span class="math inline">\((R,T)\)</span>.</p>
+<section id="sec-ex-2-18" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-18">Exercice 2.18</h2>
+<p>Soit <span class="math inline">\(\bar{X}_{100}\)</span> la moyenne d’un échantillon aléatoire de taille <span class="math inline">\(100\)</span> tiré d’une loi <span class="math inline">\(\chi^2(50)\)</span>.</p>
+<p><strong>a)</strong> Trouver la distribution exacte de <span class="math inline">\(\bar{X}_{100}\)</span>. <strong>b)</strong> Calculer à l’aide d’un logiciel statistique la valeur exacte de <span class="math inline">\(\prob{49 &lt; \bar{X}_{100} &lt; 51}\)</span>. <strong>c)</strong> Calculer une valeur approximative de la probabilité en b).</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -681,17 +703,23 @@ f_{X_{(1)}, X_{(n)}}(x,y) = n (n - 1) (F_X(y) - F_X(x))^{n - 2}  f_X(x) f_X(y),
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(f_{R, T}(r, t) = n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
-f_X(t + r/2) f_X(t - r/2),\)</span></p>
-<p>pour <span class="math inline">\(r &gt; 0\)</span> et <span class="math inline">\(-\infty &lt; t &lt; \infty\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">pgamma</span>(<span class="dv">51</span>, <span class="dv">2500</span>, <span class="dv">50</span>) <span class="sc">-</span> <span class="fu">pgamma</span>(<span class="dv">49</span>, <span class="dv">2500</span>, <span class="dv">50</span>),</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="at">digits =</span> <span class="fu">options</span>()<span class="sc">$</span>digits, <span class="at">dec =</span> <span class="st">","</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>a)</strong> Gamma<span class="math inline">\((\nombre{2500}, 1/50)\)</span> <strong>b)</strong> <span class="math inline">\(\Sexpr{q}\)</span> <strong>c)</strong> <span class="math inline">\(0,682\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-17">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-18">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-18" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-18">Exercice 1.18</h2>
-<p>Si <span class="math inline">\(X \sim \mathcal{U}(0, 1)\)</span>, montrer que la densité de l’étendue est$ f_R(r) = n (n - 1) r^{n - 2} (1 - r),$ pour <span class="math inline">\(0 &lt; r &lt; 1\)</span>.</p>
+<section id="sec-ex-2-19" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-19">Exercice 2.19</h2>
+<p>Soit <span class="math inline">\(\bar{X}\)</span> la moyenne d’un échantillon de taille <span class="math inline">\(128\)</span> d’une loi Gamma<span class="math inline">\((2, 4)\)</span>. Trouver une approximation pour <span class="math inline">\(\prob{7 &lt; \bar{X} &lt;
+9}\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -704,15 +732,16 @@ f_X(t + r/2) f_X(t - r/2),\)</span></p>
 </div>
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Démo</p>
+<p><span class="math inline">\(0,954\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-18">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-19">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-19" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-19">Exercice 1.19</h2>
-<p>Calculer la probabilité que l’étendue d’un échantillon aléatoire de taille <span class="math inline">\(4\)</span> issu d’une loi uniforme sur l’intervalle <span class="math inline">\((0, 1)\)</span> soit inférieure à <span class="math inline">\(1/2\)</span>.</p>
+<section id="sec-ex-2-20" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-20">Exercice 2.20</h2>
+<p>Trouver une valeur approximative de la probabilité que la moyenne d’un échantillon de taille <span class="math inline">\(15\)</span> d’une loi avec densité <span class="math inline">\(f(x) = 3
+x^2\)</span>, <span class="math inline">\(0 &lt; x &lt; 1\)</span>, soit entre <span class="math inline">\(3/5\)</span> et <span class="math inline">\(4/5\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -725,31 +754,40 @@ f_X(t + r/2) f_X(t - r/2),\)</span></p>
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(5/16\)</span></p>
+<p><span class="math inline">\(0,840\)</span></p>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-19">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-20">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-20" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-20">Exercice 1.20</h2>
-<p>Si un échantillon de taille <span class="math inline">\(2\)</span> est tiré d’une loi bêta avec paramètres <span class="math inline">\(\alpha = 1\)</span> et <span class="math inline">\(\beta = 2\)</span>, quelle est la probabilité que l’une des deux valeurs de l’échantillon soit au moins deux fois plus grande que l’autre?</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Astuce">
+<section id="sec-ex-2-21" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-21">Exercice 2.21</h2>
+<p>On suppose que <span class="math inline">\(X_1,\ldots,X_n\)</span> et <span class="math inline">\(Y_1,\ldots,Y_n\)</span> sont des échantillons aléatoires indépendants de populations avec moyennes <span class="math inline">\(\mu_1\)</span> et <span class="math inline">\(\mu_2\)</span> et variances <span class="math inline">\(\sigma_1^2&gt;0\)</span> et <span class="math inline">\(\sigma_2^2&gt;0\)</span>, respectivement. Démontrer que, quand <span class="math inline">\(n\to\infty\)</span>, <span class="math display">\[
+U_n = \frac{(\bar X_n-\bar Y_n)-(\mu_1-\mu_2)}{\sqrt{(\sigma_1^2+\sigma_2^2)/n}}
+\]</span> est asymptotiquement <span class="math inline">\(\mathcal{N}(0,1)\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Astuce
+Éléments de réponse
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Intégrer la densité conjointe des deux valeurs de l’échantillon au-dessus de la surface correspondant à la probabilité recherchée.</p>
+<p>Démo</p>
 </div>
 </div>
 </div>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-21">📖 Voir solution</a></p>
+</section>
+<section id="sec-ex-2-22" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-22">Exercice 2.22</h2>
+<p>Une machine d’embouteillage peut être réglée de sorte qu’elle remplisse en moyenne les bouteilles de <span class="math inline">\(\mu\)</span> onces de liquide par bouteille. Il a été observé que la quantité de liquide distribuée par la machine suit une loi normale avec <span class="math inline">\(\sigma= 2,5\)</span> onces.</p>
+<p><strong>a)</strong> Si <span class="math inline">\(n=9\)</span> bouteilles sont sélectionnées aléatoirement à la sortie de la machine, quelle est la probabilité que la moyenne échantillonnale diffère de <span class="math inline">\(\mu\)</span> d’au plus 0,2 once? <strong>b)</strong> Trouver la probabilité que la moyenne échantillonale diffère de <span class="math inline">\(\mu\)</span> d’au plus 0,2 once lorsque la taille de l’échantillon est <span class="math inline">\(n = 25, 36,\)</span> et <span class="math inline">\(64\)</span>. Que remarquez-vous lorsque <span class="math inline">\(n\)</span> augmente? Pouvez-vous expliquer cette remarque? <strong>c)</strong> Quelle est la taille d’échantillon requise pour s’assurer que la probabilité que la moyenne échantillonnale diffère de <span class="math inline">\(\mu\)</span> d’au plus 0,2 once est d’au moins 95<br>
+<strong>d)</strong> Comment la probabilité obtenue en a) change-t-elle lorsque <span class="math inline">\(\sigma\)</span> est inconnu et que la variance échantillonnale est égale à <span class="math inline">\(s_n^2= 5,5\)</span>?</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -762,15 +800,26 @@ Astuce
 </div>
 <div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(7/12\)</span></p>
+<ol type="a">
+<li>0,1896 ,, b) 0,3108 ; 0,3688 ; 0,4778 ,, c) 601 ,, d) 0,1955</li>
+</ol>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-20">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-22">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-21" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-21">Exercice 1.21</h2>
-<p>Soit <span class="math inline">\(X \sim \mathcal{U}(0, 1)\)</span>. Calculer l’espérance de la mi-étendue <span class="math inline">\(T = (X_{(1)} + X_{(n)})/2\)</span> d’un échantillon de taille <span class="math inline">\(n\)</span> issu de cette distribution.</p>
+<section id="sec-ex-2-23" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-23">Exercice 2.23</h2>
+<p>Un assureur de dommages pour entreprises, <em>AÉACT</em>, se demande s’il devrait couvrir les risques de <em>TaPaCt</em>, une entreprise bien établie de production de tapis avec une usine qui comporte des machines fragiles et dispendieuses ou les risques de <em>Markétact</em>, une nouvelle firme de marketing pour laquelle la majorité des employé.e.s sont en télétravail. Les deux entreprises sont basées dans des villes différentes.</p>
+<p>Après une analyse détaillée des projections des dommages de chaque entreprise, l’assureur a déterminé que <span class="math display">\[
+\sigma^2_{TaPaCt} = 32,9 \, \text{pour un échantillon de taille} \, n = 10
+\]</span></p>
+<p>Les analyses de dossiers de nouveaux clients chez <em>AÉACT</em> font l’objet d’une politique interne selon laquelle on pose trois postulats:</p>
+<p><strong>a)</strong> Les sinistres sont normalement distribués. <strong>b)</strong> La variance des dommages des entreprises avec beaucoup de moyens de production est le double de la variance des dommages des entreprises dont la majorité des membres sont en télétravail. <strong>c)</strong> Comme <em>AÉACT</em> a peu de liquidités, elle choisira l’entreprise avec la variance échantillonnale obtenue dans l’analyse qui est la plus basse.</p>
+<p>Avant de récolter un échantillon pour Markétact de taille <span class="math inline">\(m = 11\)</span>, <em>AÉACT</em> a besoin de votre aide.</p>
+<p><strong>d)</strong> La prochaine étape de l’analyse implique d’utiliser la loi F. Quelle hypothèse est manquante dans l’énoncé pour utiliser cette loi?</p>
+<p><strong>e)</strong> Supposons que l’hypothèse manquante en a) est également posée, de quelle façon la loi F peut-elle être utile?</p>
+<p><strong>f)</strong> Calculer <span class="math inline">\(\prob{S^2_{TaPaCt}/S^2_{Markétact} &lt; 1}\)</span>. <strong>g)</strong> En amont de l’analyse des projections et en regard du résultat précédent, quelle décision est la plus probable pour AÉACT?</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -783,16 +832,24 @@ Astuce
 </div>
 <div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(1/2\)</span>.</p>
+<ol type="a">
+<li>Indépendance ,, b) Comparer les <span class="math inline">\(S^2\)</span> ,, c) 0,1558435 ,, d) Markétact</li>
+</ol>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-21">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-23">📖 Voir solution</a></p>
 </section>
-<section id="sec-ex-1-22" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sec-ex-1-22">Exercice 1.22</h2>
-<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une loi uniforme sur l’intervalle <span class="math inline">\((0, 1)\)</span>. <strong>a)</strong> Calculer la moyenne et la variance de <span class="math inline">\(R = X_{(n)} - X_{(1)}\)</span>.</p>
-<p><strong>b)</strong> Calculer la moyenne et la variance de <span class="math inline">\(T = (X_{(1)} + X_{(n)})/2\)</span>.</p>
+<section id="sec-ex-2-24" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ex-2-24">Exercice 2.24</h2>
+<p>L’<em>Agence de Protection de l’Environnement</em> est responsable d’établir les critères pour la quantité autorisée de certains produits chimiques en eau douce. Une mesure commune de la toxicité pour les polluants est la concentration d’un produit chimique causant la mort de la moitié d’une population animale donnée dans un laps de temps connu. Cette mesure est appelée CL50 (concentration létale médiane). Dans plusieurs études, les valeurs observées du logarithme naturel de l’indicateur CL50 sont normalement distribuées. L’analyse est donc basée sur les données de ln(CL50).</p>
+<p>Soit <span class="math inline">\(S^2_n\)</span> la variance échantillonnale d’un échantillon de <span class="math inline">\(n=10\)</span> valeurs de ln(CL50) pour le cuivre, et <span class="math inline">\(S^2_m\)</span> la variance échantillonnale d’un échantillon de <span class="math inline">\(m=6\)</span> valeurs de ln(CL50) pour le plomb, tous les deux utilisant la même espèce de poisson. La variance de la population des mesures sur le cuivre est supposée être le double de la variance de la population des mesures sur le plomb. Supposer que <span class="math inline">\(S^2_n\)</span> est indépendante de <span class="math inline">\(S^2_m\)</span>.</p>
+<p><strong>a)</strong> Expliquer comment il est possible, en référant à une table statistique appropriée, de trouver les nombres <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> tels que <span class="math display">\[
+\Pr\left(\frac{S_n^2}{S_m^2}\leq b\right)=0,95, \quad \Pr\left(\frac{S_n^2}{S_m^2}\geq a\right)=0,95.
+\]</span> <em>Astuce: Observer que <span class="math inline">\(\Pr[U_1/U_2\leq k]=\Pr[U_2/U_1\geq 1/k]\)</span>.</em></p>
+<p><strong>b)</strong> Si <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont les mêmes qu’en a), calculer <span class="math display">\[
+\Pr\left(a\leq\frac{S_n^2}{S_m^2}\leq b\right).
+\]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -805,12 +862,13 @@ Astuce
 </div>
 <div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>a)</strong> <span class="math inline">\(\esp{R} = (n - 1)/(n + 1)\)</span> et <span class="math inline">\(\var{R} = (2n - 2)/[(n + 1)^2 (n + 2)]\)</span>.</p>
-<p><strong>b)</strong> <span class="math inline">\(\esp{T} = 1/2\)</span> et <span class="math inline">\(\var{T} = 1/[2 (n + 1)(n + 2)]\)</span>.</p>
+<ol type="a">
+<li>0,5744 ,, b) 0,9</li>
+</ol>
 </div>
 </div>
 </div>
-<p><a href="../solutions/sol_chap1.html#sec-sol-1-22">📖 Voir la solution complète</a></p>
+<p><a href="../solutions/sol_chap2.html#sec-sol-2-24">📖 Voir solution</a></p>
 
 
 </section>
@@ -1238,13 +1296,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="../chapitres/Chap1.html" class="pagination-link" aria-label="Modèles statistiques de base">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapitres/Chap2.html" class="pagination-link" aria-label="Distributions d'échantillonnage">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../solutions/sol_chap1.html" class="pagination-link" aria-label="Solutions — Modèles statistiques de base">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Solutions — Modèles statistiques de base</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

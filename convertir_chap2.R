@@ -1,24 +1,13 @@
 # ============================================================
 # Script de conversion LaTeX (.Rnw) -> Quarto (.qmd)
-# Recueil d'exercices ACT2000
+# Recueil d'exercices ACT2000 - CHAPITRE 2
+# Distributions d'échantillonnage (24 exercices)
 # ============================================================
-
-# --- Configuration : où sont les fichiers ---
 
 dossier_source <- "C:/Users/RYZ7/Documents/ACT2000/ACT2000-exercices-master/ACT2000-exercices-master"
-dossier_chapitres <- "chapitres"
-dossier_solutions <- "solutions"
 
-# ============================================================
-# Lire le fichier .Rnw
-# ============================================================
-
-fichier_test <- file.path(dossier_source, "base.Rnw")
+fichier_test <- file.path(dossier_source, "echantillonnage.Rnw")
 contenu <- readLines(fichier_test, encoding = "UTF-8")
-
-# ============================================================
-# Trouver les exercices
-# ============================================================
 
 debuts <- grep("\\\\begin\\{exercice\\}", contenu)
 fins <- grep("\\\\end\\{exercice\\}", contenu)
@@ -28,7 +17,6 @@ fins <- grep("\\\\end\\{exercice\\}", contenu)
 # ============================================================
 
 convertir_chunks_r <- function(texte) {
-  
   lignes <- strsplit(texte, "\n")[[1]]
   resultat <- character()
   i <- 1
@@ -38,12 +26,10 @@ convertir_chunks_r <- function(texte) {
     
     if (grepl("^<<", ligne)) {
       options_str <- gsub("<<|>>=", "", ligne)
-      
-      # Vérifier si c'est le chunk avec la figure
       is_figure_chunk <- FALSE
       temp_i <- i + 1
       while (temp_i <= length(lignes) && !grepl("^@", lignes[temp_i])) {
-        if (grepl("plot", lignes[temp_i])) {
+        if (grepl("plot|curve|hist|barplot", lignes[temp_i])) {
           is_figure_chunk <- TRUE
           break
         }
@@ -51,7 +37,7 @@ convertir_chunks_r <- function(texte) {
       }
       
       if (is_figure_chunk) {
-        resultat <- c(resultat, "```{r fig-echantillon-domaine}")
+        resultat <- c(resultat, "```{r}")
       } else {
         resultat <- c(resultat, "```{r}")
       }
@@ -74,7 +60,6 @@ convertir_chunks_r <- function(texte) {
       
       resultat <- c(resultat, "```")
       resultat <- c(resultat, "")
-      
     } else {
       resultat <- c(resultat, ligne)
     }
@@ -86,22 +71,21 @@ convertir_chunks_r <- function(texte) {
 }
 
 # ============================================================
-# Fonction de conversion LaTeX -> Quarto (VERSION STABLE)
+# Fonction de conversion LaTeX -> Quarto
 # ============================================================
 
 latex_vers_quarto <- function(texte) {
   
+  if (length(texte) == 0) return("")
   if (length(texte) == 1) {
     texte <- strsplit(texte, "\n")[[1]]
   }
   
-  # --- 0. Convertir les chunks R AVANT tout le reste ---
   texte_combined <- paste(texte, collapse = "\n")
   texte_combined <- convertir_chunks_r(texte_combined)
   texte <- strsplit(texte_combined, "\n")[[1]]
   
-  # --- 1. Transformer les listes \begin{enumerate} ... \end{enumerate} ---
-  
+  # --- Transformer les listes ---
   resultat <- character()
   dans_liste <- FALSE
   compteur_item <- 1
@@ -121,132 +105,62 @@ latex_vers_quarto <- function(texte) {
       dans_liste <- TRUE
       compteur_item <- 1
       buffer_item <- ""
-      
     } else if (grepl("\\\\end\\{(enumerate|inparaenum|itemize)\\}", ligne)) {
       vider_buffer()
       dans_liste <- FALSE
-      
     } else if (dans_liste && grepl("\\\\item", ligne)) {
       vider_buffer()
       lettre <- letters[compteur_item]
       ligne_modifiee <- gsub("\\\\item ?", paste0("**", lettre, ")** "), ligne)
       buffer_item <- ligne_modifiee
       compteur_item <- compteur_item + 1
-      
     } else if (dans_liste) {
       ligne_propre <- trimws(ligne)
       if (nchar(ligne_propre) > 0) {
         buffer_item <- paste(buffer_item, ligne_propre)
       }
-      
     } else {
       resultat <- c(resultat, ligne)
     }
   }
   
-  # --- 2. Coller toutes les lignes ---
-  
   texte <- paste(resultat, collapse = "\n")
   
-  # --- 3. Nettoyer les sauts de ligne à l'intérieur des formules ---
-  
+  # --- Nettoyage des formules ---
   texte <- gsub("\\$\n", "$", texte)
   texte <- gsub("\n\\$", "$", texte)
   
-  # --- 4. Environnements mathématiques ---
-  
+  # --- Environnements mathématiques ---
   texte <- gsub("\\\\begin\\{displaymath\\}", "$$", texte)
   texte <- gsub("\\\\end\\{displaymath\\}",   "$$", texte)
-  
   texte <- gsub("\\\\begin\\{equation\\*?\\}", "$$", texte)
   texte <- gsub("\\\\end\\{equation\\*?\\}",   "$$", texte)
-  
   texte <- gsub("\\\\begin\\{align\\*?\\}", "$$\n\\\\begin{aligned}", texte)
   texte <- gsub("\\\\end\\{align\\*?\\}",   "\\\\end{aligned}\n$$", texte)
   
-  texte <- gsub("\\\\intertext\\{([^}]*)\\}",
-                "\\\\end{aligned}\n$$\n\n\\1\n\n$$\n\\\\begin{aligned}",
-                texte)
-  
-  # --- 5. Commandes de texte ---
-  
+  # --- Commandes de texte ---
   texte <- gsub("\\\\mbox\\{", "\\\\text{", texte)
   texte <- gsub("\\\\emph\\{([^}]*)\\}", "*\\1*", texte)
   texte <- gsub("~", " ", texte)
-  
-  # Supprimer les commentaires LaTeX
   texte <- gsub("%[^\n]*", "", texte)
-  
-  # Supprimer les espaces en début de ligne
   texte <- gsub("(^|\n) +", "\\1", texte)
   
-  # --- 6. Retirer \begin{exercice} et \end{exercice} ---
+  # --- Nettoyage commandes LaTeX personnalisées ---
+  texte <- gsub("\\\\intertext\\{", "\\\\text{", texte)
+  texte <- gsub("\\\\nombre\\{([^}]*)\\}", "\\1", texte)
+  texte <- gsub("\\\\abs", "|", texte)
+  texte <- gsub("\\\\Sexpr\\{([^}]*)\\}", "[valeur]", texte)
   
+  # --- Retirer les commandes exercice ---
   texte <- gsub("\\\\begin\\{exercice\\} ?", "", texte)
   texte <- gsub("\\\\end\\{exercice\\}",     "", texte)
   
-  # --- 7. Retirer les environnements figure LaTeX mais garder la caption ---
-  
+  # --- Environnements figure ---
   texte <- gsub("\\\\begin\\{figure\\}", "", texte)
   texte <- gsub("\\\\end\\{figure\\}", "", texte)
   texte <- gsub("\\\\centering", "", texte)
-  
-  # Convertir \caption{texte} en : texte
   texte <- gsub("\\\\caption\\{([^}]*)\\}", ": \\1", texte)
-  
-  # Garder les labels
   texte <- gsub("\\\\label\\{[^}]*\\}", "", texte)
-  
-  return(texte)
-}
-
-# ============================================================
-# Fonction pour ajouter les références croisées
-# ============================================================
-
-ajouter_references <- function(numero_exo, texte) {
-  
-  # Références entre exercices
-  if (numero_exo == 13) {
-    texte <- gsub("\\\\ref\\{chap:base\\}\\.\\\\ref\\{ex:echantillon:min\\}",
-                  "[11](#sec-ex-1-11)", texte)
-  }
-  
-  if (numero_exo == 14) {
-    texte <- gsub("\\\\ref\\{chap:base\\}\\.\\\\ref\\{ex:echantillon:min\\}",
-                  "[11](#sec-ex-1-11)", texte)
-  }
-  
-  if (numero_exo == 15) {
-    texte <- gsub("\\\\ref\\{chap:base\\}\\.\\\\ref\\{ex:echantillon:min\\}",
-                  "[11](#sec-ex-1-11)", texte)
-  }
-  
-  if (numero_exo == 18) {
-    texte <- gsub("\\\\ref\\{chap:base\\}\\.\\\\ref\\{ex:etendue\\}",
-                  "[17](#sec-ex-1-17)", texte)
-  }
-  
-  if (numero_exo == 19) {
-    texte <- gsub("\\\\ref\\{chap:base\\}\\.\\\\ref\\{ex:etendueunif\\}",
-                  "[18](#sec-ex-1-18)", texte)
-  }
-  
-  if (numero_exo == 22) {
-    texte <- gsub("\\\\ref\\{chap:base\\}\\.\\\\ref\\{ex:conjointe\\}",
-                  "[16](#sec-ex-1-16)", texte)
-  }
-  
-  # Références aux figures
-  if (numero_exo == 20) {
-    texte <- gsub("\\\\ref\\{fig:echantillon:domaine\\}",
-                  "[2.1](#fig-echantillon-domaine)", texte)
-  }
-  
-  # Supprimer les autres \ref{...} non gérées
-  texte <- gsub("\\\\ref\\{[^}]*\\}", "**[à compléter]**", texte)
-  
-  texte <- gsub("exercice exercice", "exercice", texte, ignore.case = TRUE)
   
   return(texte)
 }
@@ -255,7 +169,7 @@ ajouter_references <- function(numero_exo, texte) {
 # Boucle sur tous les exercices
 # ============================================================
 
-num_chap <- 1
+num_chap <- 2
 tous_les_exercices <- character()
 toutes_les_solutions <- character()
 
@@ -268,70 +182,41 @@ for (i in 1:length(debuts)) {
   ligne_sol_debut <- grep("\\\\begin\\{sol\\}", exo)
   ligne_sol_fin   <- grep("\\\\end\\{sol\\}", exo)
   
+  # Vérifier que tout existe
+  if (length(ligne_rep_debut) == 0 || length(ligne_rep_fin) == 0 || 
+      length(ligne_sol_debut) == 0 || length(ligne_sol_fin) == 0) {
+    cat("⚠️  Exo", i, ": structure incomplète, PASSAGE\n")
+    next
+  }
+  
+  # Extraire les sections
   enonce   <- exo[2:(ligne_rep_debut - 1)]
   reponse  <- exo[(ligne_rep_debut + 1):(ligne_rep_fin - 1)]
   solution <- exo[(ligne_sol_debut + 1):(ligne_sol_fin - 1)]
   
-  # Supprimer les indices et astuces du texte d'énoncé
-  enonce_str <- paste(enonce, collapse = "\n")
-  # Supprimer [Indices: ... ] 
-  enonce_str <- gsub("\\[Indices:.*\\]", "", enonce_str)
-  # Supprimer (\emph{Astuce}: ... .)
-  enonce_str <- gsub("\\(\\\\emph\\{Astuce\\}:[^.]*\\.\\)", "", enonce_str)
-  
-  enonce <- strsplit(enonce_str, "\n")[[1]]
-  
+  # Convertir
   enonce_q   <- latex_vers_quarto(enonce)
   reponse_q  <- latex_vers_quarto(reponse)
   solution_q <- latex_vers_quarto(solution)
   
-  enonce_q <- ajouter_references(i, enonce_q)
-  solution_q <- ajouter_references(i, solution_q)
-  
-  # CORRECTION CAPTION EXO 20
-  if (i == 20) {
-    solution_q <- gsub("\\$f_\\{X_1X_2\\(", "$f_{X_1X_2}(", solution_q)
-  }
+  # Nettoyer références
+  enonce_q <- gsub("\\\\ref\\{[^}]*\\}", "**[à compléter]**", enonce_q)
+  solution_q <- gsub("\\\\ref\\{[^}]*\\}", "**[à compléter]**", solution_q)
   
   id_ex  <- paste0("sec-ex-",  num_chap, "-", i)
   id_sol <- paste0("sec-sol-", num_chap, "-", i)
   
-  # Construire le bloc d'exercice
+  # Bloc exercice
   bloc_exo <- paste0(
     "## Exercice ", num_chap, ".", i, " {#", id_ex, " .unnumbered}\n\n",
-    enonce_q, "\n\n"
-  )
-  
-  # AJOUTER MANUELLEMENT LES INDICES POUR L'EXERCICE 4
-  if (i == 4) {
-    bloc_exo <- paste0(
-      bloc_exo,
-      "::: {.callout-note collapse=\"true\" title=\"Indices\"}\n",
-      "**i.** Pour tout $\\alpha > 0$, $\\Gamma(\\alpha+1) = \\alpha\\Gamma(\\alpha)$.\n\n",
-      "**ii.** Si $f$ est une densité, alors $\\int_\\mathbb{R}f(x)\\d x=1$.\n",
-      ":::\n\n"
-    )
-  }
-  
-  # AJOUTER MANUELLEMENT L'ASTUCE POUR L'EXERCICE 20
-  if (i == 20) {
-    bloc_exo <- paste0(
-      bloc_exo,
-      "::: {.callout-tip collapse=\"true\" title=\"Astuce\"}\n",
-      "Intégrer la densité conjointe des deux valeurs de l'échantillon au-dessus de la surface correspondant à la probabilité recherchée.\n",
-      ":::\n\n"
-    )
-  }
-  
-  # Ajouter les éléments de réponse
-  bloc_exo <- paste0(
-    bloc_exo,
+    enonce_q, "\n\n",
     "::: {.callout-tip collapse=\"true\" title=\"Éléments de réponse\"}\n",
     reponse_q, "\n",
     ":::\n\n",
     "[📖 Voir la solution complète](../solutions/sol_chap", num_chap, ".qmd#", id_sol, ")\n\n"
   )
   
+  # Bloc solution
   bloc_sol <- paste0(
     "## Solution ", num_chap, ".", i, " {#", id_sol, " .unnumbered}\n",
     "\n",
@@ -343,32 +228,36 @@ for (i in 1:length(debuts)) {
   
   tous_les_exercices <- c(tous_les_exercices, bloc_exo)
   toutes_les_solutions <- c(toutes_les_solutions, bloc_sol)
+  
+  cat("✅ Exo", i, "converti\n")
 }
 
-cat("✅ Boucle terminée :", length(debuts), "exercices traités.\n")
+cat("\n✅ Conversion terminée :", length(debuts), "exercices traités.\n\n")
 
 # ============================================================
 # Écrire les fichiers .qmd
 # ============================================================
 
-contenu_chap1 <- paste0(
+contenu_chap2 <- paste0(
   "---\n",
-  "title: \"Modèles statistiques de base\"\n",
+  "title: \"Distributions d'échantillonnage\"\n",
   "---\n",
   "\n",
   paste(tous_les_exercices, collapse = "")
 )
 
-writeLines(contenu_chap1, "chapitres/Chap1.qmd")
+writeLines(contenu_chap2, "chapitres/Chap2.qmd")
 
-contenu_sol1 <- paste0(
+contenu_sol2 <- paste0(
   "---\n",
-  "title: \"Solutions — Modèles statistiques de base\"\n",
+  "title: \"Solutions — Distributions d'échantillonnage\"\n",
   "---\n",
   "\n",
   paste(toutes_les_solutions, collapse = "")
 )
 
-writeLines(contenu_sol1, "solutions/sol_chap1.qmd")
+writeLines(contenu_sol2, "solutions/sol_chap2.qmd")
 
-cat("✅ Fichiers écrits : chapitres/Chap1.qmd et solutions/sol_chap1.qmd\n")
+cat("✅ Fichiers écrits :\n")
+cat("   - chapitres/Chap2.qmd\n")
+cat("   - solutions/sol_chap2.qmd\n")

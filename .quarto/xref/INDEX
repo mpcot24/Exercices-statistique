@@ -16,5 +16,11 @@
   },
   "solutions/sol_chap1.qmd": {
     "sol_chap1.html": "cd2f9c85"
+  },
+  "chapitres/Chap2.qmd": {
+    "Chap2.html": "e3d1be2f"
+  },
+  "solutions/sol_chap2.qmd": {
+    "sol_chap2.html": "db2053df"
   }
 }

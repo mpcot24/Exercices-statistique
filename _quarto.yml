@@ -1,6 +1,5 @@
 project:
   type: book
-
 book:
   title: "ACT2000 — Recueil d'exercices"
   author: "Marie-Pier Côté"
@@ -10,13 +9,14 @@ book:
     - part: "Exercices"
       chapters:
         - chapitres/Chap1.qmd
+        - chapitres/Chap2.qmd
     - part: "Solutions"
       chapters:
         - solutions/sol_chap1.qmd
+        - solutions/sol_chap2.qmd
   search: true
   sidebar:
     style: docked
-
 format:
   html:
     theme: cosmo
@@ -43,5 +43,4 @@ format:
           }
         };
         </script>
-
 lang: fr

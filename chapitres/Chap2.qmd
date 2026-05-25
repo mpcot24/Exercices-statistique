@@ -1,0 +1,478 @@
+---
+title: "Distributions d'échantillonnage"
+---
+
+## Exercice 2.1 {#sec-ex-2-1 .unnumbered}
+
+ Soit $\bar{X}_{5}$ la moyenne d'un échantillon de taille $5$ tiré d'une
+ distribution normale avec moyenne $10$ et variance $125$. Trouver la constante $c$
+ telle que $\prob{\bar{X}_{5} < c} = 0,90$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $16,41$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-1)
+
+## Exercice 2.2 {#sec-ex-2-2 .unnumbered}
+
+ Si $\bar{X}_n$ est la moyenne d'un échantillon de taille $n$ tiré
+ d'une distribution normale de moyenne $\mu$ et de variance $100$,
+ trouver la valeur de $n$ telle que $\Prob{\mu - 5 < \bar{X}_n < \mu +
+ 5} = 0,954$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $16$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-2)
+
+## Exercice 2.3 {#sec-ex-2-3 .unnumbered}
+
+ Soit $X_1, \dots, X_{25}$ un échantillon aléatoire issu d'une
+ distribution $\mathcal{N}(0, 16)$ et $Y_1, \dots, Y_{25}$ un échantillon
+ aléatoire issu d'une distribution $\mathcal{N}(1, 9)$. Les deux échantillons
+ sont indépendants. Soient $\bar{X}_{25}$ et $\bar{Y}_{25}$ les moyennes des
+ deux échantillons. Calculer la probabilité $\prob{\bar{X}_{25} > \bar{Y}_{25}}$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $0,159$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-3)
+
+## Exercice 2.4 {#sec-ex-2-4 .unnumbered}
+
+Soit $Y_1,\ldots,Y_8$ un échantillon aléatoire issu d'une distribution $\mathcal{N}(0,1)$ et 
+$$
+\bar Y= (Y_1+\cdots+Y_7)/7.
+$$ 
+Quelle est la distribution des statistiques suivantes? Justifiez vos réponses.
+
+
+
+**a)** $W = \sum_{i=1}^7 Y_i^2$ 
+**b)** $U = \sum_{i=1}^7 (Y_i-\bar Y)^2$ 
+**c)** $Y_8^2+U$
+**d)** $\sqrt{7} Y_8/\sqrt{W}$
+**e)** $\sqrt{6}Y_8/\sqrt{U}$
+**f)** $3(7\bar Y^2+Y_8^2)/U$
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ 
+ **a)** $\chi^2(7)$
+ **b)** $\chi^2(6)$
+ **c)** $\chi^2(7)$
+ **d)** $t(7)$
+ **e)** $t(6)$
+ **f)** $F(2, 6)$
+ 
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-4)
+
+## Exercice 2.5 {#sec-ex-2-5 .unnumbered}
+
+ Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une loi normale de moyenne $\mu$ et variance $\sigma^2$. Trouver la moyenne et la variance de la statistique
+ $$
+ S^2_n = \frac{1}{(n-1)}\sum_{i=1}^n (X_i - \bar{X})^2.
+ $$
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $\esp{S^2_n} = \sigma^2$, $\var{S^2_n} = 2 \sigma^4/(n-1)$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-5)
+
+## Exercice 2.6 {#sec-ex-2-6 .unnumbered}
+
+ Soit $S^2_6$ la variance d'un échantillon de taille $6$ d'une
+ distribution normale de moyenne $\mu$ et de variance $10$. Calculer
+ $\prob{2,30 < S^2_6 < 22,2}$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $0,90$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-6)
+
+## Exercice 2.7 {#sec-ex-2-7 .unnumbered}
+
+Trouvez la fonction de densité de probabilité de $S_n^2$, la variance échantillonale d'un échantillon de taille $n$ d'une distribution $\mathcal{N}(0,\sigma^2)$. Est-ce que la distribution échantillonale de $S_n^2$ fait partie d'une famille de distributions connues ? Utilisez ce résultat pour trouver la moyenne et la variance de $S_n^2$. [*Truc: Considérez $(n-1)S_n^2/\sigma^2\sim \chi^2_{(n-1)*$ et utilisez la méthode de la fonction de répartition pour obtenir la densité de la variable aléatoire transformée.}]
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ 
+		**a)** Oui. $S^2_n \sim Ga(n-1/2, 2\sigma^2 / (n-1))$ donc $\esp{S^2_n} = \sigma^2$ et $\var{S^2_n} = \frac{2\sigma^4}{n-1}$.
+ 
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-7)
+
+## Exercice 2.8 {#sec-ex-2-8 .unnumbered}
+
+ Soit $Z \sim \mathcal{N}(0, 1)$ avec fonction de densité de
+ probabilité
+ $$
+\begin{aligned}
+ \phi(z) &= \frac{1}{\sqrt{2 \pi}}\, e^{-\frac{1}{2}\, z^2}, \quad
+ - \infty < z < \infty, \\
+ \intertext{et fonction de répartition}
+ \Phi(z) &= \int_{-\infty}^z \phi(x)\, dx.
+ \end{aligned}
+$$
+ Exprimer les fonctions de densité et de répartition de $X = \mu +
+ \sigma Z$ en fonction de $\phi(\cdot)$ et $\Phi(\cdot)$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $f_X(x) = \sigma^{-1} \phi((x - \mu)/\sigma)$, 
+ $F_X(x) = \Phi((x - \mu)/\sigma)$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-8)
+
+## Exercice 2.9 {#sec-ex-2-9 .unnumbered}
+
+ 
+ Soit la variable aléatoire $Z \sim \mathcal{N}(0, 1)$. Démontrer que $Z^2 \sim
+ \chi^2(1)$ avec la technique de la fonction génératrice des moments.
+ (*Note*: il faut intégrer pour trouver la fonction génératrice
+ des moments de $Z^2$.)
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+	Démo
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-9)
+
+## Exercice 2.10 {#sec-ex-2-10 .unnumbered}
+
+ 
+ **a)** Soit $X \sim \mathcal{N}(0, \sigma^2)$. Trouver la distribution de $Y =
+ X^2$.
+ **b)** Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes
+ chacune distribuée selon une loi normale centrée réduite. Trouver
+ la distribution de
+ $$
+ Y = \frac{(X_1 - X_2)^2}{2}.
+ $$
+ 
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ 
+ **a)** Gamma$(1/2, 2\sigma^2)$
+ **b)** $\chi^2(1)$
+ 
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-10)
+
+## Exercice 2.11 {#sec-ex-2-11 .unnumbered}
+
+ Soit $T$ une variable aléatoire distribuée selon une loi *t*
+ avec $10$ degrés de liberté.
+ 
+ **a)** Trouver $\prob{\abs{T} > 2,228}$ à l'aide d'une table de la loi
+ *t*.
+ **b)** Répéter la partie a) à l'aide de \textsf{R}. La fonction
+ `pt(x, n)` donne la valeur de la fonction de répartition en
+ `x` d'une loi *t* avec `n` degrés de liberté.
+ 
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $0,05$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-11)
+
+## Exercice 2.12 {#sec-ex-2-12 .unnumbered}
+
+ Soit $T$ une variable aléatoire distribuée selon une loi *t*
+ avec $14$ degrés de liberté.
+ 
+ **a)** Trouver la valeur de $b$ tel que $\prob{-b < T < b} = 0,90$ à
+ l'aide d'une table de la loi *t*.
+ **b)** Répéter la partie a) à l'aide \textsf{R}. La fonction
+ `qt(p, n)` retourne le `p`{\ieme} quantile d'une loi
+ *t* avec `n` degrés de liberté, c'est-à-dire la valeur
+ de $x$ où la fonction de répartition vaut `p`.
+ 
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $1,761$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-12)
+
+## Exercice 2.13 {#sec-ex-2-13 .unnumbered}
+
+ Soit $U \sim \chi^2(r_1)$ et $V \sim \chi^2(r_2)$, deux variables
+ aléatoires indépendantes.
+ 
+ **a)** Démontrer que la densité de
+ $$
+ F = \frac{U/r_1}{V/r_2}
+ $$
+ est
+ $$
+ f(x) =
+ \frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+ \Gamma(r_1/2) \Gamma(r_2/2) (1 + r_1 x/r_2)^{(r_1 + r_2)/2}}.
+ $$
+ **b)** Calculer $\esp{F}$.
+ **c)** Calculer $\var{F}$.
+ 
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ 
+ \stepcounter{enumi}
+ **a)** Démo
+ **b)** $r_2/(r_2 - 2)$
+ **c)** $2 [r_2^2 (r_2 + r_1 - 2)]/[r_1 (r_2 - 2)^2 (r_2 - 4)]$
+ 
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-13)
+
+## Exercice 2.14 {#sec-ex-2-14 .unnumbered}
+
+ 
+ Soit $F$ une variable aléatoire distribuée selon une loi *F*
+ avec $\nu_1$ et $\nu_2$ degrés de liberté (dans l'ordre). Démontrer que
+ $1/F$ est aussi distribuée selon une loi *F*, mais avec $\nu_2$
+ et $\nu_1$ degrés de liberté.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ 	
+ 	 **a)** Démo: réutiliser la définition de la loi F
+ 
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-14)
+
+## Exercice 2.15 {#sec-ex-2-15 .unnumbered}
+
+ Si $F$ a une distribution *F* avec paramètres $\nu_1 = 5$ et $\nu_2
+ = 10$, trouver $a$ et $b$ de sorte que $\prob{F \leq a} = 0,05$ et
+ $\prob{F \leq b} = 0,95$. Les quantiles de la loi *F* peuvent
+ être trouvés soit dans une table, soit à l'aide de la fonction
+ `qf(x, v1, v2)` de \textsf{R}. (*Astuce*: en travaillant
+ avec une table, utiliser le fait que $\prob{F \leq a} = \prob{F^{-1}
+ \geq a^{-1}} = 1 - \prob{F^{-1} \leq a^{-1}}$.)
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $a = 0,211$ et $b = 3,33$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-15)
+
+## Exercice 2.16 {#sec-ex-2-16 .unnumbered}
+
+ Soit $T = W/\sqrt{V/r}$, où $W$ et $V$ sont des variables aléatoires
+ indépendantes avec une distribution, respectivement, normale centrée
+ réduite et khi carré avec $r$ degrés de liberté. Démontrer que la
+ distribution de $T^2$ est $F$ avec $1$ et $r$ degrés de liberté.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ Démo
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-16)
+
+## Exercice 2.17 {#sec-ex-2-17 .unnumbered}
+
+ Démontrer à l'aide du Théorème central limite que la distribution
+ gamma avec paramètre de forme $\alpha$ entier et paramètre d'échelle
+ $\beta$ tend vers la distribution normale avec moyenne
+ $\alpha\beta$ et variance $\alpha\beta^2$ lorsque $\alpha$
+ tend vers l'infini. (*Astuce*: définir $Y = X_1 + \dots +
+ X_\alpha$ où $X_i \sim \text{Exponentielle}(\beta)$ et trouver la
+ distribution asymptotique de $Y$.)
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $\lim_{\alpha \rightarrow \infty} Y \sim
+ N\left(\alpha\beta, \alpha\beta^2\right)$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-17)
+
+## Exercice 2.18 {#sec-ex-2-18 .unnumbered}
+
+ Soit $\bar{X}_{100}$ la moyenne d'un échantillon aléatoire de taille $100$
+ tiré d'une loi $\chi^2(50)$.
+ 
+ **a)** Trouver la distribution exacte de $\bar{X}_{100}$.
+ **b)** Calculer à l'aide d'un logiciel statistique la valeur exacte
+ de $\prob{49 < \bar{X}_{100} < 51}$.
+ **c)** Calculer une valeur approximative de la probabilité en b).
+ 
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+```{r}
+q <- format(pgamma(51, 2500, 50) - pgamma(49, 2500, 50),
+ digits = options()$digits, dec = ",")
+```
+ 
+ **a)** Gamma$(\nombre{2500}, 1/50)$
+ **b)** $\Sexpr{q}$
+ **c)** $0,682$
+ 
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-18)
+
+## Exercice 2.19 {#sec-ex-2-19 .unnumbered}
+
+ Soit $\bar{X}$ la moyenne d'un échantillon de taille $128$ d'une loi
+ Gamma$(2, 4)$. Trouver une approximation pour $\prob{7 < \bar{X} <
+ 9}$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $0,954$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-19)
+
+## Exercice 2.20 {#sec-ex-2-20 .unnumbered}
+
+ Trouver une valeur approximative de la probabilité que la moyenne
+ d'un échantillon de taille $15$ d'une loi avec densité $f(x) = 3
+ x^2$, $0 < x < 1$, soit entre $3/5$ et $4/5$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ $0,840$
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-20)
+
+## Exercice 2.21 {#sec-ex-2-21 .unnumbered}
+
+On suppose que $X_1,\ldots,X_n$ et $Y_1,\ldots,Y_n$ sont des échantillons aléatoires indépendants de populations avec moyennes $\mu_1$ et $\mu_2$ et variances $\sigma_1^2>0$ et $\sigma_2^2>0$, respectivement. Démontrer que, quand $n\to\infty$,
+$$
+U_n = \frac{(\bar X_n-\bar Y_n)-(\mu_1-\mu_2)}{\sqrt{(\sigma_1^2+\sigma_2^2)/n}}
+$$
+est asymptotiquement $\mathcal{N}(0,1)$.
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+ Démo
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-21)
+
+## Exercice 2.22 {#sec-ex-2-22 .unnumbered}
+
+Une machine d'embouteillage peut être réglée de sorte qu'elle remplisse en moyenne les bouteilles de $\mu$ onces de liquide par bouteille. Il a été observé que la quantité de liquide distribuée par la machine suit une loi normale avec $\sigma= 2,5$ onces.
+
+**a)** Si $n=9$ bouteilles sont sélectionnées aléatoirement à la sortie de la machine, quelle est la probabilité que la moyenne échantillonnale diffère de $\mu$ d'au plus 0,2 once?
+**b)** Trouver la probabilité que la moyenne échantillonale diffère de $\mu$ d'au plus 0,2 once lorsque la taille de l'échantillon est $n = 25, 36,$ et $64$. Que remarquez-vous lorsque $n$ augmente? Pouvez-vous expliquer cette remarque?
+**c)** Quelle est la taille d'échantillon requise pour s'assurer que la probabilité que la moyenne échantillonnale diffère de $\mu$ d'au plus 0,2 once est d'au moins 95\
+**d)** Comment la probabilité obtenue en a) change-t-elle lorsque $\sigma$ est inconnu et que la variance échantillonnale est égale à $s_n^2= 5,5$?
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+a) 0,1896 \,\, b) 0,3108 ; 0,3688 ; 0,4778 \,\, c) 601 \,\, d) 0,1955
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-22)
+
+## Exercice 2.23 {#sec-ex-2-23 .unnumbered}
+
+Un assureur de dommages pour entreprises, *AÉACT*, se demande s'il devrait couvrir les risques de *TaPaCt*, une entreprise bien établie de production de tapis avec une usine qui comporte des machines fragiles et dispendieuses ou les risques de *Markétact*, une nouvelle firme de marketing pour laquelle la majorité des employé.e.s sont en télétravail. Les deux entreprises sont basées dans des villes différentes.
+
+Après une analyse détaillée des projections des dommages de chaque entreprise, l'assureur a déterminé que 
+$$
+\sigma^2_{TaPaCt} = 32,9 \, \text{pour un échantillon de taille} \, n = 10
+$$
+
+Les analyses de dossiers de nouveaux clients chez *AÉACT* font l'objet d'une politique interne selon laquelle on pose trois postulats:
+
+**a)** Les sinistres sont normalement distribués.
+**b)** La variance des dommages des entreprises avec beaucoup de moyens de production est le double de la variance des dommages des entreprises dont la majorité des membres sont en télétravail.
+**c)** Comme *AÉACT* a peu de liquidités, elle choisira l'entreprise avec la variance échantillonnale obtenue dans l'analyse qui est la plus basse.
+
+
+Avant de récolter un échantillon pour Markétact de taille $m = 11$, *AÉACT* a besoin de votre aide.
+
+**d)** La prochaine étape de l'analyse implique d'utiliser la loi F. Quelle hypothèse est manquante dans l'énoncé pour utiliser cette loi?
+
+**e)** Supposons que l'hypothèse manquante en a) est également posée, de quelle façon la loi F peut-elle être utile?
+
+**f)** Calculer $\prob{S^2_{TaPaCt}/S^2_{Markétact} < 1}$.
+**g)** En amont de l'analyse des projections et en regard du résultat précédent, quelle décision est la plus probable pour AÉACT?
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+a) Indépendance \,\, b) Comparer les $S^2$ \,\, c) 0,1558435 \,\, d) Markétact
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-23)
+
+## Exercice 2.24 {#sec-ex-2-24 .unnumbered}
+
+L'*Agence de Protection de l'Environnement* est responsable d'établir les critères pour la quantité autorisée de certains produits chimiques en eau douce. Une mesure commune de la toxicité pour les polluants est la concentration d'un produit chimique causant la mort de la moitié d'une population animale donnée dans un laps de temps connu. Cette mesure est appelée CL50 (concentration létale médiane). Dans plusieurs études, les valeurs observées du logarithme naturel de l'indicateur CL50 sont normalement distribuées. L'analyse est donc basée sur les données de ln(CL50).
+
+Soit $S^2_n$ la variance échantillonnale d'un échantillon de $n=10$ valeurs de ln(CL50) pour le cuivre, et $S^2_m$ la variance échantillonnale d'un échantillon de $m=6$ valeurs de ln(CL50) pour le plomb, tous les deux utilisant la même espèce de poisson. La variance de la population des mesures sur le cuivre est supposée être le double de la variance de la population des mesures sur le plomb. Supposer que $S^2_n$ est indépendante de $S^2_m$.
+
+**a)** Expliquer comment il est possible, en référant à une table statistique appropriée, de trouver les nombres $a$ et $b$ tels que
+$$
+\Pr\left(\frac{S_n^2}{S_m^2}\leq b\right)=0,95, \quad \Pr\left(\frac{S_n^2}{S_m^2}\geq a\right)=0,95.
+$$
+*Astuce: Observer que $\Pr[U_1/U_2\leq k]=\Pr[U_2/U_1\geq 1/k]$.*
+
+**b)** Si $a$ et $b$ sont les mêmes qu'en a), calculer
+$$
+\Pr\left(a\leq\frac{S_n^2}{S_m^2}\leq b\right).
+$$
+
+::: {.callout-tip collapse="true" title="Éléments de réponse"}
+
+a) 0,5744 \,\, b) 0,9
+
+:::
+
+[📖 Voir solution](../solutions/sol_chap2.qmd#sec-sol-2-24)
+
+
