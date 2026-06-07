@@ -22,5 +22,11 @@
   },
   "solutions/sol_chap2.qmd": {
     "sol_chap2.html": "db2053df"
+  },
+  "chapitres/ajustement.qmd": {
+    "ajustement.html": "f6ae7050"
+  },
+  "chapitres/base.qmd": {
+    "base.html": "085b3a7c"
   }
 }
