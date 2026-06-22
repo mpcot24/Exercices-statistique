@@ -1,0 +1,30 @@
+## Transformations avec la fonction génératrice des moments {#sec-base-moments_transformations_fgm}
+
+Soit $M_X(t)$ la fonction génératrice des moments de la variable
+  aléatoire $X$.
+  
+  
+**a)** Soit $Y = aX + b$, où $a$ et $b$ sont des constantes quelconques. Démontrer que $$ M_Y(t) = e^{bt} M_{X}(at). $$
+
+**b)** Soient $X_1, \ldots, X_n$ des variables aléatoires indépendantes et $Y = X_1 + \dots + X_n$. Démontrer que $$ M_Y(t) = \prod_{j=1}^n M_{X_j}(t). $$
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** Par les propriétés de l'exponentielle. **b)** Par indépendance des espérances.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a $$
+\begin{aligned} M_Y(t) &= \esp{e^{Yt}} \\ &= \esp{e^{(aX + b)t}} \\ &= \esp{e^{aXt} e^{bt}} \\ &= e^{bt} \esp{e^{aXt}} \\ &= e^{bt} M_X(at). \end{aligned}
+$$
+
+**b)** On a $$
+\begin{aligned} M_Y(t) &= \esp{e^{Yt}}\\ &= \esp{e^{(X_1 + \dots + X_n) t}}\\ &= \esp{e^{X_1 t} \cdots e^{X_n t}} \\ \end{aligned}
+$$
+
+et, par indépendance entre les variables aléatoires,
+
+$$
+\begin{aligned} M_Y(t) &= \esp{e^{X_1t}} \cdots \esp{e^{X_nt}} \\ &= \prod_{i = j}^n M_{X_j}(t). \end{aligned}
+$$ Si, en plus, les variables aléatoires $X_1, \dots, X_n$ sont identiquement distribuées comme $X$, alors $M_Y(t) = (M_X(t))^n$.
+:::
+

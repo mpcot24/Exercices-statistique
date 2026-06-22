@@ -1,0 +1,88 @@
+## Espérance et variance de l'étendue et de la mi-étendue d'un échantillon tiré d'une loi uniforme {#sec-base-stat_ordre_ech_aleatoire_uniforme}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une loi uniforme
+  sur l'intervalle $(0, 1)$.
+  
+**a)** Calculer la moyenne et la variance de $R = X_{(n)} - X_{(1)}$.
+
+**b)** Calculer la moyenne et la variance de $T = (X_{(1)} + X_{(n)})/2$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\esp{R} = (n - 1)/(n + 1)$ et $\var{R} = (2n - 2)/[(n + 1)^2 (n + 2)]$.
+
+**b)** $\esp{T} = 1/2$ et $\var{T} = 1/[2 (n + 1)(n + 2)]$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $X_i \sim U(0, 1)$. On trouve la fonction de répartition du minimum $X_{(1)}$ avec
+$$
+   F_{X_{(1)}}(x)= 1 - (1 - F_X(x))^n = 1 - (1-x)^n ,
+$$
+   d'où sa fonction de densité est
+$$
+   f_{X_{(1)}}(x)=\frac{\d}{\d x} F_{X_{(1)}}(x) = n(1-x)^{n-1}
+$$
+ qui peut se réécrire sous la forme
+ $$
+ f_{X_{(1)}}(x)=\frac{\Gamma(1+n)}{\Gamma(1)\Gamma(n)}x^{1-1}(1-x)^{n-1}.
+ $$
+ On remarque que $X_{(1)} \sim \text{Bêta}(1, n)$. De la même façon pour $X_{(n)}$,
+$$
+   F_{X_{(n)}}(x)= (F_X(x))^n =x^n \text{ et }f_{X_{(n)}}(x)=\frac{\d}{\d x} F_{X_{(n)}}(x) = n x^{n-1}
+$$
+ qui peut se réécrire sous la forme
+ $$
+ f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
+ $$
+ On remarque que $X_{(n)} \sim \text{Bêta}(n, 1)$. Ainsi, depuis l'exercice [-@sec-base-stat_ordre_conjointe], la densité conjointe de $(X_{(1)},X_{(n)})$ peut être exprimée comme suit, pour $0<x<y<1$,
+$$
+f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.
+$$
+Ainsi,
+     $$
+       \Esp{X_{(1)}X_{(n)}} = n (n - 1) \int_0^1 x \int_x^1
+       y(y - x)^{n-2} dy dx.
+     $$
+     L'intégrale intérieure ci-dessus se résoud par parties en posant
+     $u = y$ et $dv = (y - x)^{n - 2} dy$. On obtient alors
+     $$
+\begin{aligned}
+       \Esp{X_{(1)}X_{(n)}} &= n(n - 1) \int_0^1 x
+       \left(
+         \frac{(y-x)^{n-1}y}{n - 1} -
+         \frac{1}{n - 1} \int_x^1 (y - x)^{n - 1}  dy
+       \right)  dx\\
+       &= n \int_0^1 x (1 - x)^{n-1}  dx -
+       \int_0^1 x (1 - x)^n  dx \\
+       &= \frac{1}{n+1} - \frac{1}{(n+1)(n+2)}\\
+       &= \frac{1}{n+2},
+     \end{aligned}
+$$
+     en intégrant une seconde fois par parties. Par conséquent,
+     $$
+\begin{aligned}
+       \Cov{X_{(1)}, X_{(n)}} &= \Esp{X_{(1)} X_{(n)}} -
+       \Esp{X_{(1)}}\Esp{X_{(n)}} \\
+       &= \frac{1}{n + 2} -
+       \left(
+         \frac{1}{n + 1}
+       \right)
+       \left(
+         \frac{n}{n + 1}
+       \right) \\
+       &= \frac{1}{(n + 1)^2 (n + 2)}.
+     \end{aligned}
+$$
+**a)** On a $$
+\begin{aligned} \Esp{R} &= \Esp{X_{(n)}} - \Esp{X_{(1)}}\\ &= \frac{n}{n+1} - \frac{1}{n+1}\\ &= \frac{n-1}{n+1} \end{aligned}
+$$ et $$
+\begin{aligned} \Var{R} &= \Var{X_{(1)}} + \Var{X_{(n)}} - 2  \Cov{X_{(1)}, X_{(n)}}\\ &= \frac{n}{(n+1)^2(n+2)} + \frac{n}{(n+1)^2(n+2)} - \frac{2}{(n+1)^2(n+2)} \\ &=\frac{2n-2}{(n+1)^2(n+2)}. \end{aligned}
+$$
+
+**b)** On a $$
+\begin{aligned} \Esp{T} &= \frac{\Esp{X_{(1)}} + \Esp{X_{(n)}}}{2}\\ &= \frac{1}{2}\left(\frac{n}{n+1} + \frac{1}{n+1}\right)\\ &= \frac{1}{2} \end{aligned}
+$$ et $$
+\begin{aligned} \Var{T} &= \frac{\Var{X_{(1)}}+\Var{X_{(n)}} + 2 \Cov{X_{(1)}, X_{(n)}}}{4}\\ &= \frac{1}{4} \left[ \frac{n}{(n+1)^2(n+2)} + \frac{n}{(n+1)^2(n+2)} + \frac{2}{(n+1)^2(n+2)} \right] \\ &= \frac{1}{2(n+1)(n+2)}. \end{aligned}
+$$
+:::
+

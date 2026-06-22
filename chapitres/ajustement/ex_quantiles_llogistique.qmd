@@ -1,0 +1,33 @@
+## Quantiles - Loi log-logistique {#sec-ajustement-quantiles_llogistique}
+
+Un échantillon aléatoire de réclamations est tiré d'une distribution log-logistique avec fonction de répartition
+$$
+F(x)=\frac{(x/\theta)^\tau}{1+(x/\theta)^\tau}, \quad x>0,   \theta >0,   \tau >0.
+$$
+Dans l'échantillon, 80\
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\hat{\tau}=2$ et $\hat{\theta}=200$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Les équations à résoudre sont
+$$
+\begin{aligned}
+0,2 &= F(100) = \frac{(100/\hat{\theta})^{\hat{\tau}}}{1+(100/\hat{\theta})^{\hat{\tau}}}, \\
+0,8 &= F(400) = \frac{(400/\hat{\theta})^{\hat{\tau}}}{1+(400/\hat{\theta})^{\hat{\tau}}}.
+\end{aligned}
+$$
+Avec la première équation, on obtient
+$$
+0,2=0,8(100/\hat{\theta})^{\hat{\tau}} \text{ ou encore } \hat{\theta}^{\hat{\tau}}=4(100)^{\hat{\tau}}.
+$$
+En insérant le résultat dans la deuxième équation, on obtient
+$$
+0,8 = \frac{\frac{400^{\hat{\tau}}}{\hat{\theta}^{\hat{\tau}}}}{1+\frac{400^{\hat{\tau}}}{\hat{\theta}^{\hat{\tau}}}}
+=\frac{\frac{(4 \times 100)^{\hat{\tau}}}{(4 \times (100)^{\hat{\tau}})}}{1+\frac{(4 \times 100)^{\hat{\tau}}}{(4 \times (100)^{\hat{\tau}})}}
+= \frac{4^{\hat{\tau}-1}}{1+4^{\hat{\tau}-1}}.
+$$
+On résoud pour obtenir $\hat{\tau}=2$ et $\hat{\theta}=200$.
+:::
+

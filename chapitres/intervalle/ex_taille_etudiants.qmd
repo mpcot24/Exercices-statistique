@@ -1,0 +1,92 @@
+## Tailles des étudiantes en actuariat et en génie civil {#sec-intervalle-taille_etudiants}
+
+Lors d'une très sérieuse et importante analyse statistique de la
+  taille des étudiantes en sciences et génie à l'Université Laval, on
+  a mesuré un échantillon aléatoire d'étudiantes en actuariat et un
+  autre en génie civil. Les résultats obtenus se trouvent résumés dans
+  le tableau ci-dessous. On suppose que les deux échantillons
+  aléatoires sont indépendants et que la taille des étudiantes est
+  distribuée selon une loi normale.
+  \begin{center}
+    \begin{tabular}{lD{.}{,}{3.0}D{.}{,}{3.0}}
+      \toprule
+      Quantité &
+      \multicolumn{1}{c}{Actuariat} &
+      \multicolumn{1}{c}{Génie civil} \\
+      \midrule
+      Taille de l'échantillon     & 15 & 20 \\
+      Taille moyenne (en cm)      & 152 & 154 \\
+      Variance (en $\text{cm}^2$) & 101 & 112 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+**a)** Déterminer un intervalle de confiance à $90 \
+
+**b)** Répéter la partie a) en utilisant plutôt les variances des échantillons.
+
+**c)** On suppose que les variances des deux populations sont égales. Y a-t-il une différence significative, avec un niveau de confiance de 90 \
+
+**d)** Déterminer un intervalle de confiance à 90 \
+
+**e)** On suppose que les moyennes des deux populations sont égales. La différence observée entre les variances dans la taille des étudiantes des deux programmes est-elle significative? Utiliser un niveau de confiance de 90 \
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $148,18 < \mu_1 < 155,82$ et $150,69 < \mu_2 < 157,31$
+
+**b)** $147,43 < \mu_1 < 156,57$ et $149,91 < \mu_2 < 158,09$
+
+**c)** $\mu_1 - \mu_2 \in -2 \pm 5,82$
+
+**d)** $59,71 < \sigma_1^2 < 215,22$
+
+**e)** $0,462 < \sigma_2^2/\sigma_1^2 < 2,502$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On représente la taille des étudiantes en actuariat par la
+    variable aléatoire $X$ et celle des étudiantes en génie civil par
+    $Y$. On a
+    $$
+\begin{aligned}
+      \bar{X} &\sim N(\mu_1, \sigma_1^2/15), &
+      \bar{Y} &\sim N(\mu_2, \sigma_2^2/20), \\
+      \frac{14 S_1^2}{\sigma_1^2} &\sim \chi^2(14), &
+      \frac{19 S_2^2}{\sigma_2^2} &\sim \chi^2(19)
+    \end{aligned}
+$$
+    et les valeurs des statistiques pour les deux échantillons sont
+    $$
+\begin{aligned}
+      \bar{x} &= 152, & \bar{y} &= 154, \\
+      s_1^2   &= 101, &  s_2^2  &= 112.
+    \end{aligned}
+$$
+**a)** Si l'on suppose que $\sigma_1^2 = \sigma_2^2 = 81$, alors $\bar{X} \sim N(\mu_1, 5,4)$ et $\bar{Y} \sim N(\mu_2, 4,05)$. Par conséquent, \begin{gather*} \Prob{-1,645 < \frac{\bar{X} - \mu_1}{\sqrt{5,4}} < 1,645} = 0,90 \\ \end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned} \Prob{-1,645 < \frac{\bar{Y} - \mu_2}{\sqrt{4,05}} < 1,645 } = 0,90 \end{gather*} d'où $$ 152 - 1,645 \sqrt{5,4} < \mu_1 < 152 + 1,645 \sqrt{5,4}, $$ soit $148,18 < \mu_1 < 155,82$ et $$ 154 - 1,645 \sqrt{4,05} < \mu_2 < 154 + 1,645 \sqrt{4,05}, $$ soit $150,69 < \mu_2 < 157,31$.
+
+**b)** Si la variance est inconnue, on a plutôt que $$ \frac{\bar{X} - \mu_1}{S_1/\sqrt{15}} \sim t(14) \quad \text{et} \quad \frac{\bar{Y} - \mu_2}{S_2/\sqrt{20}} \sim t(19). $$ Or, $t_{0,05}(14) = 1,761$ et $t_{0,05}(19) = 1,729$, d'où $$ 152 - 1,761 \sqrt{\frac{101}{15}} < \mu_1 < 152 + 1,761 \sqrt{\frac{101}{15}}, $$ soit $147,43 < \mu_1 < 156,57$ et $$ 154 - 1,729 \sqrt{\frac{112}{20}} < \mu_2 < 154 + 1,729 \sqrt{\frac{112}{20}}, $$ soit $149,91 < \mu_2 < 158,09$.
+
+**c)** On cherche un intervalle de confiance à $90 \
+$$
+
+et que
+
+$$
+\begin{aligned} \frac{14 S_1^2}{\sigma^2} + \frac{19 S_2^2}{\sigma^2} \sim \chi^2(33) \end{gather*} on établit que $$ \frac{(\bar{X} - \bar{Y}) - (\mu_1 - \mu_2)}{\sqrt{\frac{14 S_1^2 + 19 S_2^2}{33} \left( \frac{1}{15} + \frac{1}{20} \right)}} \sim t(33). $$ De plus, $t_{0,05}(33) \approx z_{0,05} = 1,645$, d'où l'intervalle de confiance à 90 \
+
+**d)** Tel que mentionné précédemment, $$ Y = \frac{14 S_1^2}{\sigma_1^2} \sim \chi^2(14). $$ Or, on trouve dans une table de la loi khi carré (ou avec la fonction \texttt{qchisq} dans \textsf{R}) que $$ \Prob{6,57 < Y < 23,68} = 0,90. $$ Par conséquent, \begin{gather*} \Prob{ 6,57 < \frac{14 S_1^2}{\sigma_1^2} < 23,68 } = 0,90 \\ \end{aligned}
+$$
+
+ou, de manière équivalente,
+
+$$
+\begin{aligned} \Prob{ \frac{14 S_1^2}{23,68} < \sigma_1^2 < \frac{14 S_1^2}{6,57} } = 0,90. \end{gather*} Puisque $s_1^2 = 101$ dans cet exemple, un intervalle de confiance à $90 \
+
+**e)** Un peu comme en c), on détermine un intervalle de confiance pour le ratio $\sigma_2^2/\sigma_1^2$ et on conclut que la différence entre la variance des étudiantes en génie civil n'est pas significativement plus grande que celle des étudiantes en actuariat si cet intervalle contient la valeur $1$. À la suite des conclusions en c), il est raisonnable de supposer que les moyennes des deux populations sont identiques, soit $\mu_1 = \mu_2 = \mu$. On a que $$ F = \frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2} \sim F(14, 19). $$ On trouve dans une table de la loi $F$ (ou avec la fonction \texttt{qf} dans \textsf{R}) que $$ \Prob{0,417 < F < 2,256} = 0,90. $$ Par conséquent, $$ \Prob{ \frac{0,417 S_2^2}{ S_1^2} < \frac{\sigma_2^2}{\sigma_1^2} < \frac{2,256 S_2^2}{ S_1^2} } = 0,90 $$ et un intervalle de confiance à $90 \
+:::
+

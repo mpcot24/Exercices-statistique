@@ -1,0 +1,34 @@
+## Moments - Loi géométrique {#sec-ajustement-moments_geo}
+
+Considérer la distribution géométrique avec fonction de masse de
+  probabilité
+  $$
+    \prob{X = x} = \theta (1 - \theta)^x, \quad x = 0, 1, \dots.
+  $$
+  On a obtenu l'échantillon aléatoire suivant de cette distribution:
+  \begin{center}
+    5\; 7\; 4\; 11\; 0\; 9\; 1\; 1\; 3\; 2\; 1\; 0\; 6\; 0\; 1\; 1\;
+    1\; 9\; 2\; 0.
+  \end{center}
+  Utiliser la méthode des moments pour obtenir une estimation
+  ponctuelle du paramètre $\theta$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$0,2381$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Pour obtenir l'estimateur des moments de $\theta$, on pose
+    $$
+      \esp{X} = \frac{1 - \theta}{\theta} = \bar{X},
+    $$
+    d'où
+    $$
+      \hat{\theta} = \frac{1}{\bar{X} + 1}.
+    $$
+    La moyenne de l'échantillon est $\bar{x} = 64/20 = 3,2$. On a donc
+    $$
+      \hat{\theta} = \frac{1}{4,2} = 0,2381.
+    $$
+:::
+

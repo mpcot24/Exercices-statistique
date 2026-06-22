@@ -1,0 +1,24 @@
+## Estimateur de $\mu^2$ {#sec-estimation-biais_mu2}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une
+  distribution avec moyenne $\mu$ et variance $\sigma^2$.
+  
+  
+**a)** Démontrer que $\bar{X}_n^2$ est un estimateur biaisé de $\mu^2$ et calculer son biais.
+
+**b)** Démontrer que $\bar{X}_n^2$ est un estimateur asymptotiquement sans biais de $\mu^2$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\sigma^2/n$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Il faut d'abord calculer l'espérance de l'estimateur: $$
+\begin{aligned} \esp{\bar{X}_n^2} &= \var{\bar{X}_n} + \esp{\bar{X}_n}^2 \\ &= \frac{\sigma^2}{n} + \mu^2. \end{aligned}
+$$ On voit que $\bar{X}_n^2$ est un estimateur biaisé de $\mu^2$ et que le biais est $\sigma^2/n$.
+
+**b)** Puisque $$
+\begin{aligned} \lim_{n \rightarrow \infty} \esp{\bar{X}_n^2} = \lim_{n \rightarrow \infty} \frac{\sigma^2}{n} + \mu^2 = \mu^2, \end{aligned}
+$$ $\bar{X}_n^2$ est un estimateur asymptotiquement sans biais de $\mu^2$.
+:::
+

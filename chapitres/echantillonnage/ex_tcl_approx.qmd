@@ -1,0 +1,35 @@
+## Approximation avec le TCL pour un échantillon tiré d'une loi gamma {#sec-echantillonnage-tcl_approx}
+
+Soit $\bar{X}$ la moyenne d'un échantillon de taille $128$ d'une loi
+  Gamma$(2, 4)$. Trouver une approximation pour $\prob{7 < \bar{X} <
+    9}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$0,954$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Puique l'on ne demande qu'une valeur approximative pour $\prob{7 <
+      \bar{X} < 9}$, on va utiliser l'approximation normale. La taille
+    de l'échantillon étant relativement grande, l'approximation sera
+    très bonne. Soit $\bar{X} = (X_1 + \dots + X_{128})/128$, où $X_i
+    \sim \text{Gamma}(2, 4)$, $i = 1, \dots, 128$. On a
+    $\esp{\bar{X}} = \esp{X_i} = 8$ et $\var{\bar{X}} = \var{X_i}/128
+    = 1/4$. Par conséquent,
+
+$$
+\begin{aligned}
+      \prob{7 < \bar{X} < 9}
+        &= \Prob{\frac{7 - 8}{\sqrt{1/4}} <
+          \frac{\bar{X} - 8}{\sqrt{1/4}} <
+          \frac{9 - 8}{\sqrt{1/4}}} \\
+      &\approx \Phi(2) - \Phi(-2) \\
+      &= 2 \Phi(2) - 1 \\
+      &= 0,954.
+    \end{aligned}
+$$
+
+On trouve la valeur de $\Phi(2)$ dans une table de quantiles de
+    la loi normale ou à l'aide d'un logiciel statistique.
+:::
+

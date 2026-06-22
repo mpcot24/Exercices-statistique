@@ -1,0 +1,42 @@
+## Proportion de bonbons rouges dans une boîte de Smarties {#sec-tests-smarties_rouge}
+
+Soit $\theta$ la proportion de bonbons rouges dans une boîte de
+  Smarties. On prétend que $\theta = 0,20$.
+**a)** Définir la statistique de test et la région critique avec un seuil de signification de $5 \
+\begin{aligned} \mathcal{H}_0 &: \theta = 0,2 \\ \mathcal{H}_1 &: \theta \ne 0,2. \end{aligned}
+$$
+
+**b)** Pour faire le test, les $20$ membres de la section locale des Amateurs de Smarties Associés (ASA) ont chacun compté le nombres de bonbons rouges dans une boîte de $50$ grammes de Smarties. Ils ont obtenu les proportions suivantes: \begin{gather*} \frac{8}{56},  \quad \frac{13}{55}, \quad \frac{12}{58}, \quad \frac{13}{56}, \quad \frac{14}{57}, \quad \frac{5}{54},  \quad \frac{14}{56}, \quad \frac{15}{57}, \quad \frac{11}{54}, \quad \frac{13}{55}, \\[12pt] \frac{10}{57}, \quad \frac{8}{59},  \quad \frac{10}{54}, \quad \frac{11}{55}, \quad \frac{12}{56}, \quad \frac{11}{57}, \quad \frac{6}{54},  \quad \frac{7}{58},  \quad \frac{12}{58}, \quad \frac{14}{58}. \end{gather*} Si chaque membre de l'ASA fait le test mentionné en a), quelle proportion des membres rejette l'hypothèse $ \mathcal{H}_0$?
+
+**c)** En supposant vraie l'hypothèse $ \mathcal{H}_0$, à quelle proportion de rejets de l'hypothèse $ \mathcal{H}_0$ peut-on s'attendre?
+
+**d)** Pour chacun des ratios en b) on peut construire un intervalle de confiance à $95 \
+
+**e)** Si les $20$ résultats en b) sont agrégés de sorte que l'on a compté un total de $219$ bonbons rouges parmi $\nombre{1124}$ Smarties, rejette-t-on l'hypothèse $ \mathcal{H}_0$, toujours avec $\alpha = 0,05$?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $Z = (\hat{\theta} - 0,20)/\sqrt{0,20 (1 - 0,20)/n}$
+
+**b)** $0$ \
+
+**c)** $0,05$
+
+**d)** $100$ \
+
+**e)** $p = 0,6654$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Il s'agit d'un test bilatéral sur une proportion avec un grand échantillon. La statistique du test est $$ Z = \frac{\hat{\theta} - 0,20}{
+
+**b)** En calculant la valeur de la statistique pour chacune des proportions données, on constate que toutes les statistiques sont plus inférieures à $1,96$. Auncun membre ne rejette donc l'hypothèse $ \mathcal{H}_0$.
+
+**c)** Étant donné que le seuil de signification est $5 \
+
+**d)** Si, en b), l'on n'a jamais rejeté l'hypothèse $ \mathcal{H}_0$, c'est que $100$ \
+
+**e)** La valeur de la statistique est $$ z = \frac{219/1124 - 0,20}{\sqrt{(0,20)(1 - 0,20)/1124}} = -0,4325 $$ et $\abs{z} < 1,96$. Donc, on ne rejette pas $ \mathcal{H}_0$ à un seuil de signification de $5$ \
+\begin{aligned} p &= \prob{\abs{Z} > -0,4325}\\ &= 2 \prob{Z > 0,4325}\\ &= 0,6654, \end{aligned}
+$$ ce qui représente le seuil de signification minimal auquel il est possible de rejeter $ \mathcal{H}_0$.
+:::
+

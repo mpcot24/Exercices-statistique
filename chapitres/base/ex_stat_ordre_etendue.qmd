@@ -1,0 +1,54 @@
+## Distribution conjointe de l'étendue et de la mi-étendue {#sec-base-stat_ordre_etendue}
+
+Soit un échantillon aléatoire $X_1,\ldots,X_n$. L'*étendue* (ou *dispersion*) empirique est
+$$
+   R = X_{(n)} - X_{(1)},
+$$
+et la *mi-étendue* (ou *mi-dispersion*) empirique est
+$$
+   T = \frac{X_{(1)} + X_{(n)}}{2}.
+$$
+En utilisant le fait que la densité conjointe de $X_{(1)}$ et de $X_{(n)}$ est donnée, pour $x<y$, par
+$$
+  f_{X_{(1)}, X_{(n)}}(x,y) = n (n - 1) (F_X(y) - F_X(x))^{n - 2}  f_X(x) f_X(y),
+$$
+trouver la distribution conjointe de $(R,T)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$f_{R, T}(r, t) = n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
+    f_X(t + r/2) f_X(t - r/2),$ 
+    
+pour $r > 0$ et $-\infty < t < \infty$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On pose 
+$$
+r = y - x \text{  et } t= \frac{x + y}{2}
+$$
+ce qui est équivalent à
+$$
+    x = -\frac{r}{2} + t \text{  et }
+    y = \frac{r}{2} + t.
+$$
+Le jacobien de la transformation de $(x, y)$ vers $(r, t)$ est
+$$
+  J =  \begin{vmatrix}
+    -1/2 & 1 \\
+    1/2  & 1
+  \end{vmatrix}
+  = -1.
+$$
+On a donc que la densité conjointe de l'étendue $R$ et de la mi-étendue $T$ est
+ $$
+    f_{R, T}(r, t) = n (n - 1)
+    \left(
+      F_X\left(t + \frac{r}{2}\right) -
+      F_X\left(t - \frac{r}{2}\right)
+    \right)^{n - 2}
+    f_X\left(t + \frac{r}{2}\right)
+    f_X\left(t - \frac{r}{2}\right),
+  $$
+  pour $r > 0$ et $-\infty < t < \infty$.
+:::
+

@@ -1,0 +1,30 @@
+## Identifier la distribution {#sec-base-ech_identifier_distribution}
+
+Dans chacun des cas suivants, identifiez la loi de probabilité qui serait la plus appropriée selon le contexte de l'énoncé. Justifiez votre choix et spécifiez quels paramètres sont connus et lesquels sont inconnus.
+
+**a)** La perte financière du propriétaire d'une maison rasée par les flammes.
+
+**b)** Le nombre de sacs de grains de café devant être examinés avant de trouver 15 sacs contaminés.
+
+**c)** Le nombre de sacs de grains de café contaminés parmi 15 sacs examinés.
+
+**d)** La vitesse réelle d'un véhicule à un endroit spécifique sur l'autoroute.
+
+**e)** La véritable résistance d'un câble utilisé dans un ordinateur.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** Gamma, lognormale, pareto **b)** Binomiale négative **c)** Binomiale **d)** Normale **e)** Normale
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Il faudrait utiliser une distribution continue non négative sur l'intervalle $[0,\infty)$ étant donné que la perte financière est nécessairement positive et qu'il n'y a pas de borne supérieure naturelle. Des bons exemples de lois pourraient être : gamma, lognormale, Pareto.
+
+**b)** La distribution adéquate est la loi binomiale négative. Considérant que chaque sac est indépendant des autres et a une probabilité $p$ d'être contaminé, la distribution est une loi binomiale négative avec paramètres $r=15$ et $p$ inconnu.
+
+**c)** La loi binomiale est appropriée. Considérant que chaque sac est indépendant des autres et a une probabilité $p$ d'être contaminé, le nombre total de sacs contaminés suit une loi binomiale avec paramètres de taille $n=15$ et probabilité $p$ inconnu.
+
+**d)** Le contexte est conforme à une distribution normale. La majorité des conducteurs vont tendre vers une vitesse moyenne malgré que certains vont conduire beaucoup plus vite ou lentement; une distribution en forme de cloche semble donc appropriée. La moyenne $\mu$ et la variance $\sigma^2$ de la vitesse réelle des véhicules à cet endroit précis sur l'autoroute sont inconnues.
+
+**e)** Le contexte suggère une loi Normale. Les câbles devraient avoir une résistance près de $\mu$, soit celle donnée par le producteur. L'écart-type $\sigma$ dépendra de la qualité de la précision de la fabrication, et est inconnu.
+:::
+

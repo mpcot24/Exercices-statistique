@@ -1,0 +1,66 @@
+## Intervalles de confiance pour les paramètres d'une loi normale {#sec-intervalle-intervalles_mu_sigma}
+
+Un échantillon aléatoire comptant $17$ observations d'une
+  distribution normale de moyenne et de variance inconnues a donné
+  $\bar{x} = 4,7$ et $s^2 = 5,76$. Trouver des intervalles de
+  confiance à $90\%$
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\mu \in (3,7, \; 5,7)$ et $\sigma^2 \in (3,50, \; 11,58)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que
+    
+$$
+\begin{aligned}
+      \frac{\bar{X} - \mu}{S/\sqrt{n}} &\sim t(n-1) \\
+      \end{aligned}
+$$
+
+et que
+
+$$
+\begin{aligned}
+      \frac{(n-1) S^2}{\sigma^2} &\sim \chi^2(n - 1).
+    \end{aligned}
+$$
+
+Ainsi, on peut établir que
+    $$
+      \Prob{\bar{X} - \frac{S}{\sqrt{n}}  t_{\alpha/2} \leq \mu
+        \leq \bar{X} + \frac{S}{\sqrt{n}}  t_{\alpha/2}} = 1 - \alpha.
+    $$
+    et qu'un intervalle de confiance de niveau $1 - \alpha$ pour $\mu$
+    est
+    $$
+      (\bar{X} - S t_{\alpha/2}/\sqrt{n},  
+      \bar{X} + S t_{\alpha/2}/\sqrt{n}).
+    $$
+    Avec $n = 17$, $\bar{x} = 4,7$, $s^2 = 5,76$ et $\alpha = 0,10$,
+    on trouve que $\mu \in (3,7,  5,7)$.
+    
+
+ Pour la variance, on cherche des valeurs $a$ et $b$, $a \leq b$
+tel que
+    $$
+      \Prob{a \leq \frac{(n-1)S^2}{\sigma^2} \leq b} =
+      \Prob{\frac{(n-1)S^2}{b} \leq \sigma^2 \leq \frac{(n-1)S^2}{a}} =
+      1 - \alpha.
+    $$
+    Plusieurs valeurs de $a$ et $b$ satisfont cette relation. Le choix
+    le plus simple est $a = \chi_{1 - \alpha/2}^2(n - 1)$ et $b =
+    \chi_{\alpha/2}^2(n - 1)$. Ainsi, un intervalle de confiance de
+    niveau $1 - \alpha$ pour $\sigma^2$ est
+$$
+      \left(
+        \frac{(n-1)S^2}{\chi_{\alpha/2}^2(n - 1)},  
+        \frac{(n-1)S^2}{\chi_{1 - \alpha/2}^2(n - 1)}
+      \right).
+$$
+Dans une table de la loi khi carré, on trouve que
+    $\chi_{0,05}^2(16) = 7,96$ et que $\chi_{0,95}^2(16) = 26,30$,
+    d'où $\sigma^2 \in (3,50, \; 11,58)$.
+    
+:::
+

@@ -1,0 +1,68 @@
+## MVUE pour le paramètre d'une loi de Poisson {#sec-estimation-mvue_poisson_2}
+
+Démontrer que la moyenne arithmétique est un estimateur sans biais
+  à variance minimale du paramètre $\lambda$ d'une loi de Poisson.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $\esp{\bar{X}_n} = \esp{X}$ pour toute distribution et
+    donc que $\bar{X}$ est toujours un estimateur sans biais de la
+    moyenne. Pour une loi de Poisson, la moyenne est égale à $\lambda$
+    et donc $\bar{X}$ est un estimateur sans biais de $\lambda$. Pour
+    démontrer que la statistique est un estimateur à variance
+    minimale, il faut montrer que $\bar{X}_n$ est une statistique exhaustive minimale pour $\lambda$. On a que, pour tout $x_1,\ldots,x_n, \in\mathbb{R}$,
+    $$
+\begin{aligned}
+    f(x_1;\lambda)\times\cdots\times f(x_n;\lambda) & =  \frac{\exp(-n\lambda)\lambda^{x_1+\cdots+x_n}}{\prod_{i=1}^n x_i !} \\
+    &= \frac{\exp(-n\lambda)\lambda^{n \bar{x}_n}}{\prod_{i=1}^n x_i !} = g(\bar{x}_n; \lambda)h(x_1,\ldots,x_n).
+    \end{aligned}
+$$
+    Selon le critère de Fisher--Neyman, $\bar{X}_n$ est une statistique exhaustive. De plus, cette statistique est minimale, puisque pour tout $x_1,\ldots,x_n,y_1,\ldots,y_n \in\mathbb{R}$, on a que le ratio
+
+$$
+\begin{aligned}
+    \frac{f(x_1;\lambda)\times\cdots\times f(x_n;\lambda)}{f(y_1;\lambda)\times\cdots\times f(y_n;\lambda)}
+    &= \frac{\exp(-n\lambda)\lambda^{n \bar{x}_n}}{\prod_{i=1}^n x_i !} \frac{\prod_{i=1}^n y_i !}{\exp(-n\lambda)\lambda^{n \bar{y}_n}} \\
+&= \lambda^{n (\bar{x}_n- \bar{y}_n)} \frac{\prod_{i=1}^n y_i !}{\prod_{i=1}^n x_i !}
+    \end{aligned}
+$$
+    ne dépend pas de $\lambda$ si et seulement si $\bar{x}_n=\bar{y}_n$.
+
+
+De façon alternative, on pourrait aussi démontrer que l'estimateur est sans biais à variance minimale en montrant qu'il est sans biais, puis en montrant que sa variance est égale à la borne inférieure de
+    de Rao--Cramér. Or, d'une part, on a
+    $$
+      \var{\bar{X}} = \frac{\var{X}}{n} = \frac{\lambda}{n}.
+    $$
+
+D'autre part,
+    $$
+\begin{aligned}
+      \frac{\partial}{\partial \lambda} \ln f(x; \lambda)
+      &= \frac{\partial}{\partial \lambda}
+      (x \ln(\lambda) - \lambda - \ln(x!)) \\
+      &= \frac{x}{\lambda} - 1 \\
+      &= \frac{x - \lambda}{\lambda}
+    \end{aligned}
+$$
+et donc
+    
+$$
+\begin{aligned}
+      \Esp{\left( \frac{\partial}{\partial \lambda}
+          \ln f(X; \lambda) \right)^2}
+      &= \frac{1}{\lambda^2}\Esp{(X - \lambda)^2} \\
+      &= \frac{\Var{X}}{\lambda^2} \\
+      &= \frac{1}{\lambda}.
+\end{aligned}
+$$
+
+Ainsi, la borne de Rao--Cramér est $\lambda/n$. On a donc démontré
+    que $\bar{X}$ est un estimateur sans biais à variance minimale du
+    paramètre $\lambda$ de la loi de Poisson.
+    
+:::
+

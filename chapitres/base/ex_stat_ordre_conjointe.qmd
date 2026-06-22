@@ -1,0 +1,24 @@
+## Densité conjointe du minimum et du maximum {#sec-base-stat_ordre_conjointe}
+
+Soit un échantillon aléatoire $X_1,\ldots,X_n$ tiré d'une distribution $F$ avec densité $f(x)$, pour $x\in\mathbb{R}$. Trouver la fonction de densité conjointe de $X_{(1)}=\min (X_1, \dots X_n)$ et de $X_{(n)}= \max (X_1, \dots X_n)$, $f_{X_{(1)}, X_{(n)}}(x,y)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$f_{X_{(1)}, X_{(n)}}(x,y) = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y), \quad x<y$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+À partir de la fonction de répartition, on a
+$$
+\begin{aligned}
+F_{X_{(1)}, X_{(n)}}(x,y)&= \prob{X_{(1)} \leq x, X_{(n)} \leq y} \\
+&= \prob{X_{(n)} \leq y} - \prob{X_{(1)} > x, X_{(n)} \leq y} \\
+&= \prob{X_1 \leq y, \dots, X_n \leq y} - \prob{x < X_1 \leq y, \dots, x < X_n \leq y} \\
+&= (F(y))^n - (F(y)-F(x))^n, \quad \text{car iid.}
+\end{aligned}
+$$
+Donc, pour $x < y$,
+$$
+f_{X_{(1)}, X_{(n)}}(x,y) = \frac{\d F_{X_{(1)}, X_{(n)}}(x,y)}{\d x \d y} = n (n - 1) (F(y) - F(x))^{n - 2}  f(x) f(y).
+$$
+:::
+

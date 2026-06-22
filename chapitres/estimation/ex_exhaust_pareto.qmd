@@ -1,0 +1,66 @@
+## Trois estimateurs de paramètres d'une loi Pareto {#sec-estimation-exhaust_pareto}
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire avec fonction de répartition
+$$
+F(x)=\begin{cases}
+0,& x<\beta\\
+1-(\beta/x)^\alpha, & x\geq \beta,
+\end{cases}
+$$
+où $\alpha,\beta>0$. La fonction de densité de probabilité correspondante est
+$$
+f(x)=\begin{cases}
+\alpha\beta^\alpha x^{-(\alpha+1)}, & x\geq \beta,\\
+0,& \text{ailleurs}.
+\end{cases}
+$$
+**a)** Trouver la fonction de répartition de $\hat\beta=\min(X_1,\ldots,X_n)$.
+
+**b)** Montrer que $\hat\beta$ est un estimateur convergent de $\beta$.
+
+**c)** Calculer le biais et l'erreur quadratique moyenne de l'estimateur $\hat\beta$. Est-ce que cet estimateur est sans biais ou asymptotiquement sans biais?
+
+**d)** Si $\alpha$ est connu, montrer que $\min(X_1,\ldots,X_n)$ est une statistique exhaustive pour $\beta$.
+
+**e)** Si $\beta$ est connu, montrer que $X_1\times\cdots\times X_n$ est une statistique exhaustive pour $\alpha$.
+
+**f)** Trouver une paire de statistiques conjointement exhaustives dans le cas où $\alpha$ et $\beta$ sont inconnus.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $f_{min}(x) = \alpha n \beta^{\alpha n} x^{-(n \alpha + 1}$
+
+**b)** Démo: Définition d'un estimateur convergent.
+
+**c)** $B(\hat{\beta}) = \frac{\beta}{\beta n - 1}$ converge vers 0.
+
+**d)** Démo par le théorème de factorisation de Fisher-Neyman.
+
+**e)** Idem
+
+**f)** $\prod_{i = 1}^n X_i$ et $\min(X_1, \dots, X_n)$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La fonction de répartition de $\hat \beta=\min(X_1,\ldots,X_n)$, pour $x\geq \beta$, est $$
+\begin{aligned} \Pr[\min(X_1,\ldots,X_n)\leq x] & = 1- \Pr[\min(X_1,\ldots,X_n)> x]\\ &= 1-\Pr[X_1>x,\ldots,X_n>x]\\ &=1-\Pr[X_1>x]\times\cdots\times\Pr[X_n>x],\text{ par indépendance}\\ &=1-\{\Pr[X_1>x]\}^n,\text{ par i.d.}\\ &=1-\left\{\frac{\beta}{x}\right\}^{\alpha n}\\ \end{aligned}
+$$ Donc, $\min(X_1,\ldots,X_n)$ a la même fonction de répartition que $X$ avec un nouveau paramètre $\alpha^\star=\alpha n$. Ce qui signifie que la densité est $$ f_{\min}(x)=\alpha n \beta^{\alpha n}x^{-(\alpha n+1)},\quad x\geq \beta. $$
+
+**b)** On utilise la définition d'un estimateur convergent. Si $\varepsilon>0$, $$
+\begin{aligned} \Pr[|\hat\beta-\beta|\leq \varepsilon]&=\Pr[\beta-\varepsilon<\hat\beta\leq \beta+\varepsilon] \\ &=\Pr[\hat\beta\leq \beta+\varepsilon], \end{aligned}
+$$ puisque $\Pr[\hat\beta<\beta]=0$ par le fait que le domaine du minimum est le même que celui des observations, $[\beta,\infty)$. Ainsi, on remplace dans la fonction de répartition développée en a): $$
+\begin{aligned} \Pr[|\hat\beta-\beta|\leq \varepsilon]&=\Pr[\hat\beta\leq \beta+\varepsilon]= F_\text{min}(\beta + \varepsilon) = 1-\left(\frac{\beta}{\beta+\varepsilon}\right)^{\alpha n}. \end{aligned}
+$$ Puisque $\varepsilon$ est positif, le ratio $\frac{\beta}{\beta+\varepsilon}<1$ et donc $\left(\frac{\beta}{\beta+\varepsilon}\right)^{\alpha n}\to 0$ quand $n\to\infty$. Ainsi, $$ \lim_{n\to\infty} \Pr[|\hat\beta-\beta|\leq \varepsilon]=1, $$ et $\hat\beta$ est convergent pour $\beta$.
+
+**c)** On trouve d'abord $\ex[\hat\beta]$ et $\ex[\hat\beta^2]$: $$
+\begin{aligned} \ex[\hat\beta]&=\int_\beta^\infty x \alpha n \beta^{\alpha n}x^{-(\alpha n+1)}\d x = \int_\beta^\infty  \alpha n \beta^{\alpha n}x^{-\alpha n}\d x = \frac{\alpha n\beta}{\alpha n-1}\\ \ex[\hat\beta^2]&=\int_\beta^\infty x^2 \alpha n \beta^{\alpha n}x^{-(\alpha n+1)}\d x = \int_\beta^\infty  \alpha n \beta^{\alpha n}x^{-(\alpha n-1)}\d x = \frac{\alpha n\beta^2}{\alpha n-2}. \end{aligned}
+$$ Le biais est donc $$ B(\hat\beta)=\ex[\hat\beta]-\beta = \frac{\alpha n\beta}{\alpha n-1}-\beta = \frac{\beta}{\alpha n -1}\to 0 $$ quand $n\to \infty$. L'estimateur est donc asymptotiquement sans biais. La variance est $$ \vr(\hat\beta)= \frac{\alpha n\beta^2}{\alpha n-2}-\left(\frac{\alpha n\beta}{\alpha n-1}\right)^2 = \frac{\alpha n\beta^2}{(\alpha n-2)(\alpha n-1)^2} $$ et l'erreur quadratique moyenne est $$ \text{EQM}(\hat\beta)=\vr(\hat\beta)+B^2(\hat\beta)= \frac{\alpha n\beta^2}{(\alpha n-2)(\alpha n-1)^2}+\frac{\beta^2}{(\alpha n -1)^2}=\frac{2\beta^2}{(\alpha n-1)(\alpha n-2)}. $$
+
+**d)** Si $\alpha$ est connu, le paramètre inconnu est $\beta$ et $$ f(x_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  =\underbrace{ \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)}}_{h(x_1, \dots, x_n)} \underbrace{(\alpha \beta^\alpha)^n\mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\} }_{g\{ \min(x_1,\dots, x_n), \beta \}}. $$ Par le théorème de factorisation de Fisher--Neyman, $\min(X_1,\dots, X_n)$ est une statistique exhaustive pour $\beta$.
+
+**e)** On observe que $$
+\begin{aligned} f(y_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  & = \alpha\beta^{\alpha}x_1^{-(\alpha+1)} \mathbf{1}(x_1 \ge \beta)\times \dots \times \alpha\beta^{\alpha} x_n^{-(\alpha+1)} \mathbf{1}(x_n \ge \beta)\\ & = (\alpha \beta^\alpha)^n \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)} \times \mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\}. \end{aligned}
+$$ Si $\beta$ est connu, le paramètre incconu est $\alpha$. Puisque $$ f(x_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  =\underbrace{(\alpha \beta^\alpha)^n \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)}}_{g(\prod x_i , \alpha)} \underbrace{\mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\}}_{h(x_1,\dots, x_n)}, $$ on peut conclure par le théorème de factorisation de Fisher--Neyman que $X_1 \times \cdots \times X_n$ est une statistique exhaustive pour $\alpha$.
+
+**f)** Lorsque $\alpha$ et $\beta$ sont inconnus, $$ f(x_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  =\underbrace{(\alpha \beta^\alpha)^n \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)}\mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\}}_{g\{\prod x_i, \min(x_1,\dots, x_n), \alpha,\beta\}} $$ donc les statistiques $X_1 \times \cdots \times X_n$ et $\min(X_1,\dots, X_n)$ sont conjointement exhaustives pour $\alpha$ et $\beta$.
+:::
+

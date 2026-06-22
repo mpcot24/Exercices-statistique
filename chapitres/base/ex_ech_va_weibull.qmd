@@ -1,0 +1,30 @@
+## Loi Weibull {#sec-base-ech_va_weibull}
+
+La distribution de Weibull est fréquemment utilisée en assurance
+  IARD pour la modélisation des montants de sinistres, entre autres.
+  Sa fonction de répartition est
+  $$
+    F(x) = 1 - e^{-\beta x^\alpha}, \quad x > 0, \alpha > 0, \beta > 0.
+  $$
+**a)** Déterminer la fonction de densité de probabilité de la Weibull.
+
+**b)** Calculer l'espérance et la variance de la Weibull.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $f(x) = \alpha \beta x^{\alpha - 1}e^{-\beta x^{\alpha}}$
+
+**b)** $\esp{X} = \beta^{-1/\alpha} \Gamma(1 + 1/\alpha)$,
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a directement $f(x) = F^\prime(x) = \alpha \beta x^{\alpha - 1} e^{-\beta x^{\alpha}}$.
+
+**b)** On a $$
+\begin{aligned} \esp{X} &= \int_0^\infty x f(x) dx \\ &= \int_0^\infty \alpha \beta x^{\alpha} e^{-\beta x^{\alpha}} dx. \end{aligned}
+$$ On effectue le changement de variable $y = \beta x^{\alpha}$, d'où $dy = \bm{\alpha \beta x^{\alpha - 1} dx}$ et $x = \left(\frac{y}{\beta}\right)^{\frac{1}{\alpha}}$ et donc $$
+\begin{aligned} \esp{X} &= \int_0^\infty \bm{\alpha \beta x^{\alpha - 1}} x e^{-\beta x^{\alpha}} \bm{dx} \\ &= \frac{1}{\beta^{1/\alpha}} \int_0^\infty y^{1/\alpha} e^{-y} dy \\ &= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \int_0^\infty \frac{1}{\Gamma(1 + \frac{1}{\alpha})} y^{1/\alpha} e^{-y} dy \\ &= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \end{aligned}
+$$ puisque l'intégrande ci-dessus est la fonction de densité de probabilité d'une loi gamma de paramètre de forme $\alpha = 1 + \frac{1}{\alpha}$ et de paramètre d'échelle $\beta = 1$. En procédant exactement de la même façon, on trouve $$
+\begin{aligned} \esp{X^2} &= \int_0^\infty x^2 f(x) dx \\ &= \int_0^\infty \alpha \beta x^{\alpha + 1} e^{-\beta x^{\alpha}} dx \\ &= \frac{1}{\beta^{2/\alpha}} \int_0^\infty y^{2/\alpha} e^{-y}  dy \\ &= \frac{\Gamma(1 + \frac{2}{\alpha})}{\beta^{2/\alpha}}. \end{aligned}
+$$ Par conséquent, $$ \var{X} = \frac{\Gamma(1 + \frac{2}{\alpha}) - \Gamma(1 + \frac{1}{\alpha})^2}{\beta^{2/\alpha}}. $$
+:::
+

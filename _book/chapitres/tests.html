@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Tests – ACT2000 — Recueil d'exercices</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapitres/intervalle.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a522afb83bf8ae494942cf1b0ac9d4c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      Esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      ex:     "\\mathbb{E}",
+      var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      Var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      vr:     "\\mathrm{Var}",
+      prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Cov:    "\\mathrm{Cov}",
+      d:      "\\mathrm{d}",
+      bm:     ["\\boldsymbol{#1}", 1],
+      abs: ["\\left|#1\\right|", 1],
+      texttt: ["`#1`", 1],
+      textsf: ["`#1`", 1]
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/tests.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">ACT2000 — Recueil d’exercices</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exercices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/echantillonnage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/ajustement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/intervalle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation par intervalle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/tests.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#sec-tests-proportion_objets_defectueux" id="toc-sec-tests-proportion_objets_defectueux" class="nav-link active" data-scroll-target="#sec-tests-proportion_objets_defectueux"><span class="header-section-number">6.1</span> Proportion d’objets défectueux</a></li>
+  <li><a href="#sec-tests-theta_1_2" id="toc-sec-tests-theta_1_2" class="nav-link" data-scroll-target="#sec-tests-theta_1_2"><span class="header-section-number">6.2</span> Test d’hypothèse pour la valeur de <span class="math inline">\(\theta\)</span></a></li>
+  <li><a href="#sec-tests-poisson" id="toc-sec-tests-poisson" class="nav-link" data-scroll-target="#sec-tests-poisson"><span class="header-section-number">6.3</span> Test d’hypothèse pour le paramètre d’une distribution Poisson</a></li>
+  <li><a href="#sec-tests-duree_vie_moyenne_pneu" id="toc-sec-tests-duree_vie_moyenne_pneu" class="nav-link" data-scroll-target="#sec-tests-duree_vie_moyenne_pneu"><span class="header-section-number">6.4</span> Durée de vie moyenne d’un pneu</a></li>
+  <li><a href="#sec-tests-poids_bebefille_naissance" id="toc-sec-tests-poids_bebefille_naissance" class="nav-link" data-scroll-target="#sec-tests-poids_bebefille_naissance"><span class="header-section-number">6.5</span> Poids d’une fillette à la naissance</a></li>
+  <li><a href="#sec-tests-poids_bebegarcon_naissance" id="toc-sec-tests-poids_bebegarcon_naissance" class="nav-link" data-scroll-target="#sec-tests-poids_bebegarcon_naissance"><span class="header-section-number">6.6</span> Poids d’un garçon à la naissance</a></li>
+  <li><a href="#sec-tests-concentration_particule_suspension" id="toc-sec-tests-concentration_particule_suspension" class="nav-link" data-scroll-target="#sec-tests-concentration_particule_suspension"><span class="header-section-number">6.7</span> Concentration de particules en suspension dans l’air</a></li>
+  <li><a href="#sec-tests-dentifrice" id="toc-sec-tests-dentifrice" class="nav-link" data-scroll-target="#sec-tests-dentifrice"><span class="header-section-number">6.8</span> Recommandation de dentifrice</a></li>
+  <li><a href="#sec-tests-smarties_rouge" id="toc-sec-tests-smarties_rouge" class="nav-link" data-scroll-target="#sec-tests-smarties_rouge"><span class="header-section-number">6.9</span> Proportion de bonbons rouges dans une boîte de Smarties</a></li>
+  <li><a href="#sec-tests-taxe_tabac" id="toc-sec-tests-taxe_tabac" class="nav-link" data-scroll-target="#sec-tests-taxe_tabac"><span class="header-section-number">6.10</span> Taxe sur le tabac pour financer le système de santé</a></li>
+  <li><a href="#sec-tests-reassurance_incendie" id="toc-sec-tests-reassurance_incendie" class="nav-link" data-scroll-target="#sec-tests-reassurance_incendie"><span class="header-section-number">6.11</span> Pertes de réassurance par incendie</a></li>
+  <li><a href="#sec-tests-poissons_aquarium" id="toc-sec-tests-poissons_aquarium" class="nav-link" data-scroll-target="#sec-tests-poissons_aquarium"><span class="header-section-number">6.12</span> Nombre de poissons dans un aquarium</a></li>
+  <li><a href="#sec-tests-classes_titanic" id="toc-sec-tests-classes_titanic" class="nav-link" data-scroll-target="#sec-tests-classes_titanic"><span class="header-section-number">6.13</span> Classe de tarification du Titanic</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/tests.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-tests-proportion_objets_defectueux" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-tests-proportion_objets_defectueux"><span class="header-section-number">6.1</span> Proportion d’objets défectueux</h2>
+<p>Soit une proportion <span class="math inline">\(p\)</span> inconnue d’objets défectueux dans une grande population d’objets. On souhaite tester les hypothèses suivantes: <span class="math display">\[
+\begin{aligned}
+        \mathcal{H}_0 &amp;: p = 0,2 \\
+        \mathcal{H}_1 &amp;: p \ne 0,2.
+\end{aligned}
+\]</span> On suppose qu’un échantillon aléatoire de <span class="math inline">\(n=20\)</span> objets est tiré de la population. Soit <span class="math inline">\(X\)</span> le nombre d’objets défectueux dans l’échantillon aléatoire, on considère un test d’hypothèse qui rejette l’hypothèse nulle si <span class="math inline">\(X \ge 7\)</span> ou <span class="math inline">\(X \le 1\)</span>. <strong>a)</strong> Est-ce que les hypothèses sont simples ou composites? Expliquer.</p>
+<p><strong>b)</strong> Quelle est la région critique du test?</p>
+<p><strong>c)</strong> Calculer la taille du test et la probabilité de faire une erreur de type I.</p>
+<p><strong>d)</strong> Calculer la valeur de la fonction de puissance <span class="math inline">\(\Pi(p)\)</span> aux points <span class="math display">\[ p\in\{0,   0,1,   0,2,   0,3,   0,4,   0,5,   0,6,   0,7,   0,8,   0,9,   1\} \]</span> et tracer la fonction de puissance en utilisant R ou Excel. Quel est le lien entre la fonction de puissance et les probabilités d’erreur de type I et II?</p>
+<p><strong>e)</strong> Refaire (d) avec une taille d’échantillon de <span class="math inline">\(n=50\)</span> et <span class="math inline">\(n=100\)</span>. Est-ce que le test semble bon?</p>
+<p><strong>f)</strong> Suggérer une modification au test pour qu’il demeure significatif avec une taille d’échantillon différente de <span class="math inline">\(20\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\mathcal{H}_0\)</span> est simple et <span class="math inline">\(\mathcal{H}_1\)</span> est composite.</p>
+<p><strong>b)</strong> <span class="math inline">\(\mathcal{C} = \left\{ (x_1,\dots, x_{20}) \in \{0,1\}^n  :  x_1 + \dots + x_n \in \{ 0,1\} \cup \{7,\dots,20 \}\right \}\)</span></p>
+<p><strong>c)</strong> 0,1558678</p>
+<p><strong>d)</strong> <span class="math inline">\(1 - \Pi(p)\)</span></p>
+<p><strong>e)</strong> Non</p>
+<p><strong>f)</strong> Région critique devrait dépendre de <span class="math inline">\(n\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> L’hypothèse nulle est simple étant donné que <span class="math inline">\(\Theta_0 = \{ 0,2\}\)</span> ne contient qu’une seule valeur. La contre-hypothèse est composite étant donné que <span class="math inline">\(\Theta_1 = [0,  0,2) \cup (0,2,  1]\)</span> contient plus d’une valeur de <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>b)</strong> Les mesures <span class="math inline">\(X_1, \ldots , X_{20}\)</span> sont des variables aléatoires Bernoulli mutuellement indépendantes. La région critique est donc donnée par <span class="math display">\[ \mathcal{C} = \left\{ (x_1,\dots, x_{20}) \in \{0,1\}^n  :  x_1 + \dots + x_n \in \{ 0,1\} \cup \{7,\dots,20 \}\right \}. \]</span></p>
+<p><strong>c)</strong> Parce que l’hypothèse nulle est simple, la taille du test et la probabilité d’erreur de type I sont les mêmes. <span class="math display">\[ \alpha =\Pr(X  \le 1, X \ge 7  |  p = 0,2). \]</span> Sous l’hypothèse nulle, <span class="math inline">\(X = X_1 + \cdots + X_{20}\)</span> est une distribution binomiale de taille <span class="math inline">\(n=20\)</span> et probabilité <span class="math inline">\(p=0,2\)</span>. Ainsi, <span class="math inline">\(\alpha\)</span> peut être calculé comme suit: <span class="math display">\[
+\begin{aligned} \Pr(X  \le 1, X \ge 7) &amp;= 1 - \Pr(2 \le X \ge 6) \\ &amp;= 1 - \sum_{x=2}^6 \Pr(X=x) \\ &amp;= 1 - 0,8441322 \\ &amp;= 0,1558678 \end{aligned}
+\]</span> <code>{r} pbinom(1,size=20,prob=0.2) + 1-pbinom(6,size=20,prob=0.2)</code></p>
+<p><strong>d)</strong> La fonction de puissance à <span class="math inline">\(p_1\in [0,1]\)</span> arbitraire est donnée par <span class="math display">\[ \Pi(p_1) = \Pr(X  \le 1, X \ge 7  |  p =p_1) \]</span> et peut être calculée par le fait que <span class="math inline">\(X \sim Bin(n=20, p=p_1)\)</span>. On répète la même démarche qu’en (c) en changeant la probabilité <span class="math inline">\(p\)</span> de la loi Binomiale pour chacune des valeurs de <span class="math inline">\(p_1\)</span>. Avec , on trouve <code>{r} p &lt;- seq(from=0,to=1,by=0.1) power &lt;- pbinom(1,size=20,prob=p) + 1-pbinom(6,size=20,prob=p) power</code> La courbe de la fonction de puissance peut être tracée avec les points <span class="math inline">\((\Pi(p_1), p_1)\)</span>. En , elle peut être tracée comme suit: <code>{r fig.height} plot(p,power,type="b") points(p,power,pch=16)</code> La puissance à <span class="math inline">\(p=0,2\)</span> est égale à la probabilité d’erreur de type I <span class="math inline">\(\alpha\)</span>, alors que pour $ p ,2$, la probabilité d’erreur de type II <span class="math inline">\(\beta\)</span> est donnée par <span class="math inline">\(1 - \Pi(p)\)</span>.</p>
+<p><strong>e)</strong> La seule différence avec (d) est que maintenant <span class="math inline">\(Y\)</span> est une distribution binomiale de taille <span class="math inline">\(n \in \{50,100\}\)</span>. La fonction de puissance à <span class="math display">\[ p\in\{0,   0,1,   0,2,   0,3,   0,4,   0,5,   0,6,   0,7,   0,8,   0,9,   1\} \]</span> pour <span class="math inline">\(n=50\)</span> et <span class="math inline">\(n=100\)</span> est calculée de la même façon qu’en (d) en changeant la taille <span class="math inline">\(n\)</span> de la loi Binomiale pour <span class="math inline">\(50\)</span> et <span class="math inline">\(100\)</span>. En , on trouve: <code>{r} (power.50 &lt;- pbinom(1,size=50,prob=p) + 1-pbinom(6,size=50,prob=p)) (power.100 &lt;- pbinom(1,size=100,prob=p) + 1-pbinom(6,size=100,prob=p))</code> De la même façon qu’en (d), le graphique ci-dessous trace les fonctions de puissance pour <span class="math inline">\(n=5\)</span> (en rouge) et <span class="math inline">\(n=100\)</span> (en bleu), avec la puissance pour <span class="math inline">\(n=20\)</span> (en noir). <code>{r fig.height} plot(p,power,type="b") points(p,power.50,type="b",col="red") points(p,power.100,type="b",col="blue")</code> Bien que la puissance se comporte bien si <span class="math inline">\(p \ne 0,2\)</span> (i.e., elle s’approche de 1), l’erreur de type I est complètement inacceptable: elle est aussi grande que <span class="math inline">\(0,999\)</span> quand <span class="math inline">\(n=100\)</span>. Le test n’est pas du tout utile pour ces tailles d’échantillon.</p>
+<p><strong>f)</strong> La région de rejet devra dépendre de <span class="math inline">\(n\)</span>, puisque plus la taille d’échantillon augmente, plus d’objets défectueux seront présents sous <span class="math inline">\(\mathcal{H}_0\)</span>, simplement car plus d’objets sont inspectés. Sous l’hypothèse nulle, le nombre total d’objets défectueux va être une distribution binomiale de taille <span class="math inline">\(n\)</span> avec probabilité <span class="math inline">\(p=0,2\)</span>. Les valeurs critiques pourraient être choisies comme des quantiles de la distribution binomiale.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-theta_1_2" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-tests-theta_1_2"><span class="header-section-number">6.2</span> Test d’hypothèse pour la valeur de <span class="math inline">\(\theta\)</span></h2>
+<p>Soit <span class="math inline">\(X\)</span> une variable aléatoire dont la fonction de densité de probabilité est <span class="math display">\[
+    f(x; \theta) = \theta x^{\theta - 1}, \quad 0 &lt; x &lt; 1.
+  \]</span> On suppose que <span class="math inline">\(\theta\)</span> peut prendre exclusivement les valeurs <span class="math inline">\(\theta = 1\)</span> ou <span class="math inline">\(\theta = 2\)</span>. <strong>a)</strong> Trouver une statistique exhaustive pour le paramètre <span class="math inline">\(\theta\)</span> de cette distribution.</p>
+<p><strong>b)</strong> On teste l’hypothèse $ _0: = 1$ versus $ _1: = 2$ à partir d’un échantillon aléatoire <span class="math inline">\(X_1, X_2\)</span>. Si la région critique est <span class="math inline">\(C = \{(x_1, x_2); x_1 x_2 \geq 3/4\}\)</span>, calculer la probabilité de faire une erreur de type I (<span class="math inline">\(\alpha\)</span>) et la probabilité de faire une erreur de type II (<span class="math inline">\(\beta\)</span>).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\prod_{i = 1}^n X_i\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(\alpha = 0,034\)</span>, <span class="math inline">\(\beta = 0,886\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a <span class="math display">\[
+\begin{aligned} f(x_1, \dots, x_n;\theta) &amp;= \prod_{i=1}^n f(x_i;\theta) \\ &amp;= \theta^n\prod_{i=1}^nx_i^{\theta-1} \\ &amp;= \left( \theta^n \prod_{i=1}^n x_i^\theta \right) \left( \prod_{i=1}^n x_i^{-1} \right) \\ &amp;= g(t(x_1, \dots, x_n); \theta) h(x_1, \dots, x_n), \end{aligned}
+\]</span> où <span class="math display">\[
+\begin{aligned} g(y; \theta) &amp;= \theta^n y^n \\ t(x_1, \dots, x_n) &amp;= \prod_{i=1}^n x_i \\ h(x_1, \dots, x_n) &amp;= \prod_{i=1}^n x_i^{-1}. \end{aligned}
+\]</span> Ainsi, par le théorème de factorisation de Fisher–Neyman, <span class="math inline">\(T(X_1, \dots, X_n) = \prod_{i = 1}^n X_i\)</span> est une statistique exhaustive pour <span class="math inline">\(\theta\)</span>.</p>
+<strong>b)</strong> D’une part, l’erreur de type I consiste à rejeter l’hypothèse $ _0$ alors qu’elle est vraie. La probabilité de faire ce type d’erreur, notée <span class="math inline">\(\alpha\)</span>, correspond donc à la probabilité que la statistique du test se retrouve dans la région critique lorsque l’hypothèse $ _0$ est vraie. On a donc <span class="math display">\[
+\begin{aligned} \alpha &amp;= \Prob{X_1X_2 \geq \frac{3}{4}; \theta = 1} \\ &amp;= \iint_C f_{X_1 X_2}(x_1, x_2; 1)  dx_2 dx_1, \end{aligned}
+\]</span> où <span class="math inline">\(C = \{(x_1, x_2); x_1 x_2 \geq 3/4\}\)</span>. Or, <span class="math display">\[ f_{X_1 X_2}(x_1, x_2; \theta) = f_{X_1}(x_1; \theta) f_{X_2}(x_2; \theta) = \theta^2 x_1^{\theta - 1} x_2^{\theta - 1}, \]</span> d’où <span class="math inline">\(f_{X_1 X_2}(x_1, x_2; 1) = 1\)</span>, <span class="math inline">\(0 &lt; x_1, x_2 &lt; 1\)</span>. La région critique <span class="math inline">\(C\)</span> est représentée à la figure&nbsp;<a href="#sec-tests-theta_1_2" class="quarto-xref"><span>Section 6.2</span></a>.
+<span class="math display">\[\begin{aligned} \alpha &amp;= \int_{3/4}^1 \int_{3/(4 x_1)}^1  dx_2 dx_1 \\ &amp;= \int_{3/4}^1 \left( 1 - \frac{3}{4x_1} \right)  dx_1 \\ &amp;= \frac{1}{4} + \frac{3}{4} \ln \frac{3}{4} \\ &amp;\approx 0,034. \end{aligned}\]</span>
+<span class="math display">\[ D'autre part, l'erreur de type II consiste à ne pas rejeter l'hypothèse $ \mathcal{H}_0$ alors qu'elle est fausse. La valeur $\beta$ est donc la probabilité que la statistique se retrouve à l'extérieur de la région critique lorsque l'hypothèse $ \mathcal{H}_0$ est fausse, c'est-à-dire \]</span>
+<span class="math display">\[\begin{aligned} \beta &amp;= \Prob{X_1 X_2 &lt; \frac{3}{4}; \theta = 2} \\ &amp;= 1 - \Prob{X_1 X_2 \geq \frac{3}{4}; \theta = 2}\\ &amp;= 1 - \iint_C f_{X_1 X_2}(x_1, x_2; 2)  dx_2 dx_1. \end{aligned}\]</span>
+<span class="math display">\[ Dès lors, puisque $f_{X_1 X_2}(x_1, x_2; 2) = 4 x_1 x_2$, \]</span>
+<span class="math display">\[\begin{aligned} \beta &amp;= 1 - \int_{3/4}^1 \int_{3/(4x_1)}^1 4 x_1 x_2  dx_2  dx_1\\ &amp;= \frac{9}{16} - \frac{9}{8}\ln \frac{3}{4} \\ &amp;\approx 0,886. \end{aligned}\]</span>
+<p>$$</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-poisson" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-tests-poisson"><span class="header-section-number">6.3</span> Test d’hypothèse pour le paramètre d’une distribution Poisson</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire tiré d’une distribution Poisson avec paramètre <span class="math inline">\(\lambda\)</span> inconnu. Soit <span class="math inline">\(\lambda_0\)</span> et <span class="math inline">\(\lambda_1\)</span> des valeurs spécifiques telles que <span class="math inline">\(0 &lt; \lambda_0 &lt; \lambda_1\)</span> et on souhaite tester les hypothèses suivantes: <span class="math display">\[
+\begin{aligned}
+\mathcal{H}_0 \: : \: \lambda &amp; = \lambda_0, \\
+\mathcal{H}_1 \: : \: \lambda &amp; = \lambda_1.
+\end{aligned}
+\]</span> [*On sait que si <span class="math inline">\(Z_1 \sim \mathcal{P*(\mu_1)\)</span> est indépendante de <span class="math inline">\(Z_2 \sim \mathcal{P}(\mu_2)\)</span>, alors <span class="math inline">\(Z_1 +Z_2 \sim \mathcal{P}(\mu_1 + \mu_2)\)</span>.}]</p>
+<p><strong>a)</strong> Montrer que le test optimal au seuil <span class="math inline">\(\alpha\)</span> rejette <span class="math inline">\(\mathcal{H}_0\)</span> quand <span class="math inline">\(\bar X_n &gt; c\)</span>. Spécifier la valeur de <span class="math inline">\(c\)</span>.</p>
+<p><strong>b)</strong> Montrer que le test <span class="math inline">\(\delta\)</span> qui minimise <span class="math inline">\(\alpha(\delta) + \beta(\delta)\)</span> rejette <span class="math inline">\(\mathcal{H}_0\)</span> quand <span class="math inline">\(\bar X_n &gt; c^\star\)</span>. Trouver la valeur de <span class="math inline">\(c^\star\)</span>.</p>
+<p><strong>c)</strong> On suppose que <span class="math inline">\(n=20\)</span>, <span class="math inline">\(\lambda_0 = 1/20\)</span> et <span class="math inline">\(\lambda_1=1/10\)</span>. Calculer la valeur de la constante <span class="math inline">\(c\)</span> en a) quand <span class="math inline">\(\alpha = 0,08\)</span> et calculer les probabilités d’erreur de type I et II.</p>
+<p><strong>d)</strong> On suppose que <span class="math inline">\(n=20\)</span>, <span class="math inline">\(\lambda_0 = 1/20\)</span> et <span class="math inline">\(\lambda_1=1/10\)</span>. Calculer la valeur de <span class="math inline">\(c^\star\)</span> en b) et déterminer la valeur minimale que peut atteindre <span class="math inline">\(\alpha(\delta) + \beta(\delta)\)</span>. Quelles sont les probabilités d’erreur de type I et II?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Démo</p>
+<p><strong>b)</strong> Démo. <span class="math inline">\(C^* = \frac{\lambda_1 - \lambda_0}{\ln{\lambda_1} - \ln{\lambda_0}}\)</span>.</p>
+<p><strong>c)</strong> <span class="math inline">\(c = 0,1\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(\alpha = 0,264\)</span> et <span class="math inline">\(\beta = 0,6766764\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Ici, la fonction de distribution de l’échantillon est donnée par <span class="math display">\[ f(\boldsymbol{x}; \lambda) = e^{-\lambda n} \frac{\lambda^{x_1 + \dots + x_n}}{x_1! \times \dots \times x_n!} \]</span> et le rapport de vraisemblance est <span class="math display">\[ \frac{f(\boldsymbol{x}; \lambda_1)}{f(\boldsymbol{x}; \lambda_0)} = e^{-\lambda_1 n + \lambda_0 n} \left(\frac{\lambda_1}{\lambda_0}\right)^{x_1 + \dots + x_n} = \exp\left\{ -(\lambda_1 - \lambda_0)n + n \bar x_n \ln\left(\frac{\lambda_1}{\lambda_0}\right) \right\}. \]</span> Parce que les hypothèses sont simples, le Lemme de Neyman–Pearson dit que le test optimal rejette l’hypothèse nulle si pour une valeur critique <span class="math inline">\(k&gt;0\)</span>, <span class="math display">\[ \frac{f(\boldsymbol{x}; \lambda_1)}{f(\boldsymbol{x}; \lambda_0)} &gt; \frac{1}{k} \]</span> ce qui est équivalent à <span class="math display">\[ \exp\left\{ -(\lambda_1 - \lambda_0)n + n \bar x_n \ln\left(\frac{\lambda_1}{\lambda_0}\right) \right\} &gt; \frac{1}{k}. \]</span> Prendre le logarithme des deux côtés de l’inégalité donne <span class="math display">\[ \bar x_n &gt; \underbrace{\frac{-\ln(k)/n + (\lambda_1 -\lambda_0)}{\ln(\lambda_1) - \ln(\lambda_0)}}_{=c}. \]</span> Sous l’hypothèse nulle, on note que <span class="math inline">\(n\bar X_n = X_1 + \dots + X_n\)</span> est une distribution Poisson avec moyenne <span class="math inline">\(n\lambda_0\)</span>. Ainsi, la valeur <span class="math inline">\(c\)</span> devrait être choisie telle que <span class="math display">\[ \Pr( n \bar X_n &gt; nc  |  \lambda = \lambda_0) = \alpha \]</span> pour un seuil <span class="math inline">\(\alpha\)</span>, c’est-à-dire que <span class="math inline">\(nc\)</span> est le quantile <span class="math inline">\(1-\alpha\)</span> de la distribution Poisson avec moyenne <span class="math inline">\(n\lambda_0\)</span>. À noter que le seuil de signification ne sera peut-être pas exact étant donné que la distribution Poisson est discrète.</p>
+<p><strong>b)</strong> Ici, le test optimal rejette l’hypothèse nulle si <span class="math display">\[ \frac{f(\boldsymbol{x}; \lambda_1)}{f(\boldsymbol{x}; \lambda_0)} = \exp\left\{ -(\lambda_1 - \lambda_0)n + n \bar x_n \ln\left(\frac{\lambda_1}{\lambda_0}\right) \right\} &gt; 1, \]</span> c’est-à-dire lorsque <span class="math display">\[ \bar x_n &gt; \underbrace{\frac{\lambda_1 -\lambda_0}{\ln(\lambda_1) - \ln(\lambda_0)}}_{=c^*}. \]</span></p>
+<strong>c)</strong> Si <span class="math inline">\(n=20\)</span> et <span class="math inline">\(\lambda_0 = 1/20\)</span>, <span class="math inline">\(n\bar X_n\)</span> est une loi de Poisson avec moyenne <span class="math inline">\(1\)</span> sous l’hypothèse nulle. Le quantile de niveau <span class="math inline">\(1-0,08 = 0,92\)</span> de cette distribution est <span class="math inline">\(2\)</span> puisque
+<p>$$</p>
+<p><strong>d)</strong> Ici, la valeur de <span class="math inline">\(c^\star\)</span> est donnée par <span class="math display">\[ \frac{\lambda_1 -\lambda_0}{\ln(\lambda_1) - \ln(\lambda_0)} = \frac{1/20}{\ln(1/10) - \ln(1/20)} = \Sexpr{round(0.05/(log(0.1) - log(0.05)),5)}, \]</span> donc le test rejette l’hypothèse nulle si <span class="math display">\[ n\bar X_n &gt; nc^* = 20\times \Sexpr{round(0.05/(log(0.1) - log(0.05)),5)} = \Sexpr{round(20*0.05/(log(0.1) - log(0.05)),5)}, \]</span> i.e.&nbsp;si <span class="math inline">\(n \bar X_n &gt; 1\)</span>. La probabilité d’erreur de type I est <span class="math display">\[ \Pr(n \bar X_n &gt; 1  |  \lambda =1/20) = \Sexpr{round(1-ppois(1,lambda=1),3)}. \]</span> La probabilité d’erreur de type II est <span class="math display">\[ \Pr(n \bar X_n \le 1  |  \lambda =1/10) = \Sexpr{round(ppois(1,lambda=2),3)}, \]</span> et la valeur minimale que peut atteindre <span class="math inline">\(\alpha(\delta) + \beta(\delta)\)</span> est <span class="math display">\[ \alpha(\delta) + \beta(\delta) = \Sexpr{round(1-ppois(1,lambda=1),3)} + \Sexpr{round(ppois(1,lambda=2),3)} = \Sexpr{round(1-ppois(1,lambda=1),3)+round(ppois(1,lambda=2),3)}. \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-duree_vie_moyenne_pneu" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-tests-duree_vie_moyenne_pneu"><span class="header-section-number">6.4</span> Durée de vie moyenne d’un pneu</h2>
+<p>On suppose que la durée de vie d’un pneu en kilomètres a une distribution normale de moyenne <span class="math inline">\(\nombre{30000}\)</span> et d’écart type <span class="math inline">\(\nombre{5000}\)</span>. Le fabricant du nouveau pneu <em>Super Endurator X24</em> prétend que la durée de vie moyenne de ce pneu est bien supérieure à <span class="math inline">\(\nombre{30000}\)</span>&nbsp;km. Afin de vérifier les prétentions du fabricant, on testera $ _0: $ versus la contre-hypothèse $ _1: &gt; $ à partir de <span class="math inline">\(n\)</span> observations indépendantes <span class="math inline">\(x_1, \dots, x_n\)</span>. On rejettera $ _0$ si <span class="math inline">\(\bar{x} \geq c\)</span>. Trouver les valeurs de <span class="math inline">\(n\)</span> et de <span class="math inline">\(c\)</span> de sorte que la probabilité de faire une erreur de type I en <span class="math inline">\(\mu =
+  \nombre{30000}\)</span> est <span class="math inline">\(0,01\)</span> et que la probabilité de faire une erreur de type II en <span class="math inline">\(\mu = \nombre{35000}\)</span> est <span class="math inline">\(0,02\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(n = 19 \text{ ou } 20\)</span>, <span class="math inline">\(c = \nombre{32658}\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\(\bar{X} \sim \mathcal{N}(\mu, 5000^2/n)\)</span>. Or, <span class="math display">\[
+\begin{aligned}
+      \alpha &amp;= \prob{\bar{X} \geq c; \mu = \nombre{30 000}} \\
+      &amp;= 1 -
+      \Phi\left(
+        \frac{\sqrt{n}(c - \nombre{30000})}{\nombre{5000}}
+      \right) \\
+      \end{aligned}
+\]</span></p>
+<p>d’où</p>
+<p><span class="math display">\[
+\begin{aligned}
+      z_\alpha &amp;=
+      \frac{\sqrt{n}(c-\nombre{30000})}{\nombre{5000}}.
+    \end{aligned}
+\]</span> De même, <span class="math display">\[
+\begin{aligned}
+      \beta &amp;= \prob{\bar{X} &lt; c; \mu = \nombre{35000}}\\
+      &amp;= \Phi\left(
+        \frac{\sqrt{n}(c - \nombre{35000})}{\nombre{5000}}
+      \right), \\
+      \end{aligned}
+\]</span></p>
+<p>d’où</p>
+<p><span class="math display">\[
+\begin{aligned}
+      z_{1 - \beta} &amp;=
+      \frac{\sqrt{n}(c-\nombre{35000})}{\nombre{5000}}.
+    \end{aligned}
+\]</span> On trouve dans une table de la loi normale que <span class="math inline">\(z_\alpha =
+    z_{0,01} = 2,326\)</span> et que <span class="math inline">\(z_{1 - \beta} = z_{0,98} = -2,05\)</span>. En résolvant pour <span class="math inline">\(n\)</span> et <span class="math inline">\(c\)</span> le système à deux équations et deux inconnues, on obtient <span class="math inline">\(n = 19,15\)</span> et <span class="math inline">\(c = \nombre{32658}\)</span>. Aux fins du test, on choisira donc une taille d’échantillon de <span class="math inline">\(n =
+    19\)</span> ou <span class="math inline">\(n = 20\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-poids_bebefille_naissance" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="sec-tests-poids_bebefille_naissance"><span class="header-section-number">6.5</span> Poids d’une fillette à la naissance</h2>
+<p>On suppose que le poids en grammes des bébés à la naissance au Canada est distribué selon une loi normale de moyenne <span class="math inline">\(\mu = \nombre{3315}\)</span> et de variance <span class="math inline">\(\sigma^2 = 525^2\)</span>, garçons et filles confondus. Soit <span class="math inline">\(X\)</span> le poids d’une fillette née au Québec. On suppose <span class="math inline">\(X \sim \mathcal{N}(\mu_X, \sigma_X^2)\)</span>. <strong>a)</strong> Donner l’expression de la statistique du test $ _0: _X $ versus $ _1: _X &gt; $ (les bébés sont en moyenne plus gros au Québec) si <span class="math inline">\(n = 11\)</span> et <span class="math inline">\(\alpha = 0,01\)</span>. (La valeur de <span class="math inline">\(\sigma_X^2\)</span> est inconnue ici.)</p>
+<strong>b)</strong> Calculer la valeur de la statistique et tirer une conclusion si l’échantillon de poids de 11 fillettes nées au Québec est le suivant:
+<p><strong>d)</strong> Énoncer la statistique du test et la région critique du test $ _0: _X^2 ^2$ versus $ _1: _X^2 &lt; 525^2$ (moins de variation dans le poids des bébés nés au Québec) si <span class="math inline">\(\alpha =  0,05\)</span>.</p>
+<p><strong>e)</strong> Calculer la statistique du test à partir des données de la partie b). Quelle est la conclusion à tirer de ce résultat?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(T = \frac{\bar{X} - \nombre{3315}}{\sqrt{S^2/11}}\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(t = 0,699 &lt; t_{10,   0,01}\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(\frac{(10) S^2}{525^2}\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(y = 4,104 &gt; \chi_{10,  0,05}^2\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Il s’agit d’un simple test sur une moyenne. La statistique pour un petit échantillon est <span class="math display">\[
+\begin{aligned} T &amp;= \frac{\bar{X} - \mu_X}{\sqrt{S^2/n}} = \frac{\bar{X} - \nombre{3315}}{\sqrt{S^2/11}} \sim t_{10}. \end{aligned}
+\]</span> On rejette $ _0$ si <span class="math inline">\(t &gt; t_{10,  0,01} = 2,764\)</span>.</p>
+<p><strong>b)</strong> On commence par calculer les statistiques <span class="math inline">\(\bar{X}\)</span> et <span class="math inline">\(S_X^2\)</span>, <span class="math display">\[ \bar{X} = 3385,91 \quad \text{ et } \quad S_X^2 = \nombre{113108,49}. \]</span> On trouve que <span class="math inline">\(t = 0,699 &lt; t_{10,  0,01} = 2,764\)</span>, on ne rejette donc pas $ _0$ à un seuil de signification de <span class="math inline">\(1\)</span>&nbsp;<br>
+</p>
+<p><strong>d)</strong> On a un test unilatéral à gauche sur une variance pour lequel la statistique est <span class="math display">\[
+\begin{aligned} Y = \frac{(n-1) S^2}{\sigma^2} = \frac{(10) S^2}{525^2} \sim \chi^2_{10}. \end{aligned}
+\]</span> On rejette $ _0$ si <span class="math inline">\(y &lt; \chi_{10,   0,95}^2 = 3,94\)</span>.</p>
+<p><strong>e)</strong> Ici, <span class="math inline">\(y = 4,104 &gt; 3,94\)</span>. On ne rejette donc pas $ _0$.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-poids_bebegarcon_naissance" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-tests-poids_bebegarcon_naissance"><span class="header-section-number">6.6</span> Poids d’un garçon à la naissance</h2>
+Soit <span class="math inline">\(Y\)</span> le poids en grammes d’un garçon né au Québec et supposons que <span class="math inline">\(Y \sim \mathcal{N}(\mu_Y, \sigma_Y^2)\)</span>. On a les observations suivantes:
+<p>Refaire les questions de l’exercice&nbsp;<span class="citation" data-cites="tests">@tests</span>.@sec-tests-poids_bebefille_naissance. Les réponses obtenues dans ces deux exercices suggèrent-elles d’autres hypothèses à explorer? Faire les tests appropriés le cas échéant.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(t = 4,028 &gt; t_{10,  0,01}\)</span> </p>
+<p><strong>b)</strong> <span class="math inline">\(y = 4,223 &gt; \chi_{10,   0,95}^2\)</span></p>
+<p><strong>c)</strong> tests sur les moyennes et les variances</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La statistique à utiliser est la même qu’à l’exercice&nbsp;<span class="citation" data-cites="tests">@tests</span>.@sec-tests-poids_bebefille_naissance.</p>
+<p><strong>b)</strong> On commence par calculer les statistiques <span class="math inline">\(\bar{Y}\)</span> et <span class="math inline">\(S_Y^2\)</span>, <span class="math display">\[ \bar{Y} = 3729,36 \quad \text{ et } \quad S_Y^2 = \nombre{116388,85}. \]</span> On trouve que <span class="math inline">\(t = 4,028 &gt; t_{10,  0,01} = 2,764\)</span>, on rejette donc $ _0$ à un seuil de signification de <span class="math inline">\(1\)</span>&nbsp;<br>
+</p>
+<p><strong>c)</strong> La statistique à utiliser est la même qu’à l’exercice&nbsp;<span class="citation" data-cites="tests">@tests</span>.@sec-tests-poids_bebefille_naissance.</p>
+<p><strong>d)</strong> On a <span class="math inline">\(y = 4,223 &gt; 3,94\)</span>. On ne rejette donc pas $ _0$.</p>
+<strong>e)</strong> Les moyennes semblent être différentes entre les deux groupes, mais les variances égales. On commence par vérifier si le ratio des variances est près de <span class="math inline">\(1\)</span>. On teste <span class="math display">\[
+\begin{aligned} \mathcal{H}_0 &amp;: \sigma_X^2 / \sigma_Y^2 = 1 \\ \mathcal{H}_1 &amp;: \sigma_X^2 / \sigma_Y^2 \ne 1 \end{aligned}
+\]</span> La statistique à utiliser pour ce test est <span class="math display">\[
+\begin{aligned} F = \frac{S_Y^2 / \sigma_Y^2}{S_X^2 / \sigma_X^2} \sim \mathcal{F}_{m-1, n-1} \end{aligned}
+\]</span> Avec les données des deux numéros, on trouve que <span class="math inline">\(f = 0,97\)</span>. À un seuil de signification de <span class="math inline">\(\alpha = 10\)</span><br>
+
+<span class="math display">\[\begin{aligned} \mathcal{H}_0 &amp;: \mu_X = \mu_Y \\ \mathcal{H}_1 &amp;: \mu_X \ne \mu_Y \end{aligned}\]</span>
+<span class="math display">\[ en supposant les variances égales. La statistique utilisée pour ce test est \]</span>
+<span class="math display">\[\begin{aligned} W &amp;= \frac{(\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)}{S_p} \sim t_{n+m-2}, \\ \text{où}   S_p^2 &amp;= \frac{S_X^2 (n-1) + S_Y^2 (m - 1)}{n + m - 2}. \end{aligned}\]</span>
+<p>$$ Avec les données des deux numéros, on trouve que <span class="math inline">\(w = -1,0139\)</span>. À un seuil de signification de <span class="math inline">\(\alpha = 5\)</span><br>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-concentration_particule_suspension" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="sec-tests-concentration_particule_suspension"><span class="header-section-number">6.7</span> Concentration de particules en suspension dans l’air</h2>
+<p>Parmi les statistiques relevées par l’Organisation mondiale de la santé (OMS) on compte la concentration en <span class="math inline">\(\mu g/m^3\)</span> de particules en suspension dans l’air. Soit <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> les concentrations en <span class="math inline">\(\mu g/m^3\)</span> de particules en suspension dans l’air aux centres-villes de Melbourne (Australie) et Houston (Texas), respectivement. On suppose que <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> sont normalement distribuées. À partir de <span class="math inline">\(n = 13\)</span> observations de la variable aléatoire <span class="math inline">\(X\)</span> et <span class="math inline">\(m = 16\)</span> observations de la variable aléatoire <span class="math inline">\(Y\)</span>, on souhaite tester $ _0: _X _Y$ versus $ _1: _X &lt; _Y$. <strong>a)</strong> Définir la statistique du test et la région critique en supposant égales les variances des distributions de <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span>. Utiliser un seuil de signification de <span class="math inline">\(5\)</span>&nbsp;<br>
+</p>
+<p><strong>b)</strong> Si <span class="math inline">\(\bar{x} = 72,9\)</span>, <span class="math inline">\(s_X = 25,6\)</span>, <span class="math inline">\(\bar{y} = 81,7\)</span> et <span class="math inline">\(s_Y = 28,3\)</span>, quelle est la conclusion pour ce test?</p>
+<p><strong>c)</strong> Calculer la valeur <span class="math inline">\(p\)</span> de ce test. Est-elle conforme à la conclusion en b)?</p>
+<p><strong>d)</strong> Tester si l’hypothèse de variances égales faite en a) est valide avec un niveau de confiance de <span class="math inline">\(90\)</span>&nbsp;<br>
+</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(T = [(\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)]/\sqrt{((n-1)S_X^2 + (m-1)S_Y^2) (n^{-1} + m^{-1})/(n + m - 2)}\)</span>, <span class="math inline">\(T \sim t(n + m - 2)\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(t = -0,838 &gt; t_{0,05}(27)\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(p = \Sexpr{format(pt(-.838, 27), digits = 4, dec = ",")}\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(f = 0,8311 &lt; f_{0,05}(12, 15)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Nous avons un test unilatéral à gauche sur la différence entre deux moyennes. En supposant égales les variances des deux populations, on a <span class="math inline">\(X \sim \mathcal{N}(\mu_X, \sigma^2)\)</span> et <span class="math inline">\(Y \sim  \mathcal{N}(\mu_Y, \sigma^2)\)</span>. On sait que <span class="math inline">\(\bar{X} \sim \mathcal{N}(\mu_X, \sigma^2/n)\)</span> et <span class="math inline">\(\bar{Y} \sim \mathcal{N}(\mu_Y, \sigma^2/m)\)</span>, d’où un estimateur de <span class="math inline">\(\mu_X - \mu_Y\)</span> sur lequel baser un test est <span class="math display">\[ \bar{X} - \bar{Y} \sim \mathcal{N}\left( \mu_X - \mu_Y, \frac{\sigma^2}{n} + \frac{\sigma^2}{m} \right). \]</span> La variance <span class="math inline">\(\sigma^2\)</span> est toutefois inconnue. Un estimateur de ce paramètre est l’estimateur combiné, soit la moyenne pondérée des estimateurs de chaque échantillon: <span class="math display">\[ S_p^2 = \frac{(n - 1) S_X^2 + (m - 1) S_Y^2}{n + m - 2}. \]</span> Or, <span class="math inline">\((n + m - 2) S_p^2/\sigma^2 \sim \chi^2(n + m - 2)\)</span>. Par conséquent, <span class="math display">\[
+\begin{aligned} T &amp;= \frac{\D \frac{(\bar{X} - \bar{Y}) - (\mu_X-\mu_Y)}{
+\]</span> On rejette $ _0: _X _Y$ en faveur de $ _1: _X &lt; _y$ si <span class="math inline">\(t \leq -t_{0,05}(n + m - 2)\)</span>.</p>
+<p><strong>b)</strong> Avec les données de l’énoncé, la valeur de la statistique développée en a) est <span class="math inline">\(t = -0,838\)</span>, alors que le 95{} centile d’une loi <span class="math inline">\(t\)</span> avec <span class="math inline">\(13 + 16 - 2 = 27\)</span> degrés de liberté est <span class="math inline">\(t_{0,05}(27) = 1,703\)</span>. Puisque <span class="math inline">\(\abs{t} &lt; 1,703\)</span>, on ne rejette pas $ _0$.</p>
+<p><strong>c)</strong> On a <span class="math inline">\(p = \prob{T &lt; -0,838}\)</span>, où <span class="math inline">\(T \sim t(27)\)</span>. À l’aide de , on trouve <code>{r echo} pt(-0.838, df = 27)</code> Puisque <span class="math inline">\(p = \Sexpr{format(pt(-.838, 27), digits = 4, dec = ",")} &gt; 0,05\)</span>, on ne rejette pas $ _0$. La conclusion est évidemment la même qu’en a).</p>
+<p><strong>d)</strong> On souhaite tester l’égalité de deux variances, c’est-à-dire $ _0: _X^2 = _Y^2$ versus $ _1: _X^2 _Y^2$. Pour ce faire, on se base sur le fait que <span class="math inline">\((n-1) S_X^2/\sigma_X^2 \sim \chi^2(n - 1)\)</span> et que <span class="math inline">\((m-1) S_Y^2/\sigma_Y^2 \sim \chi^2(m - 1)\)</span>. Ainsi, sous $ _0$ (c’est-à-dire lorsque <span class="math inline">\(\sigma_X^2 = \sigma_Y^2\)</span>), <span class="math display">\[ F = \frac{(n-1) S_X^2/(n - 1)}{(m-1) S_Y^2/(m - 1)} \sim F(n - 1, m - 1). \]</span> On rejette $ _0$ si la valeur de la statistique est supérieure au <span class="math inline">\(100(1 - \alpha/2)\)</span>{} centile d’une loi <span class="math inline">\(F\)</span> avec <span class="math inline">\(n - 1\)</span> et <span class="math inline">\(m - 1\)</span> degrés de liberté. Ici, on a <span class="math inline">\(f = 0,8311\)</span> et <span class="math inline">\(f_{0,05}(12, 15) = 2,48\)</span>, et pour l’autre côté, la valeur de <span class="math inline">\(f_{0,95}(12, 15)\)</span> (ou de <span class="math inline">\(f_{0,05}(15, 12)\)</span>) n’est pas donnée dans la table, mais on peut la trouver avec comme suit: <code>{r} qf(0.05,12,15)</code> Puisque <span class="math inline">\(\Sexpr{round(qf(0.05,12,15),2)} &lt; 0,8311 &lt; 2,48\)</span>, on ne rejette donc pas $ _0$. L’hypothèse des variances égales est donc raisonnable.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-dentifrice" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="sec-tests-dentifrice"><span class="header-section-number">6.8</span> Recommandation de dentifrice</h2>
+<p>Un fabricant de dentifrice prétend que $75&nbsp;<br>
+recommandent son produit à ses patients. Sceptique, un groupe de protection des consommateurs décide de tester $ _0: = 0,75$ contre $ _1: ,75$, où <span class="math inline">\(\theta\)</span> est la proportion de dentistes recommandant le dentifrice en question. Un sondage auprès de <span class="math inline">\(390\)</span> dentistes a révélé que <span class="math inline">\(273\)</span> d’entre eux recommandent effectivement ce dentifrice. <strong>a)</strong> Quelle est la conclusion du test avec un seuil de signification de <span class="math inline">\(\alpha = 0,05\)</span>?</p>
+<p><strong>b)</strong> Quelle est la conclusion du test avec un seuil de signification de <span class="math inline">\(\alpha = 0,01\)</span>?</p>
+<p><strong>c)</strong> Quel est le seuil observé du test?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(z = -2,28\)</span></p>
+<p><strong>b)</strong> On ne rejette pas.</p>
+<p><strong>c)</strong> <span class="math inline">\(0,0226\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Soit <span class="math inline">\(X\)</span> la variable aléatoire du nombre de dentistes qui recommande le dentifrice parmi un groupe-test de 390 dentistes. On a donc que <span class="math inline">\(X \sim \text{Binomiale}(390, \theta)\)</span> et on teste <span class="math display">\[
+\begin{aligned} \mathcal{H}_0 &amp;: \theta = 0,75 \\ \mathcal{H}_1 &amp;: \theta \ne 0,75. \end{aligned}
+\]</span> Il s’agit d’un test bilatéral sur une proportion avec un grand échantillon. La statistique du test est $$ Z = \frac{ - 0,75}{</p>
+<p><strong>b)</strong> Puisque <span class="math inline">\(z_{0,005} = 2,576 &gt; 2,28\)</span>, on ne rejette pas l’hypothèse $ _0$ à un seuil de signification de 1&nbsp;<br>
+</p>
+<p><strong>c)</strong> Le seuil observé est le plus grand seuil de signification auquel on rejette $ _0$. Ainsi, <span class="math display">\[ p = 2 \prob{Z &gt; 2,28} \approx 0,0226. \]</span> On rejette donc $ _0$ avec un niveau de confiance maximal de <span class="math inline">\(97,74\)</span>&nbsp;<br>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-smarties_rouge" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="sec-tests-smarties_rouge"><span class="header-section-number">6.9</span> Proportion de bonbons rouges dans une boîte de Smarties</h2>
+<p>Soit <span class="math inline">\(\theta\)</span> la proportion de bonbons rouges dans une boîte de Smarties. On prétend que <span class="math inline">\(\theta = 0,20\)</span>. <strong>a)</strong> Définir la statistique de test et la région critique avec un seuil de signification de <span class="math inline">\(5&nbsp;\
+\begin{aligned} \mathcal{H}_0 &amp;: \theta = 0,2 \\ \mathcal{H}_1 &amp;: \theta \ne 0,2. \end{aligned}\)</span>$</p>
+<p><strong>b)</strong> Pour faire le test, les <span class="math inline">\(20\)</span> membres de la section locale des Amateurs de Smarties Associés (ASA) ont chacun compté le nombres de bonbons rouges dans une boîte de <span class="math inline">\(50\)</span> grammes de Smarties. Ils ont obtenu les proportions suivantes: <span class="math display">\[\begin{gather*} \frac{8}{56},  \quad \frac{13}{55}, \quad \frac{12}{58}, \quad \frac{13}{56}, \quad \frac{14}{57}, \quad \frac{5}{54},  \quad \frac{14}{56}, \quad \frac{15}{57}, \quad \frac{11}{54}, \quad \frac{13}{55}, \\[12pt] \frac{10}{57}, \quad \frac{8}{59},  \quad \frac{10}{54}, \quad \frac{11}{55}, \quad \frac{12}{56}, \quad \frac{11}{57}, \quad \frac{6}{54},  \quad \frac{7}{58},  \quad \frac{12}{58}, \quad \frac{14}{58}. \end{gather*}\]</span> Si chaque membre de l’ASA fait le test mentionné en a), quelle proportion des membres rejette l’hypothèse $ _0$?</p>
+<p><strong>c)</strong> En supposant vraie l’hypothèse $ _0$, à quelle proportion de rejets de l’hypothèse $ _0$ peut-on s’attendre?</p>
+<p><strong>d)</strong> Pour chacun des ratios en b) on peut construire un intervalle de confiance à $95&nbsp;<br>
+</p>
+<p><strong>e)</strong> Si les <span class="math inline">\(20\)</span> résultats en b) sont agrégés de sorte que l’on a compté un total de <span class="math inline">\(219\)</span> bonbons rouges parmi <span class="math inline">\(\nombre{1124}\)</span> Smarties, rejette-t-on l’hypothèse $ _0$, toujours avec <span class="math inline">\(\alpha = 0,05\)</span>?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(Z = (\hat{\theta} - 0,20)/\sqrt{0,20 (1 - 0,20)/n}\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(0\)</span>&nbsp;<br>
+</p>
+<p><strong>c)</strong> <span class="math inline">\(0,05\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(100\)</span>&nbsp;<br>
+</p>
+<p><strong>e)</strong> <span class="math inline">\(p = 0,6654\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Il s’agit d’un test bilatéral sur une proportion avec un grand échantillon. La statistique du test est $$ Z = \frac{ - 0,20}{</p>
+<p><strong>b)</strong> En calculant la valeur de la statistique pour chacune des proportions données, on constate que toutes les statistiques sont plus inférieures à <span class="math inline">\(1,96\)</span>. Auncun membre ne rejette donc l’hypothèse $ _0$.</p>
+<p><strong>c)</strong> Étant donné que le seuil de signification est $5&nbsp;<br>
+</p>
+<p><strong>d)</strong> Si, en b), l’on n’a jamais rejeté l’hypothèse $ _0$, c’est que <span class="math inline">\(100\)</span>&nbsp;<br>
+</p>
+<strong>e)</strong> La valeur de la statistique est <span class="math display">\[ z = \frac{219/1124 - 0,20}{\sqrt{(0,20)(1 - 0,20)/1124}} = -0,4325 \]</span> et <span class="math inline">\(\abs{z} &lt; 1,96\)</span>. Donc, on ne rejette pas $ _0$ à un seuil de signification de <span class="math inline">\(5\)</span>&nbsp;<br>
+
+<span class="math display">\[\begin{aligned} p &amp;= \prob{\abs{Z} &gt; -0,4325}\\ &amp;= 2 \prob{Z &gt; 0,4325}\\ &amp;= 0,6654, \end{aligned}\]</span>
+<p>$$ ce qui représente le seuil de signification minimal auquel il est possible de rejeter $ _0$.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-taxe_tabac" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="sec-tests-taxe_tabac"><span class="header-section-number">6.10</span> Taxe sur le tabac pour financer le système de santé</h2>
+<p>Lors d’un sondage mené auprès de <span class="math inline">\(800\)</span> adultes dont <span class="math inline">\(605\)</span> non-fumeurs, on a posé la question suivante: <em>Devrait-on introduire une nouvelle taxe sur le tabac pour aider à financer le système de santé au pays?</em> Soit <span class="math inline">\(\theta_1\)</span> et <span class="math inline">\(\theta_2\)</span> la proportion de non-fumeurs et de fumeurs, respectivement, qui ont répondu par l’affirmative à cette question. Les résultats du sondage sont les suivants: <span class="math inline">\(x_1 = 351\)</span> non-fumeurs ont répondu oui, contre <span class="math inline">\(x_2 = 41\)</span> fumeurs. <strong>a)</strong> Tester l’hypothèse nulle que <span class="math inline">\(\theta_1 = \theta_2\)</span> versus la contre-hypothèse <span class="math inline">\(\theta_1 \ne \theta_2\)</span> avec un seuil de signification de $5&nbsp;<br>
+</p>
+<p><strong>b)</strong> Trouver un intervalle de confiance à $95&nbsp;<br>
+</p>
+<p><strong>c)</strong> Trouver un intervalle de confiance à $95&nbsp;<br>
+</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(z = 10,45 &gt; 1,96\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\((0,3005,   0,4393)\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\((0,4555,   0,5246)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Il s’agit d’un test sur la différence entre deux proportions. Il faut commencer par construire la statistique. On a <span class="math display">\[
+\begin{aligned} X &amp;\sim \text{Binomiale}(n, \theta_1)\\ Y &amp;\sim \text{Binomiale}(m, \theta_2). \end{aligned}
+\]</span> Pour <span class="math inline">\(n\)</span> et <span class="math inline">\(m\)</span> grands, on a, approximativement, <span class="math display">\[
+\begin{aligned} X &amp;\sim N(n\theta_1, n\theta_1(1 - \theta_1)) \\ Y &amp;\sim N(m\theta_2, m\theta_2(1 - \theta_2), \end{aligned}
+\]</span> et donc, toujours approximativement, <span class="math display">\[
+\begin{aligned} \hat{\theta}_1 &amp;= \frac{X}{n} \sim N\left(\theta_1, \frac{\theta_1(1-\theta_1)}{n}\right) \\ \hat{\theta}_2 &amp;= \frac{Y}{m} \sim N\left(\theta_2, \frac{\theta_2(1-\theta_2)}{m}\right). \end{aligned}
+\]</span> Par conséquent, <span class="math display">\[ \frac{(\hat{\theta}_1 - \hat{\theta}_2) - (\theta_1 - \theta_2)}{\sqrt{\theta_1(1-\theta_1)/n + \theta_2(1-\theta_2)/m}} \sim N(0, 1). \]</span> Pour pouvoir calculer la valeur de cette statistique pour un échantillon aléatoire, on remplace <span class="math inline">\(\theta_1\)</span> et <span class="math inline">\(\theta_2\)</span> dans le radical par <span class="math inline">\(\hat{\theta}_1 = X/n\)</span> et <span class="math inline">\(\hat{\theta}_2 = Y/m\)</span>, dans l’ordre. Un intervalle de confiance de niveau <span class="math inline">\(1 - \alpha\)</span> pour <span class="math inline">\(\theta_1 - \theta_2\)</span> est donc <span class="math display">\[ (\hat{\theta}_1 - \hat{\theta}_2) \pm z_{\alpha/2} \sqrt{\frac{\hat{\theta}_1 (1 - \hat{\theta}_1)}{n} + \frac{\hat{\theta}_2 (1 - \hat{\theta}_2)}{m}}. \]</span> De manière similaire, la statistique utilisée pour tester la différence entre les deux proportions <span class="math inline">\(\theta_1\)</span> et <span class="math inline">\(\theta_2\)</span> est <span class="math display">\[ Z =  \frac{(\hat{\theta}_1 - \hat{\theta}_2) - (\theta_1 - \theta_2)}{\sqrt{\hat{\theta}_1 (1 - \hat{\theta}_1)/n + \hat{\theta}_2 (1 - \hat{\theta}_2)/m}}, \]</span> et on rejette $ _0: _1 = _2$ en faveur de $ _1: _1 _2$ si <span class="math inline">\(\abs{z} &gt; z_{\alpha/2}\)</span>. Ici, on a <span class="math inline">\(x = 351\)</span>, <span class="math inline">\(y = 41\)</span>, <span class="math inline">\(n = 605\)</span> et <span class="math inline">\(m = 800 - 605 = 195\)</span>. Ainsi, <span class="math inline">\(\hat{\theta}_1 = 0,5802\)</span>, <span class="math inline">\(\hat{\theta}_2 = 0,2103\)</span> et <span class="math inline">\(\abs{z} = 10,44 &gt; 1,96\)</span>. On rejette donc $ _0$ à un seuil de signification de <span class="math inline">\(5\)</span>&nbsp;<br>
+</p>
+<p><strong>b)</strong> L’intervalle de confiance est <span class="math display">\[ (\theta_1 - \theta_2) \in (0,3005,   0,4393). \]</span> Comme <span class="math inline">\(0\)</span> n’appartient pas à cet intervalle, on rejette $ _0$.</p>
+<strong>c)</strong> On cherche maintenant un intervalle de confiance pour la proportion de la population en faveur de l’introduction du taxe sur le tabac. On a une observation <span class="math inline">\(x = 351 + 41 = 392\)</span> d’une distribution Binomiale<span class="math inline">\((800, \theta)\)</span>, d’où <span class="math inline">\(\hat{\theta} = 392/800 = 0,49\)</span>. Un intervalle de confiance à 95&nbsp;<br>
+
+<span class="math display">\[\begin{aligned} \theta &amp;\in \hat{\theta} \pm 1,96 \sqrt{\frac{\hat{\theta} (1 - \hat{\theta})}{800}} \\ &amp;\in 0,49 \pm 1,96 \sqrt{\frac{0,49 (0,51)}{800}} \\ &amp;\in (0,4555,   0,5246). \end{aligned}\]</span>
+<p>$$ Vérification avec : ```{r echo} prop.test(351 + 41, 800, correct = FALSE)$conf.int @</p>
+<pre><code>:::
+
+
+
+## Données d'arpentage {#sec-tests-arpenteur}
+
+
+::: {.cell}
+
+:::
+
+
+Un arpenteur a recueilli des données. Il souhaite déterminer lequel des modèles Weibull ou exponentiel s'ajuste le mieux aux données. Il a donc ajusté ces deux distributions aux données recueillies sur l'avenue de l'Agriculture tout juste devant la Pavillon Paul-Comtois. Il vous offre ses résultats, mais ne sait pas comment les utiliser pour conclure.
+
+Voici les données brutes et la somme des observations:
+
+::: {.cell}
+
+```{.r .cell-code}
+obs</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.16403708 0.22894075 0.49538900 0.42134622 0.39902636 0.10615576
+ [7] 0.04492993 0.14506347 0.36892703 0.31018503</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(obs)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.684001</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>On fournit également les valeurs des fonctions de log-vraisemblance maximisées de même que les estimations des estimateurs du maximum de vraisemblance ajustées avec pour la loi Weibull:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'MASS' was built under R version 4.5.3</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fweib <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(obs, <span class="at">densfun =</span> <span class="st">"weibull"</span>, <span class="at">lower =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fweib</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     shape       scale  
+  1.9160635   0.3020759 
+ (0.5064242) (0.0522960)</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fweib<span class="sc">$</span>loglik</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.505213</code></pre>
+</div>
+</div>
+<p>Notons que la fonction ajuste la loi Weibull avec la pramétrisation telle que sa fonction de densité est <span class="math display">\[
+f(x; \alpha, \beta) = \frac{\alpha}{\beta} x^{\alpha - 1} e^{-\left(\frac{x}{\beta}\right)^{\alpha}}   \beta,\alpha, x &gt; 0
+\]</span> où est <span class="math inline">\(\alpha\)</span> et est <span class="math inline">\(\beta\)</span>. <strong>a)</strong> Démontrer que la somme des observations est une statistique exhaustive pour <span class="math inline">\(\beta\)</span> dans le cas de la loi exponentielle.</p>
+<p><strong>b)</strong> Quelle est la statistique exhaustive pour <span class="math inline">\(\beta\)</span> dans le cas d’une loi Weibull de cette paramétrisation?</p>
+<p><strong>c)</strong> Trouver l’EMV du paramètre <span class="math inline">\(\beta\)</span> de la loi exponentielle et calculer à partir des données fournies dans l’énoncé la valeur maximisée de la log-vraisemblance.</p>
+<p><strong>d)</strong> Démontrer que si <span class="math inline">\(X \sim We(1, \beta)\)</span>, alors <span class="math inline">\(X \sim \mathcal{E}xp(\beta)\)</span>.</p>
+<p><strong>e)</strong> Identifier les hypothèses permettant de répondre à la question de l’arpenteur à l’aide d’un test du rapport de vraisemblance pour tester si la loi exponentielle est une bonne simplificaion de la Weibull au seuil 1<br>
+</p>
+<p><strong>f)</strong> Les hypothèses sont-elles simples ou composites?</p>
+<p><strong>g)</strong> Calculer la valeur observée de la statistique du test.</p>
+<p><strong>h)</strong> Quelle est la valeur critique du test?</p>
+<p><strong>i)</strong> Conclure dans le contexte.</p>
+<p><strong>j)</strong> En regard du résultat en a), pourquoi serait-ce avantageux pour l’arpenteur de pouvoir simplifier le modèle Weibull en un modèle exponentiel?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Démo</p>
+<p><strong>b)</strong> <span class="math inline">\(T = \sum_{i = 1}^n x_i^{\alpha}\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(\hat{beta}_{mv} = \bar{X}_n\)</span> et $l(_{mv} = $</p>
+<p><strong>d)</strong> Démo</p>
+<p><strong>e)</strong> <span class="math inline">\(\mathcal{H}_0: \alpha = 1\)</span> et <span class="math inline">\(\mathcal{H}_1: \alpha \neq 1\)</span></p>
+<p><strong>f)</strong> Composites</p>
+<p><strong>g)</strong> 4,704894</p>
+<p><strong>h)</strong> 6,635</p>
+<p><strong>i)</strong> Ne peut pas rejeter <span class="math inline">\(\mathcal{H}_0\)</span></p>
+<p><strong>j)</strong> Utiliser <span class="math inline">\(\bar{X}_n\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La première statistique donnée est un vecteur contenant toutes les observations <span class="math inline">\((X_1, \dots, X_{10})\)</span>, qui contient évidemment l’ensemble de l’information sur l’échantillon. On procède avec le théorème de factorisation de Fisher-Neymann. Pour l’exponentielle, <span class="math display">\[
+\begin{aligned} L(x; \beta) &amp;= \prod_{i=1}^n \beta^{-1} e^{-\beta^{-1}x_i} \\ &amp;= \beta^{-n} e^{-\beta^{-1} \sum_{i = 1}^n x_i} \times 1 \end{aligned}
+\]</span> Donc <span class="math inline">\(T = \sum_{i = 1}^n x_i\)</span> est exhaustive pour <span class="math inline">\(\beta\)</span> dans une loi exponentielle. Pour la loi Weibull, <span class="math display">\[
+\begin{aligned} L(x; \alpha, \beta) &amp;= \prod_{i=1}^n \frac{\alpha}{\beta} x_i^{\alpha - 1} \text{exp}(-\left(\frac{x_i}{\beta}\right)^{\alpha}) \\ &amp;= \frac{\alpha^n}{\beta^n} \left(\prod_{i=1}^n x_i \right)^{\alpha - 1}  \text{exp} (-\frac{1}{\beta} \sum_{i = 1}^n x_i^{\alpha}) \end{aligned}
+\]</span> Donc <span class="math inline">\(T = \sum_{i = 1}^n x_i^{\alpha}\)</span> est exhaustive pour <span class="math inline">\(\beta\)</span> dans une loi Weibull.</p>
+<p><strong>b)</strong> On dérive la log-vraisemblance de la loi exponentielle pour obtenir l’estimateur du maximum de vraisemblance. Ainsi, on obtient <span class="math display">\[
+\begin{aligned} l(x; \beta) &amp;= \log{\frac{1}{\beta^n}} e^{-\frac{1}{\beta} \sum_{i = 1}^n x_i} \\ \frac{\text{d}}{\text{d}\beta} l(x; \beta) &amp;= \frac{-n}{\beta} + \frac{1}{\beta^2} \sum_{i = 1}^n x_i \end{aligned}
+\]</span> et on pose le tout égal à 0 pour maximiser de telle sorte que <span class="math display">\[
+\begin{aligned} -n \hat{\beta}_{mv} &amp;= \sum_{i = 1}^n x_i \\ \hat{\beta}_{mv} &amp;= \bar{X}_n. \end{aligned}
+\]</span> Dans ce problème, on trouve que <span class="math inline">\(\bar{x}_{10} = 2,684001 / 10 = 0,2684001\)</span> et la log-vraisemblance maximisée est <span class="math inline">\(l(\hat{\beta}_{mv}   = -10 \times \log{0.2684001} - 1 / 0.268 4001 \times 2.684001 = 3,15277.\)</span></p>
+<p><strong>c)</strong> En substituant <span class="math inline">\(\alpha = 1\)</span> dans la fonction de densité de la loi Weibull, on a <span class="math inline">\(f(x; 1, \beta) = 1 \beta x^0 \text{exp}(-\beta x^{1})\)</span>, ce qui est exactement la densité d’une loi exponentielle. Par le théorème de l’unicité des fonctions de densité, on peut conclure le résultat voulu.</p>
+<p><strong>d)</strong> <span class="math inline">\(\mathcal{H}_0: \alpha = 1\)</span> et <span class="math inline">\(\mathcal{H}_1: \alpha \neq 1\)</span></p>
+<p><strong>e)</strong> Dans tous les cas, elles sont composites. Pour <span class="math inline">\(\mathcal{H}_0\)</span>, même si on connaît <span class="math inline">\(\alpha\)</span>, la distribution n’est pas connue en entier comme on ne connaît rien de <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>f)</strong> Notre test du rapport de vraisemblance a <span class="math inline">\(p = 2\)</span> et <span class="math inline">\(r = 1\)</span>. Ainsi, on utilise les valeurs données dans l’énoncé pour les valeurs maximisées des fonctions log-vraisemblance pour obtenir. <span class="math display">\[ w_{10} = 2(5,505213 - 3,152766) = 4,704894. \]</span></p>
+<p><strong>g)</strong> La statistique de test suit donc une loi <span class="math inline">\(\chi^2\)</span> avec <span class="math inline">\(p - r\)</span> degrés de liberté. Ainsi, on a que <span class="math inline">\(W_{10} \sim \chi^2_{(1)}\)</span>. Le quantile supérieur au seuil 1<br>
+</p>
+<p><strong>h)</strong> Comme 4.704894 &lt; 6.635, on ne peut pas rejeter <span class="math inline">\(\mathcal{H}_0\)</span> au seuil 1<br>
+</p>
+<p><strong>i)</strong> Selon le principe du rasoir d’Okham, on recommande toujours d’utiliser le modèle le plus simple possible. En particulier ici, l’arpenteur pourrait tout simplement utiliser <span class="math inline">\(\bar{X}_n\)</span> pour poursuivre son analyse au lieu de devoir ajuster pour trouver une valeur de <span class="math inline">\(\alpha\)</span> également s’il utilisait le modèle Weibull.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-reassurance_incendie" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="sec-tests-reassurance_incendie"><span class="header-section-number">6.11</span> Pertes de réassurance par incendie</h2>
+<p>Télécharger le fichier sur le site de cours. Il contient les pertes de biens, dues à un incendie, de plus d’un million de couronnes danoises provenant de réclamations faites à la compagnie de réassurance Copenhagen Re entre 1980 et 1990. Les données peuvent être importées en comme suit, après avoir changé l’environnement de travail de au dossier dans lequel vous avez enregistré le fichier :</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ct <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"donnees/contents.csv"</span>,<span class="at">header=</span><span class="cn">TRUE</span>,<span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(ct)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> Contents</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Les données peuvent aussi être importées par en cliquant sur ``Import Dataset’’. On se rappelle également que la distribution exponentielle est un cas spécial de la distribution Gamma quand le paramètre <span class="math inline">\(\alpha\)</span> égal <span class="math inline">\(1\)</span>. <strong>a)</strong> Ajuster la distribution Gamma aux données et construire un intervalle de confiance à <span class="math inline">\(95\)</span><br>
+</p>
+<p><strong>b)</strong> Tester l’hypothèse que <span class="math inline">\(\alpha=1\)</span> à un niveau de <span class="math inline">\(5\)</span><br>
+</p>
+<p><strong>c)</strong> Tester l’hypothèse que le modèle exponentiel est une simplification adéquate du modèle Gamma en utilisant un test du rapport de vraisemblance au niveau <span class="math inline">\(5\)</span><br>
+</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Premièrement, on ajuste le modèle Gamma aux données. <code>{r} library(MASS) m3 &lt;- fitdistr(data,densfun="gamma",start=list(shape=0.5,rate=0.2))</code> L’estimation du paramètre <span class="math inline">\(\alpha\)</span> et l’estimation de son écart-type sont <code>{r} m3$estimate[1] m3$sd[1]</code> Le quantile <span class="math inline">\(97,5\)</span><br>
+</p>
+<p><strong>b)</strong> Les hypothèses de test sont: <span class="math display">\[ \mathcal{H}_0  :  \alpha = 1, \mathcal{H}_1 :  \alpha \ne 1 \]</span> et la statistique de Wald est donnée par <span class="math display">\[ w_n = \frac{\hat \alpha - 1}{\hat \sigma_{\hat \alpha}}  = \frac{\Sexpr{round(as.numeric(m3$estimate[1]),5)}-1}{\Sexpr{round(as.numeric(m3$sd[1]),5)}} = \Sexpr{round((as.numeric(m3$estimate[1])-1)/as.numeric(m3$sd[1]),5)}. \]</span> Clairement, <span class="math inline">\(w_n\)</span> est plus petite que <span class="math display">\[ - z_{0,025} = -\Sexpr{round(qnorm(0.975),3)}. \]</span> Ainsi, <span class="math inline">\(\mathcal{H}_0\)</span> est rejetée à un niveau de confiance <span class="math inline">\(5\)</span><br>
+</p>
+<p><strong>c)</strong> Pour calculer la statistique de test, on ajuste d’abord le modèle exponentiel aux données: <code>{r} m2 &lt;- fitdistr(data,densfun="exponential")</code> La log-vraisemblance des deux modèles est donnée par <code>{r} m3$loglik m2$loglik</code> ce qui donne la statistique du rapport de vraisemblance <span class="math display">\[ w= 2\{\ell(\hat \alpha,\hat \beta)-\ell(\hat \beta)\} = 2 (\Sexpr{round(m3$loglik,4)} + \Sexpr{round(-m2$loglik,4)}) = \Sexpr{round(2*(m3$loglik-m2$loglik),4)}. \]</span> Clairement, l’hypothèse que <span class="math inline">\(\alpha=1\)</span> est rejetée parce que la valeur de la statistique du rapport de vraisemblance est beaucoup plus grande que le quantile <span class="math inline">\(95\)</span><br>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-poissons_aquarium" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="sec-tests-poissons_aquarium"><span class="header-section-number">6.12</span> Nombre de poissons dans un aquarium</h2>
+<p>On a compilé les résultats d’une expérience dans un tableau de fréquence des observations recueillies sur le nombre de poissons présents dans une certaine région d’un aquarium à des intervalles réguliers. On considère les moments des observations comme indépendants.</p>
+<p>Ces observations ont été regroupées dans un tableau de fréquence.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(obs)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>obs
+ 0  1  2  3  4  5  6  7  8 14 
+21 18 27 10  8  5  6  3  1  1 </code></pre>
+</div>
+</div>
+<p>Comme vous êtes quelqu’un de concept, vous désirez tester si le modèle Poisson est adéquat pour ces données, et ce, à l’aide d’un test du chi-carré de Pearson.</p>
+<p>Malgré votre soif de “concept”, vous êtes une personne occupée, donc vous utilisez ce test en supposant 6 cellules: 0, 1, 2, 3, 4, 5 et 6 et plus. <strong>a)</strong> Identifier les hypothèses de ce test assez ludique.</p>
+<p><strong>b)</strong> Calculer <span class="math inline">\(\bar{x}_n\)</span>.</p>
+<p><strong>c)</strong> Tester et conclure dans le contexte au seuil 5<br>
+</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\mathcal{H}_0: X \sim \mathcal{P}\text{oisson}\)</span> et <span class="math inline">\(\mathcal{H}_1\)</span>: <span class="math inline">\(X\)</span> ne suit pas une loi de Poisson.</p>
+<p><strong>b)</strong> <span class="math inline">\(\bar{x}_n = 2,38\)</span></p>
+<p><strong>c)</strong> Rejeter <span class="math inline">\(\mathcal{H}_0\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\mathcal{H}_0: X \sim \mathcal{P}\text{oisson}\)</span> et <span class="math inline">\(\mathcal{H}_1\)</span>: <span class="math inline">\(X\)</span> ne suit pas une loi de Poisson. Notons que le sens des hypothèses est inversé dans le cadre d’un test d’adéquation.</p>
+<p><strong>b)</strong> <span class="math inline">\(\bar{x}_n = 2,38\)</span>. Remarque: il y a 100 observations.</p>
+<p><strong>c)</strong> En regard du fait que <span class="math inline">\(\bar{x}_n = 2,38\)</span>, on obtient que <span class="math inline">\(\hat{\lambda} = 2,38\)</span>. On calcule ensuite les probabilités des cellules selon la loi de Poisson ajustée:</p>
+<p><span class="math display">\[
+\begin{aligned} \hat{\pi}_0 &amp;= \frac{\hat{\lambda}^0 e^{-\hat{\lambda}}}{0!} &amp;= \frac{2,38^0 e^{-2,38}}{0!} &amp;= 0,0926 \\ \hat{\pi}_1 &amp;= \frac{\hat{\lambda}^1 e^{-\hat{\lambda}}}{1!} &amp;= \frac{2,38^1 e^{-2,38}}{1!} &amp;= 0,2203 \\ \hat{\pi}_2 &amp;= \frac{\hat{\lambda}^2 e^{-\hat{\lambda}}}{2!} &amp;= \frac{2,38^2 e^{-2,38}}{2!} &amp;= 0,2621 \\ \hat{\pi}_3 &amp;= \frac{\hat{\lambda}^3 e^{-\hat{\lambda}}}{3!} &amp;= \frac{2,38^3 e^{-2,38}}{3!} &amp;= 0,2079 \\ \hat{\pi}_4 &amp;= \frac{\hat{\lambda}^4 e^{-\hat{\lambda}}}{4!} &amp;= \frac{2,38^4 e^{-2,38}}{4!} &amp;= 0,1237 \\ \hat{\pi}_5 &amp;= \frac{\hat{\lambda}^5 e^{-\hat{\lambda}}}{5!} &amp;= \frac{2,38^5 e^{-2,38}}{5!} &amp;= 0,0589 \\ \hat{\pi}_6 &amp;= 1 - \sum_{i = 0}^5 \hat{\pi}_i &amp;= 1 - 0,9655 &amp;= 0,0345 \end{aligned}
+\]</span></p>
+<p>On trouve donc les fréquences espérées en mutiliant par le nombre d’observations.</p>
+<p><span class="math display">\[
+\begin{aligned} \widehat{\esp{n_0}} &amp;= 100 \times 0,0926 &amp;= 9,26 \\ \widehat{\esp{n_1}} &amp;= 100 \times 0,2203 &amp;= 22,03 \\ \widehat{\esp{n_2}} &amp;= 100 \times 0,2621 &amp;= 26,21 \\ \widehat{\esp{n_3}} &amp;= 100 \times 0,2079 &amp;= 20,79 \\ \widehat{\esp{n_4}} &amp;= 100 \times 0,1237 &amp;= 12,37 \\ \widehat{\esp{n_5}} &amp;= 100 \times 0,0589 &amp;= 5,89 \\ \widehat{\esp{n_6}} &amp;= 100 \times 0,0345 &amp;= 3,45 \end{aligned}
+\]</span></p>
+<p>On trouve ensuite la statistique de test:</p>
+<p><span class="math display">\[
+\begin{aligned} X_{\text{obs}}^2 &amp;=  \sum_{i = 0}^6 \frac{(n_i - \widehat{\esp{n_i}})^2}{\widehat{\esp{n_i}}} \\ &amp;= \frac{(21 - 9,26)^2}{9,26} + \frac{(18 - 22,03)^2}{22,03} + \frac{(27 - 26,21)^2}{26,21} \\ &amp;+ \frac{(10 - 20,79)^2}{20,79} + \frac{(8 - 12,37)^2}{12,37} + \frac{(5 - 5,89)^2}{5,89} \\ &amp;+ \frac{(11 - 3,45)^2}{11} \\ &amp;= 39,48769 \end{aligned}
+\]</span></p>
+<p>Comme nous avons posé 2 conditions, <span class="math inline">\(X_{\text{obs}}^2\)</span> suit une <span class="math inline">\(\mathcal{X}^2\)</span> avec <span class="math inline">\(7 - 2 = 5\)</span> degrés de liberté. Puisque, $^2_{5, 5<br>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-tests-classes_titanic" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="sec-tests-classes_titanic"><span class="header-section-number">6.13</span> Classe de tarification du Titanic</h2>
+<p>Le tableau de contingence suivant montre le destin des passagers du Titanic en fonction de la classe de tarification du billet, représentant le statut socio-économique.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>        Class
+Survived 1st 2nd 3rd Crew
+     No  122 167 528  673
+     Yes 203 118 178  212</code></pre>
+</div>
+</div>
+<p><strong>a)</strong> Peut-on conclure que la probabilité de survie au naufrage du Titanic était différente selon la classe tarifaire au seuil de 5&nbsp;<br>
+</p>
+<p><strong>b)</strong> Avec , calculer le seuil observé du test utilisé en a).</p>
+<p><strong>c)</strong> Avec , visualiser les probabilités de survie estimées avec un diagramme en mosaïque.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>oui b) <span class="math inline">\(\Sexpr{pchisq(190.39,3,lower.tail=FALSE)}\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> L’hypothèse nulle est <span class="math inline">\(\mathcal{H}_0 :\)</span> les lignes et les colonnes sont indépendantes. On doit donc faire un test du <span class="math inline">\(\chi^2\)</span>. On calcule les totaux des lignes: <span class="math display">\[
+\begin{aligned} r_1 &amp;= 122+167+528+673 = \Sexpr{122+167+528+673}\\ r_2 &amp;= 203+118+178+212 = \Sexpr{203+118+178+212} \end{aligned}
+\]</span> On calcule les totaux des colonnes: <span class="math display">\[
+\begin{aligned} c_1 &amp;= 122+203 = \Sexpr{122+203}\\ c_2 &amp;= 167+118 = \Sexpr{167+118}\\ c_3 &amp;= 528+178 = \Sexpr{528+178}\\ c_4 &amp;= 673+212 = \Sexpr{673+212}\\ \end{aligned}
+\]</span> On a <span class="math inline">\(n=2201\)</span> et les nombre espérés dans les cellules sont calculés comme suit. <span class="math display">\[
+\begin{aligned} \widehat{\esp{n_{ij}}} &amp;= r_ic_j/n\\ \widehat{\esp{n_{11}}} &amp;= \Sexpr{122+167+528+673}*\Sexpr{122+203}/2201= \Sexpr{(122+167+528+673)*(122+203)/2201}. \end{aligned}
+\]</span> On trouve donc les compte espérés <code>{r echo} #| echo: false rowtots &lt;- rowSums(mytab) coltots &lt;- colSums(mytab) (Ei &lt;- round(matrix(rep(rowtots,4),nrow=2)*matrix(rep(coltots,2),byrow=TRUE,nrow=2)/sum(mytab),2)) Xstat &lt;- sum((mytab-Ei)^2/Ei)</code> La statistique du <span class="math inline">\(\chi^2\)</span> est <span class="math display">\[
+\begin{aligned} X^2 =&amp;\sum_{i=1}^2\sum_{j=1}^4 \frac{\{n_{ij}-\widehat{\esp{n_{ij}}}\}^2}{\widehat{\esp{n_{ij}}}}\\ &amp; = \frac{(122-220.01)^2}{220.01}+\cdots+\frac{(212-285.89)^2}{285.89}\\ &amp;= \Sexpr{round(Xstat,2)} \end{aligned}
+\]</span> Le nombre de degrés de liberté est <span class="math inline">\(1\times 3 = 3\)</span> et la valeur critique donnée dans la table est $^2_{3,95<br>
+</p>
+<p><strong>b)</strong> On trouve <code>{r} pchisq(190.39,3,lower.tail=FALSE)</code></p>
+<p><strong>c)</strong> On peut tracer le diagramme en mosaïque avec les commandes suivantes. Le résultat se trouve dans la Figure&nbsp;<a href="#sec-tests-classes_titanic" class="quarto-xref"><span>Section 6.13</span></a>. <code>{r eval} #| eval: false tableau &lt;- matrix(c(122,203,167,118,528,178,673,212),nrow=2, dimnames=list(Survived=c("No","Yes"), Class=c("1st","2nd","3rd","Crew"))) mosaicplot(t(tableau), color=TRUE, main="")</code></p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapitres/intervalle.html" class="pagination-link" aria-label="Estimation par intervalle">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation par intervalle</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

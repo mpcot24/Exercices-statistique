@@ -1,0 +1,43 @@
+## La station d'essence {#sec-base-va_station_essence}
+
+Une station service opère deux pompes à essence. Chacune d'entre elles peut produire jusqu'à 10 000 litres d'essence par mois. La quantité totale d'essence pompée à la station chaque mois est une variable aléatoire $Y$, mesurée en 10 000 litres, avec fonction de densité de probabilité donnée par
+$$
+f(y)=\begin{cases}
+y, & 0\leq y<1,\\
+2-y, & 1\leq y <2,\\
+0, &\text{ailleurs.}
+\end{cases}
+$$
+**a)** Trouver la fonction de répartition $F$ de $Y$.
+
+**b)** Calculer la probabilité que la station service pompe entre 8 500 et 11 500 litres d'essence dans un mois.
+
+**c)** Quel est le revenu mensuel espéré si la station service vend son essence au prix de 2,10 \$ le litre ?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $$
+F(y)= \begin{cases}
+0, & y<0\\
+y^2/2, & 0\leq y<1\\
+1- (2-y)^2/2, & 1\leq y <2\\
+1, & y>2.
+\end{cases}
+$$
+
+**b)** 0.2775
+
+**c)** 21000
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Le support de $Y$ est $[0,2]$, donc $F(y)=0$ pour $y<0$ et $F(y)=1$ pour $y>2$. Pour $0\leq y <1$, $$ F(y)=\Pr[Y\leq y]=\int_0^y x\d x = \frac{y^2}{2}. $$ Pour $1\leq y <2$, $$ F(y)=\Pr[Y\leq y]=\int_0^1 x\d x +\int_1^y (2-x)\d x = 1-\frac{(2-y)^2}{2}. $$ Ainsi la fonction de répartition de $Y$ est $$ F(y)= \begin{cases} 0, & y<0\\ y^2/2, & 0\leq y<1\\ 1- (2-y)^2/2, & 1\leq y <2\\ 1, & y>2. \end{cases} $$
+
+**b)** On souhaite trouver la probabilité que $10000 Y$ se situe entre 8 500 et 11 500: $$
+\begin{aligned} \Pr[8500<10000Y\leq 11500] & = \Pr[0.85<Y\leq 1.15]\\ &=F(1.15)-F(0.85)\\ &=1- \frac{(2-1.15)^2}{2}-\frac{0.85^2}{2}=0.2775. \end{aligned}
+$$
+
+**c)** On désire trouver l'espérance du revenu, qui est de 2,10 \$ par litre, donc $\ex[2.10\times 10000Y]=21000\ex[Y]$. On a $$
+\begin{aligned} \ex[Y]&=\int_0^1 y^2\d y +\int_1^2 y(2-y)\d y\\ &=\left.\frac{y^3}{3}\right|_0^1+\left.y^2-\frac{y^3}{3}\right|_1^2\\ &=\frac{1}{3}+4-\frac{2^3}{3}-1+\frac{1}{3} = 1. \end{aligned}
+$$ Ainsi, l'espérance de revenu mensuel est de 21 000 \$.
+:::
+

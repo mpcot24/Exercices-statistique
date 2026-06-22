@@ -1,0 +1,50 @@
+## Fonction de masse de probabilité du minimum {#sec-base-stat_ordre_fmp}
+
+Soit $X$ une variable aléatoire discrète avec fonction de masse de
+  probabilité $\prob{X = x} = 1/6$, $x = 1, 2, 3, 4, 5, 6$. Démontrer
+  que la fonction de masse de probabilité du minimum d'un échantillon
+  aléatoire de taille $5$ issu de cette distribution est
+  $$
+    \Prob{X_{(1)} = x} =
+    \left(
+      \frac{7 - x}{6}
+    \right)^5 -
+    \left(
+      \frac{6 - x}{6}
+    \right)^5, \quad x = 1, 2, 3, 4, 5, 6.
+  $$
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Utiliser la discontinuité de la variable aléatoire discrète.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a que $X$ est distribuée uniformément sur $\{1, \dots, 6\}$,
+    d'où $F_X(x) = x/6$, $x = 1, \dots, 6$. De
+    l'exercice [-@sec-base-stat_ordre_repart], on a
+    que
+    $$
+\begin{aligned}
+      F_{X_{(1)}}(x)
+      &= 1 - (1 - F_X(x))^5 \\
+      &= 1 - \left( 1 - \frac{x}{6} \right)^5
+    \end{aligned}
+$$
+    comme la taille d'échantillon est $n = 5$.
+    Par conséquent, la fonction de masse de probabilité du minimum est
+    $$
+\begin{aligned}
+      \prob{X_{(1)} = x}
+      &= \lim_{y \rightarrow x^+} F_{X_{(1)}}(y) -
+      \lim_{y \rightarrow x^-} F_{X_{(1)}}(y) \\
+      &= \prob{X_{(1)} \leq x} - \prob{X_{(1)} < x} \\
+      &= \prob{X_{(1)} \leq x} - \prob{X_{(1)} \leq (x - 1)} \\
+      &= F_{X_{(1)}}(x) - F_{X_{(1)}}(x - 1) \\
+      &= \left(1 - \frac{x-1}{6} \right)^5 -
+      \bigg( 1 - \frac{x}{6} \bigg)^5 \\
+      &= \left(\frac{7 - x}{6}\right)^5 -
+      \left(\frac{6 - x}{6}\right)^5.
+    \end{aligned}
+$$
+:::
+

@@ -1,0 +1,28 @@
+## Taille d'échantillon aléatoire pour atteindre un niveau de confiance {#sec-intervalle-taille_pour_couverture}
+
+Soit $\bar{X}$ la moyenne d'un échantillon aléatoire de taille $n$
+  d'une distribution normale de moyenne $\mu$ inconnue et de variance
+  $9$. Trouver la valeur $n$ tel que, approximativement,
+  $\prob{\bar{X} - 1 < \mu < \bar{X} + 1} = 0,90$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$24$ ou $25$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a $X \sim N(\mu, 9)$. Tel que démontré à
+    l'exercice @intervalle.@sec-intervalle-moyenne_normale,
+    $$
+      \Prob{\bar{X} - \frac{\sigma}{\sqrt{n}}  z_{0,05} \leq \mu
+        \leq \bar{X} + \frac{\sigma}{\sqrt{n}}  z_{0,05}} = 0,90.
+    $$
+    Pour satisfaire la relation $\prob{\bar{X} - 1 < \mu < \bar{X} +
+      1} = 0,90$, on doit donc choisir
+    $$
+      \frac{\sigma}{\sqrt{n}}  z_{0,05} =
+      \frac{3 (1,645)}{\sqrt{n}} = 1.
+    $$
+    On trouve que $n = 24,35$. On doit donc choisir une taille
+    d'échantillon de $24$ ou $25$.
+:::
+

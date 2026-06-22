@@ -1,0 +1,28 @@
+## Estimateur sans biais de $\sigma^2$ {#sec-estimation-biais_eqm_sigma2}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une
+  distribution avec moyenne $\mu$ et variance $\sigma^2$. Démontrer que
+  $n^{-1} \sum_{i=1}^n (X_i - \mu)^2$ est un estimateur sans biais de
+  $\sigma^2$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a
+    $$
+\begin{aligned}
+      \Esp{\frac{1}{n}\sum_{i=1}^n(X_i - \mu)^2}
+      &= \frac{1}{n} \sum_{i=1}^n \esp{(X_i-\mu)^2} \\
+      &= \frac{1}{n} \sum_{i=1}^n \esp{X_i^2 -2\mu X_i + \mu^2} \\
+      &= \frac{1}{n} \sum_{i=1}^n (\esp{X_i^2} - \mu^2) \\
+      &= \frac{1}{n} \sum_{i=1}^n [(\sigma^2 + \mu^2) - \mu^2] \\
+      &= \frac{1}{n} \sum_{i=1}^n \sigma^2 \\
+      &= \sigma^2,
+    \end{aligned}
+$$
+    d'où l'expression du côté gauche de l'égalité est un estimateur
+    sans biais du paramètre $\sigma^2$.
+:::
+

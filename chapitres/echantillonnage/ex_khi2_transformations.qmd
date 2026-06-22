@@ -1,0 +1,32 @@
+## Transformations {#sec-echantillonnage-khi2_transformations}
+
+**a)** Soit $X \sim \mathcal{N}(0, \sigma^2)$. Trouver la distribution de $Y = X^2$.
+
+**b)** Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes chacune distribuée selon une loi normale centrée réduite. Trouver la distribution de $$ Y = \frac{(X_1 - X_2)^2}{2}. $$
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** Gamma$(1/2, 2\sigma^2)$
+
+**b)** $\chi^2(1)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a $X \sim \mathcal{N}(0, \sigma^2)$ et $Y = X^2$. Il faut voir que $Y = X^2$ n'est pas une transformation bijective. On pose donc d'abord $Z = \abs{X}$ et on trouve la densité de $Z$ à l'aide de la technique de la fonction de répartition: $$
+\begin{aligned} F_Z(z) &= \prob{\abs{X}\leq z}\\ &= \prob{-z \leq X \leq z}\\ &= F_X(z) - F_X(-z) \\ \end{aligned}
+$$
+
+d'où
+
+$$
+\begin{aligned} f_Z(z) &= f_X(z) + f_X(-z)\\ &= \frac{2}{\sigma \sqrt{2\pi}}  e^{-x^2/(2 \sigma^2)}, \quad z > 0. \end{aligned}
+$$ Ensuite, on pose la transformation bijective $Y = Z^2 = \abs{X}^2 = X^2$. Par la technique du changement de variable, on a $$
+\begin{aligned} f_Y(y) &= f_Z(y^{1/2}) \left| \frac{1}{2\sqrt{y}} \right| \\ &= \frac{2}{\sigma \sqrt{2\pi}}  e^{-y/(2 \sigma^2)} \left( \frac{1}{2\sqrt{y}} \right) \\ &= \frac{(2 \sigma^2)^{-1/2}}{\Gamma(\frac{1}{2})}  y^{1/2 - 1} e^{-y/(2 \sigma^2)}, \quad y > 0 \end{aligned}
+$$ puisque $\Gamma(\frac{1}{2}) = \sqrt{\pi}$. On voit donc que $$ Y \sim \text{Gamma}\left(\frac{1}{2}, 2\sigma^2\right). $$ Plus directement, on peut aussi voir que $$ X = \pm \sqrt{y}.$$ Par la méthode du changement de variable, on développe $$
+\begin{aligned} F_Y(y) &= \prob{Y\leq y}\\ &= \prob{X^2 \leq y}\\ &= \prob{-\sqrt{y} \leq X \leq \sqrt{y}}\\ &= F_X(\sqrt{y}) - F_X(-\sqrt{y}). \end{aligned}
+$$ On dérive ensuite pour trouver la fonction de densité: $$
+\begin{aligned} \frac{\text{d}}{\text{d}y} F_Y(y) &= \frac{1}{2\sqrt{y}} f_x(\sqrt{y})- \frac{-1}{2\sqrt{y}} f_x(\sqrt{y})\\ &= \frac{f_x(\sqrt{Y})}{\sqrt{y}}\\ &= \frac{1}{\sqrt{2 \pi \sigma^2 y}} e^{-y\frac{1}{2 \sigma^2}} \\ &= \frac{(2 \sigma^2)^{-1/2}}{\Gamma(\frac{1}{2})}  y^{1/2 - 1} e^{-y/(2 \sigma^2)}, \quad y > 0. \end{aligned}
+$$
+
+**b)** On sait que $Z = X_1 - X_2 \sim \mathcal{N}(0, 2)$ et que $Z/\sqrt{2} \sim \mathcal{N}(0, 1)$. En utilisant le résultat de la partie a), on a immédiatement que $Y = Z^2/2 \sim \chi^2(1)$.
+:::
+

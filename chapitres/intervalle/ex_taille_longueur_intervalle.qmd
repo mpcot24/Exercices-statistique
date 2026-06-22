@@ -1,0 +1,25 @@
+## Taille d'échantillon pour obtenir une certaine longueur d'intervalle {#sec-intervalle-taille_longueur_intervalle}
+
+Soit $X_1, X_2, \dots, X_n$ un échantillon aléatoire d'une
+  distribution normale de moyenne $\mu$ et de variance $\sigma^2 =
+  25$. Déterminer la taille de l'échantillon nécessaire pour que la
+  longueur de l'intervalle de confiance de niveau $0,90$ pour la
+  moyenne ne dépasse pas $0,05$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+\nombre{108 241}
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que
+    $$
+\begin{aligned}
+      \mu &\in \bar{X} \pm z_{0,05} \frac{\sigma}{\sqrt{n}} \\
+      &\in \bar{X} \pm 1,645 \frac{5}{\sqrt{n}}.
+    \end{aligned}
+$$
+    La longueur de l'intervalle de confiance est $2 (1,645) (5) /
+    \sqrt{n} = 16,45/\sqrt{n}$. Si l'on souhaite que $16,45/\sqrt{n}
+    \leq 0,05$, alors $n \geq \nombre{108 241}$.
+:::
+

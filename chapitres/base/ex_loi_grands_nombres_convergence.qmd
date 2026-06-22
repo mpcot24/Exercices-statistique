@@ -1,0 +1,24 @@
+## Convergence en probabilité {#sec-base-loi_grands_nombres_convergence}
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire tiré d'une distribution avec densité
+$$
+f(x)=4(1-x)^3, \quad \text{ pour } 0\leq x\leq 1.
+$$
+Montrer que $\bar X_n$ converge en probabilité vers une contante et trouver cette constante.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+1/5
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Si $X$ a la même distribution que $X_1, \ldots , X_n$ et $\vr(X)<\infty$, la loi faible des grands nombres implique que, quand $n \to \infty$,
+$
+\frac{1}{n} \sum_{i=1}^n X_i
+$
+converge en probabilité vers $\esp{X}$. Puisque $X$ suit une distribution Beta avec paramètres $\alpha=1$ et $\beta=4$,  $\esp{X}=\alpha/(\alpha+\beta)=1/5$ et 
+$$
+\var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}<\infty.
+$$ 
+Donc, la loi faible des grands nombres s'applique et $\bar X_n$ converge en probabilité vers 1/5.
+:::
+

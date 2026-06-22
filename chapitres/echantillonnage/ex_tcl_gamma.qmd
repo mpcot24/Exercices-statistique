@@ -1,0 +1,63 @@
+## TCL avec la loi gamma {#sec-echantillonnage-tcl_gamma}
+
+Démontrer à l'aide du Théorème central limite que la distribution
+  gamma avec paramètre de forme $\alpha$ entier et paramètre d'échelle
+  $\beta$ tend vers la distribution normale avec moyenne
+  $\alpha\beta$ et variance $\alpha\beta^2$ lorsque $\alpha$
+  tend vers l'infini. Trouver la
+  distribution asymptotique de $Y$.
+
+::: {.callout-tip collapse="true" title="Astuce"}
+définir $Y = X_1 + \dots + X_\alpha,$ où $X_i \sim \text{Exponentielle}(\beta)$
+:::
+
+
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\lim_{\alpha \rightarrow \infty} Y \sim N\left(\alpha\beta, \alpha\beta^2\right)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit
+$$
+      Y = \sum_{i = 1}^\alpha X_i
+$$
+avec $X_i \sim \text{Exponentielle}(\beta)$ et $X_1, \dots,
+    X_\alpha$ indépendantes. Par le Théorème central limite,
+    
+$$
+\begin{aligned}
+      \lim_{\alpha \rightarrow \infty} Y =
+      \lim_{\alpha  \rightarrow \infty} \sum_{i = 1}^\alpha X_i \sim
+      \mathcal{N}(\alpha \esp{X_i}, \alpha \var{X_i}).
+    \end{aligned}
+$$
+Par conséquent,
+$$
+      \lim_{\alpha \rightarrow \infty} Y \sim
+      N\left(\alpha\beta, \alpha\beta^2\right).
+$$
+    
+On trouve à la figure [-@sec-echantillonnage-tcl_gamma] les graphiques
+de densités gamma pour quelques valeurs du paramètre $\alpha$. On
+observe, en effet, que la distribution tend vers une normale
+lorsque $\alpha$ augmente.
+    
+
+```{r}
+#| echo: false
+#| fig-show: asis
+#| out-width: "0.6\\textwidth"
+
+curve(dgamma(x, 10, 1), from = 0, to = 100,
+      ylab = expression(paste("dgamma(x, ", alpha, ", 1)")),
+      lty = 3, lwd = 2)
+curve(dgamma(x, 20, 1), add = TRUE, lty = 2, lwd = 2)
+curve(dgamma(x, 50, 1), add = TRUE, lty = 1, lwd = 2)
+legend("topright", c(expression(paste(alpha, " = 10")),
+                     expression(paste(alpha, " = 20")),
+                     expression(paste(alpha, " = 50"))),
+       lty = 3:1, lwd = 2)
+```
+:::
+

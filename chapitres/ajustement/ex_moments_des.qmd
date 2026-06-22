@@ -1,0 +1,23 @@
+## Un dé régulier mais spécial {#sec-ajustement-moments_des}
+
+On a un dé régulier avec $\theta$ faces numérotées de $1$ à
+  $\theta$, où $\theta$ est un entier inconnu. Soit $X_1, \dots,
+  X_n$ un échantillon aléatoire composé de $n$ lancers de dés indépendants.
+**a)** Déterminer l'estimateur des moments de $\theta$.
+
+**b)** Calculer l'estimateur des moments de $\theta$ si $n = 4$ et $x_1 = x_2 = x_3 = 3$ et $x_4 = 12$. Interpréter le résultat.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\hat{\theta} = 2 \bar{X} - 1$
+
+**b)** $9,5$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Il s'agit ici de trouver l'estimateur des moments du paramètre $\theta$ d'une distribution uniforme discrète sur $1, 2, \dots, \theta$, c'est-à-dire que $\prob{X = x} = 1/\theta$ pour $x = 1, \dots, \theta$. En posant $$
+\begin{aligned} \esp{X} = \sum_{x=1}^{\theta} x \prob{X = x} = \frac{1}{\theta} \sum_{x = 1}^{\theta} x = \frac{\theta (\theta + 1)}{2 \theta} = \frac{\theta + 1}{2} = \bar{X}_n, \end{aligned}
+$$ on trouve facilement que l'estimateur des moments de $\theta$ est $\hat{\theta} = 2 \bar{X} - 1$.
+
+**b)** Avec $x_1 = x_2 = x_3 = 3$ et $x_4 = 12$, on a $\hat{\theta} = 2 (3 + 3 + 3 + 12)/4 - 1 = 9,5$. Or, cet estimateur est absurde puisque, en ayant roulé le résultat 12, on sait qu'il y a au moins douze faces sur le dé! En d'autres termes, $9,5$ est une valeur de $\theta$ impossible. On constate que l'estimateur obtenu à l'aide de la méthode des moments n'est pas toujours un estimateur possible.
+:::
+

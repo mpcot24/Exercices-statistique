@@ -1,0 +1,36 @@
+## Estimateur convergent de la borne inférieure d'une loi uniforme {#sec-estimation-conv_borne_inf_unif}
+
+Démontrer, à partir de la définition, que $X_{(1)} = \min(X_1,
+  \dots, X_n)$ est un estimateur convergent du paramètre $\theta$
+  d'une loi uniforme sur l'intervalle $(\theta, \theta + 1)$.
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Il faut démontrer que $\lim_{n \rightarrow \infty}
+    \prob{\abs{X_{(1)} - \theta} < \epsilon} = 1$. On sait que si $X
+    \sim U(\theta, \theta + 1)$, alors
+    $$
+\begin{aligned}
+      f_X(x) &= 1, \quad \theta < x < \theta + 1 \\
+      F_X(x) &= x - \theta, \quad \theta < x < \theta + 1
+    \end{aligned}
+$$
+    et
+    $$
+\begin{aligned}
+      f_{X_{(1)}}(x) &= n f_X(x) (1 - F_X(x))^{n - 1} \\
+      &= n (1 - x + \theta)^{n - 1}, \quad \theta < x < \theta + 1.
+    \end{aligned}
+$$
+    Ainsi,
+    $$
+\begin{aligned}
+      \prob{\abs{X_{(1)} - \theta} < \epsilon}
+      &= \prob{\theta - \epsilon < X_{(1)} < \theta + \epsilon} \\
+      &= \int_\theta^{\theta + \epsilon} n (1 - x + \theta)^{n-1}  dx \\
+      &= 1 - (1 - \epsilon)^n.
+    \end{aligned}
+$$
+    Or, cette dernière expression tend vers $1$ lorsque $n$ tend vers
+    l'infini, ce qui complète la démonstration.
+:::
+

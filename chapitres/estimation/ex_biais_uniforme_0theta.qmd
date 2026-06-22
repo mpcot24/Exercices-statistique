@@ -1,0 +1,45 @@
+## Distribution uniforme sur $(0, \theta)$ {#sec-estimation-biais_uniforme_0theta}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une distribution
+  uniforme sur l'intervalle $(0, \theta)$.
+  
+**a)** Développer un estimateur sans biais de $\theta$ basé sur $\max(X_1, \dots, X_n)$.
+
+**b)** Répéter la partie a), mais cette fois à partir de $\min(X_1, \dots, X_n)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $(n + 1) X_{(n)}/n$
+
+**b)** $(n + 1) X_{(1)}$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $X_{(n)} = \max(X_1, \dots, X_n)$ et $X_{(1)} = \min(X_1,
+    \dots, X_n)$, où $X_i \sim U(0, \theta)$, $i = 1, \dots, n$. On
+    sait alors que
+    $$
+\begin{aligned}
+      f_{X_{(n)}}(x)
+      &= n (F(x))^{n - 1} f(x) \\
+      &= \frac{n x^{n - 1}}{\theta^n}, \quad 0 < x < \theta \\
+      \end{aligned}
+$$
+
+et que
+
+$$
+\begin{aligned}
+      f_{X_{(1)}}(x)
+      &= n (1 - F(x))^{n - 1} f(x) \\
+      &= \frac{n (\theta - x)^{n - 1}}{\theta^n}, \quad 0 < x < \theta.
+    \end{aligned}
+$$
+**a)** On souhaite développer un estimateur sans biais de $\theta$ basé sur $X_{(n)}$. En premier lieu, $$
+\begin{aligned} \esp{X_{(n)}} &= \int_0^\theta x f_{X_{(n)}}(x)  dx \\ &= \frac{n}{\theta^n}\int_0^\theta x^n  dx\\ &= \frac{n \theta}{n + 1}. \end{aligned}
+$$ Par définition, comme un estimateur sans biais $\hat{\theta}$ doit être trouvé, cet estimateur doit être tel que $\esp{\hat{\theta}}= \theta$. Il faut corriger $\esp{X_{(n)}}$ en inversant la fonction $g(\theta) = \frac{n\theta}{n+1}$. On remarque ainsi que $$ \esp{X_{(n)}} = \frac{n\theta}{n+1} \Leftrightarrow \theta = \esp{X_{(n)}} \frac{n+1}{n} = E\left[{\frac{X_{(n)}(n+1)}{n}}\right] $$ Un estimateur sans biais de $\theta$ est donc $\hat{\theta} = \frac{(n + 1) X_{(n)}}{n}$.
+
+**b)** Comme en a), on calcule d'abord l'espérance de la   statistique: $$
+\begin{aligned} \esp{X_{(1)}} &= \int_0^\theta x f_{X_{(1)}}(x)  dx \\ &= \frac{n}{\theta^n} \int_{0}^\theta x (\theta - x)^{n - 1}x dx \\ &=\frac{\theta}{n + 1} \end{aligned}
+$$ en intégrant par parties. En corrigeant par la même méthode qu'en a), un estimateur sans biais de $\theta$ basé sur le minimum de l'échantillon est donc $\hat{\theta}=(n + 1) X_{(1)}$.
+:::
+

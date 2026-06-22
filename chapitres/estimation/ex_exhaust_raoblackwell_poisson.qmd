@@ -1,0 +1,18 @@
+## Rao--Blackwell avec la loi Poisson {#sec-estimation-exhaust_raoblackwell_poisson}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire tiré d'une loi de Poisson avec paramètre $\lambda$ inconnu. On sait que $T(X_1, \dots, X_n) = \sum_{i=1}^n X_i$ est une statistique exhaustive pour $\lambda$. On estime $\lambda$ par $\tilde{\lambda} = X_1$.
+
+**a)** Montrer que $\tilde{\lambda}$ est un estimateur sans biais de $\lambda$.
+
+**b)** Utiliser le théorème de Rao--Blackwell pour trouver un estimateur $\lambda^\ast$ à partir de $\tilde{\lambda}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+b) $\lambda^* = \bar{X}$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On trouve que $\tilde{\lambda}$ est sans biais pour $\lambda$ par le fait que $$ \ex[\tilde{\lambda}] = \ex[X_1] = \lambda. $$
+
+**b)** Par le théorème de Rao--Blackwell, on trouve $$ \lambda^\ast = \ex \left[ \tilde{\lambda} | T \right] = \ex \left[ X_1 | \sum_{i=1}^n X_i = t \right]. $$ Par contre, étant donné que la somme des espérances est équivalente à l'espérance de la somme, on remarque que la sommation des espérances conditionnelles sur toutes les observations résulte en un résultat trivial sachant que $\sum_{i = 1}^{n} X_i = t$: $$ \sum_{i=1}^n \ex \left[ X_i | \sum_{i=1}^n X_i = t \right] = \ex \left[\sum_{i=1}^n X_i | \sum_{i=1}^n X_i = t \right] = t. $$ Puisque $X_1, \dots, X_n$ sont i.i.d., chaque élément de la somme doit être équivalent et donc égal à $t/n$. On trouve que $$ \lambda^\ast = \frac{T}{n} = \frac{\sum_{i=1}^n X_i}{n} = \bar{X}. $$
+:::
+

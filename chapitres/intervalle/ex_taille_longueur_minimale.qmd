@@ -1,0 +1,50 @@
+## Conditions pour obtenir une longueur minimale d'intervalle de confiance {#sec-intervalle-taille_longueur_minimale}
+
+Soit $S^2_n$ la variance échantillonnale d'un échantillon aléatoire de taille $n$ issu
+  d'une distribution $\mathcal{N}(\mu, \sigma^2)$ où $\mu$ et $\sigma^2$ sont
+  des paramètres inconnus. On sait que $Y = (n-1)S^2_n/\sigma^2 \sim
+  \chi^2(n - 1)$. Soit $g(y)$ la fonction de densité de $Y$ et $G(y)$
+  la fonction de répartition. Soit $a$ et $b$ des constantes telles
+  que $((n-1) s^2/b, (n-1) s^2/a)$ est un intervalle de confiance de niveau $1
+  - \alpha$ pour $\sigma^2$. La longueur de cet intervalle est donc $(n-1)
+  s^2 (b - a)/(ab)$. Démontrer que la longueur de l'intervalle de
+  confiance est minimale si $a$ et $b$ satisfont la condition $a^2
+  g(a) = b^2 g(b)$.  - G(a) = 1 - \alpha$.)
+
+::: {.callout-tip collapse="true" title="Astuce"}
+minimiser la longueur de
+  l'intervalle sous la contrainte que $G(b
+:::
+
+
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On cherche à minimiser la longueur de l'intervalle de confiance
+    $h(a, b) = (n-1) s^2 (b - a)/(ab)$ sous la contrainte que la
+    probabilité dans cet intervalle est $1 - \alpha$, c'est-à-dire que
+    $G(b) - G(a) = 1 - \alpha$. En utilisant la méthode des
+    multiplicateurs de Lagrange, on pose
+    $$
+      L(a, b, \lambda) = \frac{(n-1) s^2}{a} - \frac{(n-1) s^2}{b} +
+      \lambda(G(b) - G(a) - 1 + \alpha).
+    $$
+    Les dérivées de cette fonction par rapport à chacune de ses
+    variables sont:
+    $$
+\begin{aligned}
+      \frac{\partial}{\partial a}  L(a, b, \lambda)
+      &= - \frac{(n-1) s^2}{a^2} + \lambda g(a) \\
+      \frac{\partial}{\partial b}  L(a, b, \lambda)
+      &= - \frac{-(n-1) s^2}{b^2} + \lambda g(b) \\
+      \frac{\partial}{\partial \lambda}  L(a, b, \lambda)
+      &= G(b) - G(a) - 1 + \alpha.
+    \end{aligned}
+$$
+    En posant ces dérivées égales à zéro et en résolvant, on trouve
+    que
+    $$
+      \frac{g(a)}{g(b)} = \frac{b^2}{a^2}
+    $$
+    ou, de manière équivalente, que $b^2 g(b) = a^2 g(a)$.
+:::
+

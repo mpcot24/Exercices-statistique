@@ -1,0 +1,65 @@
+## Paramètre d'une loi uniforme {#sec-estimation-exhaust_uniforme}
+
+Trouver une statistique exhaustive pour le paramètre $\theta$ de la
+  loi uniforme sur l'intervalle $(-\theta, \theta)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\max_{i = 1, \dots, n}(\abs{X_i})$, ou $(X_{(1)}, X_{(n)})$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une distribution
+    uniforme sur l'intervalle $(-\theta, \theta)$. La fonction de
+    vraisemblance de cet échantillon est
+    $$
+      f(x_1, \dots, x_n; \theta) =
+      \begin{cases}
+        (2 \theta)^{-n}, & -\theta < x_i < \theta, i = 1, \dots, n \\
+        0, & \text{ailleurs}.
+      \end{cases}
+    $$
+    La fonction de vraisemblance est donc non nulle seulement si
+    toutes les valeurs de l'échantillon se trouvent dans l'intervalle
+    $(-\theta, \theta)$ ou, de manière équivalente, si
+    $$
+\begin{aligned}
+    - \theta < x_i < \theta \; i \in {1, \dots, n} \\
+    - \theta < \min(x_1, \dots, x_n) \; \text{et} \; \max(x_1, \dots, x_n) < \theta \\
+    \theta > -\min(x_1, \dots, x_n) \; \text{et} \; \max(x_1, \dots, x_n) < \theta \\
+    \max_{i = 1, \dots, n}(\abs{x_i}) < \theta.
+    \end{aligned}
+$$
+  On peut donc, par exemple,
+    réécrire la fonction de vraisemblance sous la forme
+    $$
+\begin{aligned}
+      f(x_1, \dots, x_n; \theta)
+      &= \left( \frac{1}{2\theta} \right)^n
+      \mathbf{1}_{\{0 \leq \max_{i = 1, \dots, n}(\abs{x_i}) \leq \theta)\}} \\
+      &= g \left( \max_{i = 1, \dots, n}(\abs{x_i}); \theta \right)
+      h(x_1, \dots, x_n), \\
+      \end{aligned}
+$$
+
+avec
+
+$$
+\begin{aligned}
+      g(x; \theta)
+      &= \left( \frac{1}{2\theta} \right)^n
+      I_{\{0 \leq x \leq \theta)\}}
+    \end{aligned}
+$$
+    et $h(x_1, \dots, x_n) = 1$. Ainsi, par le théorème de
+    factorisation de Fisher--Neyman, on établit que $T = \max_{i = 1, \dots,
+      n}(\abs{X_i})$ est une statistique exhaustive pour le paramètre
+    $\theta$. Une autre factorisation possible serait
+    $$
+      f(x_1, \dots, x_n; \theta) =
+      \left( \frac{1}{2\theta} \right)^n
+      I_{\{-\infty < x_{(n)} < \theta)\}}
+      I_{\{-\theta < x_{(1)} < \infty)\}},
+    $$
+    ce qui donne comme statistique exhaustive $T = (X_{(1)}, X_{(n)})$.
+:::
+

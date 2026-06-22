@@ -1,0 +1,42 @@
+## Définition de la loi khi carré {#sec-echantillonnage-khi2_definition}
+
+Soit la variable aléatoire $Z \sim \mathcal{N}(0, 1)$. Démontrer que $Z^2 \sim
+  \chi^2(1)$ avec la technique de la fonction génératrice des moments.
+  
+
+*Note*: il faut intégrer pour trouver la fonction génératrice
+  des moments de $Z^2$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $Z \sim \mathcal{N}(0, 1)$. La fonction génératrice des moments de la
+    variable aléatoire $Z^2$ est
+    $$
+\begin{aligned}
+      M_{Z^2}(t) &= \Esp{e^{Z^2 t}} \\
+      &= \int_{-\infty}^\infty e^{z^2 t} \phi(z)  dz \\
+      &= \int_{-\infty}^\infty
+      \frac{1}{\sqrt{2\pi}}  e^{z^2 t} e^{-z^2/2}  dz\\
+      &= \int_{-\infty}^\infty
+      \frac{1}{\sqrt{2\pi}}  e^{-z^2 (1 - 2t)/2}  dz.
+    \end{aligned}
+$$
+    En posant $\sigma^2 = (1 - 2t)^{-1}$, on voit que l'on peut écrire
+    l'expression ci-dessus sous la forme
+    $$
+      M_{Z^2}(t) = \sigma \int_{-\infty}^\infty
+      \frac{1}{\sigma \sqrt{2\pi}}  e^{-z^2/(2 \sigma^2)} dz.
+    $$
+    On reconnaît alors sous l'intégrale la densité d'une loi normale
+    de moyenne $0$ et de variance $\sigma^2$. Par conséquent,
+    $$
+      M_{Z^2}(t) = \sigma = \left( \frac{1}{1 - 2t}\right)^{1/2},
+    $$
+    soit la fonction génératrice des moments d'une loi gamma de
+    paramètres $\alpha = 1/2 \text{ et } \beta = 2$ ou, de manière
+    équivalente, d'une distribution $\chi^2(1)$.
+:::
+

@@ -1,0 +1,28 @@
+## Échantillon de taille 5 {#sec-echantillonnage-norm_ech_taille5}
+
+Soit $\bar{X}_{5}$ la moyenne d'un échantillon de taille $5$ tiré d'une
+  distribution normale avec moyenne $10$ et variance $125$. Trouver la constante $c$
+  telle que $\prob{\bar{X}_{5} < c} = 0,90$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$16,41$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $\bar{X}_{5} \sim \mathcal{N}(\esp{\bar{X}_{5}}, \var{\bar{X}_{5}})$ avec
+      $\esp{\bar{X}_{5}} = \esp{X} = 10$ et $\var{\bar{X}_{5}} = \var{X}/n =
+      125/5 = 5$. Par conséquent,
+    $$
+\begin{aligned}
+      \prob{\bar{X}_{5} < c}
+      &= \Prob{\frac{\bar{X}_{5} - 10}{\sqrt{25}} < 
+        \frac{c - 10}{\sqrt{25}}} \\
+      &= \prob{Z < z_\alpha} \\
+      &= 1 - \alpha
+    \end{aligned}
+$$
+    avec $Z \sim \mathcal{N}(0, 1)$ et $z_\alpha = (c - 10)/5$. Ici, on a $1 -
+    \alpha = 0,90$. On trouve dans une table de quantiles de la loi
+    normale que $z_{0,10} = 1,282$, d'où $c = 16,41$.
+:::
+

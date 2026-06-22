@@ -1,0 +1,44 @@
+# Estimation
+
+{{< include estimation/ex_biais_eqm_sigma2.qmd >}}
+
+{{< include estimation/ex_biais_conditions_a.qmd >}}
+
+{{< include estimation/ex_biais_mu2.qmd >}}
+
+{{< include estimation/ex_biais_ech_taille3_uniforme.qmd >}}
+
+{{< include estimation/ex_biais_uniforme_0theta.qmd >}}
+
+{{< include estimation/ex_biais_binomiale.qmd >}}
+
+{{< include estimation/ex_conv_borne_inf_unif.qmd >}}
+
+{{< include estimation/ex_conv_parametre_expo.qmd >}}
+
+{{< include estimation/ex_efficacite.qmd >}}
+
+{{< include estimation/ex_exhaust_pareto.qmd >}}
+
+{{< include estimation/ex_exhaust_centered_normal.qmd >}}
+
+{{< include estimation/ex_exhaust_uniforme.qmd >}}
+
+{{< include estimation/ex_exhaust_poisson.qmd >}}
+
+{{< include estimation/ex_exhaust_raoblackwell_poisson.qmd >}}
+
+{{< include estimation/ex_exhaust_raoblackwell_expo.qmd >}}
+
+{{< include estimation/ex_exhaust_geometrique.qmd >}}
+
+{{< include estimation/ex_mvue_poisson.qmd >}}
+
+{{< include estimation/ex_mvue_demo.qmd >}}
+
+{{< include estimation/ex_mvue_poisson_2.qmd >}}
+
+{{< include estimation/ex_mvue_binomiale.qmd >}}
+
+{{< include estimation/ex_mvue_2loisnormales.qmd >}}
+

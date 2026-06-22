@@ -1,0 +1,48 @@
+## MVUE pour une loi binomiale {#sec-estimation-mvue_binomiale}
+
+Démontrer que la proportion de succès $X/n$ est un estimateur sans
+  biais à variance minimale de la probabilité de succès $\theta$ d'une
+  distribution Binomiale.
+
+::: {.callout-tip collapse="true" title="Astuce"}
+considérer $X/n$ comme la
+  moyenne d'un échantillon aléatoire d'une distribution de Bernoulli.
+:::
+
+
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Si $X$ a une distribution binomiale de paramètres $n \in \mathbb{N}$ et $0
+    \leq \theta \leq 1$, alors on peut représenter la variable
+    aléatoire sous la forme $X = Y_1 + \dots + Y_n$, où $Y_i \sim
+    \text{Bernoulli}(\theta)$, $i = 1, \dots, n$. Ainsi, $X/n =
+    \bar{Y}$. Dès lors, on sait $\bar{Y}$ est un estimateur sans biais
+    de $\esp{Y} = \theta$. Pour montrer qu'il est MVUE, soit on montre que $\bar{Y}$
+    est une statistique exhaustive minimale, ce qui est le cas selon le critère de Lehmann--Scheffé, soit on montre que la variance atteint la borne minimale de Cramer--Rao.
+
+En effet, on a que $\var{\bar{Y}} = \var{Y}/n = \theta(1
+    - \theta)/n$. De plus, si $f(y; \theta) = \theta^y (1 - \theta)^{1
+      - y}$, $y = 0, 1$, est la densité d'une Bernoulli, alors
+      
+$$
+\begin{aligned}
+      \Esp{\left( \frac{\partial}{\partial \theta}
+          \ln f(Y; \theta) \right)^2}
+      &= \Esp{\left( \frac{Y - \theta}{\theta (1 - \theta)}
+        \right)^2} \\
+      &= \frac{\var{Y}}{[\theta (1 - \theta)]^2} \\
+      &= \frac{1}{\theta (1 - \theta)}
+\end{aligned}
+$$
+
+
+et donc la borne de Rao--Cramér est $\theta (1 - \theta)/n =\var{\bar{Y}}$. Par conséquent, $\bar{Y}$ est un estimateur sans
+    biais à variance minimale du paramètre $\theta$ de la Bernoulli
+    ou, de manière équivalente, $X/n$ est un estimateur sans biais à
+    variance minimale du paramètre $\theta$ de la binomiale.
+:::
+

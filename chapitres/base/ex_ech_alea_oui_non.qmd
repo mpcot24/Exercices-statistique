@@ -1,0 +1,18 @@
+## Est-ce un échantillon alétoire? {#sec-base-ech_alea_oui_non}
+
+Est-ce que les énoncés suivants constituent des exemples d'échantillon aléatoire? Justifiez votre réponse.
+
+**a)** Le nombre annuel de cas de cancer du sein causant un décès au Québec entre 1970 et 2018.
+
+**b)** Le résultat de 20 lancers de dés non truqués lors d'une partie d'un jeu de société.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** non **b)** oui
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Les progrès en médecine ont affecté grandement la probabilité de détection précoce du cancer du sein, donc la probabilité de survie. Il y a donc une tendance à la baisse, et ces données ne sont pas identiquement distribuées dans le temps.
+
+**b)** Puisque chaque lancer est indépendant et identiquement distribué, les 20 lancers sont considérés comme un échantillon aléatoire de taille 20 de lancers de dé.
+:::
+

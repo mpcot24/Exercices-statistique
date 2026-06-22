@@ -1,11 +1,9 @@
 {
-  "hash": "5507705673e56f61128b51712ecad802",
+  "hash": "8a08e7f10062cad66668125a1e5d0c03",
   "result": {
     "engine": "knitr",
-    "markdown": "# Preface {.unnumbered}\n\nThis is a Quarto book.\n\nTo learn more about Quarto books visit <https://quarto.org/docs/books>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n#sessionInfo()\n# install.packages(\"knitr\")\n# install.packages(\"rmarkdown\")\n```\n:::\n\n",
-    "supporting": [
-      "index_files"
-    ],
+    "markdown": "# Preface {.unnumbered}\n\nThis is a Quarto book.\n\nTo learn more about Quarto books visit <https://quarto.org/docs/books>.\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'knitr' was built under R version 4.5.3\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'rmarkdown' was built under R version 4.5.3\n```\n\n\n:::\n:::\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

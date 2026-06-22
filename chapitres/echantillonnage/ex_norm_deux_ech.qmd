@@ -1,0 +1,27 @@
+## Comparaison de deux échantillons issus d'une loi normale {#sec-echantillonnage-norm_deux_ech}
+
+Soit $X_1, \dots, X_{25}$ un échantillon aléatoire issu d'une
+  distribution $\mathcal{N}(0, 16)$ et $Y_1, \dots, Y_{25}$ un échantillon
+  aléatoire issu d'une distribution $\mathcal{N}(1, 9)$. Les deux échantillons
+  sont indépendants. Soient $\bar{X}_{25}$ et $\bar{Y}_{25}$ les moyennes des
+  deux échantillons. Calculer la probabilité $\prob{\bar{X}_{25} > \bar{Y}_{25}}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$0,159$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a $\bar{X}_{25} \sim \mathcal{N}(0, 16/25)$, $\bar{Y}_{25} \sim \mathcal{N}(1, 9/25)$ et, par
+    conséquent, $\bar{X}_{25} - \bar{Y}_{25} \sim \mathcal{N}(-1, 1)$. On a donc
+    $$
+\begin{aligned}
+      \prob{\bar{X}_{25} > \bar{Y}_{25}}
+      &= \prob{\bar{X}_{25} - \bar{Y}_{25} > 0} \\
+      &= \Prob{\frac{\bar{X}_{25}-\bar{Y}_{25} - (-1)}{\sqrt{1}} > 
+        \frac{0 - (-1)}{\sqrt{1}}} \\
+      &= 1 - \Phi(1)\\
+      &= 0,159.
+    \end{aligned}
+$$
+:::
+

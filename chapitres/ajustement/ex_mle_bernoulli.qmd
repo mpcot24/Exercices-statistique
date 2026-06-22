@@ -1,0 +1,44 @@
+## Estimateurs pour la probabilité de succès {#sec-ajustement-mle_bernoulli}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire issu d'une
+  distribution dont la loi de probabilité est
+  $$
+    \prob{X = x} = \theta^x (1 - \theta)^{1 - x}, \quad x = 0, 1,
+    \quad 0 \leq \theta \leq \frac{1}{2}.
+  $$
+**a)** Calculer les estimateurs du maximum de vraisemblance et des moments de $\theta$.
+
+**b)** Calculer l'erreur quadratique moyenne pour les estimateurs développés en a).
+
+**c)** Lequel des estimateurs obtenus en a) est le meilleur? Justifier.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\tilde{\theta} = \bar{X}$, $\hat{\theta} = \min(\bar{X}, 1/2)$
+
+**b)** EQM$(\tilde{\theta}) = \theta (1 - \theta)/n$, EQM$(\hat{\theta}) = \sum_{y = 0}^{[n/2]} (y/n - \theta)^2 \binom{n}{y} \theta^y (1 - \theta)^{n-y} + \sum_{y = [n/2] + 1}^n (1/2 - \theta)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y}$
+
+**c)** EQM$(\hat{\theta}) \leq$ EQM$(\tilde{\theta})$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La distribution de $X$ est une Bernoulli avec une restriction sur la valeur du paramètre $\theta$. On a donc que $\esp{X} = \theta$. L'estimateur des moments de $\theta$ est donc $\tilde{\theta} = \bar{X}$. Pour l'estimateur du maximum de vraisemblance, on a, en posant $y = \sum_{i = 1}^n x_i$, $$
+\begin{aligned} L(\theta) &= \theta^{y} (1 - \theta)^{n - y}, \\ l(\theta) &= y \ln(\theta) + (n - y) \ln(1 - \theta) \\ \end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned} l^\prime(\theta) &= \frac{y}{\theta} - \frac{(n - y)}{1 - \theta}\\ &= \frac{y - n\theta}{\theta (1 - \theta)}\\ &= \frac{n \bar{x} - n \theta}{\theta (1 - \theta)}. \end{aligned}
+$$ Ainsi, la log-vraisemblance est croissante pour $\theta \leq \bar{x}$ et décroissante pour $\theta > \bar{x}$ (voir la figure @sec-ajustement-mle_bernoulli). Le maximum est donc atteint en $\bar{x}$. Cependant, puisque $0 \leq \theta \leq 1/2$ on doit avoir $\hat{\theta} \leq 1/2$. On a donc $\hat{\theta} = \min(\bar{X}, 1/2)$. 
+
+**b)** Premièrement, on remarque que $Y = \sum_{i = 1}^n X_i = n \bar{X} \sim \text{Binomiale}(n, \theta)$ avec $0 \leq \theta \leq 1/2$. Deuxièmement, on sait que $\text{EQM}(\hat{\theta}) = \var{\hat{\theta}} + b(\hat{\theta})^2$, où $\hat{\theta}$ est un estimateur quelconque d'un paramètre $\theta$ et $b(\hat{\theta}) = \esp{\hat{\theta}} - \theta$ est le biais de l'estimateur. Pour l'estimateur des moments $\tilde{\theta} = Y/n$, on a $$
+\begin{aligned} \text{EQM}(\tilde{\theta}) &= \frac{\Var{Y}}{n^2} + b(Y/n)^2 \\ &= \frac{\theta (1 - \theta)}{n}, \end{aligned}
+$$ puique $\esp{Y/n} = \theta$. Pour l'estimateur du maximum de vraisemblance $$ \hat{\theta} = \begin{cases} \frac{Y}{n}, & Y \leq \frac{n}{2} \\ \frac{1}{2}, & Y > \frac{n}{2}, \end{cases} $$ il est plus simple de développer l'erreur quadratique moyenne ainsi: $$
+\begin{aligned} \text{EQM}(\hat{\theta}) &= \esp{(\hat{\theta} - \theta)^2} \\ &= \sum_{y = 0}^n (\hat{\theta} - \theta)^2 \prob{Y = y} \\ &= \sum_{y = 0}^{[n/2]} \left( \frac{y}{n} - \theta \right)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y} \\ &\phantom{=} + \sum_{y = [n/2] + 1}^n \left( \frac{1}{2} - \theta \right)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y}. \end{aligned}
+$$
+
+**c)** On compare les erreurs quadratiques moyennes des deux estimateurs. Soit $$ \text{EQM}(\tilde{\theta}) = \sum_{y = 0}^n \left( \frac{y}{n} - \theta \right)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y}, $$ d'où $$
+\begin{aligned} \text{EQM}(\tilde{\theta}) - \text{EQM}(\hat{\theta}) &= \sum_{y=[n/2] + 1}^n \left( \frac{y}{n} + \frac{1}{2} - 2 \theta \right) \left( \frac{y}{n} - \frac{1}{2} \right) \\ &\phantom{=} \times \binom{n}{y} \theta^y (1 - \theta)^{n - y}. \end{aligned}
+$$ Étant donné que $y/n > 1/2$ et que $\theta \leq 1/2$, tous les termes dans la somme sont positifs. On a donc que $\text{EQM}(\tilde{\theta}) - \text{EQM}(\hat{\theta}) > 0$ ou, de manière équivalente, $\text{EQM}(\hat{\theta}) < \text{EQM}(\tilde{\theta})$. En terme d'erreur quadratique moyenne, l'estimateur du maximum de vraisemblance est meilleur que l'estimateur des moments selon ce critère.
+:::
+

@@ -1,0 +1,46 @@
+## TCL avec un échantillon aléatoire d'une loi khi carré {#sec-echantillonnage-tcl_x100_khi2}
+
+Soit $\bar{X}_{100}$ la moyenne d'un échantillon aléatoire de taille $100$
+  tiré d'une loi $\chi^2(50)$.
+**a)** Trouver la distribution exacte de $\bar{X}_{100}$.
+
+**b)** Calculer à l'aide d'un logiciel statistique la valeur exacte de $\prob{49 < \bar{X}_{100} < 51}$.
+
+**c)** Calculer une valeur approximative de la probabilité en b).
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+
+```{r}
+#| echo: false
+
+q <- format(pgamma(51, 2500, 50) - pgamma(49, 2500, 50),
+            digits = options()$digits, dec = ",")
+```
+
+**a)** Gamma$(2500, 1/50)$
+
+**b)** `r q`
+
+**c)** $0,682$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a l'échantillon aléatoire $X_1, \dots, X_{100}$, où $$ X_i \sim \chi^2(50) \equiv \text{Gamma}\left( \frac{50}{2},  2 \right), \quad i = 1, \dots, 100. $$ Or, on sait que $Y = X_1 + \dots + X_{100} \sim \text{Gamma}(100 (25), 2)$ et que $\bar{X}_{100} = Y/100 \sim \text{Gamma}(2500, 2/100)$. Ce résultat tient parce qu'une somme de $k$ observations d'un échantillon aléatoire tiré d'une loi gamma est telle que $S = \sum_{i = 1}^{k} X_i \sim Gamma(\alpha k, \beta)$. La distribution de $\bar{X}_{100}$ suit directement de la transformation d'échelle d'une loi gamma, qu'on peut démontrer en utilisant la fonction génératrice de moments. Ainsi, 
+
+$$
+\begin{aligned} \mathcal{M}_{\bar{X}_{100}}(t) &= \esp{e^{t \frac{Y} {100}}} \\ &= \esp{e^{Y \frac{t} {100}}} \\ &= \mathcal{M}_Y(\frac{t}{100}). \end{aligned}
+$$
+
+**b)** On peut, par exemple, obtenir la probabilité demandée avec R ainsi: 
+
+```{r}
+#| echo: true
+pgamma(51, 2500, 50) - pgamma(49, 2500, 50) 
+
+```
+
+**c)** On a $\esp{\bar{X}_{100}} = 2500/50 = 50$ et $\var{\bar{X}_{100}} = 2500/50^2 = 1$. En utilisant l'approximation normale, on trouve $$
+\begin{aligned} \prob{49 < \bar{X}_{100} < 51} &= \Prob{\frac{49 - 50}{1} < \frac{\bar{X}_{100} - 50}{1} < \frac{51 - 50}{1}} \\ &\approx \Phi(1) - \Phi(-1) \\ &= 2\Phi(1) - 1 \\ &= 0,682. \end{aligned}
+$$ On trouve la valeur de $\Phi(1)$ dans une table de quantiles de la loi normale ou à l'aide d'un logiciel statistique.
+:::
+

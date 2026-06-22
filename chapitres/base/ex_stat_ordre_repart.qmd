@@ -1,0 +1,34 @@
+## Fonction de répartition du minimum {#sec-base-stat_ordre_repart}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire tiré d'une loi avec
+  fonction de répartition $F_X(\cdot)$ et $X_{(1)} \leq \dots \leq
+  X_{(n)}$ les statistiques d'ordre correspondantes. Trouver la
+  fonction de répartition de $X_{(1)} = \min (X_1, \dots X_n)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$F_{X_{(1)}}(x) = 1 - (1 -  F_X(x))^n$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Puisque $X_{(1)}$ est la plus petite valeur de l'échantillon, on a
+    que
+    $$
+\begin{aligned}
+      F_{X_{(1)}}(x)
+      &= \prob{X_{(1)} \leq x} \\
+      &= 1 - \prob{X_{(1)} > x} \\
+      &= 1 - \prob{X_1 > x, X_2 > x, \dots, X_n > x}.
+    \end{aligned}
+$$
+    Or, les variables aléatoires $X_1, \dots, X_n$ sont indépendantes
+    et identiquement distribuées, d'où
+    $$
+\begin{aligned}
+      F_{X_{(1)}}(x)
+      &= 1 - \prob{X_1 > x} \prob{X_2 > x} \cdots \prob{X_n > x} \\
+      &= 1 - (\prob{X > x})^n \\
+      &= 1 - (1 -  F_X(x))^n.
+    \end{aligned}
+$$
+:::
+

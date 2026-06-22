@@ -1,0 +1,21 @@
+## Laboratoires de production de cuivre {#sec-intervalle-laboratoires_cuivre}
+
+Le cuivre solide produit par frittage (chauffage sans fusion) d'une poudre dans des conditions environnementales spécifiques est ensuite mesuré pour la porosité (la fraction volumique due aux vides) en laboratoire. Un échantillon de $n=4$ mesures de porosité indépendantes a une moyenne $\bar x_n = 0,22$ et une variance $s_n^2 = 0,001$. Un second laboratoire répète le même processus et obtient $m=5$ mesures de porosité indépendantes avec $\bar y_m = 0,17$ and $s_m^2 = 0,002$.
+**a)** Énumérer les hypothèses nécessaires pour construire un intervalle de confiance bilatéral *exact* pour la différence de moyennes entre les populations des deux laboratoires.
+
+**b)** Construire un intervalle de confiance bilatéral *exact* à $95$ \
+
+**c)** Est-ce que la différence entre les moyennes des deux laboratoires est significative?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+b) $(\Sexpr{round(0.22-0.17-qt(0.975,df=7)*sqrt((3*0.001 + 4*0.002)/7)*sqrt(1/4+ 1/5),5)},  \Sexpr{round(0.22-0.17+qt(0.975,df=7)*sqrt((3*0.001 + 4*0.002)/7)*sqrt(1/4+ 1/5),5)})$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Les échantillons doivent être indépendants, normalement distribués et avoir la même variance $\sigma^2$.
+
+**b)** L'estimation combinée de la variance est donnée par $$ s^2 = \frac{(n-1) s_n^2 + (m-1)s_m^2}{n+m-2} = \frac{3\times 0,001 + 4 \times 0,002}{4+5-2} = \Sexpr{round((3*0.001 + 4*0.002)/7,5)}. $$ Le quantile $97,5$\
+
+**c)** Puisque $0$ est inclus dans l'intervalle de confiance bilatéral calculé en b), les moyennes ne semblent pas différer à un seuil de 5 \
+:::
+

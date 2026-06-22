@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Estimation – ACT2000 — Recueil d'exercices</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapitres/ajustement.html" rel="next">
+<link href="../chapitres/echantillonnage.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a522afb83bf8ae494942cf1b0ac9d4c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      Esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      ex:     "\\mathbb{E}",
+      var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      Var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      vr:     "\\mathrm{Var}",
+      prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Cov:    "\\mathrm{Cov}",
+      d:      "\\mathrm{d}",
+      bm:     ["\\boldsymbol{#1}", 1],
+      abs: ["\\left|#1\\right|", 1],
+      texttt: ["`#1`", 1],
+      textsf: ["`#1`", 1]
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/estimation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">ACT2000 — Recueil d’exercices</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exercices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/echantillonnage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/estimation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/ajustement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/intervalle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation par intervalle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#sec-estimation-biais_eqm_sigma2" id="toc-sec-estimation-biais_eqm_sigma2" class="nav-link active" data-scroll-target="#sec-estimation-biais_eqm_sigma2"><span class="header-section-number">3.1</span> Estimateur sans biais de <span class="math inline">\(\sigma^2\)</span></a></li>
+  <li><a href="#sec-estimation-biais_conditions_a" id="toc-sec-estimation-biais_conditions_a" class="nav-link" data-scroll-target="#sec-estimation-biais_conditions_a"><span class="header-section-number">3.2</span> Constantes pour obtenir un estimateur sans biais</a></li>
+  <li><a href="#sec-estimation-biais_mu2" id="toc-sec-estimation-biais_mu2" class="nav-link" data-scroll-target="#sec-estimation-biais_mu2"><span class="header-section-number">3.3</span> Estimateur de <span class="math inline">\(\mu^2\)</span></a></li>
+  <li><a href="#sec-estimation-biais_ech_taille3_uniforme" id="toc-sec-estimation-biais_ech_taille3_uniforme" class="nav-link" data-scroll-target="#sec-estimation-biais_ech_taille3_uniforme"><span class="header-section-number">3.4</span> Deux estimateurs sans biais de <span class="math inline">\(\theta\)</span></a></li>
+  <li><a href="#sec-estimation-biais_uniforme_0theta" id="toc-sec-estimation-biais_uniforme_0theta" class="nav-link" data-scroll-target="#sec-estimation-biais_uniforme_0theta"><span class="header-section-number">3.5</span> Distribution uniforme sur <span class="math inline">\((0, \theta)\)</span></a></li>
+  <li><a href="#sec-estimation-biais_binomiale" id="toc-sec-estimation-biais_binomiale" class="nav-link" data-scroll-target="#sec-estimation-biais_binomiale"><span class="header-section-number">3.6</span> Estimateur de la variance d’une loi binomiale</a></li>
+  <li><a href="#sec-estimation-conv_borne_inf_unif" id="toc-sec-estimation-conv_borne_inf_unif" class="nav-link" data-scroll-target="#sec-estimation-conv_borne_inf_unif"><span class="header-section-number">3.7</span> Estimateur convergent de la borne inférieure d’une loi uniforme</a></li>
+  <li><a href="#sec-estimation-conv_parametre_expo" id="toc-sec-estimation-conv_parametre_expo" class="nav-link" data-scroll-target="#sec-estimation-conv_parametre_expo"><span class="header-section-number">3.8</span> Estimateur convergent de la moyenne d’une loi exponentielle</a></li>
+  <li><a href="#sec-estimation-efficacite" id="toc-sec-estimation-efficacite" class="nav-link" data-scroll-target="#sec-estimation-efficacite"><span class="header-section-number">3.9</span> Efficacité de trois estimateurs</a></li>
+  <li><a href="#sec-estimation-exhaust_pareto" id="toc-sec-estimation-exhaust_pareto" class="nav-link" data-scroll-target="#sec-estimation-exhaust_pareto"><span class="header-section-number">3.10</span> Trois estimateurs de paramètres d’une loi Pareto</a></li>
+  <li><a href="#sec-estimation-exhaust_centered_normal" id="toc-sec-estimation-exhaust_centered_normal" class="nav-link" data-scroll-target="#sec-estimation-exhaust_centered_normal"><span class="header-section-number">3.11</span> Variance d’une loi normale centrée</a></li>
+  <li><a href="#sec-estimation-exhaust_uniforme" id="toc-sec-estimation-exhaust_uniforme" class="nav-link" data-scroll-target="#sec-estimation-exhaust_uniforme"><span class="header-section-number">3.12</span> Paramètre d’une loi uniforme</a></li>
+  <li><a href="#sec-estimation-exhaust_poisson" id="toc-sec-estimation-exhaust_poisson" class="nav-link" data-scroll-target="#sec-estimation-exhaust_poisson"><span class="header-section-number">3.13</span> Paramètre de la loi Poisson</a></li>
+  <li><a href="#sec-estimation-exhaust_raoblackwell_poisson" id="toc-sec-estimation-exhaust_raoblackwell_poisson" class="nav-link" data-scroll-target="#sec-estimation-exhaust_raoblackwell_poisson"><span class="header-section-number">3.14</span> Rao–Blackwell avec la loi Poisson</a></li>
+  <li><a href="#sec-estimation-exhaust_raoblackwell_expo" id="toc-sec-estimation-exhaust_raoblackwell_expo" class="nav-link" data-scroll-target="#sec-estimation-exhaust_raoblackwell_expo"><span class="header-section-number">3.15</span> Rao–Blackwell avec la loi exponentielle</a></li>
+  <li><a href="#sec-estimation-exhaust_geometrique" id="toc-sec-estimation-exhaust_geometrique" class="nav-link" data-scroll-target="#sec-estimation-exhaust_geometrique"><span class="header-section-number">3.16</span> Statistique exhaustive pour le paramètre de la loi géométrique</a></li>
+  <li><a href="#sec-estimation-mvue_poisson" id="toc-sec-estimation-mvue_poisson" class="nav-link" data-scroll-target="#sec-estimation-mvue_poisson"><span class="header-section-number">3.17</span> MVUE – Loi de Poisson</a></li>
+  <li><a href="#sec-estimation-mvue_demo" id="toc-sec-estimation-mvue_demo" class="nav-link" data-scroll-target="#sec-estimation-mvue_demo"><span class="header-section-number">3.18</span> Démonstration guidée</a></li>
+  <li><a href="#sec-estimation-mvue_poisson_2" id="toc-sec-estimation-mvue_poisson_2" class="nav-link" data-scroll-target="#sec-estimation-mvue_poisson_2"><span class="header-section-number">3.19</span> MVUE pour le paramètre d’une loi de Poisson</a></li>
+  <li><a href="#sec-estimation-mvue_binomiale" id="toc-sec-estimation-mvue_binomiale" class="nav-link" data-scroll-target="#sec-estimation-mvue_binomiale"><span class="header-section-number">3.20</span> MVUE pour une loi binomiale</a></li>
+  <li><a href="#sec-estimation-mvue_2loisnormales" id="toc-sec-estimation-mvue_2loisnormales" class="nav-link" data-scroll-target="#sec-estimation-mvue_2loisnormales"><span class="header-section-number">3.21</span> Efficacité relative de deux estimateurs pour une loi normale</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/estimation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-estimation-biais_eqm_sigma2" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-estimation-biais_eqm_sigma2"><span class="header-section-number">3.1</span> Estimateur sans biais de <span class="math inline">\(\sigma^2\)</span></h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une distribution avec moyenne <span class="math inline">\(\mu\)</span> et variance <span class="math inline">\(\sigma^2\)</span>. Démontrer que <span class="math inline">\(n^{-1} \sum_{i=1}^n (X_i - \mu)^2\)</span> est un estimateur sans biais de <span class="math inline">\(\sigma^2\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a <span class="math display">\[
+\begin{aligned}
+      \Esp{\frac{1}{n}\sum_{i=1}^n(X_i - \mu)^2}
+      &amp;= \frac{1}{n} \sum_{i=1}^n \esp{(X_i-\mu)^2} \\
+      &amp;= \frac{1}{n} \sum_{i=1}^n \esp{X_i^2 -2\mu X_i + \mu^2} \\
+      &amp;= \frac{1}{n} \sum_{i=1}^n (\esp{X_i^2} - \mu^2) \\
+      &amp;= \frac{1}{n} \sum_{i=1}^n [(\sigma^2 + \mu^2) - \mu^2] \\
+      &amp;= \frac{1}{n} \sum_{i=1}^n \sigma^2 \\
+      &amp;= \sigma^2,
+    \end{aligned}
+\]</span> d’où l’expression du côté gauche de l’égalité est un estimateur sans biais du paramètre <span class="math inline">\(\sigma^2\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-biais_conditions_a" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-estimation-biais_conditions_a"><span class="header-section-number">3.2</span> Constantes pour obtenir un estimateur sans biais</h2>
+<p>Si <span class="math inline">\(X_1, \dots, X_n\)</span> est un échantillon aléatoire d’une distribution avec moyenne <span class="math inline">\(\mu\)</span>, quelle condition doit-on imposer sur les constantes <span class="math inline">\(a_1, \dots, a_n\)</span> pour que <span class="math display">\[
+    a_1 X_1 + \cdots + a_n X_n
+  \]</span> soit un estimateur sans biais de <span class="math inline">\(\mu\)</span>?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\sum_{i=1}^n a_i = 1\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a, <span class="math display">\[
+\begin{aligned}
+      \esp{a_1 X_1 + \dots + a_n X_n}
+      &amp;= \esp{a_1 X_1} + \dots + \esp{a_n X_n}\\
+      &amp;= (a_1 + \dots + a_n) \esp{X_1} \\
+      &amp;= (a_1 + \dots + a_n) \mu.
+    \end{aligned}
+\]</span> Pour que <span class="math inline">\(a_1 X_1 + \dots + a_n X_n\)</span> soit un estimateur sans biais de <span class="math inline">\(\mu\)</span>, il faut que <span class="math inline">\(\sum_{i=1}^n a_i = 1\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-biais_mu2" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-estimation-biais_mu2"><span class="header-section-number">3.3</span> Estimateur de <span class="math inline">\(\mu^2\)</span></h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une distribution avec moyenne <span class="math inline">\(\mu\)</span> et variance&nbsp;<span class="math inline">\(\sigma^2\)</span>.</p>
+<p><strong>a)</strong> Démontrer que <span class="math inline">\(\bar{X}_n^2\)</span> est un estimateur biaisé de <span class="math inline">\(\mu^2\)</span> et calculer son biais.</p>
+<p><strong>b)</strong> Démontrer que <span class="math inline">\(\bar{X}_n^2\)</span> est un estimateur asymptotiquement sans biais de <span class="math inline">\(\mu^2\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\sigma^2/n\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Il faut d’abord calculer l’espérance de l’estimateur: <span class="math display">\[
+\begin{aligned} \esp{\bar{X}_n^2} &amp;= \var{\bar{X}_n} + \esp{\bar{X}_n}^2 \\ &amp;= \frac{\sigma^2}{n} + \mu^2. \end{aligned}
+\]</span> On voit que <span class="math inline">\(\bar{X}_n^2\)</span> est un estimateur biaisé de <span class="math inline">\(\mu^2\)</span> et que le biais est <span class="math inline">\(\sigma^2/n\)</span>.</p>
+<p><strong>b)</strong> Puisque <span class="math display">\[
+\begin{aligned} \lim_{n \rightarrow \infty} \esp{\bar{X}_n^2} = \lim_{n \rightarrow \infty} \frac{\sigma^2}{n} + \mu^2 = \mu^2, \end{aligned}
+\]</span> <span class="math inline">\(\bar{X}_n^2\)</span> est un estimateur asymptotiquement sans biais de <span class="math inline">\(\mu^2\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-biais_ech_taille3_uniforme" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-estimation-biais_ech_taille3_uniforme"><span class="header-section-number">3.4</span> Deux estimateurs sans biais de <span class="math inline">\(\theta\)</span></h2>
+<p>Soient <span class="math inline">\(X_{(1)} &lt; X_{(2)} &lt; X_{(3)}\)</span> les statistiques d’ordre d’un échantillon aléatoire de taille <span class="math inline">\(3\)</span> tiré d’une distribution uniforme avec fonction de densité <span class="math display">\[
+    f(x) = \theta^{-1}, \quad 0 &lt; x &lt; \theta, \quad \theta &gt; 0.
+  \]</span> Démontrer que <span class="math inline">\(4 X_{(1)}\)</span> et <span class="math inline">\(2 X_{(2)}\)</span> sont tous deux des estimateurs sans biais de <span class="math inline">\(\theta\)</span>. Trouver la variance de chacun de ces estimateurs.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\var{4X_{(1)}} = 3 \theta^2/5\)</span>, <span class="math inline">\(\var{2X_{(2)}} = \theta^2/5\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La fonction de densité de probabilité de la <span class="math inline">\(k\)</span>ième statistique d’ordre est donnée par le Théorème 6.5 des notes de cours. <span class="math display">\[
+    f_{X_{(k)}}(x)=\frac{n!}{(k-1)!(n-k)!}F(x)^{k-1}\{1-F(x)\}^{n-k}f(x)
+    \]</span> Pour <span class="math inline">\(n = 3\)</span> et <span class="math inline">\(X_i \sim U(0, \theta)\)</span>, <span class="math inline">\(i = 1, 2, 3\)</span>, on a <span class="math display">\[
+\begin{aligned}
+      f_{X_{(1)}}(x)
+      &amp;= 3 \left(1 - \frac{x}{\theta} \right)^2
+      \left( \frac{1}{\theta} \right) \\
+      &amp;= 3 \left(
+        \frac{1}{\theta} - \frac{2x}{\theta^2} + \frac{x^2}{\theta^3}
+      \right), \quad 0 &lt; x &lt; \theta \\
+      \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+      f_{X_{(2)}}(x)
+      &amp;= 6 \left( \frac{x}{\theta} \right)
+      \left( 1 - \frac{x}{\theta} \right)
+      \left( \frac{1}{\theta} \right) \\
+      &amp;= 6 \left(
+        \frac{x}{\theta^2} - \frac{x^2}{\theta^3}
+      \right), \quad 0 &lt; x &lt; \theta.
+    \end{aligned}
+\]</span> Ainsi, d’une part, <span class="math display">\[
+\begin{aligned}
+      \esp{4X_{(1)}} &amp;= 4 \int_0^{\theta} x f_{X_{(1)}}(x)  dx \\
+      &amp;= 12 \int_0^{\theta}
+      \left(
+        \frac{x}{\theta} - \frac{2x^2}{\theta^2} + \frac{x^3}{\theta^3}
+      \right)  dx \\
+      &amp;= 12 \left(
+        \frac{\theta}{2} - \frac{2 \theta}{3} + \frac{\theta}{4}
+      \right) \\
+      &amp;= \theta \\
+      \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \esp{2X_{(2)}} &amp;= 2 \int_0^{\theta} x f_{X_{(2)}}(x)  dx \\
+      &amp;= 12 \int_0^\theta
+      \left(
+        \frac{x^2}{\theta^2} - \frac{x^3}{\theta^3}
+      \right)  dx \\
+      &amp;= 12 \left( \frac{\theta}{3} - \frac{\theta}{4} \right) \\
+      &amp;= \theta,
+    \end{aligned}
+\]</span> d’où <span class="math inline">\(4 X_{(1)}\)</span> et <span class="math inline">\(2 X_{(2)}\)</span> sont des estimateurs sans biais de <span class="math inline">\(\theta\)</span>. D’autre part, <span class="math display">\[
+\begin{aligned}
+      \esp{(4X_{(1)})^2} &amp;= 16 \int_0^{\theta} x^2 f_{X_{(1)}}(x)  dx \\
+      &amp;= 48 \int_0^{\theta}
+      \left(
+        \frac{x^2}{\theta} - \frac{2x^3}{\theta^2} + \frac{x^4}{\theta^3}
+      \right)  dx \\
+      &amp;= 48 \left(
+        \frac{\theta^2}{3} - \frac{2 \theta^2}{4} + \frac{\theta^2}{5}
+      \right) \\
+      &amp;= \frac{8 \theta^2}{5} \\
+      \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \esp{(2X_{(2)})^2} &amp;= 4 \int_0^{\theta} x^2 f_{X_{(2)}}(x)  dx \\
+      &amp;= 24 \int_0^\theta
+      \left(
+        \frac{x^3}{\theta^3} - \frac{x^4}{\theta^3}
+      \right)  dx \\
+      &amp;= 24 \left( \frac{\theta^2}{4} - \frac{\theta^2}{5} \right) \\
+      &amp;= \frac{6 \theta^2}{5}.
+    \end{aligned}
+\]</span> Par conséquent, <span class="math display">\[
+\begin{aligned}
+      \var{4 X_{(1)}}
+      &amp;= \frac{8 \theta^2}{5} - \theta^2 = \frac{3 \theta^2}{5} \\
+      \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \var{2 X_{(2)}}
+      &amp;= \frac{6 \theta^2}{5} - \theta^2 = \frac{\theta^2}{5}.
+    \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-biais_uniforme_0theta" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-estimation-biais_uniforme_0theta"><span class="header-section-number">3.5</span> Distribution uniforme sur <span class="math inline">\((0, \theta)\)</span></h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une distribution uniforme sur l’intervalle <span class="math inline">\((0, \theta)\)</span>.</p>
+<p><strong>a)</strong> Développer un estimateur sans biais de <span class="math inline">\(\theta\)</span> basé sur <span class="math inline">\(\max(X_1, \dots, X_n)\)</span>.</p>
+<p><strong>b)</strong> Répéter la partie a), mais cette fois à partir de <span class="math inline">\(\min(X_1, \dots, X_n)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\((n + 1) X_{(n)}/n\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\((n + 1) X_{(1)}\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soit <span class="math inline">\(X_{(n)} = \max(X_1, \dots, X_n)\)</span> et <span class="math inline">\(X_{(1)} = \min(X_1,
+    \dots, X_n)\)</span>, où <span class="math inline">\(X_i \sim U(0, \theta)\)</span>, <span class="math inline">\(i = 1, \dots, n\)</span>. On sait alors que <span class="math display">\[
+\begin{aligned}
+      f_{X_{(n)}}(x)
+      &amp;= n (F(x))^{n - 1} f(x) \\
+      &amp;= \frac{n x^{n - 1}}{\theta^n}, \quad 0 &lt; x &lt; \theta \\
+      \end{aligned}
+\]</span></p>
+<p>et que</p>
+<p><span class="math display">\[
+\begin{aligned}
+      f_{X_{(1)}}(x)
+      &amp;= n (1 - F(x))^{n - 1} f(x) \\
+      &amp;= \frac{n (\theta - x)^{n - 1}}{\theta^n}, \quad 0 &lt; x &lt; \theta.
+    \end{aligned}
+\]</span> <strong>a)</strong> On souhaite développer un estimateur sans biais de <span class="math inline">\(\theta\)</span> basé sur <span class="math inline">\(X_{(n)}\)</span>. En premier lieu, <span class="math display">\[
+\begin{aligned} \esp{X_{(n)}} &amp;= \int_0^\theta x f_{X_{(n)}}(x)  dx \\ &amp;= \frac{n}{\theta^n}\int_0^\theta x^n  dx\\ &amp;= \frac{n \theta}{n + 1}. \end{aligned}
+\]</span> Par définition, comme un estimateur sans biais <span class="math inline">\(\hat{\theta}\)</span> doit être trouvé, cet estimateur doit être tel que <span class="math inline">\(\esp{\hat{\theta}}= \theta\)</span>. Il faut corriger <span class="math inline">\(\esp{X_{(n)}}\)</span> en inversant la fonction <span class="math inline">\(g(\theta) = \frac{n\theta}{n+1}\)</span>. On remarque ainsi que <span class="math display">\[ \esp{X_{(n)}} = \frac{n\theta}{n+1} \Leftrightarrow \theta = \esp{X_{(n)}} \frac{n+1}{n} = E\left[{\frac{X_{(n)}(n+1)}{n}}\right] \]</span> Un estimateur sans biais de <span class="math inline">\(\theta\)</span> est donc <span class="math inline">\(\hat{\theta} = \frac{(n + 1) X_{(n)}}{n}\)</span>.</p>
+<p><strong>b)</strong> Comme en a), on calcule d’abord l’espérance de la statistique: <span class="math display">\[
+\begin{aligned} \esp{X_{(1)}} &amp;= \int_0^\theta x f_{X_{(1)}}(x)  dx \\ &amp;= \frac{n}{\theta^n} \int_{0}^\theta x (\theta - x)^{n - 1}x dx \\ &amp;=\frac{\theta}{n + 1} \end{aligned}
+\]</span> en intégrant par parties. En corrigeant par la même méthode qu’en a), un estimateur sans biais de <span class="math inline">\(\theta\)</span> basé sur le minimum de l’échantillon est donc <span class="math inline">\(\hat{\theta}=(n + 1) X_{(1)}\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-biais_binomiale" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-estimation-biais_binomiale"><span class="header-section-number">3.6</span> Estimateur de la variance d’une loi binomiale</h2>
+<p>Soit <span class="math inline">\(X \sim \text{Binomiale}(n, p)\)</span>. Démontrer que, malgré que <span class="math inline">\(X/n\)</span> soit un estimateur sans biais de <span class="math inline">\(p\)</span>, <span class="math display">\[
+    n \left(\frac{X}{n}\right) \left(1 - \frac{X}{n}\right)
+  \]</span> est un estimateur biaisé de la variance de <span class="math inline">\(X\)</span>. Calculer le biais de l’estimateur.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(-p (1 - p)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\(\esp{X} = np\)</span> et que <span class="math inline">\(\var{X} = np (1 - p)\)</span>. Or, <span class="math display">\[
+\begin{aligned}
+      \Esp{n\left(\frac{X}{n}\right)\left(1-\frac{X}{n}\right)} &amp;=
+      \esp{X} - \frac{\esp{X^2}}{n}\\
+      &amp;= np - \frac{\var{X} + \esp{X}^2}{n}\\
+      &amp;= np - \frac{np(1 - p) + n^2 p^2}{n}\\
+      &amp;= (n - 1) p (1 - p) \\
+      &amp;= n p (1 - p) - p(1 - p).
+    \end{aligned}
+\]</span> La statistique est donc un estimateur biaisé de la variance et le biais est <span class="math inline">\(-p (1 - p)\)</span>. La statistique sur-estime la variance.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-conv_borne_inf_unif" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-estimation-conv_borne_inf_unif"><span class="header-section-number">3.7</span> Estimateur convergent de la borne inférieure d’une loi uniforme</h2>
+<p>Démontrer, à partir de la définition, que <span class="math inline">\(X_{(1)} = \min(X_1,
+  \dots, X_n)\)</span> est un estimateur convergent du paramètre <span class="math inline">\(\theta\)</span> d’une loi uniforme sur l’intervalle <span class="math inline">\((\theta, \theta + 1)\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Il faut démontrer que <span class="math inline">\(\lim_{n \rightarrow \infty}
+    \prob{\abs{X_{(1)} - \theta} &lt; \epsilon} = 1\)</span>. On sait que si <span class="math inline">\(X
+    \sim U(\theta, \theta + 1)\)</span>, alors <span class="math display">\[
+\begin{aligned}
+      f_X(x) &amp;= 1, \quad \theta &lt; x &lt; \theta + 1 \\
+      F_X(x) &amp;= x - \theta, \quad \theta &lt; x &lt; \theta + 1
+    \end{aligned}
+\]</span> et <span class="math display">\[
+\begin{aligned}
+      f_{X_{(1)}}(x) &amp;= n f_X(x) (1 - F_X(x))^{n - 1} \\
+      &amp;= n (1 - x + \theta)^{n - 1}, \quad \theta &lt; x &lt; \theta + 1.
+    \end{aligned}
+\]</span> Ainsi, <span class="math display">\[
+\begin{aligned}
+      \prob{\abs{X_{(1)} - \theta} &lt; \epsilon}
+      &amp;= \prob{\theta - \epsilon &lt; X_{(1)} &lt; \theta + \epsilon} \\
+      &amp;= \int_\theta^{\theta + \epsilon} n (1 - x + \theta)^{n-1}  dx \\
+      &amp;= 1 - (1 - \epsilon)^n.
+    \end{aligned}
+\]</span> Or, cette dernière expression tend vers <span class="math inline">\(1\)</span> lorsque <span class="math inline">\(n\)</span> tend vers l’infini, ce qui complète la démonstration.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-conv_parametre_expo" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-estimation-conv_parametre_expo"><span class="header-section-number">3.8</span> Estimateur convergent de la moyenne d’une loi exponentielle</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une loi exponentielle de moyenne <span class="math inline">\(\theta\)</span>. Démontrer que <span class="math inline">\(\bar{X}\)</span> est un estimateur convergent de <span class="math inline">\(\theta\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo: méthode de la limite de la variance.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Puisque <span class="math inline">\(\bar{X}\)</span> est un estimateur sans biais de la moyenne d’une distribution, quelqu’elle fut, et que <span class="math inline">\(\lim_{n \rightarrow \infty}
+    \var{\bar{X}} = \lim_{n \rightarrow \infty} \var{X}/n = 0\)</span>, alors <span class="math inline">\(\bar{X}\)</span> est toujours un estimateur convergent de la moyenne.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-efficacite" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-estimation-efficacite"><span class="header-section-number">3.9</span> Efficacité de trois estimateurs</h2>
+<p>Soit <span class="math inline">\(X_1,\ldots,X_n\)</span> un échantillon aléatoire de taille <span class="math inline">\(n\geq 3\)</span> d’une population avec moyenne <span class="math inline">\(\mu\)</span> et variance <span class="math inline">\(\sigma^2 &gt; 0\)</span>. On considère les trois estimateurs suivants pour <span class="math inline">\(\mu\)</span>: <span class="math display">\[
+\hat\mu_1=\frac{X_1+X_2}{2},\quad\quad \hat\mu_2=\frac{X_1}{4}+\frac{X_2+\cdots+X_{n-1}}{2(n-2)}+\frac{X_n}{4}, \quad\text{ et }\quad \hat\mu_3=\sum_{j=1}^{n}\frac{X_j}{n}.
+\]</span> <strong>a)</strong> Montrer que ces estimateurs sont sans biais.</p>
+<p><strong>b)</strong> Trouver l’efficacité de <span class="math inline">\(\hat\mu_3\)</span> par rapport à <span class="math inline">\(\hat\mu_2\)</span> et <span class="math inline">\(\hat\mu_1\)</span>, respectivement.</p>
+<p><strong>c)</strong> Quel estimateur est préférable et pourquoi?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol start="2" type="a">
+<li><span class="math inline">\(\frac{n^2}{8(n-2)}\)</span> et <span class="math inline">\(\frac{n}{2}\)</span> c) <span class="math inline">\({\hat \mu}_3\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On peut conclure que <span class="math inline">\({\hat \mu}_1\)</span> est un estimateur sans biais de <span class="math inline">\(\mu\)</span> par le fait que <span class="math display">\[ \ex({\hat \mu}_1) = \frac{1}{2}   \{ \ex (X_1) + \ex(X_2)\} = \frac{1}{2}   (\mu + \mu) = \mu. \]</span> De même, <span class="math inline">\({\hat \mu}_2\)</span> est un estimateur sans biais de <span class="math inline">\(\mu\)</span>, car <span class="math display">\[\begin{eqnarray*} \ex ({\hat \mu}_2) &amp;=&amp; \frac{1}{4}   \ex (X_1) + \frac{1}{2(n-2)}   \sum_{i=2}^{n-1} \ex (X_i) + \frac{1}{4}   \ex (X_n) \\ &amp;=&amp; \frac{1}{4}   \mu + \frac{1}{2(n-2)}   (n-2)\mu + \frac{1}{4}   \mu \\ &amp;=&amp; \frac{1}{4}   \mu + \frac{1}{2}   \mu + \frac{1}{4}   \mu = \mu. \end{eqnarray*}\]</span> Finalement, <span class="math inline">\({\hat \mu}_3\)</span> est un estimateur sans biais de <span class="math inline">\(\mu\)</span> puisque <span class="math display">\[ \ex ( {\hat \mu}_3) = \frac{1}{n}   \sum_{i=1}^n \ex (X_i) = \frac{n\mu}{n} = \mu. \]</span></p>
+<p><strong>b)</strong> Par définition, <span class="math display">\[ \text{eff} ({\hat \mu}_3, {\hat \mu}_2) = \frac{\vr({\hat \mu}_2)} {\vr ({\hat \mu}_3)} \quad \text{et} \quad \text{eff} ({\hat \mu}_3, {\hat \mu}_1) = \frac{\vr({\hat \mu}_1)} {\vr ({\hat \mu}_3)}  . \]</span> Pour calculer ces ratios, on doit commencer par déterminer la variance de chacun des trois estimateurs. D’abord, on trouve <span class="math display">\[ \vr({\hat \mu}_1) = \frac{1}{4}   \{ \vr (X_1) + \vr (X_2) \} = \frac{\sigma^2}{2}   . \]</span> Ensuite, <span class="math display">\[\begin{eqnarray*} \vr({\hat \mu}_2) &amp;=&amp; \frac{1}{16}   \vr( X_1) + \frac{1}{4(n-2)^2}   \sum_{i=2}^{n-1} \vr (X_i) + \frac{1}{16}   \vr( X_n) \\ &amp;=&amp; \frac{1}{16}   \sigma^2 + \frac{1}{4(n-2)^2}   (n-2) \sigma^2 + \frac{1}{16}   \sigma^2 \\ &amp;=&amp; \frac{2(n-2) + 4}{16(n-2)}   \sigma^2 \\ &amp;=&amp; \frac{n}{8(n-2)}   \sigma^2. \end{eqnarray*}\]</span> Finalement, <span class="math display">\[ \vr({\hat \mu}_3) = \frac{1}{n^2}   \sum_{i=1}^n \vr (X_i) = \frac{n}{n^2}   \sigma^2 = \frac{\sigma^2}{n}   . \]</span> Il en découle que <span class="math display">\[ \text{eff} ({\hat \mu}_3, {\hat \mu}_2) =  \frac{\displaystyle\frac{n\sigma^2}{8(n-2)}}{\displaystyle\frac{\sigma^2}{n}} =  \frac{n^2}{8(n-2)} \]</span> et <span class="math display">\[ \text{eff} ({\hat \mu}_3, {\hat \mu}_1) =  \frac{\displaystyle\frac{\sigma^2}{2}}{\displaystyle\frac{\sigma^2}{n}} =  \frac{n}{2}   . \]</span></p>
+<p><strong>c)</strong> Pour toute valeur de <span class="math inline">\(n \ge 3\)</span>, on a <span class="math display">\[ \text{eff} ({\hat \mu}_3, {\hat \mu}_1) &gt; 1 \quad \text{et} \quad \text{eff} ({\hat \mu}_3, {\hat \mu}_2) &gt; 1. \]</span> Donc, <span class="math inline">\({\hat \mu}_3\)</span> est toujours préférable à <span class="math inline">\({\hat \mu}_1\)</span> ou <span class="math inline">\({\hat \mu}_2\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-exhaust_pareto" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="sec-estimation-exhaust_pareto"><span class="header-section-number">3.10</span> Trois estimateurs de paramètres d’une loi Pareto</h2>
+<p>Soit <span class="math inline">\(X_1,\ldots,X_n\)</span> un échantillon aléatoire avec fonction de répartition <span class="math display">\[
+F(x)=\begin{cases}
+0,&amp; x&lt;\beta\\
+1-(\beta/x)^\alpha, &amp; x\geq \beta,
+\end{cases}
+\]</span> où <span class="math inline">\(\alpha,\beta&gt;0\)</span>. La fonction de densité de probabilité correspondante est <span class="math display">\[
+f(x)=\begin{cases}
+\alpha\beta^\alpha x^{-(\alpha+1)}, &amp; x\geq \beta,\\
+0,&amp; \text{ailleurs}.
+\end{cases}
+\]</span> <strong>a)</strong> Trouver la fonction de répartition de <span class="math inline">\(\hat\beta=\min(X_1,\ldots,X_n)\)</span>.</p>
+<p><strong>b)</strong> Montrer que <span class="math inline">\(\hat\beta\)</span> est un estimateur convergent de <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>c)</strong> Calculer le biais et l’erreur quadratique moyenne de l’estimateur <span class="math inline">\(\hat\beta\)</span>. Est-ce que cet estimateur est sans biais ou asymptotiquement sans biais?</p>
+<p><strong>d)</strong> Si <span class="math inline">\(\alpha\)</span> est connu, montrer que <span class="math inline">\(\min(X_1,\ldots,X_n)\)</span> est une statistique exhaustive pour <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>e)</strong> Si <span class="math inline">\(\beta\)</span> est connu, montrer que <span class="math inline">\(X_1\times\cdots\times X_n\)</span> est une statistique exhaustive pour <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>f)</strong> Trouver une paire de statistiques conjointement exhaustives dans le cas où <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\beta\)</span> sont inconnus.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(f_{min}(x) = \alpha n \beta^{\alpha n} x^{-(n \alpha + 1}\)</span></p>
+<p><strong>b)</strong> Démo: Définition d’un estimateur convergent.</p>
+<p><strong>c)</strong> <span class="math inline">\(B(\hat{\beta}) = \frac{\beta}{\beta n - 1}\)</span> converge vers 0.</p>
+<p><strong>d)</strong> Démo par le théorème de factorisation de Fisher-Neyman.</p>
+<p><strong>e)</strong> Idem</p>
+<p><strong>f)</strong> <span class="math inline">\(\prod_{i = 1}^n X_i\)</span> et <span class="math inline">\(\min(X_1, \dots, X_n)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La fonction de répartition de <span class="math inline">\(\hat \beta=\min(X_1,\ldots,X_n)\)</span>, pour <span class="math inline">\(x\geq \beta\)</span>, est <span class="math display">\[
+\begin{aligned} \Pr[\min(X_1,\ldots,X_n)\leq x] &amp; = 1- \Pr[\min(X_1,\ldots,X_n)&gt; x]\\ &amp;= 1-\Pr[X_1&gt;x,\ldots,X_n&gt;x]\\ &amp;=1-\Pr[X_1&gt;x]\times\cdots\times\Pr[X_n&gt;x],\text{ par indépendance}\\ &amp;=1-\{\Pr[X_1&gt;x]\}^n,\text{ par i.d.}\\ &amp;=1-\left\{\frac{\beta}{x}\right\}^{\alpha n}\\ \end{aligned}
+\]</span> Donc, <span class="math inline">\(\min(X_1,\ldots,X_n)\)</span> a la même fonction de répartition que <span class="math inline">\(X\)</span> avec un nouveau paramètre <span class="math inline">\(\alpha^\star=\alpha n\)</span>. Ce qui signifie que la densité est <span class="math display">\[ f_{\min}(x)=\alpha n \beta^{\alpha n}x^{-(\alpha n+1)},\quad x\geq \beta. \]</span></p>
+<p><strong>b)</strong> On utilise la définition d’un estimateur convergent. Si <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math display">\[
+\begin{aligned} \Pr[|\hat\beta-\beta|\leq \varepsilon]&amp;=\Pr[\beta-\varepsilon&lt;\hat\beta\leq \beta+\varepsilon] \\ &amp;=\Pr[\hat\beta\leq \beta+\varepsilon], \end{aligned}
+\]</span> puisque <span class="math inline">\(\Pr[\hat\beta&lt;\beta]=0\)</span> par le fait que le domaine du minimum est le même que celui des observations, <span class="math inline">\([\beta,\infty)\)</span>. Ainsi, on remplace dans la fonction de répartition développée en a): <span class="math display">\[
+\begin{aligned} \Pr[|\hat\beta-\beta|\leq \varepsilon]&amp;=\Pr[\hat\beta\leq \beta+\varepsilon]= F_\text{min}(\beta + \varepsilon) = 1-\left(\frac{\beta}{\beta+\varepsilon}\right)^{\alpha n}. \end{aligned}
+\]</span> Puisque <span class="math inline">\(\varepsilon\)</span> est positif, le ratio <span class="math inline">\(\frac{\beta}{\beta+\varepsilon}&lt;1\)</span> et donc <span class="math inline">\(\left(\frac{\beta}{\beta+\varepsilon}\right)^{\alpha n}\to 0\)</span> quand <span class="math inline">\(n\to\infty\)</span>. Ainsi, <span class="math display">\[ \lim_{n\to\infty} \Pr[|\hat\beta-\beta|\leq \varepsilon]=1, \]</span> et <span class="math inline">\(\hat\beta\)</span> est convergent pour <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>c)</strong> On trouve d’abord <span class="math inline">\(\ex[\hat\beta]\)</span> et <span class="math inline">\(\ex[\hat\beta^2]\)</span>: <span class="math display">\[
+\begin{aligned} \ex[\hat\beta]&amp;=\int_\beta^\infty x \alpha n \beta^{\alpha n}x^{-(\alpha n+1)}\d x = \int_\beta^\infty  \alpha n \beta^{\alpha n}x^{-\alpha n}\d x = \frac{\alpha n\beta}{\alpha n-1}\\ \ex[\hat\beta^2]&amp;=\int_\beta^\infty x^2 \alpha n \beta^{\alpha n}x^{-(\alpha n+1)}\d x = \int_\beta^\infty  \alpha n \beta^{\alpha n}x^{-(\alpha n-1)}\d x = \frac{\alpha n\beta^2}{\alpha n-2}. \end{aligned}
+\]</span> Le biais est donc <span class="math display">\[ B(\hat\beta)=\ex[\hat\beta]-\beta = \frac{\alpha n\beta}{\alpha n-1}-\beta = \frac{\beta}{\alpha n -1}\to 0 \]</span> quand <span class="math inline">\(n\to \infty\)</span>. L’estimateur est donc asymptotiquement sans biais. La variance est <span class="math display">\[ \vr(\hat\beta)= \frac{\alpha n\beta^2}{\alpha n-2}-\left(\frac{\alpha n\beta}{\alpha n-1}\right)^2 = \frac{\alpha n\beta^2}{(\alpha n-2)(\alpha n-1)^2} \]</span> et l’erreur quadratique moyenne est <span class="math display">\[ \text{EQM}(\hat\beta)=\vr(\hat\beta)+B^2(\hat\beta)= \frac{\alpha n\beta^2}{(\alpha n-2)(\alpha n-1)^2}+\frac{\beta^2}{(\alpha n -1)^2}=\frac{2\beta^2}{(\alpha n-1)(\alpha n-2)}. \]</span></p>
+<p><strong>d)</strong> Si <span class="math inline">\(\alpha\)</span> est connu, le paramètre inconnu est <span class="math inline">\(\beta\)</span> et <span class="math display">\[ f(x_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  =\underbrace{ \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)}}_{h(x_1, \dots, x_n)} \underbrace{(\alpha \beta^\alpha)^n\mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\} }_{g\{ \min(x_1,\dots, x_n), \beta \}}. \]</span> Par le théorème de factorisation de Fisher–Neyman, <span class="math inline">\(\min(X_1,\dots, X_n)\)</span> est une statistique exhaustive pour <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>e)</strong> On observe que <span class="math display">\[
+\begin{aligned} f(y_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  &amp; = \alpha\beta^{\alpha}x_1^{-(\alpha+1)} \mathbf{1}(x_1 \ge \beta)\times \dots \times \alpha\beta^{\alpha} x_n^{-(\alpha+1)} \mathbf{1}(x_n \ge \beta)\\ &amp; = (\alpha \beta^\alpha)^n \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)} \times \mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\}. \end{aligned}
+\]</span> Si <span class="math inline">\(\beta\)</span> est connu, le paramètre incconu est <span class="math inline">\(\alpha\)</span>. Puisque <span class="math display">\[ f(x_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  =\underbrace{(\alpha \beta^\alpha)^n \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)}}_{g(\prod x_i , \alpha)} \underbrace{\mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\}}_{h(x_1,\dots, x_n)}, \]</span> on peut conclure par le théorème de factorisation de Fisher–Neyman que <span class="math inline">\(X_1 \times \cdots \times X_n\)</span> est une statistique exhaustive pour <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>f)</strong> Lorsque <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\beta\)</span> sont inconnus, <span class="math display">\[ f(x_1|\alpha,\beta) \times \dots \times f(x_n|\alpha,\beta)  =\underbrace{(\alpha \beta^\alpha)^n \left(\prod_{i=1}^n x_i\right)^{-(\alpha+1)}\mathbf{1} \{ \min(x_1,\dots, x_n) \ge \beta\}}_{g\{\prod x_i, \min(x_1,\dots, x_n), \alpha,\beta\}} \]</span> donc les statistiques <span class="math inline">\(X_1 \times \cdots \times X_n\)</span> et <span class="math inline">\(\min(X_1,\dots, X_n)\)</span> sont conjointement exhaustives pour <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\beta\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-exhaust_centered_normal" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="sec-estimation-exhaust_centered_normal"><span class="header-section-number">3.11</span> Variance d’une loi normale centrée</h2>
+<p>Soit <span class="math inline">\(X_1\)</span> une observation d’une loi normale avec moyenne <span class="math inline">\(0\)</span> et variance <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(\sigma &gt; 0\)</span>. Démontrer que <span class="math inline">\(\abs{X_1}\)</span> est une statistique exhaustive pour <span class="math inline">\(\sigma^2\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a un échantillon aléatoire de taille 1. Or, <span class="math display">\[
+\begin{aligned}
+      f(x_1; \sigma^2)
+      &amp;= \frac{1}{\sqrt{2\pi \sigma^2}}  e^{-x_1^2/(2 \sigma^2)} \\
+      &amp;= \frac{1}{\sqrt{2\pi\sigma^2}}  e^{-\abs{x_1}^2/(2 \sigma^2)} \\
+      &amp;= g(\abs{x_1}; \sigma^2) h(x_1), \\
+      \end{aligned}
+\]</span></p>
+<p>avec</p>
+<p><span class="math display">\[
+\begin{aligned}
+      g(x; \sigma^2)
+      &amp;= \frac{1}{\sqrt{2\pi\sigma^2}}  e^{-x^2/(2 \sigma^2)}
+    \end{aligned}
+\]</span> et <span class="math inline">\(h(x) = 1\)</span>. Ainsi, par le théorème de factorisation de Fisher–Neyman, <span class="math inline">\(\abs{X_1}\)</span> est une statistique exhaustive pour <span class="math inline">\(\sigma^2\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-exhaust_uniforme" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="sec-estimation-exhaust_uniforme"><span class="header-section-number">3.12</span> Paramètre d’une loi uniforme</h2>
+<p>Trouver une statistique exhaustive pour le paramètre <span class="math inline">\(\theta\)</span> de la loi uniforme sur l’intervalle <span class="math inline">\((-\theta, \theta)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\max_{i = 1, \dots, n}(\abs{X_i})\)</span>, ou <span class="math inline">\((X_{(1)}, X_{(n)})\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une distribution uniforme sur l’intervalle <span class="math inline">\((-\theta, \theta)\)</span>. La fonction de vraisemblance de cet échantillon est <span class="math display">\[
+      f(x_1, \dots, x_n; \theta) =
+      \begin{cases}
+        (2 \theta)^{-n}, &amp; -\theta &lt; x_i &lt; \theta, i = 1, \dots, n \\
+        0, &amp; \text{ailleurs}.
+      \end{cases}
+    \]</span> La fonction de vraisemblance est donc non nulle seulement si toutes les valeurs de l’échantillon se trouvent dans l’intervalle <span class="math inline">\((-\theta, \theta)\)</span> ou, de manière équivalente, si <span class="math display">\[
+\begin{aligned}
+    - \theta &lt; x_i &lt; \theta \; i \in {1, \dots, n} \\
+    - \theta &lt; \min(x_1, \dots, x_n) \; \text{et} \; \max(x_1, \dots, x_n) &lt; \theta \\
+    \theta &gt; -\min(x_1, \dots, x_n) \; \text{et} \; \max(x_1, \dots, x_n) &lt; \theta \\
+    \max_{i = 1, \dots, n}(\abs{x_i}) &lt; \theta.
+    \end{aligned}
+\]</span> On peut donc, par exemple, réécrire la fonction de vraisemblance sous la forme <span class="math display">\[
+\begin{aligned}
+      f(x_1, \dots, x_n; \theta)
+      &amp;= \left( \frac{1}{2\theta} \right)^n
+      \mathbf{1}_{\{0 \leq \max_{i = 1, \dots, n}(\abs{x_i}) \leq \theta)\}} \\
+      &amp;= g \left( \max_{i = 1, \dots, n}(\abs{x_i}); \theta \right)
+      h(x_1, \dots, x_n), \\
+      \end{aligned}
+\]</span></p>
+<p>avec</p>
+<p><span class="math display">\[
+\begin{aligned}
+      g(x; \theta)
+      &amp;= \left( \frac{1}{2\theta} \right)^n
+      I_{\{0 \leq x \leq \theta)\}}
+    \end{aligned}
+\]</span> et <span class="math inline">\(h(x_1, \dots, x_n) = 1\)</span>. Ainsi, par le théorème de factorisation de Fisher–Neyman, on établit que <span class="math inline">\(T = \max_{i = 1, \dots,
+      n}(\abs{X_i})\)</span> est une statistique exhaustive pour le paramètre <span class="math inline">\(\theta\)</span>. Une autre factorisation possible serait <span class="math display">\[
+      f(x_1, \dots, x_n; \theta) =
+      \left( \frac{1}{2\theta} \right)^n
+      I_{\{-\infty &lt; x_{(n)} &lt; \theta)\}}
+      I_{\{-\theta &lt; x_{(1)} &lt; \infty)\}},
+    \]</span> ce qui donne comme statistique exhaustive <span class="math inline">\(T = (X_{(1)}, X_{(n)})\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-exhaust_poisson" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="sec-estimation-exhaust_poisson"><span class="header-section-number">3.13</span> Paramètre de la loi Poisson</h2>
+<p>Démontrer que la somme des éléments d’un échantillon aléatoire issu d’une loi de Poisson est une statistique exhaustive pour le paramètre de cette loi.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Nous allons démontrer un résultat général applicable à plusieurs distributions, dont la Poisson. Il existe une famille de distributions que l’on nomme la <em>famille exponentielle</em> (il ne s’agit pas d’une référence à la densité exponentielle, bien que cette dernière soit un cas particulier de la famille exponentielle). Cette famille comprend toutes les distributions dont la densité peut s’écrire sous la forme <span class="math display">\[
+      f(x; \theta) = h(x) c(\theta) e^{\eta(\theta) t(x)},
+    \]</span> où <span class="math inline">\(h\)</span>, <span class="math inline">\(c\)</span>, <span class="math inline">\(\eta\)</span> et <span class="math inline">\(t\)</span> sont des fonctions quelconques. Par exemple, la fonction de masse de probabilité de la loi de Poisson peut s’écrire comme suit: <span class="math display">\[
+\begin{aligned}
+      f(x; \theta) &amp;= \frac{\theta^x e^{-\theta}}{x!} \\
+      &amp;= \left( \frac{1}{x!} \right) e^{-\theta} e^{\ln(\theta) x} \\
+      &amp;= h(x) c(\theta) e^{\eta(\theta) t(x)},
+    \end{aligned}
+\]</span> avec <span class="math inline">\(h(x) = (x!)^{-1}\)</span>, <span class="math inline">\(c(\theta) = e^{-\theta}\)</span>, <span class="math inline">\(\eta(\theta) = \ln \theta\)</span> et <span class="math inline">\(t(x) = x\)</span>. La loi est donc membre de la famille exponentielle. Les lois binomiale, gamma, normale et bêta font aussi partie de la famille exponentielle. En revanche, des lois comme l’uniforme sur <span class="math inline">\((0,\theta)\)</span> et l’exponentielle translatée n’en font pas partie.</p>
+<p>Pour tous les membres de la famille exponentielle, on a <span class="math display">\[
+      f(x_1, \dots, x_n; \theta) =
+      \left( \prod_{i = 1}^n h(x_i) \right)
+      (c(\theta))^n
+      e^{ \eta(\theta) \sum_{i=1}^n x_i}.
+    \]</span></p>
+<p>Ainsi, on voit que le théorème de factorisation permet de conclure que la statistique <span class="math display">\[
+      T(X_1, \dots, X_n)  = \sum_{i = 1}^n X_i
+    \]</span> est une statistique exhaustive pour le paramètre <span class="math inline">\(\theta\)</span> pour tous les membres de la famille exponentielle, dont la loi de Poisson.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-exhaust_raoblackwell_poisson" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="sec-estimation-exhaust_raoblackwell_poisson"><span class="header-section-number">3.14</span> Rao–Blackwell avec la loi Poisson</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire tiré d’une loi de Poisson avec paramètre <span class="math inline">\(\lambda\)</span> inconnu. On sait que <span class="math inline">\(T(X_1, \dots, X_n) = \sum_{i=1}^n X_i\)</span> est une statistique exhaustive pour <span class="math inline">\(\lambda\)</span>. On estime <span class="math inline">\(\lambda\)</span> par <span class="math inline">\(\tilde{\lambda} = X_1\)</span>.</p>
+<p><strong>a)</strong> Montrer que <span class="math inline">\(\tilde{\lambda}\)</span> est un estimateur sans biais de <span class="math inline">\(\lambda\)</span>.</p>
+<p><strong>b)</strong> Utiliser le théorème de Rao–Blackwell pour trouver un estimateur <span class="math inline">\(\lambda^\ast\)</span> à partir de&nbsp;<span class="math inline">\(\tilde{\lambda}\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol start="2" type="a">
+<li><span class="math inline">\(\lambda^* = \bar{X}\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On trouve que <span class="math inline">\(\tilde{\lambda}\)</span> est sans biais pour <span class="math inline">\(\lambda\)</span> par le fait que <span class="math display">\[ \ex[\tilde{\lambda}] = \ex[X_1] = \lambda. \]</span></p>
+<p><strong>b)</strong> Par le théorème de Rao–Blackwell, on trouve <span class="math display">\[ \lambda^\ast = \ex \left[ \tilde{\lambda} | T \right] = \ex \left[ X_1 | \sum_{i=1}^n X_i = t \right]. \]</span> Par contre, étant donné que la somme des espérances est équivalente à l’espérance de la somme, on remarque que la sommation des espérances conditionnelles sur toutes les observations résulte en un résultat trivial sachant que <span class="math inline">\(\sum_{i = 1}^{n} X_i = t\)</span>: <span class="math display">\[ \sum_{i=1}^n \ex \left[ X_i | \sum_{i=1}^n X_i = t \right] = \ex \left[\sum_{i=1}^n X_i | \sum_{i=1}^n X_i = t \right] = t. \]</span> Puisque <span class="math inline">\(X_1, \dots, X_n\)</span> sont i.i.d., chaque élément de la somme doit être équivalent et donc égal à <span class="math inline">\(t/n\)</span>. On trouve que <span class="math display">\[ \lambda^\ast = \frac{T}{n} = \frac{\sum_{i=1}^n X_i}{n} = \bar{X}. \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-exhaust_raoblackwell_expo" class="level2" data-number="3.15">
+<h2 data-number="3.15" class="anchored" data-anchor-id="sec-estimation-exhaust_raoblackwell_expo"><span class="header-section-number">3.15</span> Rao–Blackwell avec la loi exponentielle</h2>
+<p>Soit <span class="math inline">\(X_i\)</span> le montant de réclamation pour l’assuré <span class="math inline">\(i\)</span>, pour <span class="math inline">\(i=1,\ldots,n\)</span>. On suppose que <span class="math inline">\(X_1, \dots, X_n\)</span> est un échantillon aléatoire tiré d’une loi exponentielle avec paramètre <span class="math inline">\(\beta\)</span> inconnu telle que <span class="math inline">\(\esp{X} = \beta\)</span>.</p>
+<p><strong>a)</strong> Trouver une statistique exhaustive <span class="math inline">\(T\)</span> pour <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>b)</strong> Montrer que <span class="math inline">\(\hat{\beta} = X_1\)</span> est un estimateur sans biais de <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>c)</strong> Sans effectuer de calculs, expliquer qualitativement pourquoi <span class="math inline">\(\hat{\beta}\)</span> ne semble pas être un bon estimateur de <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>d)</strong> Appliquer le théorème de Rao–Blackwell sur <span class="math inline">\(\hat{\beta}\)</span> pour trouver un meilleur estimateur <span class="math inline">\(\tilde{\beta}\)</span>.</p>
+<p><strong>e)</strong> Est-ce le MVUE? Justifier.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(T = \bar{X}_n\)</span></p>
+<p><strong>b)</strong> Démo</p>
+<p><strong>c)</strong> Une seule observation pour déterminer le paramètre</p>
+<p><strong>d)</strong> Démo</p>
+<p><strong>e)</strong> Oui</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On applique le théorème de factorisation de Fisher–Neyman en trouvant d’abord la fonction de vraisemblance et en la factorisant ensuite: <span class="math display">\[
+\begin{aligned} L(x, \beta) &amp;= \prod_{i = 1}^{n} \frac{1}{\beta} e^{-\frac{1}{\beta} x_i} \\ &amp;= \beta^{-n} e^{-\beta^{-1} \sum_{i=1}^n x_i} \times 1 \end{aligned}
+\]</span> Ainsi, <span class="math inline">\(\hat{\beta} = \sum_{i = 1}^n X_i\)</span> ou <span class="math inline">\(\hat{\beta} = \bar{X}_n\)</span> sont des statistiques exhaustives pour <span class="math inline">\(\beta\)</span> par le théorème de factorisation de Fisher–Neyman.</p>
+<p><strong>b)</strong> Dans le contexte, <span class="math inline">\(X_1 \sim \mathcal{E}xp(\beta)\)</span>. Ainsi, <span class="math inline">\(\ex[X_1] = \beta\)</span>, donc <span class="math inline">\(\hat{\beta}\)</span> est un estimateur sans biais pour <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>c)</strong> La valeur de <span class="math inline">\(X_1\)</span> sera la seule observation pour déterminer le seul paramètre du modèle à utiliser. Par exemple, la prime pure d’un groupe d’assurance collective serait uniquement déterminée par un de ses utilisateurs, ce qui peut ne pas représenter adéquatement le comportement du groupe au complet. Un enjeu de compétivité sur le marché pourrait survenir.</p>
+<p><strong>d)</strong> Comme <span class="math inline">\(\hat{\beta}\)</span> est un estimateur sans biais pour <span class="math inline">\(\beta\)</span> et comme <span class="math inline">\(T = \sum_{i=1}^n X_i\)</span> est exhaustive pour <span class="math inline">\(\beta\)</span>, on peut appliquer le théorème de Rao–Blackwell. Ainsi, on obtient que <span class="math display">\[ \tilde{\beta} = \ex[{\hat{\beta} | T}]. \]</span></p>
+<p>Remarque: <span class="math inline">\(T \sim \mathcal{G}(n, \beta)\)</span> et posons <span class="math inline">\(T^* = \sum_{i = 2}^n X_i \sim \mathcal{G}(n-1, \beta)   (\ex[{T^*}] = (n-1)\beta \perp X_1)\)</span>. On développe d’abord <span class="math inline">\(f_{X_1 | T} (x | T)\)</span> en appliquant la définition des probabilités conditionnelles <span class="math display">\[
+\begin{aligned} f_{X_1 | T} (x_1 | T) &amp;= \frac{f_{X_1, T} (x_1, t)}{f_T(t)} \\ &amp;= \frac{f_{X_1, T*} (x_1, t - x_1)}{f_T(t)} \\ &amp;= \frac{f_{X_1} (x_1) f_{T*}(t - x_1)}{f_T(t)} \\ &amp;= \frac{\beta^{-1} e^{-\beta^{-1} x_1} \beta^{-(n-1)}(t - x_1)^{n-2} e^{-\beta^{-1} (t - x_1)} \Gamma(n)}{\beta^{-n}t^{n-1} e^{-\beta^{-1} t}\Gamma(n-1)} \\ &amp;= (n-1) \frac{(t - x_1)^{n-2}}{t^{n-1}} \\ &amp;= (n-1) \frac{t^{n-2}(1 - \frac{x_1}{t})^{n-2}}{t^{n-1}} \\ &amp;= (n-1) \frac{(1 - \frac{x_1}{t})^{n-2}}{t}, 0 &lt; x_1 &lt; t. \end{aligned}
+\]</span> Ainsi, on peut trouver l’espérance conditionnelle en intégrant par parties en posant <span class="math inline">\(u = x_1\)</span> et d<span class="math inline">\(v = (\frac{n-1}{t}) (1 - \frac{x_1}{t})^{n -2}.\)</span> On remarque que le d<span class="math inline">\(v\)</span> de la substitution ici s’intègre magiquement avec une primitive de base. <span class="math display">\[
+\begin{aligned} \ex[{\hat{\lambda} | T = t}] &amp;= \int_0^t x_1  (n-1) \frac{(1 - \frac{x_1}{t})^{n-2}}{t}   dx_1 \\ &amp;= \left[x_1 (1 - \frac{x_1}{t})^{n-1}\right]_0^t - \int_0^t (1 - \frac{x_1}{t})^{n-1} dx_1 \\ &amp;= \frac{t}{n} \\ &amp;= \bar{X}_n. \end{aligned}
+\]</span> Ainsi, par le théorème de Rao-Blackwell, on obtient qu’un meilleur estimateur <span class="math inline">\(\tilde{\beta}\)</span> est <span class="math inline">\(\bar{X}_n\)</span>. De plus, on remarque que <span class="math inline">\(\ex[{\tilde{\beta}}] = \frac{\ex[{T}]}{n} = \ex[X] = \beta\)</span> est sans biais pour <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>e)</strong> Comme cet estimateur est sans biais et qu’il est une fonction de la statistique exhaustive <span class="math inline">\(T\)</span>, <span class="math inline">\(\tilde{\beta}\)</span> est le MVUE de <span class="math inline">\(\ex[X]\)</span>. On peut vérifier que sa variance est inférieure à celle de <span class="math inline">\(\hat{\beta}\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-exhaust_geometrique" class="level2" data-number="3.16">
+<h2 data-number="3.16" class="anchored" data-anchor-id="sec-estimation-exhaust_geometrique"><span class="header-section-number">3.16</span> Statistique exhaustive pour le paramètre de la loi géométrique</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une loi géométrique avec fonction de masse de probabilité <span class="math display">\[
+    \prob{X = x} = \theta (1 - \theta)^x, \quad x = 0, 1, \dots
+  \]</span> Démontrer que <span class="math inline">\(T(X_1, \dots, X_n) = \sum_{i=1}^n X_i\)</span> est une statistique exhaustive pour <span class="math inline">\(\theta\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On peut réécrire la fonction de masse de probabilité de la loi géométrique comme suit: <span class="math display">\[
+\begin{aligned}
+      \prob{X = x} &amp;= \theta e^{\ln(1 - \theta) x} \\
+      &amp;= h(x) c(\theta) e^{\eta(\theta) t(x)},
+    \end{aligned}
+\]</span> avec <span class="math inline">\(h(x) = 1\)</span>, <span class="math inline">\(c(\theta) = \theta\)</span>, <span class="math inline">\(\eta(\theta) = \ln (1 -
+    \theta)\)</span> et <span class="math inline">\(t(x) = x\)</span>. La loi géométrique est donc membre de la famille exponentielle (voir la solution de l’exercice <a href="#sec-estimation-exhaust_poisson" class="quarto-xref"><span>3.13</span></a>. Par conséquent, <span class="math inline">\(T(X_1, \dots, X_n) = \sum_{i=1}^n X_i\)</span> est une statistique exhaustive pour le paramètre <span class="math inline">\(\theta\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-mvue_poisson" class="level2" data-number="3.17">
+<h2 data-number="3.17" class="anchored" data-anchor-id="sec-estimation-mvue_poisson"><span class="header-section-number">3.17</span> MVUE – Loi de Poisson</h2>
+<p>Soit <span class="math inline">\(X_1,\ldots,X_n\)</span> un échantillon aléatoire d’une loi de Poisson avec moyenne <span class="math inline">\(\lambda\)</span>.</p>
+<p><strong>a)</strong> Démontrer que <span class="math inline">\(T=\sum_{i=1}^n X_i\)</span> est exhaustive minimale pour <span class="math inline">\(\lambda\)</span>.</p>
+<p><strong>b)</strong> Est-ce que <span class="math inline">\(\bar X_n=T/n\)</span> est un estimateur sans biais de variance minimale (MVUE) pour <span class="math inline">\(\lambda\)</span>? Expliquer.</p>
+<p><strong>c)</strong> L’<em>inégalité de Cramér–Rao–Fréchet</em> indique que si <span class="math inline">\(\hat\lambda_n\)</span> est un estimateur sans biais de <span class="math inline">\(\lambda\)</span>, alors <span class="math display">\[ \vr(\hat\lambda_n)\geq \left\{n \ex\left[-\frac{\partial^2}{\partial\lambda^2}\ln f(X;\lambda)\right]\right\}^{-1}. \]</span> Un estimateur avec variance égale à la borne inférieure est dit être <em>efficace</em>. Montrer que <span class="math inline">\(\bar X_n\)</span> est en effet un estimateur efficace pour <span class="math inline">\(\lambda\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Démo</p>
+<p><strong>b)</strong> Oui</p>
+<p><strong>c)</strong> Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Puisque <span class="math display">\[ \Pr[X_1=x_1,\ldots,X_n=x_n]=\prod_{i=1}^n \frac{\lambda^{x_i} e^{-\lambda}}{x_i!}=\lambda^{\sum_{i=1}^n x_i}e^{-\lambda n} \frac{1}{\prod_{i=1}^n x_i!} \]</span> se factorise en <span class="math inline">\(g(\sum_{i=1}^n x_i,\lambda)=\lambda^{\sum_{i=1}^n x_i}e^{-\lambda n}\)</span> et <span class="math inline">\(h(x_1,\ldots,x_n)=\frac{1}{\prod_{i=1}^n x_i!}\)</span>, le théorème de factorisation de Fisher–Neyman implique que <span class="math inline">\(\sum_{i=1}^n X_i\)</span> est une statistique exhaustive pour <span class="math inline">\(\lambda\)</span>. On voit facilement avec le critère de Lehmann-Scheffé que cette statistique est exhaustive minimale. Effectivement, en utilisant un autre échantillon aléatoire <span class="math inline">\(y_1 \dots y_n\)</span> indépendant et identiquement distribué à l’échantillon <span class="math inline">\(x_1 \dots x_n\)</span>, on obtient que le rapport des vraisemblances devient <span class="math display">\[
+\begin{aligned} \frac{L(x_1 \dots x_n; \lambda)}{L(y_1 \dots y_n; \lambda)} &amp;= \displaystyle{\frac{\lambda^{\sum_{i=1}^n x_i}e^{-\lambda n} \frac{1}{\prod_{i=1}^n x_i!}}{\lambda^{\sum_{i=1}^n y_i}e^{-\lambda n} \frac{1}{\prod_{i=1}^n y_i!}}} \\ &amp;= \frac{\prod_{i=1}^n y_i!}{\prod_{i=1}^n x_i!} \lambda^{\sum_{i=1}^n x_i - \sum_{i=1}^n y_i}. \end{aligned}
+\]</span> Comme cette expression est indépendante de <span class="math inline">\(\lambda\)</span> si et seulement si <span class="math inline">\(\sum_{i=1}^n x_i = \sum_{i=1}^n y_i\)</span> (pour que l’exposant sur <span class="math inline">\(\lambda\)</span> soit 0 et que cette portion donne 1). Ainsi, par le critère de Lehmann-Scheffé, nous venons de démontrer que <span class="math inline">\(T = \sum_{i=1}^n X_i\)</span> est une statistique exhaustive minimale pour <span class="math inline">\(\lambda\)</span>. Note: On pourrait aussi dire que <span class="math inline">\(\bar{X}_n\)</span> est exhaustive minimale pour <span class="math inline">\(\lambda\)</span>.</p>
+<p><strong>b)</strong> La règle du pouce pour trouver un MVUE est de trouver un estimateur qui est sans biais et qui est basé sur une statistique exhaustive obtenue par le théorème de factorisation de Fisher–Neyman. On a <span class="math display">\[ \ex[\bar X_n]=\lambda, \]</span> est donc sans biais et <span class="math inline">\(\bar X_n=T/n\)</span>, où <span class="math inline">\(T\)</span> est une statistique exhaustive pour <span class="math inline">\(\lambda\)</span>, comme montré en a). Ainsi, <span class="math inline">\(\bar X_n\)</span> est un MVUE pour <span class="math inline">\(\lambda\)</span>.</p>
+<p><strong>c)</strong> Dans ce cas, <span class="math display">\[ \ln \{ f(x;\lambda)\} = -\lambda   +x \ln (\lambda) - \ln(x!) \]</span> et <span class="math display">\[ \frac{\partial^2}{\partial \lambda^2}   f(x;\lambda) = - \frac{x}{\lambda^2}. \]</span> Ainsi, <span class="math display">\[ n \ex\left[ -\frac{\partial^2}{\partial \lambda^2} \ln \{f(X;\lambda)\}\right] = \frac{n}{\lambda^2} \ex(X) = \frac{n}{\lambda}. \]</span> La borne inférieure de Cramér–Rao–Fréchet est donc <span class="math display">\[ \frac{\lambda}{n} = \vr(\bar X_n), \]</span> ce qui montre que <span class="math inline">\(\bar X_n\)</span> est un estimateur efficace pour <span class="math inline">\(\lambda\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-mvue_demo" class="level2" data-number="3.18">
+<h2 data-number="3.18" class="anchored" data-anchor-id="sec-estimation-mvue_demo"><span class="header-section-number">3.18</span> Démonstration guidée</h2>
+<p>Démontrer que, sous les hypothèses appropriées, <span class="math display">\[
+    \Esp{\left( \frac{\partial}{\partial \theta}
+        \ln f(X; \theta) \right)^2} =
+    - \Esp{\frac{\partial^2}{\partial \theta^2}
+      \ln f(X; \theta)}.
+  \]</span> Pour ce faire, dériver par rapport à <span class="math inline">\(\theta\)</span> l’identité <span class="math display">\[
+    \int_{-\infty}^\infty f(x; \theta)  dx = 1
+  \]</span> afin d’obtenir <span class="math display">\[
+    \int_{-\infty}^\infty
+    \left(
+      \frac{\partial}{\partial \theta} \ln f(x; \theta)
+    \right) f(x; \theta)  dx = 0,
+  \]</span> puis dériver de nouveau par rapport à <span class="math inline">\(\theta\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Pour commencer, on a l’identité suivante: <span class="math display">\[
+\begin{aligned}
+      \frac{\partial}{\partial \theta} \ln f(x;\theta) &amp;=
+      \frac{1}{f(x;\theta)}\frac{\partial}{\partial \theta}
+      f(x;\theta) \\
+      \end{aligned}
+\]</span></p>
+<p>qui peut être réécrite sous la forme</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+      \right) f(x;\theta)
+      &amp;= \frac{\partial}{\partial \theta} f(x;\theta).
+    \end{aligned}
+\]</span> Ainsi, en dérivant de part et d’autre <span class="math display">\[
+      \int_{-\infty}^\infty f(x; \theta)  dx = 1,
+    \]</span> par rapport à <span class="math inline">\(\theta\)</span>, on obtient <span class="math display">\[
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+        \right) f(x;\theta)  dx = 0.
+    \]</span> En dérivant une seconde fois cette identité, on a alors</p>
+<p><span class="math display">\[
+    \begin{aligned}
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial^2}{\partial \theta^2} \ln f(x;\theta)
+      \right) f(x;\theta)  dx +
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+      \right)
+      \left(
+        \frac{\partial}{\partial \theta} f(x;\theta)
+      \right) dx = 0 \\
+      \end{aligned}
+\]</span></p>
+<p>ou, de manière équivalente,</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+      \right)^2
+      f(x;\theta)  dx =
+      - \int_{-\infty}^\infty
+      \left(
+        \frac{\partial^2}{\partial \theta^2} \ln f(x;\theta)
+      \right) f(x;\theta)  dx, \\
+      \end{aligned}
+\]</span></p>
+<p>soit</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \Esp{\left( \frac{\partial}{\partial \theta}
+          \ln f(X; \theta) \right)^2} =
+      - \Esp{\frac{\partial^2}{\partial \theta^2}
+        \ln f(X; \theta)}.
+    \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-mvue_poisson_2" class="level2" data-number="3.19">
+<h2 data-number="3.19" class="anchored" data-anchor-id="sec-estimation-mvue_poisson_2"><span class="header-section-number">3.19</span> MVUE pour le paramètre d’une loi de Poisson</h2>
+<p>Démontrer que la moyenne arithmétique est un estimateur sans biais à variance minimale du paramètre <span class="math inline">\(\lambda\)</span> d’une loi de Poisson.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\(\esp{\bar{X}_n} = \esp{X}\)</span> pour toute distribution et donc que <span class="math inline">\(\bar{X}\)</span> est toujours un estimateur sans biais de la moyenne. Pour une loi de Poisson, la moyenne est égale à <span class="math inline">\(\lambda\)</span> et donc <span class="math inline">\(\bar{X}\)</span> est un estimateur sans biais de <span class="math inline">\(\lambda\)</span>. Pour démontrer que la statistique est un estimateur à variance minimale, il faut montrer que <span class="math inline">\(\bar{X}_n\)</span> est une statistique exhaustive minimale pour <span class="math inline">\(\lambda\)</span>. On a que, pour tout <span class="math inline">\(x_1,\ldots,x_n, \in\mathbb{R}\)</span>, <span class="math display">\[
+\begin{aligned}
+    f(x_1;\lambda)\times\cdots\times f(x_n;\lambda) &amp; =  \frac{\exp(-n\lambda)\lambda^{x_1+\cdots+x_n}}{\prod_{i=1}^n x_i !} \\
+    &amp;= \frac{\exp(-n\lambda)\lambda^{n \bar{x}_n}}{\prod_{i=1}^n x_i !} = g(\bar{x}_n; \lambda)h(x_1,\ldots,x_n).
+    \end{aligned}
+\]</span> Selon le critère de Fisher–Neyman, <span class="math inline">\(\bar{X}_n\)</span> est une statistique exhaustive. De plus, cette statistique est minimale, puisque pour tout <span class="math inline">\(x_1,\ldots,x_n,y_1,\ldots,y_n \in\mathbb{R}\)</span>, on a que le ratio</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \frac{f(x_1;\lambda)\times\cdots\times f(x_n;\lambda)}{f(y_1;\lambda)\times\cdots\times f(y_n;\lambda)}
+    &amp;= \frac{\exp(-n\lambda)\lambda^{n \bar{x}_n}}{\prod_{i=1}^n x_i !} \frac{\prod_{i=1}^n y_i !}{\exp(-n\lambda)\lambda^{n \bar{y}_n}} \\
+&amp;= \lambda^{n (\bar{x}_n- \bar{y}_n)} \frac{\prod_{i=1}^n y_i !}{\prod_{i=1}^n x_i !}
+    \end{aligned}
+\]</span> ne dépend pas de <span class="math inline">\(\lambda\)</span> si et seulement si <span class="math inline">\(\bar{x}_n=\bar{y}_n\)</span>.</p>
+<p>De façon alternative, on pourrait aussi démontrer que l’estimateur est sans biais à variance minimale en montrant qu’il est sans biais, puis en montrant que sa variance est égale à la borne inférieure de de Rao–Cramér. Or, d’une part, on a <span class="math display">\[
+      \var{\bar{X}} = \frac{\var{X}}{n} = \frac{\lambda}{n}.
+    \]</span></p>
+<p>D’autre part, <span class="math display">\[
+\begin{aligned}
+      \frac{\partial}{\partial \lambda} \ln f(x; \lambda)
+      &amp;= \frac{\partial}{\partial \lambda}
+      (x \ln(\lambda) - \lambda - \ln(x!)) \\
+      &amp;= \frac{x}{\lambda} - 1 \\
+      &amp;= \frac{x - \lambda}{\lambda}
+    \end{aligned}
+\]</span> et donc</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \Esp{\left( \frac{\partial}{\partial \lambda}
+          \ln f(X; \lambda) \right)^2}
+      &amp;= \frac{1}{\lambda^2}\Esp{(X - \lambda)^2} \\
+      &amp;= \frac{\Var{X}}{\lambda^2} \\
+      &amp;= \frac{1}{\lambda}.
+\end{aligned}
+\]</span></p>
+<p>Ainsi, la borne de Rao–Cramér est <span class="math inline">\(\lambda/n\)</span>. On a donc démontré que <span class="math inline">\(\bar{X}\)</span> est un estimateur sans biais à variance minimale du paramètre <span class="math inline">\(\lambda\)</span> de la loi de Poisson.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-mvue_binomiale" class="level2" data-number="3.20">
+<h2 data-number="3.20" class="anchored" data-anchor-id="sec-estimation-mvue_binomiale"><span class="header-section-number">3.20</span> MVUE pour une loi binomiale</h2>
+<p>Démontrer que la proportion de succès <span class="math inline">\(X/n\)</span> est un estimateur sans biais à variance minimale de la probabilité de succès <span class="math inline">\(\theta\)</span> d’une distribution Binomiale.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Astuce">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Astuce
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>considérer <span class="math inline">\(X/n\)</span> comme la moyenne d’un échantillon aléatoire d’une distribution de Bernoulli.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(X\)</span> a une distribution binomiale de paramètres <span class="math inline">\(n \in \mathbb{N}\)</span> et <span class="math inline">\(0
+    \leq \theta \leq 1\)</span>, alors on peut représenter la variable aléatoire sous la forme <span class="math inline">\(X = Y_1 + \dots + Y_n\)</span>, où <span class="math inline">\(Y_i \sim
+    \text{Bernoulli}(\theta)\)</span>, <span class="math inline">\(i = 1, \dots, n\)</span>. Ainsi, <span class="math inline">\(X/n =
+    \bar{Y}\)</span>. Dès lors, on sait <span class="math inline">\(\bar{Y}\)</span> est un estimateur sans biais de <span class="math inline">\(\esp{Y} = \theta\)</span>. Pour montrer qu’il est MVUE, soit on montre que <span class="math inline">\(\bar{Y}\)</span> est une statistique exhaustive minimale, ce qui est le cas selon le critère de Lehmann–Scheffé, soit on montre que la variance atteint la borne minimale de Cramer–Rao.</p>
+<p>En effet, on a que <span class="math inline">\(\var{\bar{Y}} = \var{Y}/n = \theta(1
+    - \theta)/n\)</span>. De plus, si <span class="math inline">\(f(y; \theta) = \theta^y (1 - \theta)^{1
+      - y}\)</span>, <span class="math inline">\(y = 0, 1\)</span>, est la densité d’une Bernoulli, alors</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \Esp{\left( \frac{\partial}{\partial \theta}
+          \ln f(Y; \theta) \right)^2}
+      &amp;= \Esp{\left( \frac{Y - \theta}{\theta (1 - \theta)}
+        \right)^2} \\
+      &amp;= \frac{\var{Y}}{[\theta (1 - \theta)]^2} \\
+      &amp;= \frac{1}{\theta (1 - \theta)}
+\end{aligned}
+\]</span></p>
+<p>et donc la borne de Rao–Cramér est <span class="math inline">\(\theta (1 - \theta)/n =\var{\bar{Y}}\)</span>. Par conséquent, <span class="math inline">\(\bar{Y}\)</span> est un estimateur sans biais à variance minimale du paramètre <span class="math inline">\(\theta\)</span> de la Bernoulli ou, de manière équivalente, <span class="math inline">\(X/n\)</span> est un estimateur sans biais à variance minimale du paramètre <span class="math inline">\(\theta\)</span> de la binomiale.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-estimation-mvue_2loisnormales" class="level2" data-number="3.21">
+<h2 data-number="3.21" class="anchored" data-anchor-id="sec-estimation-mvue_2loisnormales"><span class="header-section-number">3.21</span> Efficacité relative de deux estimateurs pour une loi normale</h2>
+<p>Supposons que <span class="math inline">\(\bar{X}_1\)</span> est la moyenne d’un échantillon aléatoire de taille <span class="math inline">\(n\)</span> d’une population normale avec moyenne <span class="math inline">\(\mu\)</span> et variance <span class="math inline">\(\sigma_1^2\)</span>, que <span class="math inline">\(\bar{X}_2\)</span> est la moyenne d’un échantillon aléatoire de taille <span class="math inline">\(n\)</span> d’une population normale avec moyenne <span class="math inline">\(\mu\)</span> et variance <span class="math inline">\(\sigma_2^2\)</span> et que les deux échantillons aléatoires sont indépendants. <strong>a)</strong> Démontrer que <span class="math inline">\(\omega \bar{X}_1 + (1 - \omega) \bar{X}_2\)</span>, <span class="math inline">\(0 \leq \omega \leq 1\)</span>, est un estimateur sans biais de <span class="math inline">\(\mu\)</span>.</p>
+<p><strong>b)</strong> Démontrer que la variance de <span class="math inline">\(\omega \bar{X}_1 + (1 - \omega) \bar{X}_2\)</span> est minimale lorsque <span class="math display">\[ \omega = \frac{\sigma_2^2}{\sigma_1^2 + \sigma_2^2}. \]</span></p>
+<p><strong>c)</strong> Calculer l’efficacité relative de l’estimateur en a) avec <span class="math inline">\(\omega = \frac{1}{2}\)</span> à celle de l’estimateur à variance minimale trouvé en b).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\((\sigma_1^2 + \sigma_2^2)^2/(4 \sigma_1^2 \sigma_2^2)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a <span class="math display">\[
+\begin{aligned} \esp{\omega \bar{X}_1 + (1 - \omega)\bar{X}_2} &amp;= \omega\Esp{\bar{X}_1} + (1 - \omega)\Esp{\bar{X}_2}\\ &amp;= \omega\mu +(1 - \omega)\mu\\ &amp;= \mu. \end{aligned}
+\]</span></p>
+<p><strong>b)</strong> En premier lieu, <span class="math display">\[
+\begin{aligned} \var{\omega\bar{X}_1 - (1 - \omega)\bar{X}_2} &amp;= \omega^2 \var{\bar{X}_1} + (1 - \omega)^2 \var{\bar{X}_2}\\ &amp;= \frac{\omega^2 \sigma_1^2}{n} + \frac{(1 - \omega)^2 \sigma_2^2}{n} \end{aligned}
+\]</span> Or, en résolvant l’équation <span class="math display">\[ \frac{d}{d\omega}  \var{\omega \bar{X}_1 - (1 - \omega)\bar{X}_2} = \frac{2 \omega \sigma_1^2}{n} - \frac{2 (1 - \omega) \sigma_2^2}{n} = 0, \]</span> on trouve que <span class="math inline">\(\omega = \sigma_2^2/(\sigma_1^2 + \sigma_2^2)\)</span>. La vérification des conditions de deuxième ordre (laissée en exercice) démontre qu’il s’agit bien d’un minimum.</p>
+<p><strong>c)</strong> Après quelques transformations algébriques, la variance de l’estimateur à son point minimum est <span class="math display">\[ \frac{\sigma_1^2 \sigma_2^2}{n(\sigma_1^2 + \sigma_2^2)}. \]</span> Lorsque <span class="math inline">\(\omega = 1/2\)</span>, la variance de l’estimateur est <span class="math display">\[ \Var{\frac{\bar{X}_1 - \bar{X}_2}{2}} = \frac{\sigma_1^2 + \sigma_2^2}{4n}. \]</span> L’efficacité relative est donc <span class="math display">\[
+\begin{aligned} \frac{(\sigma_1^2 + \sigma_2^2)^2}{4 \sigma_1^2 \sigma_2^2} \end{aligned}
+\]</span> (ou l’inverse).</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapitres/echantillonnage.html" class="pagination-link" aria-label="Distributions d'échantillonnage">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapitres/ajustement.html" class="pagination-link" aria-label="Ajustement de modèles">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

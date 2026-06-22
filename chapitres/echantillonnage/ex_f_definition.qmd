@@ -1,0 +1,126 @@
+## Définition de la loi $F$ {#sec-echantillonnage-f_definition}
+
+Soit $U \sim \chi^2(r_1)$ et $V \sim \chi^2(r_2)$, deux variables
+  aléatoires indépendantes.
+  
+  
+**a)** Démontrer que la densité de $$ F = \frac{U/r_1}{V/r_2} $$ est $$ f(x) = \frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+        \Gamma(r_1/2) \Gamma(r_2/2) (1 + r_1 x/r_2)^{(r_1 + r_2)/2}} $$
+
+**b)** Calculer $\esp{F}$.
+
+**c)** Calculer $\var{F}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+\stepcounter{enumi}
+
+**a)** Démo
+
+**b)** $r_2/(r_2 - 2)$
+
+**c)** $2 [r_2^2 (r_2 + r_1 - 2)]/[r_1 (r_2 - 2)^2 (r_2 - 4)]$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a $U \sim \chi^2(r_1)$ et $V \sim \chi^2(r_2)$. On pose $F = (U/r_1)/(V/r_2)$ et, disons, $G = V$. Pour trouver la densité (marginale) de $F$, il faudra passer par la densité conjointe de $F$ et $G$. Les équations régissant la transformation de variables aléatoires sont 
+
+$$
+\begin{aligned} x &= \frac{r_2}{r_1}\left(\frac{u}{v}\right) & u &= \frac{r_1}{r_2}  x y \\ y &= v & v &= y. \end{aligned}
+$$ 
+
+Ainsi, le jacobien de la transformation est 
+
+$$ 
+J = \begin{vmatrix} r_1 y/r_2 & r_1 x/r_2 \\ 0         & 1 \end{vmatrix} = \frac{r_1}{r_2}  y 
+$$ 
+
+et la densité conjointe de $F$ et $G$ est 
+
+$$
+\begin{aligned}
+        f_{FG}(x, y)
+        &= f_{UV}\left(\frac{r_1}{r_2}\, xy, y\right)
+        \left|\frac{r_1}{r_2}\, y\right| \\
+        &= \left(\frac{r_1}{r_2}\right) y
+        f_U\left(\frac{r_1}{r_2}\, xy\right) f_V(y) \\
+        &= \frac{
+          (r_1/r_2)
+          (1/2)^{(r_1 + r_2)/2}
+          (r_1 xy/r_2)^{r_1/2 - 1}
+          y^{r_2/2}
+          e^{-(r_1 x/r_2 + 1) y/2}}{
+          \Gamma(r_1/2) \Gamma(r_2/2)}
+\end{aligned}
+$$ 
+pour $x > 0$ et $y > 0$. 
+
+En intégrant, on trouve la densité marginale de $F$: 
+
+$$
+\begin{aligned} f_F(x) &= \int_0^{\infty} f_{FG}(x, y)  dy \\ &= \frac{(r_1/r_2)^{(r_1 + r_2)/2} x^{r_1/2 - 1}}{
+          \Gamma(r_1/2) \Gamma(r_2/2)} \\
+        &\phantom{=} \times
+        \int_0^\infty
+        \left(\frac{1}{2}\right)^{(r_1 + r_2)/2}
+        y^{(r_1 + r_2)/2 - 1}
+        e^{-(r_1 x/r_2 + 1) y/2}\, dy \\
+        &= \frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+          \Gamma(r_1/2) \Gamma(r_2/2) (r_1 x/r_2 + 1)^{(r_1 + r_2)/2}} \\
+        &\phantom{=} \times
+        \int_0^\infty
+        \frac{(1/2)^{(r_1 + r_2)/2} (r_1 x/r_2 + 1)^{(r_1 + r_2)/2}}{
+          \Gamma((r_1 + r_2)/2)}\,
+        y^{(r_1 + r_2)/2 - 1}
+        e^{-(r_1 x/r_2 + 1) y/2}\, dy \\
+        &= \frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+        \Gamma(r_1/2) \Gamma(r_2/2) (1 + r_1 x/r_2)^{(r_1 + r_2)/2}},
+\end{aligned}
+$$ 
+
+puisque l'intégrande ci-dessus est la densité d'une loi gamma. La loi de la variable aléatoire $F$ est appelée loi $F$ avec $r_1$ et $r_2$ degrés de liberté.
+
+**b)** Par indépendance entre les variables aléatoires $U$ et $V$, on a 
+
+$$
+\begin{aligned}
+        \esp{F} &= \Esp{\frac{U/r_1}{V/r_2}} \\
+        &= \frac{r_2}{r_1}\, \Esp{\frac{U}{V}} \\
+        &= \frac{r_2}{r_1}\, \esp{U} \Esp{\frac{1}{V}}.
+\end{aligned}
+$$ 
+
+Or, $\esp{U} = r_1$ et 
+
+$$
+\begin{align*}
+        \Esp{\frac{1}{V}}
+        &= \int_0^\infty \frac{1}{v}\, f_V(v)\, dv \\
+        &= \int_0^\infty
+        \frac{1}{2^{r_2/2} \Gamma(r_2/2)}\,
+        v^{r_2/2 - 1 - 1} e^{-v/2}\, dv \\
+        &= \frac{2^{r_2/2 - 1} \Gamma(r_2/2 - 1)}{
+          2^{r_2/2} \Gamma(r_2/2)}, \quad
+        \frac{r_2}{2} - 1 > 0.
+\end{align*}
+$$ 
+
+Avec la propriété de la fonction gamma $\Gamma(x) = (x - 1) \Gamma(x - 1)$, cette expression se simplifie en 
+
+$$ \Esp{\frac{1}{V}} = \frac{1}{r_2 - 2}, $$ d'où, enfin, 
+
+$$ \esp{F} = \frac{r_2}{r_2 - 2} $$ pour $r_2 > 2$.
+
+**c)** En procédant comme en b), on trouve que $\esp{U^2} = \var{U} + \esp{U}^2 = 2 r_1 + r_1^2$, que 
+$$ 
+\Esp{\frac{1}{V^2}} = \frac{1}{(r_2 - 2)(r_2 - 4)} 
+$$ 
+et donc que 
+$$
+\begin{aligned} \esp{F^2} &= \frac{r_2^2}{r_1^2}  \esp{U^2} \Esp{\frac{1}{V^2}} \\ &= \frac{r_2^2 (r_1 + 2)}{r_1 (r_2 - 2)(r_2 - 4)}. \end{aligned}
+$$ 
+Par conséquent, 
+$$
+\begin{aligned} \var{F} &= \frac{r_2^2 (r_1 + 2)}{r_1 (r_2 - 2)(r_2 - 4)} - \left(\frac{r_2}{r_2 - 2}\right)^2 \\ &= 2 \left(\frac{r_2}{r_2 - 2}\right)^2 \left(\frac{r_2 + r_1 - 2}{r_1 (r_2 - 4)}\right), \end{aligned}
+$$ pour $r_2 > 4$.
+:::
+

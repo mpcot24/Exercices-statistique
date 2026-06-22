@@ -1,0 +1,89 @@
+## Assurance automobile privée américaine {#sec-ajustement-qualite_ajustement_assuranceIARDUS}
+
+Un assureur IARD américain souhaite modéliser les montants des sinistres pour une assurance automobile privée. Les données disponibles contiennent $n=6773$ réclamations, et $X_1,\ldots,X_n$ représentent les montants en dollars US. Les réclamations sont considérées indépendantes. Un sommaire et un histogramme des réclamations sont fournis ci-dessous. On a également
+$$
+\frac{1}{n}\sum_{i=1}^n x_i=1 853 \quad \text{ et }\quad \frac{1}{n}\sum_{i=1}^n x_i^2=10 438 832.
+$$
+
+```{r}
+#| echo: false
+
+library("CASdatasets")
+```
+
+
+```{r}
+
+data(usprivautoclaim)
+attach(usprivautoclaim)
+summary(PAID)
+hist(PAID,breaks=c(seq(0,5000,2500),seq(10000,60000,10000)),freq=FALSE,main="Histogramme des montants de sinistres",xlab="Montants ($)")
+```
+
+**a)** En utilisant les informations fournies, argumenter qu'une loi normale ne devrait pas être utilisée pour modéliser les montants de réclamations. Proposer (au moins) une distribution qui semble appropriée et justifier.
+
+**b)** On suppose que les montants de réclamations suivent une loi log-normale définie à l'exercice @ajustement.@sec-ajustement-moments_lnorm. Trouver les estimateurs des moments des paramètres $\mu$ et $\sigma^2$.
+
+**c)** On suppose que les montants de réclamations sont distribués selon une loi Pareto type II définie à l'exercice @ajustement.@sec-ajustement-mle_pareto. Trouver les estimateurs des paramètres $\alpha$ et $\theta$ par la méthode des moments.
+
+**d)** Les estimateurs du maximum de vraisemblance des distributions log-normale et Pareto peuvent être calculés par optimisation numérique en utilisant les estimateurs des moments trouvés en b) et c) comme valeurs de départ. Les résultats sont les suivants: \begin{description}
+
+**e)** [Log-normale]: Les estimateurs sont $\hat\mu_{MV}=6,95561$ et $\hat\sigma^2_{MV}=1,14698$ et la valeur de log-vraisemblance est $-57 185,11$.
+
+**f)** [Pareto]: Les estimateurs sont $\hat\alpha_{MV}=4,71364$ et $\hat\theta_{MV}=6 819,891$ et la valeur de log-vraisemblance est $-57 500,12$. \end{description} Calculer l'AIC pour chacune des distributions. Quelle distribution semble être préférable selon ce critère?
+
+**g)** Les diagrammes quantile-quantile de chacun des modèles sont présentés ci-dessous. Commenter sur l'ajustement des modèles. Quel modèle recommandez-vous à l'assureur? Pourquoi? ```{r message} #| echo: false library(MASS) library(actuar) bla1 <- fitdistr(usprivautoclaim[,5],dlnorm,start=list(meanlog=mean(log(usprivautoclaim[,5])),sdlog=sd(log(usprivautoclaim[,5])))) alpha <- 2*var(usprivautoclaim[,5])/(var(usprivautoclaim[,5])-mean(usprivautoclaim[,5])^2) theta <- mean(usprivautoclaim[,5])*(alpha-1) funtoop <- function(par) { shape <- exp(par[1]) scale <- exp(par[2]) -sum(dpareto(usprivautoclaim[,5],shape,scale,log=TRUE)) } bla3 <- optim(log(c(alpha,theta)),funtoop) alpha2 <- exp(bla3$par[1]) theta2 <- exp(bla3$par[2]) nn <- length(usprivautoclaim[,5]) par(mfrow=c(1,2)) plot(qlnorm((1:nn)/(nn+1),bla1$estimate[1],bla1$estimate[2]),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles th\u{E9}oriques de la log-normale") abline(0,1) plot(qpareto((1:nn)/(nn+1),alpha2,theta2),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles th\u{E9}oriques de la Pareto",xlim=c(0,40000)) abline(0,1) ```
+
+**h)** L'assureur s'intéresse à la queue à droite de la distribution et souhaite savoir les quantiles de niveau 99 \
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+a) Gamma, log-normale ou Pareto
+b) $\hat \mu =\Sexpr{round(log(1853^2/sqrt(10438832)),3)}$ et $\hat\sigma^2 =\Sexpr{round(log(10438832/1853^2),3)}$
+c) $\hat\alpha =\Sexpr{round(2*7006257/(7006257-1853^2),3)}$ et
+$\hat\theta=\Sexpr{round(1853*(2*7006257/(7006257-1853^2)-1),2)}$
+d) Log-normale : $114 374,2$, Pareto : $115 004,2$
+f) 11 296,76,  14 166,68,  12 720,54  et  16 537,1
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La loi normale est définie sur les nombres réels, alors que les montants sont positifs seulement. Le domaine d'une loi normale n'est donc pas le même que le domaine des montants de réclamation. La moyenne échantillonnale et la médiane ne sont pas égales, ce qui serait le cas si le modèle normal était approprié. L'histogramme des montants ne ressemblent pas à une cloche symétrique. De bonnes options seraient les distributions Gamma, log-normale ou Pareto puisqu'elles sont toutes définies sur les réels positifs et sont asymétriques.
+
+**b)** On a $\bar x_n=1 853$ et $m_2=\frac{1}{n}\sum_{i=1}^n x_i^2 = 10 438 832$. Selon l'exercice @ajustement.@sec-ajustement-moments_lnorm b), on a 
+
+$$
+\begin{aligned} \hat \mu &= \ln\left\{\frac{\bar x_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n x_i^2}} \right\}=\ln\left\{\frac{1 853^2}{\sqrt{10 438 832}} \right\}=\Sexpr{round(log(1853^2/sqrt(10438832)),3)}\\ \hat\sigma^2 &= \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n x_i^2}{\bar x_n^2} \right\}=  \ln\left\{\frac{10 438 832}{1 853^2} \right\}=\Sexpr{round(log(10438832/1853^2),3)}. \end{aligned}
+$$
+
+**c)** On a $\bar x_n=1853$ et $m_2=\frac{1}{n}\sum_{i=1}^n x_i^2 = 10 438 832$, donc 
+
+$$
+\begin{aligned} s_n^2&=\frac{1}{n-1}\sum_{i=1}^n x_i^2 - \frac{n}{n-1}\bar x_n^2\\ & = \frac{n}{n-1}(m_2-\bar x_n^2)\\ &=\frac{6773}{6772}(10438832-1853^2)=7006257. \end{aligned}
+$$ 
+
+Selon l'exercice @ajustement.@sec-ajustement-mle_paretob), on trouve 
+
+$$
+\begin{aligned} \hat\alpha &= \frac{2s_n^2}{s_n^2-\bar x_n^2}=\Sexpr{round(2*7006257/(7006257-1853^2),3)}\\ \hat\theta&=\bar x_n \left(\frac{2s_n^2}{s_n^2-\bar x_n^2} -1\right)=\Sexpr{round(1853*(2*7006257/(7006257-1853^2)-1),2)}. \end{aligned}
+$$
+
+**d)** L'AIC est donné par $2(-\ell(\hat\theta)+k)$, où $\ell(\hat\theta)$ est la valeur maximale de la vraisemblance et $k$ le nombre de paramètres dans le modèle. Il y a deux paramètres dans chaque modèle. Les AIC sont donc 
+
+\begin{description}
+
+**e)** [Log-normale]: $2\times(57 185,11+2)=114 374,2$.
+
+**f)** [Pareto]: $2\times(57 500,12+2)=115 004,2$ \end{description} Selon le critère AIC, le meilleur modèle est celui avec la valeur la plus petite, la distribution log-normale est donc préférable.
+
+**g)** L'ajustement des deux modèles n'est pas parfait parce que les points ne sont pas exactement alignés, plus spécialement pour de grandes valeurs de $x$. Les points sont au-dessus de la ligne dans le graphique Quantiles-Quantiles de la Pareto, ce qui signifie que la queue de la distribution empirique est plus épaisse que celle de la Pareto. Cela devrait inquiéter l'assureur puisque ça signifie qu'il sous-estimerait les réclamations. L'ajustement de la log-normale n'est pas parfait non plus, mais il y a moins de sous-estimation, car plusieurs points se retrouvent sous la ligne et les extrêmes sont moins éloignés. Par conséquent, on recommande l'utilisation du modèle log-normal. ```{r message} #| echo: false library(MASS) library(actuar) bla1 <- fitdistr(usprivautoclaim[,5],dlnorm,start=list(meanlog=mean(log(usprivautoclaim[,5])),sdlog=sd(log(usprivautoclaim[,5])))) alpha <- 2*var(usprivautoclaim[,5])/(var(usprivautoclaim[,5])-mean(usprivautoclaim[,5])^2) theta <- mean(usprivautoclaim[,5])*(alpha-1) funtoop <- function(par) { shape <- exp(par[1]) scale <- exp(par[2]) -sum(dpareto(usprivautoclaim[,5],shape,scale,log=TRUE)) } bla3 <- optim(log(c(alpha,theta)),funtoop) alpha2 <- exp(bla3$par[1]) theta2 <- exp(bla3$par[2]) nn <- length(usprivautoclaim[,5]) par(mfrow=c(1,2)) plot(qlnorm((1:nn)/(nn+1),bla1$estimate[1],bla1$estimate[2]),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles théoriques de la log-normale") abline(0,1) plot(qpareto((1:nn)/(nn+1),alpha2,theta2),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles théoriques de la Pareto",xlim=c(0,40000)) abline(0,1) ```
+
+**h)** Les quantiles de la loi Pareto sont l'inverse de sa fonction de répartition. Si $\omega_\kappa$ est le $(1-\kappa)$e quantile, c'est-à-dire qu'il est tel que $F(\omega_\kappa)=1-\kappa$, alors en utilisant la fonction de répartition fournie à l'exercice @ajustement.@sec-ajustement-mle_pareto, on a $$
+\begin{aligned} 1-\left(\frac{\theta}{\omega_\kappa+\theta}\right)^\alpha &= 1-\kappa\\ \frac{\theta}{\omega_\kappa+\theta} &= \kappa^{1/\alpha}\\ \omega_\kappa= \frac{\theta}{\kappa^{1/\alpha}}-\theta. \end{aligned}
+$$ Une estimation du quantile 99\%
+
+```{r}
+#| echo: false
+
+detach(usprivautoclaim)
+```
+:::
+

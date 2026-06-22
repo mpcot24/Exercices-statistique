@@ -1,0 +1,29 @@
+## Probabilités avec la variance échantillonnale d'un échantillon issu d'une loi normale {#sec-echantillonnage-norm_variance_prob}
+
+Soit $S^2_6$ la variance d'un échantillon de taille $6$ d'une
+  distribution normale de moyenne $\mu$ et de variance $10$. Calculer
+  $\prob{2,30 < S^2_6 < 22,2}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$0,90$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $5S^2_6/\sigma^2 \sim \chi^2(5)$. Soit $Y \sim
+    \chi^2(5)$. On a donc,
+    $$
+\begin{aligned}
+      \prob{2,30 < S^2_6 < 22,2}
+      &= \Prob{\frac{5 (2,30)}{10} <
+        \frac{5 S^2_6}{10} <
+        \frac{5 (22,2)}{10}} \\
+      &= \prob{1,15 < Y < 11,1}\\
+      &= \prob{Y < 11,1} - \prob{Y <  1,15}.
+    \end{aligned}
+$$
+    On trouve dans une table de quantiles de la loi khi carré (ou avec
+    la fonction `qchisq` dans R, par exemple) que
+    $\prob{Y < 11,1} = 0,95$ et $\prob{Y < 1,15} = 0,05$. Par
+    conséquent, $\prob{2,30 < S^2_6 < 22,2} = 0,90$.
+:::
+

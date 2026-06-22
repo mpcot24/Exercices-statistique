@@ -1,0 +1,18 @@
+## Estimateur convergent de la moyenne d'une loi exponentielle {#sec-estimation-conv_parametre_expo}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une loi
+  exponentielle de moyenne $\theta$. Démontrer que $\bar{X}$ est un
+  estimateur convergent de $\theta$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo: méthode de la limite de la variance.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Puisque $\bar{X}$ est un estimateur sans biais de la moyenne d'une
+    distribution, quelqu'elle fut, et que $\lim_{n \rightarrow \infty}
+    \var{\bar{X}} = \lim_{n \rightarrow \infty} \var{X}/n = 0$, alors
+    $\bar{X}$ est toujours un estimateur convergent de la
+    moyenne.
+:::
+

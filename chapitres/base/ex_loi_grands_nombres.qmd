@@ -1,0 +1,25 @@
+## Loi faible des grands nombres {#sec-base-loi_grands_nombres}
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire tiré d'une distribution avec densité
+$$
+f(x) = \left\{ \begin{array}{ll}
+\frac{200}{x^3},& \quad x\geq 10\\
+0, & \quad \text{ailleurs}\\
+\end{array}\right.
+$$
+Est-ce qu'il est possible d'utiliser la Loi faible des grands nombres pour cet exemple? Justifiez.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Non.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+La Loi faible des grands nombres indique que, lorsque $n\to\infty$, $\bar X_n\stackrel{P}{\to}\ex[X]$, où $X_1,\ldots,X_n$ est une suite de variables aléatoires indépendantes et identiquement ditribuées. Cependant, le résultat tient seulement si $\ex[X^2] < \infty$, ce qui n'est pas le cas ici puisque
+$$
+\begin{aligned}
+\ex[X^2]=\int_{10}^\infty \frac{200}{x^3}x^2 \d x =\int_{10}^\infty \frac{200}{x} \d x = \left. 200\ln(x)\right|_{10}^\infty = \infty.
+\end{aligned}
+$$ 
+Ainsi, il n'est pas possible d'appliquer la loi faible des grands nombres dans ce cas.
+:::
+

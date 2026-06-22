@@ -1,0 +1,33 @@
+## Recommandation de dentifrice {#sec-tests-dentifrice}
+
+Un fabricant de dentifrice prétend que $75 \
+  recommandent son produit à ses patients. Sceptique, un groupe de
+  protection des consommateurs décide de tester $ \mathcal{H}_0: \theta = 0,75$
+  contre $ \mathcal{H}_1: \theta \ne 0,75$, où $\theta$ est la proportion de
+  dentistes recommandant le dentifrice en question. Un sondage auprès
+  de $390$ dentistes a révélé que $273$ d'entre eux recommandent
+  effectivement ce dentifrice.
+**a)** Quelle est la conclusion du test avec un seuil de signification de $\alpha = 0,05$?
+
+**b)** Quelle est la conclusion du test avec un seuil de signification de $\alpha = 0,01$?
+
+**c)** Quel est le seuil observé du test?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $z = -2,28$
+
+**b)** On ne rejette pas.
+
+**c)** $0,0226$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Soit $X$ la variable aléatoire du nombre de dentistes qui recommande le dentifrice parmi un groupe-test de 390 dentistes. On a donc que $X \sim \text{Binomiale}(390, \theta)$ et on teste $$
+\begin{aligned} \mathcal{H}_0 &: \theta = 0,75 \\ \mathcal{H}_1 &: \theta \ne 0,75. \end{aligned}
+$$ Il s'agit d'un test bilatéral sur une proportion avec un grand échantillon. La statistique du test est $$ Z = \frac{\hat{\theta} - 0,75}{
+
+**b)** Puisque $z_{0,005} = 2,576 > 2,28$, on ne rejette pas l'hypothèse  $ \mathcal{H}_0$ à un seuil de signification de 1 \
+
+**c)** Le seuil observé est le plus grand seuil de signification auquel on rejette $ \mathcal{H}_0$. Ainsi, $$ p = 2 \prob{Z > 2,28} \approx 0,0226. $$ On rejette donc $ \mathcal{H}_0$ avec un niveau de confiance maximal de $97,74$ \
+:::
+

@@ -1,0 +1,35 @@
+## Fonction génératrice des moments - Loi Poisson {#sec-base-va_fgm_poisson}
+
+Calculer la fonction génératrice des moments $M$ d'une distribution de Poisson avec paramètre $\lambda>0$. Utilisez $M$ pour montrer que l'espérance et la variance d'une variable aléatoire Poisson sont égales.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$M_X(t) = \exp\{\lambda(e^t-1)\}$ pour tout $t \in \mathbb{R}$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $X$ une variable aléatoire Poisson avec paramètre $\lambda>0$. Sa fonction génératrice des moments, pour tout $t \in \mathbb{R}$, est donnée par
+$$
+\begin{aligned}
+M_X(t) = \ex (e^{tX}) = \sum_{k=0}^\infty e^{tk}\frac{\lambda^k e^{-\lambda}}{k!} =  e^{-\lambda}\sum_{k=0}^\infty \frac{\{\lambda e^t\}^k}{k!}.
+\end{aligned}
+$$
+L'équation de droite est la série de Taylor de $\exp(\lambda e^t)$. Ainsi,
+$$
+M_X(t) = e^{-\lambda}e^{\lambda e^t} = \exp\{\lambda(e^t-1)\}.
+$$
+La $k$e dérivée de $M$ évaluée à $t=0$ donne le $k$e moment de $X$. Ainsi, 
+$$
+\ex(X) = M^\prime_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda e^t\right|_{t=0} = \lambda
+$$
+de façon similaire,
+$$
+\begin{aligned}
+\ex(X^2) & = M^{\prime \prime}_X(0) = \left.\exp\{\lambda(e^t-1)\}\times \lambda^2 e^{2t}+\exp\{\lambda(e^t-1)\}\times \lambda e^{t}\right|_{t=0} = \lambda^2+\lambda
+\end{aligned}
+$$
+Alors,
+$$
+\vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \lambda^2+\lambda-\lambda^2=\lambda.
+$$
+:::
+

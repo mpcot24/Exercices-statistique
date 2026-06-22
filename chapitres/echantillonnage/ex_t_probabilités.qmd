@@ -1,0 +1,21 @@
+## Utiliser une table de la loi $T$ {#sec-echantillonnage-t_probabilités}
+
+Soit $T$ une variable aléatoire distribuée selon une loi *t*
+  avec $10$ degrés de liberté.
+  
+**a)** Trouver $\prob{\abs{T} > 2,228}$ à l'aide d'une table de la loi *t*.
+
+**b)** Répéter la partie a) à l'aide de R. La fonction \texttt{pt(x, n)} donne la valeur de la fonction de répartition en \texttt{x} d'une loi *t* avec \texttt{n} degrés de liberté.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$0,05$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Puisque la loi $t$ est symétrique autour de zéro, on a $$
+\begin{aligned} \prob{\abs{T} > 2,228} &= \prob{T > 2,228} + \prob{T < -2,228} \\ &= 2 \prob{T > 2,228}. \end{aligned}
+$$ Or, on trouve dans la table de la loi $t$ de l'annexe que $\prob{T \leq 2,228} = 0,975$ si $T \sim t(10)$. Par conséquent, $\prob{\abs{T} > 2,228} = 2 (1 - 0,975) = 0,05$.
+
+**b)** Toutes les fonction R servant à évaluer des fonctions de répartition ont un argument ```lower.tail```. Ce argument est ```TRUE``` par défaut, mais lorsque qu'il est ```FALSE```, la fonction retourne la probabilité *au-dessus* du point ```x```. Ainsi, la probabilité cherchée ici est `r 2 * pt(2.228, 10, lower.tail = FALSE) ` (obtenue avec `2 * pt(2.228, 10, lower.tail = FALSE)`). Il est recommandé d'utiliser cette approche parce qu'elle est, de manière générale, plus précise que le calcul du type \verb|1 - pt(x, n)|, surtout loin dans les queues des distributions.
+:::
+

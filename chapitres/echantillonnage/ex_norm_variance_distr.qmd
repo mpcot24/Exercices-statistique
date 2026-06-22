@@ -1,0 +1,40 @@
+## Fonction de densité de la variance échantillonnale d'un échantillon issu d'une loi normale {#sec-echantillonnage-norm_variance_distr}
+
+Trouvez la fonction de densité de $S_n^2$, la variance échantillonale d'un échantillon de taille $n$ d'une distribution $\mathcal{N}(0,\sigma^2)$. Est-ce que la distribution échantillonale de $S_n^2$ fait partie d'une famille de distributions connues? Utilisez ce résultat pour trouver la moyenne et la variance de $S_n^2$. 
+
+
+*Truc:* Considérez $(n-1)S_n^2/\sigma^2\sim \chi^2_{(n-1)}$ et utilisez la méthode de la fonction de répartition pour obtenir la densité de la variable aléatoire transformée.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Oui. $S^2_n \sim Ga(n-1/2, 2\sigma^2 / (n-1))$ donc $\esp{S^2_n} = \sigma^2$ et $\var{S^2_n} = \frac{2\sigma^4}{n-1}$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $W=(n-1)S_n^2/\sigma^2\sim \chi^2_{(n-1)}$, et on cherche à trouver la fonction de densité de $S_n^2=\sigma^2 W /(n-1)$. Puisque c'est une transformation d'échelle, on peut utiliser la méthode de la fonction de répartition. D'abord, on exprime la fonction de répartition de $S_n^2$ en termes de la fonction de répartition de $W$:
+$$
+\begin{aligned}
+F_{S_n^2}(s)&=\Pr[S_n^2\leq s]=\Pr\left[\frac{\sigma^2 W}{n-1}\leq s\right]=\Pr[W\leq s(n-1)/\sigma^2]=F_W\left(\frac{s(n-1)}{\sigma^2}\right).
+\end{aligned}
+$$
+Ensuite, on dérive $F_{S_n^2}(s)$ en fonction de $s$ pour trouver la densité:
+$$
+\begin{aligned}
+f_{S_n^2}(s) &=\frac{\d}{\d s}F_W\left(\frac{s(n-1)}{\sigma^2}\right) = f_W\left(\frac{s(n-1)}{\sigma^2}\right)\frac{n-1}{\sigma^2}.
+\end{aligned}
+$$
+Finalement, la densité de $W$ est la distribution d'une $\chi^2_{n-1}$. Donc, pour $s>0$,
+$$
+\begin{aligned}
+f_{S_n^2}(s) &= \frac{n-1}{\sigma^2}\frac{1}{2^{(n-1)/2}\Gamma(\frac{n-1}{2})}\left(\frac{(n-1)s}{\sigma^2}\right)^{(n-1)/2-1}\exp\left(-\frac{(n-1)s}{2\sigma^2}\right)\\
+&=\left(\frac{n-1}{2\sigma^2}\right)^{(n-1)/2}\frac{1}{\Gamma(\frac{n-1}{2})}s^{(n-1)/2-1}\exp\left(-\frac{s}{2\sigma^2/(n-1)}\right).
+\end{aligned}
+$$
+Par conséquent, $S_n^2$ suit une distribution gamma avec paramètres $\alpha=(n-1)/2$ et $\beta=2\sigma^2/(n-1)$. La moyenne et la variance sont:
+$$
+\begin{aligned}
+\ex[S_n^2]&= \alpha\beta= \frac{n-1}{2}\frac{2\sigma^2}{n-1}=\sigma^2\\
+\vr(S_n^2)&=\alpha\beta^2=\frac{n-1}{2}\frac{4\sigma^4}{(n-1)^2}=\frac{2\sigma^4}{n-1}.
+\end{aligned}
+$$
+:::
+

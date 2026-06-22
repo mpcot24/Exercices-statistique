@@ -1,0 +1,30 @@
+## Calcul avec les statistiques d'ordre {#sec-base-stat_ordre_prob}
+
+Soient $X_{(1)} \leq X_{(2)} \leq X_{(3)} \leq X_{(4)}$ les
+  statistiques d'ordre d'un échantillon aléatoire de taille $4$ issu
+  d'une distribution avec fonction de densité de probabilité $f(x) =
+  e^{-x}$, $0 < x < \infty$. Calculer $\prob{X_{(4)} > 3}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$1 - (1 - e^{-3})^4$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On cherche la probabilité que la plus grande valeur de
+    l'échantillon soit supérieure à 3, soit le complément de la
+    probabilité que toutes les valeurs de l'échantillon soient
+    inférieures à 3:
+    $$
+\begin{aligned}
+      \prob{X_{(4)} > 3}
+      &= 1 - \prob{X_{(4)} \leq 3} \\
+      &= 1 - \prob{X_1 \leq 3} \prob{X_2 \leq 3}
+      \prob{X_3 \leq 3} \prob{X_4 \leq 3} \\
+      &= 1 - (F_X(3))^4.
+    \end{aligned}
+$$
+    Or, on aura reconnu en $f(x)$ la densité d'une loi exponentielle
+    de paramètre $\lambda = 1$. Par conséquent, $F_X(x) = 1 - e^{-x}$
+    et $\prob{X_{(4)} > 3} = 1 - (1 - e^{-3})^4$.
+:::
+

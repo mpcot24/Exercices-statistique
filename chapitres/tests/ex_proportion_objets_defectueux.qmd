@@ -1,0 +1,52 @@
+## Proportion d'objets défectueux {#sec-tests-proportion_objets_defectueux}
+
+Soit une proportion $p$ inconnue d'objets défectueux dans une grande population d'objets. On souhaite tester les hypothèses suivantes:
+$$
+\begin{aligned}
+        \mathcal{H}_0 &: p = 0,2 \\
+        \mathcal{H}_1 &: p \ne 0,2.
+\end{aligned}
+$$
+On suppose qu'un échantillon aléatoire de $n=20$ objets est tiré de la population. Soit $X$ le nombre d'objets défectueux dans l'échantillon aléatoire, on considère un test d'hypothèse qui rejette l'hypothèse nulle si $X \ge 7$ ou $X \le 1$.
+**a)** Est-ce que les hypothèses sont simples ou composites? Expliquer.
+
+**b)** Quelle est la région critique du test?
+
+**c)** Calculer la taille du test et la probabilité de faire une erreur de type I.
+
+**d)** Calculer la valeur de la fonction de puissance $\Pi(p)$ aux points $$ p\in\{0,   0,1,   0,2,   0,3,   0,4,   0,5,   0,6,   0,7,   0,8,   0,9,   1\} $$ et tracer la fonction de puissance en utilisant R ou Excel. Quel est le lien entre la fonction de puissance et les probabilités d'erreur de type I et II?
+
+**e)** Refaire (d) avec une taille d'échantillon de $n=50$ et $n=100$. Est-ce que le test semble bon?
+
+**f)** Suggérer une modification au test pour qu'il demeure significatif avec une taille d'échantillon différente de $20$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\mathcal{H}_0$ est simple et $\mathcal{H}_1$ est composite.
+
+**b)** $\mathcal{C} = \left\{ (x_1,\dots, x_{20}) \in \{0,1\}^n  :  x_1 + \dots + x_n \in \{ 0,1\} \cup \{7,\dots,20 \}\right \}$
+
+**c)** 0,1558678
+
+**d)** $1 - \Pi(p)$
+
+**e)** Non
+
+**f)** Région critique devrait dépendre de $n$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** L'hypothèse nulle est simple étant donné que $\Theta_0 = \{ 0,2\}$ ne contient qu'une seule valeur. La contre-hypothèse est composite étant donné que $\Theta_1 = [0,  0,2) \cup (0,2,  1]$ contient plus d'une valeur de $\theta$.
+
+**b)** Les mesures $X_1, \ldots , X_{20}$ sont des variables aléatoires Bernoulli mutuellement indépendantes. La région critique est donc donnée par $$ \mathcal{C} = \left\{ (x_1,\dots, x_{20}) \in \{0,1\}^n  :  x_1 + \dots + x_n \in \{ 0,1\} \cup \{7,\dots,20 \}\right \}. $$
+
+**c)** Parce que l'hypothèse nulle est simple, la taille du test et la probabilité d'erreur de type I sont les mêmes. $$ \alpha =\Pr(X  \le 1, X \ge 7  |  p = 0,2). $$ Sous l'hypothèse nulle, $X = X_1 + \cdots + X_{20}$ est une distribution binomiale de taille $n=20$ et probabilité $p=0,2$. Ainsi, $\alpha$ peut être calculé comme suit: $$
+\begin{aligned} \Pr(X  \le 1, X \ge 7) &= 1 - \Pr(2 \le X \ge 6) \\ &= 1 - \sum_{x=2}^6 \Pr(X=x) \\ &= 1 - 0,8441322 \\ &= 0,1558678 \end{aligned}
+$$ ```{r} pbinom(1,size=20,prob=0.2) + 1-pbinom(6,size=20,prob=0.2) ```
+
+**d)** La fonction de puissance à $p_1\in [0,1]$ arbitraire est donnée par $$ \Pi(p_1) = \Pr(X  \le 1, X \ge 7  |  p =p_1) $$ et peut être calculée par le fait que $X \sim Bin(n=20, p=p_1)$. On répète la même démarche qu'en (c) en changeant la probabilité $p$ de la loi Binomiale pour chacune des valeurs de $p_1$. Avec \textsf{R}, on trouve ```{r} p <- seq(from=0,to=1,by=0.1) power <- pbinom(1,size=20,prob=p) + 1-pbinom(6,size=20,prob=p) power ``` La courbe de la fonction de puissance peut être tracée avec les points $(\Pi(p_1), p_1)$. En \textsf{R}, elle peut être tracée comme suit: ```{r fig.height} plot(p,power,type="b") points(p,power,pch=16) ``` La puissance à $p=0,2$ est égale à la probabilité d'erreur de type I $\alpha$, alors que pour $ p \ne 0,2$, la probabilité d'erreur de type II $\beta$ est donnée par $1 - \Pi(p)$.
+
+**e)** La seule différence avec (d) est que maintenant $Y$ est une distribution binomiale de taille $n \in \{50,100\}$. La fonction de puissance à $$ p\in\{0,   0,1,   0,2,   0,3,   0,4,   0,5,   0,6,   0,7,   0,8,   0,9,   1\} $$ pour $n=50$ et $n=100$ est calculée de la même façon qu'en (d) en changeant la taille $n$ de la loi Binomiale pour $50$ et $100$. En \textsf{R}, on trouve: ```{r} (power.50 <- pbinom(1,size=50,prob=p) + 1-pbinom(6,size=50,prob=p)) (power.100 <- pbinom(1,size=100,prob=p) + 1-pbinom(6,size=100,prob=p)) ``` De la même façon qu'en (d), le graphique ci-dessous trace les fonctions de puissance pour $n=5$ (en rouge) et $n=100$ (en bleu), avec la puissance pour $n=20$ (en noir). ```{r fig.height} plot(p,power,type="b") points(p,power.50,type="b",col="red") points(p,power.100,type="b",col="blue") ``` Bien que la puissance se comporte bien si $p \ne 0,2$ (i.e., elle s'approche de 1), l'erreur de type I est complètement inacceptable: elle est aussi grande que $0,999$ quand $n=100$. Le test n'est pas du tout utile pour ces tailles d'échantillon.
+
+**f)** La région de rejet devra dépendre de $n$, puisque plus la taille d'échantillon augmente, plus d'objets défectueux seront présents sous $\mathcal{H}_0$, simplement car plus d'objets sont inspectés. Sous l'hypothèse nulle, le nombre total d'objets défectueux va être une distribution binomiale de taille $n$ avec probabilité $p=0,2$. Les valeurs critiques pourraient être choisies comme des quantiles de la distribution binomiale.
+:::
+

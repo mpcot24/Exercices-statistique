@@ -1,0 +1,35 @@
+## Approximation avec le TCL {#sec-echantillonnage-tcl_approx_2}
+
+Trouver une valeur approximative de la probabilité que la moyenne
+  d'un échantillon de taille $15$ d'une loi avec densité $f(x) = 3
+  x^2$, $0 < x < 1$, soit entre $3/5$ et $4/5$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$0,840$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On souhaitera utiliser l'approximation normale. Cela requiert de
+    connaître les valeurs de l'espérance et de la variance de la
+    moyenne de l'échantillon, $\bar{X}$, et, par ricochet, celles de
+    la variable aléatoire avec densité $f(x)$. Or,
+    $$
+\begin{aligned}
+      \esp{X} &= \int_0^1 3x^3 dx = \frac{3}{4} \\
+      \esp{X^2} &= \int_0^1 3x^4 dx = \frac{3}{5}
+    \end{aligned}
+$$
+    et donc $\var{X} = 3/80$. Ainsi, $\esp{\bar{X}} = \esp{X} = 3/4$
+    et $\var{\bar{X}} = \var{X}/15 = 1/400$ et
+    $$
+\begin{aligned}
+      \Prob{\frac{3}{5} < \bar{X} < \frac{4}{5}}
+      &= \Prob{\frac{3/5 - 3/4}{\sqrt{1/400}} <
+        \frac{\bar{X} - 3/4}{\sqrt{1/400}} <
+        \frac{4/5 - 3/4}{\sqrt{1/400}}} \\
+      &\approx \Phi(1) - \Phi(-3) \\
+      &= 0,840.
+    \end{aligned}
+$$
+:::
+

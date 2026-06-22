@@ -1,0 +1,35 @@
+## Distribution de la variance échantillonnale d'un échantillon issu d'une loi normale {#sec-echantillonnage-norm_variance_ech}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une loi normale de moyenne $\mu$ et variance $\sigma^2$. Trouver la moyenne et la variance de la statistique
+  $$
+    S^2_n = \frac{1}{(n-1)}\sum_{i=1}^n (X_i - \bar{X})^2.
+  $$
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\esp{S^2_n} = \sigma^2$, $\var{S^2_n} = 2 \sigma^4/(n-1)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $(n-1)S^2_n/\sigma^2 \sim \chi^2(n - 1)$, que l'espérance
+    d'une loi $\chi^2$ est égale à son nombre de degrés de liberté et
+    que sa variance est égale à deux fois son nombre de degrés de
+    liberté. On a donc
+    $$
+\begin{aligned}
+      \esp{S^2_n}
+      &= \frac{\sigma^2}{(n-1)}  \Esp{\frac{(n-1)S^2_n}{\sigma^2}}\\\
+      &= \frac{(n - 1) \sigma^2}{(n-1)}=\sigma^2 \\
+      \end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned}
+      \var{S^2_n}
+      &= \frac{\sigma^4}{(n-1)^2}  \Var{\frac{(n-1)S^2_n}{\sigma^2}}\\
+      &= \frac{2 (n - 1) \sigma^4}{(n-1)^2}= \frac{2 \sigma^4}{(n-1)}
+    \end{aligned}
+$$
+:::
+

@@ -1,0 +1,37 @@
+## Densité de l'étendue {#sec-base-stat_ordre_densite_etendue}
+
+Si $X \sim \mathcal{U}(0, 1)$, montrer que la densité de l'étendue est
+$ f_R(r) = n (n - 1) r^{n - 2} (1 - r),$ 
+pour $0 < r < 1$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Ici, $f_X(x)=1$ pour $x\in(0,1)$ et $F_X(x)=x$, pour $x\in(0,1)$. Selon l'exercice [-@sec-base-stat_ordre_etendue], on trouve que
+$$
+\begin{aligned}
+f_{R, T}(r, t) &= n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
+    f_X(t + r/2) f_X(t - r/2)\\
+&= n (n - 1)\{ (t + r/2) - (t - r/2)\}^{n - 2}\\
+&= n (n - 1) r^{n-2},
+\end{aligned}
+$$
+pour $0 < r < 1$ et $t + r/2 \in(0,1)$ et $t - r/2\in(0,1)$.Ainsi,
+$$
+\begin{aligned}
+t + \frac{r}{2} < 1 &\implies \; t < 1 - \frac{r}{2} \\
+t - \frac{r}{2} > 0 &\implies \; t > \frac{r}{2} \\
+&\implies \frac{r}{2} < t < 1 - \frac{r}{2}.
+\end{aligned}
+$$
+Par conséquent,
+$$
+\begin{aligned}
+  f_R(r) &= n (n - 1) r^{n - 2} \int_{r/2}^{1 - r/2} dt \\
+   &= n (n - 1) r^{n - 2} (1 - r), \quad 0 < r < 1.
+  \end{aligned}
+$$
+:::
+

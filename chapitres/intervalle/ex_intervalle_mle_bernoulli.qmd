@@ -1,0 +1,27 @@
+## Intervalle de confiance avec l'estimateur du maximum de vraisemblance d'une distribution Bernoulli {#sec-intervalle-intervalle_mle_bernoulli}
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire d'une distribution Bernoulli avec paramètre inconnu $\theta$.
+
+**a)** Écrire la vraisemblance, la log-vraisemblance et l'EMV de $\theta$.
+
+**b)** Calculer l'information de Fisher $I(\theta)$.
+
+**c)** Si $m=144$ et $\bar x=0,126$, utiliser la distribution limite de l'EMV pour obtenir un intervalle de confiance approximatif à $96$\
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+a)EMV: $\bar{x}_n \quad$ b) $I(\theta) = \frac{1}{\theta(1 - \theta)}$
+c) $[0,0692;0,01828]\quad$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La vraisemblance est $$ L(\theta)=\prod_{i=1}^n \theta^{x_i}(1-\theta)^{1 - x_i} = \theta^{\sum_{i=1}^n x_i} (1 - \theta)^{n - \sum_{i = 1}^n x_i} $$ et la log-vraisemblance est $$ \ell(\theta)= \sum_{i=1}^n x_i \ln\theta + (n - \sum_{i = 1}^n x_i) \ln(1-\theta). $$ Si on dérive par rapport à $\lambda$, on trouve $$ \ell'(\theta)=\frac{\sum_{i=1}^n x_i}{\theta}- \frac{(n - \sum_{i=1}^n x_i)}{1 - \theta}, $$ donc l'estimateur du maximum de vraisemblance est $$ \frac{\sum_{i=1}^n x_i}{\theta}- \frac{(n - \sum_{i=1}^n x_i)}{1 - \theta}=0 \quad \Rightarrow \hat\theta=\bar x_n. $$
+
+**b)** On a $\ln f(x;\theta) = x\ln\theta-\ln(1 - \theta) (1 - x)$ donc l'information de Fisher est $$
+\begin{aligned} I(\theta)&=\ex\left[-\frac{\partial^2}{\partial\theta^2} \ln f(X;\theta) \right]=\ex\left[-\frac{\partial^2}{\partial\theta^2} \left(X\ln\theta-\ln(1 - \theta) (1 - X) \right)\right]=\ex\left[\frac{X}{\theta^2} + \frac{1 - X}{(1 - \theta)^2} \right] =\frac{1}{\theta (1 - \theta)}. \end{aligned}
+$$
+
+**c)** La distribution limite de l'EMV est $$ \frac{\hat\theta_n-\theta}{\sqrt{1/\{nI(\theta)\}}} $$ est asymptotiquement $\mathcal{N}(0,1)$. On peut estimer $nI(\lambda)$ au dénominateur par $nI(\hat\theta)=\frac{n}{\hat\theta(1 - \theta)}$, pour obtenir, quand $n\to\infty$, $$ \frac{\hat\theta-\theta}{\hat\theta/\sqrt{n}} $$ est asymptotiquement $\mathcal{N}(0,1)$. D'une autre façon, on peut estimer $nI(\theta)$ par $$ -\left.\frac{\partial^2}{\partial\lambda^2} \ell(\theta)\right|_{\theta=\hat\theta}=\frac{n}{\hat\theta (1 - \hat\theta)}, $$ ce qui revient à la même réponse. Sachant que $z_{2\
+\begin{aligned} \left[\hat\theta-z_{\alpha/2}\sqrt{\frac{\hat\theta(1 - \hat\theta)}{n}},\hat\theta+z_{\alpha/2}\sqrt{\frac{\hat\theta(1 - \hat\theta)}{n}}\right]&=\left[\bar x_n-z_{\alpha/2}\sqrt{\frac{\bar{x}_n(1 - \bar{x}_n)}{n}}, \bar x_n+z_{\alpha/2}\sqrt{\frac{\bar{x}_n(1 - \bar{x}_n)}{n}}\right]\\ &=0,126\pm\frac{2,054 \times \sqrt{0,126 \times 0,874}}{12} \\ &=\left[\Sexpr{round(0.126-2.054*sqrt(0.126 * 0.874/144),5)},\Sexpr{round(0.126+2.054*sqrt(0.126 * 0.874 / 144),5)}\right]. \end{aligned}
+$$
+:::
+

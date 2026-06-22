@@ -1,0 +1,38 @@
+## Moments - Loi log-normale {#sec-ajustement-moments_lnorm}
+
+Si $Z\sim \mathcal{N}(\mu,\sigma^2)$ et $Y=e^{Z}$, alors $Y$ a une distribution log-normale avec paramètres $\mu$ et $\sigma^2$. La fonction de répartition est
+$$
+F(y)=\Phi\left(\frac{\ln(y)-\mu}{\sigma}\right), \quad y>0,
+$$
+où $\Phi$ est la fonction de répartition de la loi normale standard.
+
+**a)** Utiliser la fonction génératrice des moments de la loi normale pour montrer que les deux premiers moments de la loi log-normale sont $$ \ex[Y]=e^{\mu+\sigma^2/2}\quad \text{ et } \ex[Y^2]=e^{2\mu+2\sigma^2}. $$
+
+**b)** Utiliser la méthode des moments pour construire un estimateur de $\mu$ et $\sigma^2$ si $Y_1, \ldots, Y_n$ forment un échantillon aléatoire d'une loi log-normale.
+
+**c)** Montrer que les estimateurs trouvés en (b) sont convergents.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+b) $\hat \mu = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\}$ et $\hat\sigma^2 = \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\}$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La fonction génératrice des moments de $Z\sim\mathcal{N}(\mu,\sigma^2)$ est $$ M_{Z}(t)=\ex[e^{tZ}]=\exp(\mu t +\sigma^2 t^2/2). $$ Ainsi, $$
+\begin{aligned} \ex[Y]&= \ex[e^{Z}]=M_Z(1)=\exp(\mu +\sigma^2/2),\\ \ex[Y^2]&= \ex[e^{2Z}]=M_Z(2)=\exp(2\mu +\sigma^2 2^2/2). \end{aligned}
+$$
+
+**b)** On doit résoudre les deux équations où $m_1=\bar Y_n$ est égal à $\ex[Y]$ et $m_2=\frac{1}{n}\sum_{i=1}^n Y_i^2$ est égal à $\ex[Y^2]$: $$
+\begin{aligned} \exp(\hat\mu +\hat\sigma^2/2)&=\bar Y_n \\ \exp(2\hat\mu +2\hat\sigma^2 )&=\frac{1}{n}\sum_{i=1}^n Y_i^2. \end{aligned}
+$$ On note que $$
+\begin{aligned} \exp(2\hat\mu +2\hat\sigma^2 )&=\left\{\exp(\hat\mu +\hat\sigma^2/2)\right\}^2\exp(\hat\sigma^2)\\ &=\bar Y_n^2 \exp(\hat\sigma^2).\quad \end{aligned}
+$$ On obtient que $$ \bar{Y}_n^2 \exp(\hat\sigma^2) = \frac{1}{n}\sum_{i=1}^n Y_i^2 $$ est équivalent à $$ \hat\sigma^2 = \ln\left\{\frac{\sum_{i=1}^n Y_i^2/n}{\bar{Y}_n^2} \right\}. $$ Ainsi, $\hat\mu +\hat\sigma^2/2=\ln(\bar Y_n )$, donc $$
+\begin{aligned} \hat\mu & = \ln(\bar Y_n )-\frac{1}{2}\ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\}\\ & = \ln(\bar Y_n )+\ln\left\{\frac{\bar Y_n}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\}\\ & = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\}. \end{aligned}
+$$ Ainsi, les estimateurs des moments sont $$ \hat \mu = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\} \quad \text{ et }\quad \hat\sigma^2 = \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\}. $$
+
+**c)** Pour montrer la convergence, on note premièrement que, selon la Loi faible des grands nombres $$
+\begin{aligned} \bar Y &\stackrel{P}{\rightarrow} \ex[Y]=e^{\mu+\sigma^2/2}\\ \frac{1}{n}\sum_{i=1}^n Y_i^2 &\stackrel{P}{\rightarrow} \ex[Y^2]=e^{2\mu+2\sigma^2}\\ \end{aligned}
+$$ Puisque $\ln$, le carré et la racine carrée sont toutes des fonctions continues, on trouve que, quand $n\to\infty$, $$
+\begin{aligned} \hat\mu = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\} &\stackrel{P}{\rightarrow} \ln\left\{\frac{ e^{2\mu+\sigma^2}}{\sqrt{e^{2\mu+2\sigma^2}}} \right\}=\ln\left\{ e^{2\mu+\sigma^2-\mu-\sigma^2} \right\}=\mu\\ \hat\sigma^2 = \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\} &\stackrel{P}{\rightarrow} \ln\left\{\frac{e^{2\mu+2\sigma^2}}{e^{2\mu+\sigma^2}} \right\}=\ln\left\{e^{2\mu+2\sigma^2-2\mu-\sigma^2} \right\}=\sigma^2. \end{aligned}
+$$ Ainsi, les estimateurs sont convergents.
+:::
+

@@ -1,0 +1,46 @@
+## Rao--Blackwell avec la loi exponentielle {#sec-estimation-exhaust_raoblackwell_expo}
+
+Soit $X_i$ le montant de réclamation pour l'assuré $i$, pour $i=1,\ldots,n$. On suppose que  $X_1, \dots, X_n$ est un échantillon aléatoire tiré d'une loi exponentielle avec paramètre $\beta$ inconnu telle que $\esp{X} = \beta$.
+
+**a)** Trouver une statistique exhaustive $T$ pour $\beta$.
+
+**b)** Montrer que $\hat{\beta} = X_1$ est un estimateur sans biais de $\beta$.
+
+**c)** Sans effectuer de calculs, expliquer qualitativement pourquoi $\hat{\beta}$ ne semble pas être un bon estimateur de $\beta$.
+
+**d)** Appliquer le théorème de Rao--Blackwell sur $\hat{\beta}$ pour trouver un meilleur estimateur $\tilde{\beta}$.
+
+**e)** Est-ce le MVUE? Justifier.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $T = \bar{X}_n$
+
+**b)** Démo
+
+**c)** Une seule observation pour déterminer le paramètre
+
+**d)** Démo
+
+**e)** Oui
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On applique le théorème de factorisation de Fisher--Neyman en trouvant d'abord la fonction de vraisemblance et en la factorisant ensuite: $$
+\begin{aligned} L(x, \beta) &= \prod_{i = 1}^{n} \frac{1}{\beta} e^{-\frac{1}{\beta} x_i} \\ &= \beta^{-n} e^{-\beta^{-1} \sum_{i=1}^n x_i} \times 1 \end{aligned}
+$$ Ainsi, $\hat{\beta} = \sum_{i = 1}^n X_i$ ou $\hat{\beta} = \bar{X}_n$ sont des statistiques exhaustives pour $\beta$ par le théorème de factorisation de Fisher--Neyman.
+
+**b)** Dans le contexte, $X_1 \sim \mathcal{E}xp(\beta)$. Ainsi,  $\ex[X_1] = \beta$, donc $\hat{\beta}$ est un estimateur sans biais pour $\beta$.
+
+**c)** La valeur de $X_1$ sera la seule observation pour déterminer le seul paramètre du modèle à utiliser. Par exemple, la prime pure d'un groupe d'assurance collective serait uniquement déterminée par un de ses utilisateurs, ce qui peut ne pas représenter adéquatement le comportement du groupe au complet. Un enjeu de compétivité sur le marché pourrait survenir.
+
+**d)** Comme $\hat{\beta}$ est un estimateur sans biais pour $\beta$ et comme $T = \sum_{i=1}^n X_i$ est exhaustive pour $\beta$, on peut appliquer le théorème de Rao--Blackwell. Ainsi, on obtient que $$ \tilde{\beta} = \ex[{\hat{\beta} | T}]. $$
+
+Remarque: $T \sim \mathcal{G}(n, \beta)$ et posons $T^* = \sum_{i = 2}^n X_i \sim \mathcal{G}(n-1, \beta)   (\ex[{T^*}] = (n-1)\beta \perp X_1)$. On développe d'abord $f_{X_1 | T} (x | T)$ en appliquant la définition des probabilités conditionnelles $$
+\begin{aligned} f_{X_1 | T} (x_1 | T) &= \frac{f_{X_1, T} (x_1, t)}{f_T(t)} \\ &= \frac{f_{X_1, T*} (x_1, t - x_1)}{f_T(t)} \\ &= \frac{f_{X_1} (x_1) f_{T*}(t - x_1)}{f_T(t)} \\ &= \frac{\beta^{-1} e^{-\beta^{-1} x_1} \beta^{-(n-1)}(t - x_1)^{n-2} e^{-\beta^{-1} (t - x_1)} \Gamma(n)}{\beta^{-n}t^{n-1} e^{-\beta^{-1} t}\Gamma(n-1)} \\ &= (n-1) \frac{(t - x_1)^{n-2}}{t^{n-1}} \\ &= (n-1) \frac{t^{n-2}(1 - \frac{x_1}{t})^{n-2}}{t^{n-1}} \\ &= (n-1) \frac{(1 - \frac{x_1}{t})^{n-2}}{t}, 0 < x_1 < t. \end{aligned}
+$$ Ainsi, on peut trouver l'espérance conditionnelle en intégrant par parties en posant $u = x_1$ et d$v = (\frac{n-1}{t}) (1 - \frac{x_1}{t})^{n -2}.$ On remarque que le d$v$ de la substitution ici s'intègre magiquement avec une primitive de base. $$
+\begin{aligned} \ex[{\hat{\lambda} | T = t}] &= \int_0^t x_1  (n-1) \frac{(1 - \frac{x_1}{t})^{n-2}}{t}   dx_1 \\ &= \left[x_1 (1 - \frac{x_1}{t})^{n-1}\right]_0^t - \int_0^t (1 - \frac{x_1}{t})^{n-1} dx_1 \\ &= \frac{t}{n} \\ &= \bar{X}_n. \end{aligned}
+$$ Ainsi, par le théorème de Rao-Blackwell, on obtient qu'un meilleur estimateur $\tilde{\beta}$ est $\bar{X}_n$. De plus, on remarque que $\ex[{\tilde{\beta}}] = \frac{\ex[{T}]}{n} = \ex[X] = \beta$ est sans biais pour $\beta$.
+
+**e)** Comme cet estimateur est sans biais et qu'il est une fonction de la statistique exhaustive $T$, $\tilde{\beta}$ est le MVUE de $\ex[X]$. On peut vérifier que sa variance est inférieure à celle de $\hat{\beta}$.
+:::
+

@@ -1,0 +1,24 @@
+## Efficacité de trois estimateurs {#sec-estimation-efficacite}
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire de taille $n\geq 3$ d'une population avec moyenne $\mu$ et variance $\sigma^2 > 0$. On considère les trois estimateurs suivants pour $\mu$:
+$$
+\hat\mu_1=\frac{X_1+X_2}{2},\quad\quad \hat\mu_2=\frac{X_1}{4}+\frac{X_2+\cdots+X_{n-1}}{2(n-2)}+\frac{X_n}{4}, \quad\text{ et }\quad \hat\mu_3=\sum_{j=1}^{n}\frac{X_j}{n}.
+$$
+**a)** Montrer que ces estimateurs sont sans biais.
+
+**b)** Trouver l'efficacité de $\hat\mu_3$ par rapport à $\hat\mu_2$ et $\hat\mu_1$, respectivement.
+
+**c)** Quel estimateur est préférable et pourquoi?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+b)  $\frac{n^2}{8(n-2)}$ et $\frac{n}{2}$ \quad c) ${\hat \mu}_3$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On peut conclure que ${\hat \mu}_1$ est un estimateur sans biais de $\mu$ par le fait que $$ \ex({\hat \mu}_1) = \frac{1}{2}   \{ \ex (X_1) + \ex(X_2)\} = \frac{1}{2}   (\mu + \mu) = \mu. $$ De même, ${\hat \mu}_2$ est un estimateur sans biais de $\mu$, car \begin{eqnarray*} \ex ({\hat \mu}_2) &=& \frac{1}{4}   \ex (X_1) + \frac{1}{2(n-2)}   \sum_{i=2}^{n-1} \ex (X_i) + \frac{1}{4}   \ex (X_n) \\ &=& \frac{1}{4}   \mu + \frac{1}{2(n-2)}   (n-2)\mu + \frac{1}{4}   \mu \\ &=& \frac{1}{4}   \mu + \frac{1}{2}   \mu + \frac{1}{4}   \mu = \mu. \end{eqnarray*} Finalement, ${\hat \mu}_3$ est un estimateur sans biais de $\mu$ puisque $$ \ex ( {\hat \mu}_3) = \frac{1}{n}   \sum_{i=1}^n \ex (X_i) = \frac{n\mu}{n} = \mu. $$
+
+**b)** Par définition, $$ \text{eff} ({\hat \mu}_3, {\hat \mu}_2) = \frac{\vr({\hat \mu}_2)} {\vr ({\hat \mu}_3)} \quad \text{et} \quad \text{eff} ({\hat \mu}_3, {\hat \mu}_1) = \frac{\vr({\hat \mu}_1)} {\vr ({\hat \mu}_3)}  . $$ Pour calculer ces ratios, on doit commencer par déterminer la variance de chacun des trois estimateurs. D'abord, on trouve $$ \vr({\hat \mu}_1) = \frac{1}{4}   \{ \vr (X_1) + \vr (X_2) \} = \frac{\sigma^2}{2}   . $$ Ensuite, \begin{eqnarray*} \vr({\hat \mu}_2) &=& \frac{1}{16}   \vr( X_1) + \frac{1}{4(n-2)^2}   \sum_{i=2}^{n-1} \vr (X_i) + \frac{1}{16}   \vr( X_n) \\ &=& \frac{1}{16}   \sigma^2 + \frac{1}{4(n-2)^2}   (n-2) \sigma^2 + \frac{1}{16}   \sigma^2 \\ &=& \frac{2(n-2) + 4}{16(n-2)}   \sigma^2 \\ &=& \frac{n}{8(n-2)}   \sigma^2. \end{eqnarray*} Finalement, $$ \vr({\hat \mu}_3) = \frac{1}{n^2}   \sum_{i=1}^n \vr (X_i) = \frac{n}{n^2}   \sigma^2 = \frac{\sigma^2}{n}   . $$ Il en découle que $$ \text{eff} ({\hat \mu}_3, {\hat \mu}_2) =  \frac{\displaystyle\frac{n\sigma^2}{8(n-2)}}{\displaystyle\frac{\sigma^2}{n}} =  \frac{n^2}{8(n-2)} $$ et $$ \text{eff} ({\hat \mu}_3, {\hat \mu}_1) =  \frac{\displaystyle\frac{\sigma^2}{2}}{\displaystyle\frac{\sigma^2}{n}} =  \frac{n}{2}   . $$
+
+**c)** Pour toute valeur de $n \ge 3$, on a $$ \text{eff} ({\hat \mu}_3, {\hat \mu}_1) > 1 \quad \text{et} \quad \text{eff} ({\hat \mu}_3, {\hat \mu}_2) > 1. $$ Donc, ${\hat \mu}_3$ est toujours préférable à ${\hat \mu}_1$ ou ${\hat \mu}_2$.
+:::
+

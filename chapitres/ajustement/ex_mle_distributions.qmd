@@ -1,0 +1,64 @@
+## Estimateur du maximum de vraisemblance pour plusieurs distributions {#sec-ajustement-mle_distributions}
+
+Trouver l'estimateur du maximum de vraisemblance du paramètre
+  $\theta$ de chacune des distributions de
+  l'exercice @ajustement.@sec-ajustement-moments_distributions.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\bar{X}$
+
+**b)** $-n/\ln(X_1 \cdots X_n)$
+
+**c)** $\bar{X}$
+
+**d)** $\text{med}(X_1, \dots, X_n)$
+
+**e)** $X_{(1)}$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Dans tous les cas, la fonction de vraisemblance est $L(\theta) =
+    \prod_{i = 1}^n f(x_i; \theta)$ et la fonction de
+    log-vraisemblance est $l(\theta) = \ln L(\theta) = \sum_{i = 1}^n
+    \ln f(x_i; \theta)$. L'estimateur du maximum de vraisemblance du
+    paramètre $\theta$ est la solution de l'équation $l^\prime(\theta)
+    = 0$.
+**a)** On a $$
+\begin{aligned} L(\theta) &= \frac{e^{-n\theta} \theta^{\sum_{i=1}^n x_i}}{
+$$
+
+et
+
+$$
+\begin{aligned} l^\prime(\theta) &= -n + \frac{\sum_{i = 1}^n x_i}{\theta}. \end{aligned}
+$$ En résolvant l'équation $l^\prime(\theta) = 0$ pour $\theta$, on trouve que l'estimateur du maximum de vraisemblance est $\hat{\theta} = \bar{X}$.
+
+**b)** On a $$
+\begin{aligned} L(\theta) &= \theta^n \left( \prod_{i = 1}^n x_i \right)^{\theta - 1}, \\ l(\theta) &= n \ln(\theta) + (\theta - 1) \sum_{i = 1}^n \ln(x_i) \\ \end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned} l^\prime(\theta) &= \frac{n}{\theta} + \sum_{i = 1}^n \ln(x_i). \end{aligned}
+$$ On trouve donc que $$ \hat{\theta} = -\frac{n}{\sum_{i=1}^n \ln(X_i)} = -\frac{n}{\ln(X_1 \cdots X_n)}. $$
+
+**c)** On a $$
+\begin{aligned} L(\theta) &= \theta^{-n} e^{-\sum_{i=1}^n x_i/\theta}, \\ l(\theta) &= -n \ln(\theta) - \frac{\sum_{i=1}^n x_i}{\theta} \\ \end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned} l^\prime(\theta) &= -\frac{n}{\theta} + \frac{\sum_{i=1}^n x_i}{\theta^2}. \end{aligned}
+$$ On obtient que $\hat{\theta} = \bar{X}$.
+
+**d)** On a $$ L(\theta) = \left( \frac{1}{2} \right)^n e^{-\sum_{i = 1}^n \abs{x_i - \theta}} $$ La présence de la valeur absolue rend cette fonction non différentiable en $\theta$. On remarque que la fonction de vraisemblance sera maximisée lorsque l'expression $\sum_{i=1}^n \abs{x_i - \theta}$ sera minimisée. On établit donc que $\hat{\theta} = \text{med}(X_1, \dots, X_n)$, puisqu'on connaît le résultat suivant sur la médiane. En général, si $X$ est une variable aléatoire continue et $a$ est une constante, on peut trouver le minimum de $$
+\begin{aligned} \esp{\abs{X - a}} &= \int_{-\infty}^\infty \abs{x - a} f(x) dx \\ &= \int_{-\infty}^a (a - x)f(x)  dx + \int_a^\infty (x - a)f(x) dx. \end{aligned}
+$$ Or, $$
+\begin{aligned} \frac{d}{da} \esp{\abs{X - a}} &= \int_{-\infty}^a f(x)  dx + \int_a^\infty f(x)  dx \\ &= F_X(a) - (1 - F_X(a)) \\ &= 2F_X(a) - 1 \end{aligned}
+$$ Par conséquent, le minimum est atteint au point $a$ tel que $2F_X(a) - 1 = 0$, soit $F_X(a) = 1/2$. Par définition, cette valeur est la médiane de $X$.
+
+**e)** On remarque que le support de la densité dépend du paramètre $\theta$. La vraisemblance est $$ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\prod_{i=1}^n\mathbf{1}(x_i>\theta) $$ S'il y a une indicatrice qui est 0, alors la vraisemblance sera 0, elles doivent donc toutes être égales à 1 simultanément, ce qui est équivalent à $$ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\mathbf{1}(\min(x_1,\ldots,x_n)>\theta). $$ La fonction $e^{n\theta - \sum_{i=1}^n x_i}$ est strictement croissante en fonction de $\theta$, ce qui indique de choisir une valeur de $\theta$ la plus grande possible. Par contre, on a la contrainte $min(x_1,\ldots,x_n)>\theta$, c'est-à-dire que $\theta$ doit être plus inférieur ou égal à la plus petite valeur de l'échantillon. Par conséquent, $\hat{\theta} = \min(X_1, \dots, X_n) = X_{(1)}$.
+:::
+

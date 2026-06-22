@@ -1,0 +1,24 @@
+## Inegalite rao cramer fournit seuil minimal {#sec-estimation-inegalite_rao_cramer_fournit_seuil_minimal}
+
+
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+\begin{aligned} 
+$$
+
+et donc
+
+$$
+\begin{aligned} 
+$$ 
+
+\begin{aligned} 
+$$
+
+et que
+
+$$
+\begin{aligned} 
+$$
+:::
+

@@ -1,0 +1,59 @@
+## Nombre de poissons dans un aquarium {#sec-tests-poissons_aquarium}
+
+On a compilé les résultats d'une expérience dans un tableau de fréquence des observations recueillies sur le nombre de poissons présents dans une certaine région d'un aquarium à des intervalles réguliers. On considère les moments des observations comme indépendants.
+```{r}
+#| echo: false
+
+set.seed(20011218)
+obs <- rnbinom(100, 2, 0.45)
+```
+
+Ces observations ont été regroupées dans un tableau de fréquence.
+```{r}
+#| echo: true
+table(obs)
+```
+
+Comme vous êtes quelqu'un de concept, vous désirez tester si le modèle Poisson est adéquat pour ces données, et ce, à l'aide d'un test du chi-carré de Pearson.
+
+Malgré votre soif de "concept", vous êtes une personne occupée, donc vous utilisez ce test en supposant 6 cellules: 0, 1, 2, 3, 4, 5 et 6 et plus.
+**a)** Identifier les hypothèses de ce test assez ludique.
+
+**b)** Calculer $\bar{x}_n$.
+
+**c)** Tester et conclure dans le contexte au seuil 5\
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\mathcal{H}_0: X \sim \mathcal{P}\text{oisson}$ et $\mathcal{H}_1$: $X$ ne suit pas une loi de Poisson.
+
+**b)** $\bar{x}_n = 2,38$
+
+**c)** Rejeter $\mathcal{H}_0$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** $\mathcal{H}_0: X \sim \mathcal{P}\text{oisson}$ et $\mathcal{H}_1$: $X$ ne suit pas une loi de Poisson. Notons que le sens des hypothèses est inversé dans le cadre d'un test d'adéquation.
+
+**b)** $\bar{x}_n = 2,38$. Remarque: il y a 100 observations.
+
+**c)** En regard du fait que $\bar{x}_n = 2,38$, on obtient que $\hat{\lambda} = 2,38$. On calcule ensuite les probabilités des cellules selon la loi de Poisson ajustée: 
+
+$$
+\begin{aligned} \hat{\pi}_0 &= \frac{\hat{\lambda}^0 e^{-\hat{\lambda}}}{0!} &= \frac{2,38^0 e^{-2,38}}{0!} &= 0,0926 \\ \hat{\pi}_1 &= \frac{\hat{\lambda}^1 e^{-\hat{\lambda}}}{1!} &= \frac{2,38^1 e^{-2,38}}{1!} &= 0,2203 \\ \hat{\pi}_2 &= \frac{\hat{\lambda}^2 e^{-\hat{\lambda}}}{2!} &= \frac{2,38^2 e^{-2,38}}{2!} &= 0,2621 \\ \hat{\pi}_3 &= \frac{\hat{\lambda}^3 e^{-\hat{\lambda}}}{3!} &= \frac{2,38^3 e^{-2,38}}{3!} &= 0,2079 \\ \hat{\pi}_4 &= \frac{\hat{\lambda}^4 e^{-\hat{\lambda}}}{4!} &= \frac{2,38^4 e^{-2,38}}{4!} &= 0,1237 \\ \hat{\pi}_5 &= \frac{\hat{\lambda}^5 e^{-\hat{\lambda}}}{5!} &= \frac{2,38^5 e^{-2,38}}{5!} &= 0,0589 \\ \hat{\pi}_6 &= 1 - \sum_{i = 0}^5 \hat{\pi}_i &= 1 - 0,9655 &= 0,0345 \end{aligned}
+$$ 
+
+On trouve donc les fréquences espérées en mutiliant par le nombre d'observations. 
+
+$$
+\begin{aligned} \widehat{\esp{n_0}} &= 100 \times 0,0926 &= 9,26 \\ \widehat{\esp{n_1}} &= 100 \times 0,2203 &= 22,03 \\ \widehat{\esp{n_2}} &= 100 \times 0,2621 &= 26,21 \\ \widehat{\esp{n_3}} &= 100 \times 0,2079 &= 20,79 \\ \widehat{\esp{n_4}} &= 100 \times 0,1237 &= 12,37 \\ \widehat{\esp{n_5}} &= 100 \times 0,0589 &= 5,89 \\ \widehat{\esp{n_6}} &= 100 \times 0,0345 &= 3,45 \end{aligned}
+$$ 
+
+On trouve ensuite la statistique de test: 
+
+$$
+\begin{aligned} X_{\text{obs}}^2 &=  \sum_{i = 0}^6 \frac{(n_i - \widehat{\esp{n_i}})^2}{\widehat{\esp{n_i}}} \\ &= \frac{(21 - 9,26)^2}{9,26} + \frac{(18 - 22,03)^2}{22,03} + \frac{(27 - 26,21)^2}{26,21} \\ &+ \frac{(10 - 20,79)^2}{20,79} + \frac{(8 - 12,37)^2}{12,37} + \frac{(5 - 5,89)^2}{5,89} \\ &+ \frac{(11 - 3,45)^2}{11} \\ &= 39,48769 \end{aligned}
+$$ 
+
+Comme nous avons posé 2 conditions, $X_{\text{obs}}^2$ suit une $\mathcal{X}^2$ avec $7 - 2 = 5$ degrés de liberté. Puisque, $\mathcal{X}^2_{5, 5\
+:::
+

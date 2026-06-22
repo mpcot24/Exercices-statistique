@@ -1,0 +1,40 @@
+## La machine d'embouteillage {#sec-echantillonnage-tcl_machine_embouteillage}
+
+Une machine d'embouteillage peut être réglée de sorte qu'elle remplisse en moyenne les bouteilles de $\mu$ onces de liquide par bouteille. Il a été observé que la quantité de liquide distribuée par la machine suit une loi normale avec $\sigma= 2,5$ onces.
+**a)** Si $n=9$ bouteilles sont sélectionnées aléatoirement à la sortie de la machine, quelle est la probabilité que la moyenne échantillonnale diffère de $\mu$ d'au plus 0,2 once?
+
+**b)** Trouver la probabilité que la moyenne échantillonale diffère de $\mu$ d'au plus 0,2 once lorsque la taille de l'échantillon est $n = 25, 36,$ et $64$. Que remarquez-vous lorsque $n$ augmente? Pouvez-vous expliquer cette remarque?
+
+**c)** Quelle est la taille d'échantillon requise pour s'assurer que la probabilité que la moyenne échantillonnale diffère de $\mu$ d'au plus 0,2 once est d'au moins 95\
+
+**d)** Comment la probabilité obtenue en a) change-t-elle lorsque $\sigma$ est inconnu et que la variance échantillonnale est égale à $s_n^2= 5,5$?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+a) 0,1896    b) 0,3108 ; 0,3688 ; 0,4778    c) 601    d) 0,1955
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La probabilité peut être calculée comme suit: $$
+\begin{aligned} \Pr(|\bar X_n - \mu| \le 0,2) & = \Pr(-0,2 \le \bar X_n - \mu \le 0,2) \\ & = \Pr\left(-\frac{0,2}{\sqrt{2,5^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \le \frac{0,2}{\sqrt{2,5^2/9}} \right). \end{aligned}
+$$ On sait que $$ \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \sim \mathcal{N}(0,1), $$ la probabilité est alors $$
+\begin{aligned} \Pr\left(-\frac{0,2}{\sqrt{2,5^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \le \frac{0,2}{\sqrt{2,5^2/9}} \right) &= \Phi\left(\frac{0,2}{\sqrt{2,5^2/9}}\right)-\Phi\left(-\frac{0,2}{\sqrt{2,5^2/9}}\right)\\ & = 2\Phi\left(\frac{0,2}{\sqrt{2,5^2/9}}\right)-1, \end{aligned}
+$$ où $\Phi$ représente la fonction de répartition de la loi normale centrée réduite. Cette probabilité peut être évaluée avec une table de la loi normale ou avec R; ce dernier donne `r 2*pnorm(0.2/sqrt(2.5^2/9))-1` avec la commande `2*pnorm(0.2/sqrt(2.5^2/9))-1`.
+
+**b)** De la même façon qu'en a), on trouve $$
+\begin{aligned} \Pr(|\bar X_n - \mu| \le 0,2)& =\Pr\left(-\frac{0,2}{\sqrt{2,5^2/n}} \le \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \le \frac{0,2}{\sqrt{2,5^2/n}} \right)\\ & = 2\Phi\left(\frac{0,2}{\sqrt{2,5^2/n}}\right)-1. \end{aligned}
+$$ On considère $n=25$, $n=36$ et $n=64$ dans la formule, ce qui donne 
+```{r} 
+n <- c(25,36,64) 
+
+2*pnorm(0.2/sqrt(2.5^2/n))-1 
+```
+
+On remarque que la probabilité que la moyenne échantillonnale diffère de la vraie moyenne d'au plus 0,2 once augmente avec $n$. C'est le résultat qu'on attend selon la Loi faible des grands nombres, qui indique que cette probabilité tend vers $1$ quand $n\to \infty$.
+
+**c)** Si $$ \Pr ( | {\bar X}_n - \mu | \le 0,2) = 2\Phi\left(\frac{0,2}{\sqrt{2,5^2/n}}\right)-1 \geq 0,95, $$ alors $\Phi \left(0,2\sqrt{n}/2,5\right) \geq 0,975$ et ainsi $0,2\sqrt{n}/2,5 \geq 1,96$, ce qui implique que $\sqrt{n} \geq 24,5$ ou $n\geq 600,25$. La taille d'échantillon doit donc être de $n=601$ pour que la probabilité soit *le plus près possible, mais pas plus petite que* 0,95.
+
+**d)** Dans ce cas, la probabilité à calculer est $$ \Pr\left(-\frac{0,2}{\sqrt{s_n^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{S_n^2/9}} \le \frac{0,2}{\sqrt{s_n^2/9}} \right). $$ On sait que $$ \frac{\bar X_n - \mu}{\sqrt{S_n^2/9}} \sim t_{(8)}, $$ on trouve que $$
+\begin{aligned} \Pr\left(-\frac{0,2}{\sqrt{s_n^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{S_n^2/9}} \le \frac{0,2}{\sqrt{s_n^2/9}} \right) & =  \Pr\left(-\frac{0,2}{\sqrt{5,5/9}} \le \frac{\bar X_n - \mu}{\sqrt{5,5/9}} \le \frac{0,2}{\sqrt{5,5/9}} \right) \\ &= T_{(8)}\left(\frac{0,2}{\sqrt{5,5/9}} \right) - T_{(8)} \left(-\frac{0,2}{\sqrt{5,5/9}} \right), \end{aligned}
+$$ où $T_{(8)}$ est la fonction de répartition d'une loi Student $t$ avec $8$ degrés de liberté. Encore une fois, cette expression peut être évaluée avec une table de la loi normale ou avec R; ce dernier donne `r pt(0.2/sqrt(5.5/9),df=8) -pt(-0.2/sqrt(5.5/9),df=8)` avec la commande `pt(0.2/sqrt(5.5/9),df=8) -pt(-0.2/sqrt(5.5/9),df=8)`. La probabilité obtenue est plus grande qu'en a) étant donné la variabilité ajoutée avec l'estimation de la variance.
+:::
+

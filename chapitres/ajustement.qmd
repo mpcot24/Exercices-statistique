@@ -1,0 +1,36 @@
+# Ajustement de modèles
+
+{{< include ajustement/ex_moments_distributions.qmd >}}
+
+{{< include ajustement/ex_moments_lnorm.qmd >}}
+
+{{< include ajustement/ex_moments_geo.qmd >}}
+
+{{< include ajustement/ex_moments_des.qmd >}}
+
+{{< include ajustement/ex_quantiles_lnorm.qmd >}}
+
+{{< include ajustement/ex_quantiles_llogistique.qmd >}}
+
+{{< include ajustement/ex_quantiles_pertes.qmd >}}
+
+{{< include ajustement/ex_mle_distributions.qmd >}}
+
+{{< include ajustement/ex_mle_expo_translatee.qmd >}}
+
+{{< include ajustement/ex_mle_uniforme.qmd >}}
+
+{{< include ajustement/ex_mle_invgauss.qmd >}}
+
+{{< include ajustement/ex_mle_pareto.qmd >}}
+
+{{< include ajustement/ex_mle_bornes_uniforme.qmd >}}
+
+{{< include ajustement/ex_mle_theta_uniforme.qmd >}}
+
+{{< include ajustement/ex_mle_bernoulli.qmd >}}
+
+{{< include ajustement/ex_qualite_ajustement_assuranceIARDUS.qmd >}}
+
+{{< include ajustement/ex_telecharger_fichier_contents_csv_sur_site.qmd >}}
+

@@ -1,0 +1,35 @@
+## Échantillon de taille inconnue {#sec-echantillonnage-norm_ech_taille_inconnue}
+
+Si $\bar{X}_n$ est la moyenne d'un échantillon de taille $n$ tiré
+  d'une distribution normale de moyenne $\mu$ et de variance $100$,
+  trouver la valeur de $n$ telle que $\Prob{\mu - 5 < \bar{X}_n < \mu +
+    5} = 0,954$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$16$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a $\esp{\bar{X}_n} = \esp{X} = \mu$, $\var{\bar{X}_n} = \var{X}/n =
+    100/n$ et $\bar{X}_n\sim \mathcal{N}(\mu, 100/n)$. Ainsi, on cherche $n$ tel
+    que
+    $$
+\begin{aligned}
+      \prob{\mu - 5 < \bar{X}_n< \mu + 5}
+      &= \Prob{-\frac{5}{10/\sqrt{n}} < 
+        \frac{\bar{X}_n- \mu}{10/\sqrt{n}} < 
+        \frac{5}{10/\sqrt{n}}} \\
+      &= \Phi\left( \frac{5 \sqrt{n}}{10} \right)
+      - \Phi\left( -\frac{5 \sqrt{n}}{10} \right) \\
+      &= 2 \Phi\left( \frac{5\sqrt{n}}{10} \right) - 1 \\
+      &= 0,954,
+    \end{aligned}
+$$
+    soit
+    $$
+     \Phi \left( \frac{5\sqrt{n}}{10} \right) = 0,977.
+    $$
+    On trouve dans une table de loi normale que $5 \sqrt{n}/10 = 2$,
+    d'où $n = 16$.
+:::
+

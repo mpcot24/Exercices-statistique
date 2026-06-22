@@ -1,0 +1,26 @@
+## Probabilité de l'étendue d'un échantillon aléatoire d'une loi uniforme {#sec-base-stat_ordre_etendue_uniforme}
+
+Calculer la probabilité que l'étendue d'un échantillon aléatoire
+  de taille $4$ issu d'une loi uniforme sur l'intervalle $(0, 1)$ soit
+  inférieure à $1/2$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$5/16$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $R$ l'étendue de l'échantillon aléatoire. Avec l'exercice [-@sec-base-stat_ordre_densite_etendue], on sait que
+    $$
+      f_R(x) = n (n - 1) x^{n - 2} (1 - x), \text{ pour } x\in(0,1).
+    $$
+    Par conséquent
+    $$
+\begin{aligned}
+      \Prob{R \leq \frac{1}{2}}
+      &= \int_{0}^{1/2} f_X(x)  dx\\
+      &= (4)(3)\int_{0}^{1/2} x^2 (1 - x)  dx\\
+      &= \frac{5}{16}.
+    \end{aligned}
+$$
+:::
+

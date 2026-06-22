@@ -1,0 +1,28 @@
+## MVUE -- Loi de Poisson {#sec-estimation-mvue_poisson}
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire d'une loi de Poisson avec moyenne $\lambda$.
+
+**a)** Démontrer que $T=\sum_{i=1}^n X_i$ est exhaustive minimale pour $\lambda$.
+
+**b)** Est-ce que $\bar X_n=T/n$ est un estimateur sans biais de variance minimale (MVUE) pour $\lambda$? Expliquer.
+
+**c)** L'*inégalité de Cramér--Rao--Fréchet* indique que si $\hat\lambda_n$ est un estimateur sans biais de $\lambda$, alors $$ \vr(\hat\lambda_n)\geq \left\{n \ex\left[-\frac{\partial^2}{\partial\lambda^2}\ln f(X;\lambda)\right]\right\}^{-1}. $$ Un estimateur avec variance égale à la borne inférieure est dit être *efficace*. Montrer que $\bar X_n$ est en effet un estimateur efficace pour $\lambda$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** Démo
+
+**b)** Oui
+
+**c)** Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Puisque $$ \Pr[X_1=x_1,\ldots,X_n=x_n]=\prod_{i=1}^n \frac{\lambda^{x_i} e^{-\lambda}}{x_i!}=\lambda^{\sum_{i=1}^n x_i}e^{-\lambda n} \frac{1}{\prod_{i=1}^n x_i!} $$ se factorise en $g(\sum_{i=1}^n x_i,\lambda)=\lambda^{\sum_{i=1}^n x_i}e^{-\lambda n}$ et $h(x_1,\ldots,x_n)=\frac{1}{\prod_{i=1}^n x_i!}$, le théorème de factorisation de Fisher--Neyman implique que $\sum_{i=1}^n X_i$ est une statistique exhaustive pour $\lambda$. On voit facilement avec le critère de Lehmann-Scheffé que cette statistique est exhaustive minimale. Effectivement, en utilisant un autre échantillon aléatoire $y_1 \dots y_n$ indépendant et identiquement distribué à l'échantillon $x_1 \dots x_n$, on obtient que le rapport des vraisemblances devient $$
+\begin{aligned} \frac{L(x_1 \dots x_n; \lambda)}{L(y_1 \dots y_n; \lambda)} &= \displaystyle{\frac{\lambda^{\sum_{i=1}^n x_i}e^{-\lambda n} \frac{1}{\prod_{i=1}^n x_i!}}{\lambda^{\sum_{i=1}^n y_i}e^{-\lambda n} \frac{1}{\prod_{i=1}^n y_i!}}} \\ &= \frac{\prod_{i=1}^n y_i!}{\prod_{i=1}^n x_i!} \lambda^{\sum_{i=1}^n x_i - \sum_{i=1}^n y_i}. \end{aligned}
+$$ Comme cette expression est indépendante de $\lambda$ si et seulement si $\sum_{i=1}^n x_i = \sum_{i=1}^n y_i$ (pour que l'exposant sur $\lambda$ soit 0 et que cette portion donne 1). Ainsi, par le critère de Lehmann-Scheffé, nous venons de démontrer que $T = \sum_{i=1}^n X_i$ est une statistique exhaustive minimale pour $\lambda$. Note: On pourrait aussi dire que $\bar{X}_n$ est exhaustive minimale pour $\lambda$.
+
+**b)** La règle du pouce pour trouver un MVUE est de trouver un estimateur qui est sans biais et qui est basé sur une statistique exhaustive obtenue par le théorème de factorisation de Fisher--Neyman. On a $$ \ex[\bar X_n]=\lambda, $$ est donc sans biais et $\bar X_n=T/n$, où $T$ est une statistique exhaustive pour $\lambda$, comme montré en a). Ainsi, $\bar X_n$ est un MVUE pour $\lambda$.
+
+**c)** Dans ce cas, $$ \ln \{ f(x;\lambda)\} = -\lambda   +x \ln (\lambda) - \ln(x!) $$ et $$ \frac{\partial^2}{\partial \lambda^2}   f(x;\lambda) = - \frac{x}{\lambda^2}. $$ Ainsi, $$ n \ex\left[ -\frac{\partial^2}{\partial \lambda^2} \ln \{f(X;\lambda)\}\right] = \frac{n}{\lambda^2} \ex(X) = \frac{n}{\lambda}. $$ La borne inférieure de Cramér--Rao--Fréchet est donc $$ \frac{\lambda}{n} = \vr(\bar X_n), $$ ce qui montre que $\bar X_n$ est un estimateur efficace pour $\lambda$.
+:::
+

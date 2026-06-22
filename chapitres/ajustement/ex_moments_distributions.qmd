@@ -1,0 +1,46 @@
+## Estimateur des moments pour plusieurs distributions {#sec-ajustement-moments_distributions}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire issu des
+  distributions ci-dessous. Dans chaque cas, trouver l'estimateur du
+  paramètre $\theta$ à l'aide de la méthode des moments.
+  
+**a)** $f(x; \theta) = \theta^x e^{-\theta}/x!$, $x = 0, 1, \dots$, $\theta > 0$.
+
+**b)** $f(x; \theta) = \theta x^{\theta - 1}$, $0 < x < 1$, $\theta > 0$.
+
+**c)** $f(x; \theta) = \theta^{-1} e^{-x/\theta}$, $\theta > 0$.
+
+**d)** $f(x; \theta) = e^{-|x - \theta|}/2$, $-\infty < x < \infty$, $-\infty < \theta < \infty$.
+
+**e)** $f(x; \theta) = e^{-(x - \theta)}$, $x \geq \theta$, $\theta > 0$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\bar{X}$
+
+**b)** $\bar{X}/(1 - \bar{X})$
+
+**c)** $\bar{X}$
+
+**d)** $\bar{X}$
+
+**e)** $\bar{X} - 1$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a une une distribution de Poisson de paramètre $\theta$, d'où $\esp{X} = \theta$. L'estimateur des moments est donc $\hat{\theta} = \bar{X}$.
+
+**b)** La densité est celle d'une distribution bêta de paramètres $\theta$ et $1$. Ainsi, $\esp{X} = \theta/(\theta + 1)$ et en posant $$ \frac{\theta}{\theta + 1} = \bar{X} $$ on trouve que l'estimateur des moments de $\theta$ est $$ \hat{\theta} = \frac{\bar{X}}{1 - \bar{X}}. $$
+
+**c)** On reconnaît la densité d'une distribution Gamma de paramètres $1$ et $\theta$. Ainsi, on sait que $\esp{X} = \theta$, d'où l'estimateur des moments est $\hat{\theta} = \bar{X}$.
+
+**d)** Cette densité est celle de la loi de Laplace. On remarque d'abord que $$
+\begin{aligned} -|x - \theta| &= \begin{cases} -x + \theta &\text{pour} \;  x \geq \theta \\ x - \theta &\text{pour} \; x \leq \theta \\ \end{cases}. \end{aligned}
+$$ Ainsi, on divise l'intégrale en deux selon les cas pour la valeur absolue: $$
+\begin{aligned} \esp{X} &= \frac{1}{2} \left( \int_{-\infty}^\theta x e^{x-\theta}  dx + \int_{\theta}^\infty xe^{-x + \theta}  dx \right). \end{aligned}
+$$ On intègre ensuite par parties pour obtenir $$
+\begin{aligned} \esp{X} &= \frac{1}{2} \left( \left[x e^{x - \theta}   \right]_{-\infty}^{\theta} -  \int_{-\infty}^\theta e^{x-\theta}  dx - \left[ x e^{-x + \theta} \right]_{\theta}^{\infty} + \int_{\theta}^\infty e^{-x + \theta}  dx \right) \\ &= \frac{1}{2}(2\theta)\\ &= \theta. \end{aligned}
+$$ L'estimateur des moments de $\theta$ est donc $\hat{\theta} = \bar{X}$.
+
+**e)** On a la densité d'une exponentielle de paramètre 1 translatée de $\theta$ vers la droite. Par conséquent, $\esp{X} = \theta + 1$, un résultat facile à vérifier en intégrant. En posant $\theta + 1 = \bar{X}$, on trouve facilement que $\hat{\theta} = \bar{X} - 1$.
+:::
+

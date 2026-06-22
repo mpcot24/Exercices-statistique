@@ -10,6 +10,11 @@ book:
     - part: "Exercices"
       chapters:
         - chapitres/base.qmd
+        - chapitres/echantillonnage.qmd
+        - chapitres/estimation.qmd
+        - chapitres/ajustement.qmd
+        - chapitres/intervalle.qmd
+        - chapitres/tests.qmd
   search: true
   sidebar:
     style: docked
@@ -32,11 +37,14 @@ format:
               var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
               Var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
               vr:     "\\mathrm{Var}",
-              prob:   "\\Pr",
-              Prob:   "\\Pr",
+              prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+              Prob:   ["\\Pr\\!\\left[#1\\right]", 1],
               Cov:    "\\mathrm{Cov}",
               d:      "\\mathrm{d}",
-              bm:     ["\\boldsymbol{#1}", 1]
+              bm:     ["\\boldsymbol{#1}", 1],
+              abs: ["\\left|#1\\right|", 1],
+              texttt: ["`#1`", 1],
+              textsf: ["`#1`", 1]
             }
           }
         };

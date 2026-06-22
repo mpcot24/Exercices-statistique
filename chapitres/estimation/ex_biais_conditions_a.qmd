@@ -1,0 +1,28 @@
+## Constantes pour obtenir un estimateur sans biais {#sec-estimation-biais_conditions_a}
+
+Si $X_1, \dots, X_n$ est un échantillon aléatoire d'une
+  distribution avec moyenne $\mu$, quelle condition doit-on imposer sur
+  les constantes $a_1, \dots, a_n$ pour que
+  $$
+    a_1 X_1 + \cdots + a_n X_n
+  $$
+  soit un estimateur sans biais de $\mu$?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\sum_{i=1}^n a_i = 1$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a,
+    $$
+\begin{aligned}
+      \esp{a_1 X_1 + \dots + a_n X_n}
+      &= \esp{a_1 X_1} + \dots + \esp{a_n X_n}\\
+      &= (a_1 + \dots + a_n) \esp{X_1} \\
+      &= (a_1 + \dots + a_n) \mu.
+    \end{aligned}
+$$
+    Pour que $a_1 X_1 + \dots + a_n X_n$ soit un estimateur sans biais
+    de $\mu$, il faut que $\sum_{i=1}^n a_i = 1$.
+:::
+

@@ -1,0 +1,21 @@
+## Concentration létale médiane {#sec-echantillonnage-tcl_cl50}
+
+L'*Agence de Protection de l'Environnement* est responsable d'établir les critères pour la quantité autorisée de certains produits chimiques en eau douce. Une mesure commune de la toxicité pour les polluants est la concentration d'un produit chimique causant la mort de la moitié d'une population animale donnée dans un laps de temps connu. Cette mesure est appelée CL50 (concentration létale médiane). Dans plusieurs études, les valeurs observées du logarithme naturel de l'indicateur CL50 sont normalement distribuées. L'analyse est donc basée sur les données de ln(CL50).
+
+Soit $S^2_n$ la variance échantillonnale d'un échantillon de $n=10$ valeurs de ln(CL50) pour le cuivre, et $S^2_m$ la variance échantillonnale d'un échantillon de $m=6$ valeurs de ln(CL50) pour le plomb, tous les deux utilisant la même espèce de poisson. La variance de la population des mesures sur le cuivre est supposée être le double de la variance de la population des mesures sur le plomb. Supposer que $S^2_n$ est indépendante de $S^2_m$.
+**a)** Expliquer comment il est possible, en référant à une table statistique appropriée, de trouver les nombres $a$ et $b$ tels que $$ \Pr\left(\frac{S_n^2}{S_m^2}\leq b\right)=0,95, \quad \Pr\left(\frac{S_n^2}{S_m^2}\geq a\right)=0,95. $$ *Astuce: Observer que $\Pr[U_1/U_2\leq k]=\Pr[U_2/U_1\geq 1/k]$.*
+
+**b)** Si $a$ et $b$ sont les mêmes qu'en a), calculer $$ \Pr\left(a\leq\frac{S_n^2}{S_m^2}\leq b\right). $$
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+a) 0,5744    b) 0,9
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On peut utiliser le fait que $$ \frac{S_n^2/\sigma_1^2}{S_m^2/\sigma_2^2} \sim F_{(n-1,m-1)}, $$ où $\sigma^2_1$ et $\sigma_2^2$ représentent la variance du premier et du second échantillon, respectivement. Dans ce contexte, $n=10$, $m=6$ et $\sigma_1^2 = 2\sigma_2^2$. Donc, $$ \frac{S_n^2}{2 S_m^2} \sim F(9,5). $$ Si $W$ représente une variable aléatoire $F_{(9,5)}$, on a $$ \Pr\left(  \frac{S_n^2}{ S_m^2} \le b\right) = \Pr(W \le b/2) $$ et donc $b/2$ est le $95$e quantile de la distribution $F_{(9,5)}$. `r qf(0.95,df1=9,df2=5) ` Par conséquent, $$ b = 2 \times `r qf(0.95,df1=9,df2=5)` = `r 2*qf(0.95,df1=9,df2=5)`. $$ Pour trouver $a$, on note que $$ \frac{S_m^2/\sigma_2^2}{S_n^2/\sigma_1^2} = 2 \frac{S_m^2}{ S_n^2} \sim F_{(5,9)}. $$ Alors, $$ \Pr\left(  \frac{S_n^2}{ S_m^2} \ge a\right) = \Pr\left(  \frac{S_m^2}{ S_n^2} \le \frac{1}{a}\right) = \Pr\left(  2\frac{S_m^2}{ S_n^2} \le \frac{2}{a}\right). $$ Donc, $2/a$ est le $95$e quantile de la distribution $F_{(5,9)}$. `r qf(0.95,df1=5,df2=9)` et ainsi $$ a = \frac{2}{`r qf(0.95,df1=5,df2=9)`} = `r 2/qf(0.95,df1=5,df2=9)`. $$
+
+**b)** Cette probabilité égale $$
+\begin{aligned} \Pr\left(a \le \frac{S_n^2}{S_m^2}\le b\right) & = \Pr\left(\frac{S_n^2}{S_m^2}\le b\right) - \Pr\left(\frac{S_n^2}{S_m^2}\le a\right)\\ & = \Pr\left(\frac{S_n^2}{S_m^2}\le b\right) + \Pr\left(\frac{S_n^2}{S_m^2}\ge a\right) -1 = 2\times 0,95 -1 = 0,9. \end{aligned}
+$$
+:::
+

@@ -1,0 +1,41 @@
+## Utiliser une table de la loi $F$ {#sec-echantillonnage-f_table}
+
+Si $F$ a une distribution *F* avec paramètres $\nu_1 = 5$ et $\nu_2
+  = 10$, trouver $a$ et $b$ de sorte que $\prob{F \leq a} = 0,05$ et
+  $\prob{F \leq b} = 0,95$. Les quantiles de la loi *F* peuvent
+  être trouvés soit dans une table, soit à l'aide de la fonction
+  `qf(x, v1, v2)` de R.
+
+::: {.callout-tip collapse="true" title="Astuce"}
+en travaillant
+  avec une table, utiliser le fait que $\prob{F \leq a} = \prob{F^{-1}
+    \geq a^{-1}} = 1 - \prob{F^{-1} \leq a^{-1}}$.
+:::
+
+
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$a = 0,211$ et $b = 3,33$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a $F \sim F(5, 10)$ et l'on cherche $a$ et $b$ tel que $\prob{F
+      \leq a} = 0,05$ et $\prob{F \leq b} = 0,95$. Dans une table de
+    loi $F$, on trouve que $\prob{F \leq 3,326} = 0,95$ et donc que $b
+    = 3,33$. Puisque les quantiles inférieurs ne sont pas inclus dans
+    la table de l'annexe, on doit utiliser pour trouver
+    $a$ la relation $\prob{F \leq a} = 1 - \prob{F^{-1} \leq a^{-1}}$
+    où, tel que démontré à
+    l'exercice [-@sec-echantillonnage-f_inverse],
+    $F^{-1} \sim F(10, 5)$. Dans une table, on trouve que $a^{-1} =
+    4,74$, d'où $a = 0,211$.
+
+    Avec R, on obtient les mêmes résultats encore plus
+    simplement:
+    
+```{r echo}
+
+qf(c(0.05, 0.95), 5, 10)
+```
+:::
+

@@ -1,0 +1,25 @@
+## Estimateurs du maximum de vraisemblance pour les bornes d'une uniforme {#sec-ajustement-mle_bornes_uniforme}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire issu d'une loi
+  uniforme sur l'intervalle $(a, b)$ où $a$ et $b$ sont des constantes
+  inconnues. Calculer l'estimateur du maximum de vraisemblance de $a$
+  et $b$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\hat{a} = \min(X_1, \dots, X_n)$ et $\hat{b} = \max(X_1, \dots,
+    X_n)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+La fonction de vraisemblance est
+    $$
+      L(a, b) = \left( \frac{1}{b - a} \right)^n\mathbf{1} \{a < x_1, \dots, x_n < b \} = \left( \frac{1}{b - a} \right)^n\mathbf{1}\{a < x_{(1)}\} \mathbf{1}\{b > x_{(n)}\}.
+    $$
+    Pour maximiser cette fonction, il
+    faut minimiser la quantité $b - a$ en choisissant une valeur de
+    $b$ la plus petite possible et une valeur de $a$ la plus grande
+    possible. Étant donné le support de la distribution, on choisit
+    donc $\hat{a} = \min(X_1, \dots, X_n)$ et $\hat{b} = \max(X_1,
+    \dots, X_n)$.
+:::
+

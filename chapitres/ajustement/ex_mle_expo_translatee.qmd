@@ -1,0 +1,78 @@
+## Maximum de vraisemblance pour une distribution exponentielle translatée {#sec-ajustement-mle_expo_translatee}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire de la distribution
+  exponentielle translatée avec fonction de répartition
+  $$
+\begin{aligned}
+    F(x; \mu, \lambda)
+    &= 1 - e^{-\lambda (x - \mu)} \\
+    \end{aligned}
+$$
+
+et densité
+
+$$
+\begin{aligned}
+    f(x; \mu, \lambda)
+    &= \lambda e^{-\lambda (x - \mu)}, \quad x \geq \mu,
+  \end{aligned}
+$$
+  où $-\infty < \mu < \infty$ et $\lambda > 0$.
+**a)** Démontrer que la distribution exponentielle translatée est obtenue par la transformation $X = Z + \mu$, où $Z \sim \text{Exponentielle}(\lambda)$  et $\esp{Z} = \frac{1}{\lambda}$.
+
+**b)** Calculer l'espérance et la variance de cette distribution.
+
+**c)** Calculer les estimateurs du maximum de vraisemblance des paramètres $\mu$ et $\lambda$.
+
+**d)** Simuler 100 observations d'une loi Exponentielle translatée de paramètres $\mu = 1000$ et $\lambda = 0,001$ à l'aide de la fonction \texttt{rexp} de \textsf{R} et de la transformation en a). Calculer des estimations ponctuelles de $\mu$ et $\lambda$ pour l'échantillon ainsi obtenu. Ces estimations sont-elles proches des vraies valeurs des échantillons? Répéter l'expérience plusieurs fois au besoin.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** Démo
+
+**b)** $\esp{X} = \mu + \lambda^{-1}$, $\var{X} = \lambda^{-2}$
+
+**c)** $\hat{\mu} = X_{(1)}$, $\hat{\lambda} = n/\sum_{i = 1}^n (X_i - X_{(1)})$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a $X = Z + \mu$ où $Z \sim \text{Exponentielle}(\lambda)$. Alors, $$
+\begin{aligned} F_X(x) &= \prob{Z + \mu \leq x}\\ &= F_Z(x - \mu) \\ &= 1 - e^{-\lambda (x-\mu)}, \quad x > \mu \\ \end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned} f_X(x) &= \lambda e^{-\lambda (x - \mu)}, \quad x > \mu. \end{aligned}
+$$
+
+**b)** On a simplement $$
+\begin{aligned} \Esp{X} &= \Esp{Z + \mu}\\ &= \Esp{Z} + \mu\\ &= \frac{1}{\lambda} + \mu\end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned} \Var{X} &= \Var{Z + \mu}\\ &= \Var{Z}\\ &= \frac{1}{\lambda^2}. \end{aligned}
+$$
+
+**c)** On a $$
+\begin{aligned} L(\mu,\lambda) &= \lambda^n e^{-\lambda\sum_{i=1}^n(x_i -\mu)}\prod_{i=1}^n\mathbf{1}(x_i\geq \mu)\\ l(\mu,\lambda) &= n\ln(\lambda) - \lambda\sum_{i=1}^n (x_i - \mu) +\log(\mathbf{1}\{\min(x_1,\ldots,x_n)\geq \mu\}) \\ \end{aligned}
+$$
+
+et
+
+$$
+\begin{aligned} \frac{\partial l(\mu,\lambda)}{\partial \lambda} &= \frac{n}{\lambda} - \sum_{i=1}^n (x_i - \mu), \\ \end{aligned}
+$$
+
+d'où
+
+$$
+\begin{aligned} \hat{\lambda} &= \frac{n}{\sum_{i=1}^n (x_i - \hat{\mu})}. \end{aligned}
+$$ On voit dans la fonction de vraisemblance que la fonction $e^{-\lambda\sum_{i=1}^n(x_i -\mu)}$ est strictement croissante en fonction de $\mu$. Ainsi, il faut prendre la valeur de $\hat{\mu}$ la plus grande possible telle que $\log(\mathbf{1}\{\min(x_1,\ldots,x_n)\geq \hat{\mu}\})=0$. On a donc $$
+\begin{aligned} \hat{\mu} &= x_{(1)} \\ \hat{\lambda} &= \frac{n}{\sum_{i=1}^n (x_i - x_{(1)})}. \end{aligned}
+$$
+
+**d)** On a, par exemple, les résultats suivants pour une exponentielle translatée de paramètres $\mu = \lambda^{-1} = \nombre{1000}$: ```{r echo} x <- rexp(100, rate = 0.001) + 1000 min(x) 100 / sum(x - min(x)) ``` Les estimations obtenues sont près des vraies valeurs des paramètres, même pour un relativement petit échantillon de taille 100.
+:::
+

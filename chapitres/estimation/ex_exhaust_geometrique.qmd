@@ -1,0 +1,31 @@
+## Statistique exhaustive pour le paramètre de la loi géométrique {#sec-estimation-exhaust_geometrique}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire d'une loi
+  géométrique avec fonction de masse de probabilité
+  $$
+    \prob{X = x} = \theta (1 - \theta)^x, \quad x = 0, 1, \dots
+  $$
+  Démontrer que $T(X_1, \dots, X_n) = \sum_{i=1}^n X_i$ est une
+  statistique exhaustive pour $\theta$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On peut réécrire la fonction de masse de probabilité de la loi
+    géométrique comme suit:
+    $$
+\begin{aligned}
+      \prob{X = x} &= \theta e^{\ln(1 - \theta) x} \\
+      &= h(x) c(\theta) e^{\eta(\theta) t(x)},
+    \end{aligned}
+$$
+    avec $h(x) = 1$, $c(\theta) = \theta$, $\eta(\theta) = \ln (1 -
+    \theta)$ et $t(x) = x$. La loi géométrique est donc membre de la
+    famille exponentielle (voir la solution de
+    l'exercice [-@sec-estimation-exhaust_poisson].
+    Par conséquent, $T(X_1, \dots, X_n) = \sum_{i=1}^n X_i$ est une
+    statistique exhaustive pour le paramètre $\theta$.
+:::
+

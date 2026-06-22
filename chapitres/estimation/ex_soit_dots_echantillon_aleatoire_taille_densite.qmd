@@ -1,0 +1,21 @@
+## Soit dots echantillon aleatoire taille densite {#sec-estimation-soit_dots_echantillon_aleatoire_taille_densite}
+
+
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+\begin{aligned} 
+$$
+
+et donc
+
+$$
+\begin{aligned} 
+$$ 
+
+\begin{aligned} 
+$$ 
+
+\begin{aligned} 
+$$
+:::
+

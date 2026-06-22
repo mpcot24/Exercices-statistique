@@ -1,0 +1,27 @@
+## Estimateur par intervalle pour $\sigma$ {#sec-intervalle-intervalle_sigma}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire tiré d'une
+  population normale de moyenne et variance inconnues. Développer la
+  formule d'un estimateur par intervalle de niveau $1 - \alpha$ pour
+  $\sigma$, l'écart type de la distribution normale.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$(\sqrt{(n-1) S^2/b}, \sqrt{(n-1) S^2/a})$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que
+    $$
+      \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1).
+    $$
+    Ainsi, pour des constantes $a$ et $b$, $a \leq b$, on a
+    $$
+      \Prob{a \leq \frac{(n-1)S^2}{\sigma^2} \leq b} =
+      \Prob{\sqrt{\frac{(n-1)S^2}{b}} \leq \sigma \leq \sqrt{\frac{(n-1)S^2}{a}}} =
+      1 - \alpha.
+    $$
+    Un estimateur par intervalle de $\sigma$ est donc $(\sqrt{(n-1)
+      S^2/b}, \sqrt{(n-1) S^2/a})$, où $a$ et $b$ satisfont la relation
+    $\prob{a \leq Y \leq b} = 1 - \alpha$, avec $Y \sim \chi^2(n - 1)$.
+:::
+

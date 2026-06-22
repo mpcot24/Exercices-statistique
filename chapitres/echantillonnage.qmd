@@ -1,0 +1,49 @@
+# Distributions d'échantillonnage
+
+{{< include echantillonnage/ex_norm_ech_taille5.qmd >}}
+
+{{< include echantillonnage/ex_norm_ech_taille_inconnue.qmd >}}
+
+{{< include echantillonnage/ex_norm_deux_ech.qmd >}}
+
+{{< include echantillonnage/ex_norm_distr_statistique.qmd >}}
+
+{{< include echantillonnage/ex_norm_variance_ech.qmd >}}
+
+{{< include echantillonnage/ex_norm_variance_prob.qmd >}}
+
+{{< include echantillonnage/ex_norm_variance_distr.qmd >}}
+
+{{< include echantillonnage/ex_norm_transformation.qmd >}}
+
+{{< include echantillonnage/ex_khi2_definition.qmd >}}
+
+{{< include echantillonnage/ex_khi2_transformations.qmd >}}
+
+{{< include echantillonnage/ex_t_probabilités.qmd >}}
+
+{{< include echantillonnage/ex_t_probabilités2.qmd >}}
+
+{{< include echantillonnage/ex_f_definition.qmd >}}
+
+{{< include echantillonnage/ex_f_inverse.qmd >}}
+
+{{< include echantillonnage/ex_f_table.qmd >}}
+
+{{< include echantillonnage/ex_f_norm_khi.qmd >}}
+
+{{< include echantillonnage/ex_tcl_gamma.qmd >}}
+
+{{< include echantillonnage/ex_tcl_x100_khi2.qmd >}}
+
+{{< include echantillonnage/ex_tcl_approx.qmd >}}
+
+{{< include echantillonnage/ex_tcl_approx_2.qmd >}}
+
+{{< include echantillonnage/ex_tcl_deux_populations.qmd >}}
+
+{{< include echantillonnage/ex_tcl_machine_embouteillage.qmd >}}
+
+{{< include echantillonnage/ex_tcl_souscription_aeact.qmd >}}
+
+{{< include echantillonnage/ex_tcl_cl50.qmd >}}

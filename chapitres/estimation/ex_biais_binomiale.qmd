@@ -1,0 +1,30 @@
+## Estimateur de la variance d'une loi binomiale {#sec-estimation-biais_binomiale}
+
+Soit $X \sim \text{Binomiale}(n, p)$. Démontrer que, malgré que
+  $X/n$ soit un estimateur sans biais de $p$,
+  $$
+    n \left(\frac{X}{n}\right) \left(1 - \frac{X}{n}\right)
+  $$
+  est un estimateur biaisé de la variance de $X$. Calculer le biais de
+  l'estimateur.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$-p (1 - p)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $\esp{X} = np$ et que $\var{X} = np (1 - p)$. Or,
+    $$
+\begin{aligned}
+      \Esp{n\left(\frac{X}{n}\right)\left(1-\frac{X}{n}\right)} &=
+      \esp{X} - \frac{\esp{X^2}}{n}\\
+      &= np - \frac{\var{X} + \esp{X}^2}{n}\\
+      &= np - \frac{np(1 - p) + n^2 p^2}{n}\\
+      &= (n - 1) p (1 - p) \\
+      &= n p (1 - p) - p(1 - p).
+    \end{aligned}
+$$
+    La statistique est donc un estimateur biaisé de la variance et le
+    biais est $-p (1 - p)$. La statistique sur-estime la variance.
+:::
+

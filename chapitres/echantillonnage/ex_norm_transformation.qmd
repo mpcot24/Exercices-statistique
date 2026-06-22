@@ -1,0 +1,44 @@
+## Transformations d'une variable aléatoire normale {#sec-echantillonnage-norm_transformation}
+
+Soit $Z \sim \mathcal{N}(0, 1)$ avec fonction de densité de
+  probabilité
+  $$
+\begin{aligned}
+    \phi(z) &= \frac{1}{\sqrt{2 \pi}}  e^{-\frac{1}{2}  z^2}, \quad
+    - \infty < z < \infty, \\
+    \end{aligned}
+$$
+
+et fonction de répartition
+
+$$
+\begin{aligned}
+    \Phi(z) &= \int_{-\infty}^z \phi(x)  dx.
+  \end{aligned}
+$$
+  Exprimer les fonctions de densité et de répartition de $X = \mu +
+  \sigma Z$ en fonction de $\phi(\cdot)$ et $\Phi(\cdot)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$f_X(x) = \sigma^{-1} \phi((x - \mu)/\sigma)$, 
+    $F_X(x) = \Phi((x - \mu)/\sigma)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a $X = \mu + \sigma Z$. Par la technique de la fonction de
+    répartition, on obtient:
+    $$
+\begin{aligned}
+      F_X(x) &= \prob{X \leq x}\\
+      &= \prob{\mu + \sigma Z \leq x}\\
+      &= \Prob{Z \leq \frac{x - \mu}{\sigma}}\\
+      &= \Phi\left(\frac{x-\mu}{\sigma}\right).
+    \end{aligned}
+$$
+    Ainsi, la fonction de densité de probabilité de $X$ est
+    $$
+      f_X(x) = \frac{d}{dx}  \Phi\left(\frac{x - \mu}{\sigma}\right) =
+      \frac{1}{\sigma}  \phi\left(\frac{x-\mu}{\sigma}\right).
+    $$
+:::
+

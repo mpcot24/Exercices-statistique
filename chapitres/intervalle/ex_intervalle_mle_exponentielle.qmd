@@ -1,0 +1,37 @@
+## Intervalle de confiance avec l'estimateur du maximum de vraisemblance d'une distribution exponentielle {#sec-intervalle-intervalle_mle_exponentielle}
+
+Soit $X_1,\ldots,X_n$ un échantillon aléatoire d'une distribution exponentielle avec densité
+$$
+f(x)=\lambda e^{-\lambda x}, \quad x>0.
+$$
+**a)** Écrire la vraisemblance, la log-vraisemblance et l'EMV de $\lambda$.
+
+**b)** Calculer l'information de Fisher $I(\lambda)$.
+
+**c)** Si $m=100$ et $\bar x=105,2$, utiliser la distribution limite de l'EMV pour obtenir un intervalle de confiance approximatif à $95$\
+
+**d)** Basé sur l'intervalle trouvé en c), obtenir un intervalle de confiance approximatif de niveau $95$ \
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+c) $[\Sexpr{round(1/105.2-1.96*sqrt(1/100/105.2^2),5)},\Sexpr{round(1/105.2+1.96*sqrt(1/100/105.2^2),5)}]\quad$
+d) $[\Sexpr{round(exp(-300*(1/105.2+1.96*sqrt(1/100/105.2^2))),5)},\Sexpr{round(exp(-300*(1/105.2-1.96*sqrt(1/100/105.2^2))),5)}]$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La vraisemblance est $$ L(\lambda)=\prod_{i=1}^n \lambda e^{-\lambda x_i} = \lambda^n e^{-\lambda\sum_{i=1}^n x_i} $$ et la log-vraisemblance est $$ \ell(\lambda)=n\ln\lambda-\lambda\sum_{i=1}^n x_i. $$ Si on dérive par rapport à $\lambda$, on trouve $$ \ell'(\lambda)=\frac{n}{\lambda}-\sum_{i=1}^n x_i $$ et $\ell''(\lambda)=-n/\lambda^2<0$, donc l'estimateur du maximum de vraisemblance est $$ \frac{n}{\hat\lambda}-\sum_{i=1}^n x_i=0 \quad \Rightarrow \hat\lambda=\frac{1}{\bar x_n}. $$
+
+**b)** On a $\ln f(X;\lambda) = \ln\lambda-\lambda X$ donc l'information de Fisher est $$
+\begin{aligned} I(\lambda)&=\ex\left[-\frac{\partial^2}{\partial\lambda^2} \ln f(X;\lambda) \right]=\ex\left[-\frac{\partial^2}{\partial\lambda^2} \left(\ln\lambda-\lambda X \right)\right]=\ex\left[\frac{1}{\lambda^2} \right] =\frac{1}{\lambda^2}. \end{aligned}
+$$
+
+**c)** La distribution limite de l'EMV est $$ \frac{\hat\lambda_n-\lambda}{\sqrt{1/\{nI(\lambda)\}}} $$ est asymptotiquement $\mathcal{N}(0,1)$. On peut estimer $nI(\lambda)$ au dénominateur par $nI(\hat\lambda)=\frac{n}{\hat\lambda^2}$, pour obtenir, quand $n\to\infty$, $$ \frac{\hat\lambda-\lambda}{\hat\lambda/\sqrt{n}} $$ est asymptotiquement $\mathcal{N}(0,1)$. D'une autre façon, on peut estimer $nI(\lambda)$ par $$ -\left.\frac{\partial^2}{\partial\lambda^2} \ell(\lambda)\right|_{\lambda=\hat\lambda}=\frac{n}{\hat\lambda^2}, $$ ce qui revient à la même réponse. Sachant que $z_{2,5\
+\begin{aligned} \left[\hat\lambda-z_{\alpha/2}\sqrt{\frac{\hat\lambda^2}{n}},\hat\lambda+z_{\alpha/2}\sqrt{\frac{\hat\lambda^2}{n}}\right]&=\left[\frac{1}{\bar x_n}-z_{\alpha/2}\frac{1}{\sqrt{n}\bar x_n}, \frac{1}{\bar x_n}+z_{\alpha/2}\frac{1}{\sqrt{n}\bar x_n}\right]\\ &=\left[\frac{1}{105.2}-\frac{1.96}{10\times105.2},\frac{1}{105.2}+\frac{1.96}{10\times105.2}\right]\\ &=\left[\Sexpr{round(1/105.2-1.96*sqrt(1/100/105.2^2),5)},\Sexpr{round(1/105.2+1.96*sqrt(1/100/105.2^2),5)}\right]. \end{aligned}
+$$
+
+**d)** Le paramètre d'intérêt est $\theta=\Pr[X>300]=e^{-300\lambda}$. On a $$
+\begin{aligned} \Pr\left[\frac{1}{\bar X_n}-z_{\alpha/2}\frac{1}{\sqrt{n}\bar X_n}\leq \lambda \leq \frac{1}{\bar X_n}+z_{\alpha/2}\frac{1}{\sqrt{n}\bar X_n}\right]\approx 0,95. \end{aligned}
+$$ Multiplier l'inégalité par $-300$ change le signe d'inégalité, alors que l'exponentielle est une fonction croissante, donc $$
+\begin{aligned} \Pr\left[\exp\left\{-300\left(\frac{1}{\bar X_n}-z_{\alpha/2}\frac{1}{\sqrt{n}\bar X_n}\right)\right\}\geq e^{-300\lambda} \geq \exp\left\{-300\left(\frac{1}{\bar X_n}+z_{\alpha/2}\frac{1}{\sqrt{n}\bar X_n}\right)\right\}\right]\approx 0,95. \end{aligned}
+$$ Donc, un intervalle de confiance de niveau approximatif $95$ \
+:::
+

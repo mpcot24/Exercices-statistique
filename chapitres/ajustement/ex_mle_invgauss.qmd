@@ -1,0 +1,76 @@
+## Estimateurs du maximum de vraisemblance pour une distribution inverse gaussienne {#sec-ajustement-mle_invgauss}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire issu de la
+  distribution inverse gaussienne, dont la densité est
+  $$
+    f(x; \mu,\lambda) =
+    \left(
+      \frac{\lambda}{2\pi x^3}
+    \right)^{1/2}
+    \exp\left\{
+      -\frac{\lambda (x - \mu)^2}{2\mu^2 x}
+    \right\}, \quad x > 0.
+  $$
+  Calculer les estimateurs du maximum de vraisemblance de $\mu$ et $\lambda$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\hat{\mu} = \bar{X}$, $\hat{\lambda} = n/\sum_{i = 1}^n
+    (X_i^{-1} - \bar{X}^{-1})$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a
+    $$
+      L(\mu ,\lambda) =
+      \left(
+        \frac{\lambda}{2\pi}
+      \right)^{n/2}
+      \left(
+        \prod_{i = 1}^n \frac{1}{x_i^3}
+      \right)^{1/2}
+      \exp\left\{
+        -\frac{\lambda}{2}
+        \sum_{i=1}^n \frac{(x_i - \mu)^2}{\mu^2 x_i}
+      \right\}.
+    $$
+    Il est plus simple de trouver d'abord l'estimateur du maximum de
+    vraisemblance du paramètre $\mu$. On constate qu'il s'agit de la
+    valeur qui minimise la somme dans l'exponentielle. Or,
+    $$
+\begin{aligned}
+      \frac{\partial}{\partial \mu} 
+      \sum_{i=1}^n \frac{(x_i - \mu)^2}{\mu^2 x_i} &= \sum_{i = 1}^{n} \left[ \frac{-2 (x_i - \mu)}{\mu^2 x_i} + \frac{(x_i - \mu)^2}{x_i} \frac{-2}{\mu^3} \right] \\
+      &= \sum_{i = 1}^{n} \left[ \frac{-2 \mu(x_i - \mu) - 2 (x_i - \mu)^2}{\mu^3 x_i} \right] \\
+      &= -2 \sum_{i = 1}^{n} \left[\frac{\mu x_i - \mu^2 + x_i^2 - 2 x_i \mu + \mu^2}{\mu^3 x_i} \right] \\
+      &= -2 \sum_{i = 1}^{n} \left[\frac{x_i^2 - x_i \mu}{\mu^3 x_i} \right] \\
+      &= - \sum_{i = 1}^{n} \frac{2}{\mu^2} \left[ \frac{x_i}{\mu} - 1 \right]
+    \end{aligned}
+$$
+    En posant
+    $$
+      \sum_{i=1}^n \left( \frac{x_i}{\mu} - 1 \right) = 0,
+    $$
+    on trouve que $\hat{\mu} = \bar{X}$. Pour trouver l'estimateur du
+    maximum de vraisemblance de $\lambda$, on établit d'abord que
+    $$
+      L(\hat{\mu}, \lambda) \propto \lambda^{n/2} e^{-\lambda H},
+    $$
+    où
+    $$
+\begin{aligned}
+      H &= \sum_{i = 1}^n \frac{(x_i - \bar{x})^2}{2 \bar{x}^2 x_i} \\
+      &= \frac{1}{2} \sum_{i = 1}^n
+      \left(
+        \frac{1}{x_i} - \frac{1}{\bar{x}}
+      \right).
+    \end{aligned}
+$$
+    On obtient donc
+    $$
+\begin{aligned}
+      \hat{\lambda} &= \frac{n}{2H}\\
+      &= \frac{n}{\sum_{i = 1}^n X_i^{-1} - \bar{X}^{-1}}.
+    \end{aligned}
+$$
+:::
+

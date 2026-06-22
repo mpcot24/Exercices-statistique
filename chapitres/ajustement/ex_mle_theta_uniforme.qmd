@@ -1,0 +1,22 @@
+## Estimateurs pour $\theta$ {#sec-ajustement-mle_theta_uniforme}
+
+On suppose que $X_1, \ldots, X_n$ forment un échantillon aléatoire d'une loi uniforme sur l'intervalle $(0, 2\theta +1)$ pour un paramètre inconnu $\theta > -1/2$.
+**a)** Calculer l'estimateur du maximum de vraisemblance pour $\theta$.
+
+**b)** Calculer l'EMV de $\vr (X)$, où $X$ suit une distribution $\mathcal{U}(0, 2\theta+1)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+a) $\{\max(X_1,\dots,X_n) -1\}/2$
+b) $\{\max(X_1,\dots,X_n)\}^2/12$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** La fonction de vraisemblance de $\theta$ pour $x_1,\dots, x_n$ est $$
+\begin{aligned} L(\theta) &= \left(\frac{1}{2 \theta + 1}\right)^n \boldsymbol{1}(x_1 \le 2 \theta + 1) \times \dots \times\boldsymbol{1}(x_n \le 2 \theta + 1)\\ & = \left(\frac{1}{2 \theta + 1}\right)^n \boldsymbol{1}\{\max(x_1,\dots,x_n) \le 2 \theta + 1\}\\ & = \left(\frac{1}{2 \theta + 1}\right)^n \boldsymbol{1}\left\{  \theta \ge \frac{\max(x_1,\dots,x_n) -1}{2}\right\}. \end{aligned}
+$$ Puisque $\{1/(2\theta+1)\}^n$ est décroissante en $\theta$, $L(\theta)$ est maximisée à $$ \hat \theta_n = \frac{\max(x_1,\dots,x_n) -1}{2} $$ L'EMV de $\theta$ est donc $$ \hat \theta_n = \frac{\max(X_1,\dots,X_n) -1}{2}. $$
+
+**b)** La variance peut être calculée comme suit : $$ \ex(X) = \int_0^{2\theta  +1} x   \frac{1}{2\theta + 1}   \text{d} x = \frac{2 \theta  +1}{2} $$ et $$ \ex(X^2) =  \int_0^{2\theta  +1} x^2   \frac{1}{2\theta + 1}   \text{d}x = \frac{(2\theta + 1)^2}{3}   . $$ Par conséquent, $$ \vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \frac{(2\theta + 1)^2}{3}- \frac{(2\theta + 1)^2}{4} = \frac{(2\theta + 1)^2}{12}   . $$ Puisque l'application $g : (0,\infty) \to (0,\infty)$ donnée par $$ g(x) = \frac{(2x + 1)^2}{12} $$ est strictement croissante (et donc un-pour-un), la propriété d'invariance de l'EMV donne que l'EMV de $\vr(X)$ est $$
+\begin{aligned} \frac{(2\hat\theta_n + 1)^2}{12} = \frac{\{\max(X_1,\dots,X_n)\}^2}{12}   . \end{aligned}
+$$
+:::
+

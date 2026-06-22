@@ -5,7 +5,7 @@ This is a Quarto book.
 To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
 ```{r}
-#sessionInfo()
-# install.packages("knitr")
-# install.packages("rmarkdown")
+#| echo: false
+library(knitr)
+library(rmarkdown)
 ```

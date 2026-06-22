@@ -1,0 +1,43 @@
+## Sélection des risques pour AÉACT {#sec-echantillonnage-tcl_souscription_aeact}
+
+Un assureur de dommages pour entreprises, *AÉACT*, se demande s'il devrait couvrir les risques de *TaPaCt*, une entreprise bien établie de production de tapis avec une usine qui comporte des machines fragiles et dispendieuses ou les risques de *Markétact*, une nouvelle firme de marketing pour laquelle la majorité des employé.e.s sont en télétravail. Les deux entreprises sont basées dans des villes différentes.
+
+Après une analyse détaillée des projections des dommages de chaque entreprise, l'assureur a déterminé que
+$$
+\sigma^2_{TaPaCt} = 32,9   \text{pour un échantillon de taille}   n = 10
+$$
+
+Les analyses de dossiers de nouveaux clients chez *AÉACT* font l'objet d'une politique interne selon laquelle on pose trois postulats:
+**a)** Les sinistres sont normalement distribués.
+
+**b)** La variance des dommages des entreprises avec beaucoup de moyens de production est le double de la variance des dommages des entreprises dont la majorité des membres sont en télétravail.
+
+**c)** Comme *AÉACT* a peu de liquidités, elle choisira l'entreprise avec la variance échantillonnale obtenue dans l'analyse qui est la plus basse.
+
+Avant de récolter un échantillon pour Markétact de taille $m = 11$, *AÉACT* a besoin de votre aide.
+**a)** La prochaine étape de l'analyse implique d'utiliser la loi F. Quelle hypothèse est manquante dans l'énoncé pour utiliser cette loi?
+
+**b)** Supposons que l'hypothèse manquante en a) est également posée, de quelle façon la loi F peut-elle être utile?
+
+**c)** Calculer $\prob{S^2_{TaPaCt}/S^2_{Markétact} < 1}$.
+
+**d)** En amont de l'analyse des projections et en regard du résultat précédent, quelle décision est la plus probable pour AÉACT?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+a) Indépendance    b) Comparer les $S^2$    c)   0,1558435     d) Markétact
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Il faut également supposer que tous les risques de deux entreprises sont indépendants pour utiliser la loi F. C'est réaliste dans le contexte comme leur domaine de pratique est différent et comme elles sont basées dans des villes différentes.
+
+**b)** La loi F peut être utile afin de comparer les variances échantillonnales des deux entreprises pour les échantillons analysés lors du processus de sélection (les projections). L'assureur pourra faire un choix selon ce résultat pour choisir l'entreprise la moins risquée.
+
+**c)** On a que: $$
+\begin{aligned} \frac{S^2_{TaPaCt} / \sigma^2_n}{S^2_{Markétact}/\sigma^2_m} &= \frac{S^2_{TaPaCt} / 2 \sigma^2_m}{S^2_{Markétact}/\sigma^2_m} \\ &= \frac{S^2_{TaPaCt}}{  2 S^2_{Markétact}} \\ &\sim F(9, 10) \end{aligned}
+$$ Ainsi, $$
+\begin{aligned} \text{Pr}\left[\frac{S^2_{TaPaCt}}{S^2_{Markétact}} < 1\right] &= \text{Pr}\left[\frac{S^2_{TaPaCt}}{2 S^2_{Markétact}}\right] < 0,5 \\ &= 0,1558435 \end{aligned}
+$$
+
+**d)** Comme il est plus probable que $S^2_{TaPaCt}/S^2_{Markétact} \geq 1$ que $S^2_{TaPaCt}/S^2_{Markétact} < 1$, il est plus probable que $S^2_{TaPaCt} \geq S^2_{Markétact}$. Ainsi, il est plus probable que Markétact soit retenue que TaPaCt soit retenue à la fin du processus de sélection.
+:::
+

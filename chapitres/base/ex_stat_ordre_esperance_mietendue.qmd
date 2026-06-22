@@ -1,0 +1,77 @@
+## Espérance de la mi-étendue d'un échantillon {#sec-base-stat_ordre_esperance_mietendue}
+
+Soit $X \sim \mathcal{U}(0, 1)$. Calculer l'espérance de la mi-étendue $T = (X_{(1)} + X_{(n)})/2$ d'un
+  échantillon de taille $n$ issu de cette distribution.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$1/2$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $T = (X_{(1)} + X_{(n)})/2$ la mi-étendue et $R$ l'étendue.
+    On sait que, pour $r > 0$ et $-\infty < t < \infty$, 
+    $$
+      f_{RT}(r, t) = n(n-1)r^{n - 2}.
+    $$
+    On doit calculer la densité marginale de $T$. Il faut voir que le
+    domaine de $R$ (et donc le domaine d'intégration) dépend
+    indirectement de $T$. 
+    
+Le domaine de $T$ est d'abord $0 \leq t \leq 1$ comme $X_{(1)}$ et $X_{(n)}$ sont chacun au maximum 1. Leur somme donne au maximum 2. On    	conclut que $T = \frac{X_{(1)} + X_{(n)}}{2} \in (0, 1) $.
+    
+
+Alors, si $0 \leq t \leq 1/2$, on doit avoir $0 < r < 2t$. Par contre, si $1/2 < t < 1$, il faut que $0 <
+    r < 2(1-t)$. On obtient
+    
+$$
+\begin{aligned}
+      f_T(t) &=
+      \begin{cases}
+        n(2t)^{n-1}, & 0 < t < 1/2 \\
+        n(2(1 - t))^{n - 1}, & 1/2 < t < 1.
+      \end{cases}
+    \end{aligned}
+$$
+Ainsi,
+    
+$$
+\begin{aligned}
+      \esp{T} &= 2^{n - 1} n
+      \left(
+        \int_0^{1/2}t^n dt +
+        \int_{1/2}^1 t (1 - t)^{n - 1}  dt
+      \right) \\
+      &= 2^{n-1}n
+      \left(
+        \frac{0,5^{n+1}}{n+1} +
+        \int_{1/2}^1 t (1 - t)^{n - 1}  dt
+      \right)
+     \end{aligned}
+$$
+     
+Pour l'intégrale entre $t = \frac{1}{2}$ et $t = 1$, on utiliser l'intégration par parties en posant $u = t$ et $\text{d}v = (1 - t)^{n-1}\text{d}t$. Ainsi, on obtient
+
+$$
+\begin{aligned}
+      \esp{T} &= 2^{n-1}n
+      \left(
+        \frac{0,5^{n+1}}{n+1} +
+        \left[\frac{t(1-t)^n}{n}\right]_{\frac{1}{2}}^1 +
+        \int_{1/2}^1 \frac{(1-t)^n}{n}  dt
+      \right)\\
+      &= 2^{n-1}n
+      \left(
+        \frac{0,5^{n+1}}{n+1} +
+        \frac{1}{2^{n+1}n} +
+        \frac{1}{n(n+1)2^{n+1}}
+      \right)\\
+      &= 2^{n-1}n
+      \left(
+        \frac{0,5^{n+1}}{n+1} +
+        \frac{n+2}{2^{n+1}n(n+1)}
+      \right)\\
+      &= \frac{1}{2}
+    \end{aligned}
+$$
+:::
+

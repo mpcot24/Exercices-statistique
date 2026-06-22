@@ -1,0 +1,35 @@
+## Poids d'une fillette à la naissance {#sec-tests-poids_bebefille_naissance}
+
+On suppose que le poids en grammes des bébés à la naissance au Canada est distribué selon une loi normale de moyenne $\mu = \nombre{3315}$ et de variance $\sigma^2 = 525^2$, garçons et filles confondus. Soit $X$ le poids d'une fillette née au Québec. On suppose $X \sim \mathcal{N}(\mu_X, \sigma_X^2)$.
+**a)** Donner l'expression de la statistique du test $ \mathcal{H}_0: \mu_X \le \nombre{3315}$ versus $ \mathcal{H}_1: \mu_X > \nombre{3315}$ (les bébés sont en moyenne plus gros au Québec) si $n = 11$ et $\alpha = 0,01$. (La valeur de $\sigma_X^2$ est inconnue ici.)
+
+**b)** Calculer la valeur de la statistique et tirer une conclusion  si l'échantillon de poids de 11 fillettes nées au Québec est le suivant: \begin{center} \begin{tabular}{llllll} \nombre{3119}, & \nombre{2657}, & \nombre{3459}, & \nombre{3629}, & \nombre{3345}, & \nombre{3629}, \\ \nombre{3515}, & \nombre{3856}, & \nombre{3629}, & \nombre{3345}, & \nombre{3062}. \end{tabular} \end{center}
+
+**d)** Énoncer la statistique du test et la région critique du test $ \mathcal{H}_0: \sigma_X^2 \ge 525^2$ versus $ \mathcal{H}_1: \sigma_X^2 < 525^2$ (moins de variation dans le poids des bébés nés au Québec) si $\alpha =  0,05$.
+
+**e)** Calculer la statistique du test à partir des données de la partie b). Quelle est la conclusion à tirer de ce résultat?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $T = \frac{\bar{X} - \nombre{3315}}{\sqrt{S^2/11}}$
+
+**b)** $t = 0,699 < t_{10,   0,01}$
+
+**c)** $\frac{(10) S^2}{525^2}$
+
+**d)** $y = 4,104 > \chi_{10,  0,05}^2$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Il s'agit d'un simple test sur une moyenne. La statistique pour un petit échantillon est $$
+\begin{aligned} T &= \frac{\bar{X} - \mu_X}{\sqrt{S^2/n}} = \frac{\bar{X} - \nombre{3315}}{\sqrt{S^2/11}} \sim t_{10}. \end{aligned}
+$$ On rejette $ \mathcal{H}_0$ si $t > t_{10,  0,01} = 2,764$.
+
+**b)** On commence par calculer les statistiques $\bar{X}$ et $S_X^2$, $$ \bar{X} = 3385,91 \quad \text{ et } \quad S_X^2 = \nombre{113108,49}. $$ On trouve que $t = 0,699 < t_{10,  0,01} = 2,764$, on ne rejette donc pas $ \mathcal{H}_0$ à un seuil de signification de $1$ \
+
+**d)** On a un test unilatéral à gauche sur une variance pour lequel la statistique est $$
+\begin{aligned} Y = \frac{(n-1) S^2}{\sigma^2} = \frac{(10) S^2}{525^2} \sim \chi^2_{10}. \end{aligned}
+$$ On rejette $ \mathcal{H}_0$ si $y < \chi_{10,   0,95}^2 = 3,94$.
+
+**e)** Ici, $y = 4,104 > 3,94$. On ne rejette donc pas $ \mathcal{H}_0$.
+:::
+

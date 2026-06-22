@@ -1,0 +1,52 @@
+## Loi Bêta {#sec-base-ech_va_beta}
+
+Obtenir l'expression de $\Esp{X}$ et $\Var{X}$ quand la variable aléatoire $X$ suit une distribution Beta$(\alpha,\beta)$.
+**a)** Pour tout $\alpha > 0$, $\Gamma(\alpha+1) = \alpha\Gamma(\alpha)$.
+
+**b)** Si $f$ est une densité, alors $\int_\mathbb{R}f(x)\d x=1$.]
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\ex(X)=\alpha/(\alpha+\beta)$ et $\Var{X}=(\alpha\beta)/\{(\alpha+\beta)^2(\alpha+\beta+1)\}$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $X$ une variable aléatoire avec distribution Beta$(\alpha,\beta)$. Alors,
+$$
+\begin{aligned}
+\ex(X) & = \int_0^1 x \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\d x\\
+&=\int_0^1  \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x.
+\end{aligned}
+$$
+Cette intégrale peut être résolue en reconnaissant la forme similaire à une distribution Beta$(\alpha+1,\beta)$ intégrée sur son domaine, mais avec les mauvaises constantes. On divise et multiplie par les constantes nécessaires pour trouver une intégrale avec valeur de 1.
+$$
+\begin{aligned}
+\ex(X) & =\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)}\frac{\Gamma(\alpha+1)}{\Gamma(\alpha+1+\beta)} \int_0^1  \frac{\Gamma(\alpha+1+\beta)}{\Gamma(\alpha+1)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x\\
+&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha+1+\beta)}\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)}\\
+&= \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta)\Gamma(\alpha+\beta)}\frac{ \alpha \Gamma(\alpha) }{\Gamma(\alpha)}\\
+&=\frac{\alpha}{\alpha+\beta}.
+\end{aligned}
+$$
+
+De plus,
+$$
+\begin{aligned}
+\ex\{X^2\} & = \int_0^1 x^2 \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\d x\\
+&=\int_0^1  \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha+1}(1-x)^{\beta-1}\d x\\
+& =\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)}\frac{\Gamma(\alpha+2)}{\Gamma(\alpha+2+\beta)} \int_0^1  \frac{\Gamma(\alpha+2+\beta)}{\Gamma(\alpha+2)\Gamma(\beta)}x^{\alpha}(1-x)^{\beta-1}\d x\\
+&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha+2+\beta)}\frac{\Gamma(\alpha+2)}{\Gamma(\alpha)}\\
+&= \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta+1)\Gamma(\alpha+\beta+1)}\frac{ (\alpha+1) \Gamma(\alpha+1) }{\Gamma(\alpha)}\\
+&= \frac{\Gamma(\alpha+\beta)}{(\alpha+\beta+1)(\alpha+\beta)\Gamma(\alpha+\beta)}\frac{ (\alpha+1)\alpha \Gamma(\alpha) }{\Gamma(\alpha)}\\
+&= \frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha+\beta)}.
+\end{aligned}
+$$
+La variance peut alors être calculée ainsi :
+$$
+\begin{aligned}
+\vr(X) &= \ex(X^2) - \{ \ex(X)\}^2 \\
+&= \frac{(\alpha+1)\alpha}{(\alpha+\beta+1)(\alpha+\beta)}-\frac{\alpha^2}{(\alpha+\beta)^2} \\
+&= \frac{\alpha}{\alpha+\beta}\left[\frac{\alpha+1}{\alpha+\beta+1}-\frac{\alpha}{\alpha+\beta}\right]\\
+&= \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}
+\end{aligned}
+$$
+:::
+

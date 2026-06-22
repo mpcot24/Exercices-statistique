@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapitres/echantillonnage.html" rel="next">
 <link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -81,11 +82,14 @@ window.MathJax = {
       var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
       Var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
       vr:     "\\mathrm{Var}",
-      prob:   "\\Pr",
-      Prob:   "\\Pr",
+      prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Prob:   ["\\Pr\\!\\left[#1\\right]", 1],
       Cov:    "\\mathrm{Cov}",
       d:      "\\mathrm{d}",
-      bm:     ["\\boldsymbol{#1}", 1]
+      bm:     ["\\boldsymbol{#1}", 1],
+      abs: ["\\left|#1\\right|", 1],
+      texttt: ["`#1`", 1],
+      textsf: ["`#1`", 1]
     }
   }
 };
@@ -178,6 +182,36 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/echantillonnage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/ajustement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/intervalle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation par intervalle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -220,7 +254,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/base.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></h1>
+<h1 class="title"><span id="base" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span></h1>
 </div>
 
 
@@ -254,9 +288,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>non     b) oui</li>
-</ol>
+<p><strong>a)</strong> non <strong>b)</strong> oui</p>
 </div>
 </div>
 </div>
@@ -298,9 +330,7 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>Gamma, lognormale, pareto     b) Binomiale négative     c) Binomiale     d) Normale     e) Normale</li>
-</ol>
+<p><strong>a)</strong> Gamma, lognormale, pareto <strong>b)</strong> Binomiale négative <strong>c)</strong> Binomiale <strong>d)</strong> Normale <strong>e)</strong> Normale</p>
 </div>
 </div>
 </div>
@@ -319,7 +349,7 @@ window.Quarto = {
 <p><strong>a)</strong> Il faudrait utiliser une distribution continue non négative sur l’intervalle <span class="math inline">\([0,\infty)\)</span> étant donné que la perte financière est nécessairement positive et qu’il n’y a pas de borne supérieure naturelle. Des bons exemples de lois pourraient être : gamma, lognormale, Pareto.</p>
 <p><strong>b)</strong> La distribution adéquate est la loi binomiale négative. Considérant que chaque sac est indépendant des autres et a une probabilité <span class="math inline">\(p\)</span> d’être contaminé, la distribution est une loi binomiale négative avec paramètres <span class="math inline">\(r=15\)</span> et <span class="math inline">\(p\)</span> inconnu.</p>
 <p><strong>c)</strong> La loi binomiale est appropriée. Considérant que chaque sac est indépendant des autres et a une probabilité <span class="math inline">\(p\)</span> d’être contaminé, le nombre total de sacs contaminés suit une loi binomiale avec paramètres de taille <span class="math inline">\(n=15\)</span> et probabilité <span class="math inline">\(p\)</span> inconnu.</p>
-<p><strong>d)</strong> Le contexte est conforme à une distribution normale. La majorité des conducteurs vont tendre vers une vitesse moyenne malgré que certains vont conduire beaucoup plus vite ou lentement&nbsp;; une distribution en forme de cloche semble donc appropriée. La moyenne <span class="math inline">\(\mu\)</span> et la variance <span class="math inline">\(\sigma^2\)</span> de la vitesse réelle des véhicules à cet endroit précis sur l’autoroute sont inconnues.</p>
+<p><strong>d)</strong> Le contexte est conforme à une distribution normale. La majorité des conducteurs vont tendre vers une vitesse moyenne malgré que certains vont conduire beaucoup plus vite ou lentement; une distribution en forme de cloche semble donc appropriée. La moyenne <span class="math inline">\(\mu\)</span> et la variance <span class="math inline">\(\sigma^2\)</span> de la vitesse réelle des véhicules à cet endroit précis sur l’autoroute sont inconnues.</p>
 <p><strong>e)</strong> Le contexte suggère une loi Normale. Les câbles devraient avoir une résistance près de <span class="math inline">\(\mu\)</span>, soit celle donnée par le producteur. L’écart-type <span class="math inline">\(\sigma\)</span> dépendra de la qualité de la précision de la fabrication, et est inconnu.</p>
 </div>
 </div>
@@ -362,11 +392,11 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p><strong>a)</strong> On a directement <span class="math inline">\(f(x) = F^\prime(x) = \alpha \beta x^{\alpha - 1} e^{-\beta x^{\alpha}}\)</span>.</p>
 <p><strong>b)</strong> On a <span class="math display">\[
-\begin{aligned} \esp{X} &amp;= \int_0^\infty x f(x)  dx \\ &amp;= \int_0^\infty \alpha \beta x^{\alpha} e^{-\beta x^{\alpha}}  dx. \end{aligned}
-\]</span> On effectue le changement de variable <span class="math inline">\(y = \beta x^{\alpha}\)</span>, d’où <span class="math inline">\(dy = \bm{\alpha \beta x^{\alpha - 1}  dx}\)</span> et <span class="math inline">\(x = \left(\frac{y}{\beta}\right)^{\frac{1}{\alpha}}\)</span> et donc <span class="math display">\[
-\begin{aligned} \esp{X} &amp;= \int_0^\infty \bm{\alpha \beta x^{\alpha - 1}} x e^{-\beta x^{\alpha}}  \bm{dx} \\ &amp;= \frac{1}{\beta^{1/\alpha}} \int_0^\infty y^{1/\alpha} e^{-y}  dy \\ &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \int_0^\infty \frac{1}{\Gamma(1 + \frac{1}{\alpha})}  y^{1/\alpha} e^{-y}  dy \\ &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \end{aligned}
+\begin{aligned} \esp{X} &amp;= \int_0^\infty x f(x) dx \\ &amp;= \int_0^\infty \alpha \beta x^{\alpha} e^{-\beta x^{\alpha}} dx. \end{aligned}
+\]</span> On effectue le changement de variable <span class="math inline">\(y = \beta x^{\alpha}\)</span>, d’où <span class="math inline">\(dy = \bm{\alpha \beta x^{\alpha - 1} dx}\)</span> et <span class="math inline">\(x = \left(\frac{y}{\beta}\right)^{\frac{1}{\alpha}}\)</span> et donc <span class="math display">\[
+\begin{aligned} \esp{X} &amp;= \int_0^\infty \bm{\alpha \beta x^{\alpha - 1}} x e^{-\beta x^{\alpha}} \bm{dx} \\ &amp;= \frac{1}{\beta^{1/\alpha}} \int_0^\infty y^{1/\alpha} e^{-y} dy \\ &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \int_0^\infty \frac{1}{\Gamma(1 + \frac{1}{\alpha})} y^{1/\alpha} e^{-y} dy \\ &amp;= \frac{\Gamma(1 + \frac{1}{\alpha})}{\beta^{1/\alpha}} \end{aligned}
 \]</span> puisque l’intégrande ci-dessus est la fonction de densité de probabilité d’une loi gamma de paramètre de forme <span class="math inline">\(\alpha = 1 + \frac{1}{\alpha}\)</span> et de paramètre d’échelle <span class="math inline">\(\beta = 1\)</span>. En procédant exactement de la même façon, on trouve <span class="math display">\[
-\begin{aligned} \esp{X^2} &amp;= \int_0^\infty x^2 f(x)  dx \\ &amp;= \int_0^\infty \alpha \beta x^{\alpha + 1} e^{-\beta x^{\alpha}}  dx \\ &amp;= \frac{1}{\beta^{2/\alpha}} \int_0^\infty y^{2/\alpha} e^{-y}   dy \\ &amp;= \frac{\Gamma(1 + \frac{2}{\alpha})}{\beta^{2/\alpha}}. \end{aligned}
+\begin{aligned} \esp{X^2} &amp;= \int_0^\infty x^2 f(x) dx \\ &amp;= \int_0^\infty \alpha \beta x^{\alpha + 1} e^{-\beta x^{\alpha}} dx \\ &amp;= \frac{1}{\beta^{2/\alpha}} \int_0^\infty y^{2/\alpha} e^{-y}  dy \\ &amp;= \frac{\Gamma(1 + \frac{2}{\alpha})}{\beta^{2/\alpha}}. \end{aligned}
 \]</span> Par conséquent, <span class="math display">\[ \var{X} = \frac{\Gamma(1 + \frac{2}{\alpha}) - \Gamma(1 + \frac{1}{\alpha})^2}{\beta^{2/\alpha}}. \]</span></p>
 </div>
 </div>
@@ -374,8 +404,8 @@ window.Quarto = {
 </section>
 <section id="sec-base-ech_va_beta" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="sec-base-ech_va_beta"><span class="header-section-number">1.4</span> Loi Bêta</h2>
-<p>Obtenir l’expression de <span class="math inline">\(\Esp{X}\)</span> et <span class="math inline">\(\Var{X}\)</span> quand la variable aléatoire <span class="math inline">\(X\)</span> suit une distribution Beta<span class="math inline">\((\alpha,\beta)\)</span>. [Indices: <strong>a)</strong> [i.] Pour tout <span class="math inline">\(\alpha &gt; 0\)</span>, <span class="math inline">\(\Gamma(\alpha+1) = \alpha\Gamma(\alpha)\)</span>.</p>
-<p><strong>b)</strong> [ii.] Si <span class="math inline">\(f\)</span> est une densité, alors <span class="math inline">\(\int_\mathbb{R}f(x)\d x=1\)</span>.]</p>
+<p>Obtenir l’expression de <span class="math inline">\(\Esp{X}\)</span> et <span class="math inline">\(\Var{X}\)</span> quand la variable aléatoire <span class="math inline">\(X\)</span> suit une distribution Beta<span class="math inline">\((\alpha,\beta)\)</span>. <strong>a)</strong> Pour tout <span class="math inline">\(\alpha &gt; 0\)</span>, <span class="math inline">\(\Gamma(\alpha+1) = \alpha\Gamma(\alpha)\)</span>.</p>
+<p><strong>b)</strong> Si <span class="math inline">\(f\)</span> est une densité, alors <span class="math inline">\(\int_\mathbb{R}f(x)\d x=1\)</span>.]</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -512,16 +542,16 @@ y, &amp; 0\leq y&lt;1,\\
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li><span class="math display">\[
+<p><strong>a)</strong> <span class="math display">\[
 F(y)= \begin{cases}
 0, &amp; y&lt;0\\
 y^2/2, &amp; 0\leq y&lt;1\\
 1- (2-y)^2/2, &amp; 1\leq y &lt;2\\
 1, &amp; y&gt;2.
 \end{cases}
-\]</span>    b) 0.2775     c) 21&nbsp;000</li>
-</ol>
+\]</span></p>
+<p><strong>b)</strong> 0.2775</p>
+<p><strong>c)</strong> 21000</p>
 </div>
 </div>
 </div>
@@ -587,7 +617,8 @@ y^2/2, &amp; 0\leq y&lt;1\\
 </section>
 <section id="sec-base-moments_transformations_fgm" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="sec-base-moments_transformations_fgm"><span class="header-section-number">1.8</span> Transformations avec la fonction génératrice des moments</h2>
-<p>Soit <span class="math inline">\(M_X(t)\)</span> la fonction génératrice des moments de la variable aléatoire <span class="math inline">\(X\)</span>. <strong>a)</strong> Soit <span class="math inline">\(Y = aX + b\)</span>, où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont des constantes quelconques. Démontrer que <span class="math display">\[ M_Y(t) = e^{bt} M_{X}(at). \]</span></p>
+<p>Soit <span class="math inline">\(M_X(t)\)</span> la fonction génératrice des moments de la variable aléatoire <span class="math inline">\(X\)</span>.</p>
+<p><strong>a)</strong> Soit <span class="math inline">\(Y = aX + b\)</span>, où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont des constantes quelconques. Démontrer que <span class="math display">\[ M_Y(t) = e^{bt} M_{X}(at). \]</span></p>
 <p><strong>b)</strong> Soient <span class="math inline">\(X_1, \ldots, X_n\)</span> des variables aléatoires indépendantes et <span class="math inline">\(Y = X_1 + \dots + X_n\)</span>. Démontrer que <span class="math display">\[ M_Y(t) = \prod_{j=1}^n M_{X_j}(t). \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
@@ -601,9 +632,7 @@ y^2/2, &amp; 0\leq y&lt;1\\
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>Par les propriétés de l’exponentielle.     b) Par indépendance des espérances.</li>
-</ol>
+<p><strong>a)</strong> Par les propriétés de l’exponentielle. <strong>b)</strong> Par indépendance des espérances.</p>
 </div>
 </div>
 </div>
@@ -673,7 +702,7 @@ f(x) = \left\{ \begin{array}{ll}
 \begin{aligned}
 \ex[X^2]=\int_{10}^\infty \frac{200}{x^3}x^2 \d x =\int_{10}^\infty \frac{200}{x} \d x = \left. 200\ln(x)\right|_{10}^\infty = \infty.
 \end{aligned}
-\]</span> Ainsi, il n’est pas possible d’appliquer la WLLN dans ce cas.</p>
+\]</span> Ainsi, il n’est pas possible d’appliquer la loi faible des grands nombres dans ce cas.</p>
 </div>
 </div>
 </div>
@@ -711,9 +740,9 @@ f(x)=4(1-x)^3, \quad \text{ pour } 0\leq x\leq 1.
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Si <span class="math inline">\(X\)</span> a la même distribution que <span class="math inline">\(X_1, \ldots , X_n\)</span> et <span class="math inline">\(\vr(X)&lt;\infty\)</span>, la loi faible des grands nombres implique que, quand <span class="math inline">\(n \to \infty\)</span>, $   _{i=1}^n X_i $ converge en probabilité vers <span class="math inline">\(\esp{X}\)</span>. Puisque <span class="math inline">\(X\)</span> suit une distribution Beta avec paramètres <span class="math inline">\(\alpha=1\)</span> et <span class="math inline">\(\beta=4\)</span>, <span class="math inline">\(\esp{X}=\alpha/(\alpha+\beta)=1/5\)</span> et <span class="math display">\[
+<p>Si <span class="math inline">\(X\)</span> a la même distribution que <span class="math inline">\(X_1, \ldots , X_n\)</span> et <span class="math inline">\(\vr(X)&lt;\infty\)</span>, la loi faible des grands nombres implique que, quand <span class="math inline">\(n \to \infty\)</span>, $ _{i=1}^n X_i $ converge en probabilité vers <span class="math inline">\(\esp{X}\)</span>. Puisque <span class="math inline">\(X\)</span> suit une distribution Beta avec paramètres <span class="math inline">\(\alpha=1\)</span> et <span class="math inline">\(\beta=4\)</span>, <span class="math inline">\(\esp{X}=\alpha/(\alpha+\beta)=1/5\)</span> et <span class="math display">\[
 \var{X}=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}=\frac{4}{5^2\times 6}=\frac{2}{75}&lt;\infty.
-\]</span> Donc, la WLLN s’applique et <span class="math inline">\(\bar X_n\)</span> converge en probabilité vers 1/5.</p>
+\]</span> Donc, la loi faible des grands nombres s’applique et <span class="math inline">\(\bar X_n\)</span> converge en probabilité vers 1/5.</p>
 </div>
 </div>
 </div>
@@ -846,7 +875,8 @@ f(x)=4(1-x)^3, \quad \text{ pour } 0\leq x\leq 1.
 <div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Soit <span class="math inline">\(m\)</span> la médiane de la distribution. On cherche <span class="math inline">\(\prob{X_{(1)}
-      &gt; m}\)</span>. Avec le résultat de l’exercice&nbsp;<span class="citation" data-cites="base">@base</span>.@sec-base-stat_ordre_repart, <span class="math display">\[
+      &gt; m}\)</span>.</p>
+<p>Avec le résultat de l’exercice&nbsp;<a href="#sec-base-stat_ordre_repart" class="quarto-xref"><span>1.11</span></a>, <span class="math display">\[
 \begin{aligned}
       \prob{X_{(1)} &gt; m}
       &amp;= 1 - \prob{X_{(1)} \leq m} \\
@@ -899,7 +929,7 @@ f(x)=4(1-x)^3, \quad \text{ pour } 0\leq x\leq 1.
 </div>
 <div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>On a que <span class="math inline">\(X\)</span> est distribuée uniformément sur <span class="math inline">\(\{1, \dots, 6\}\)</span>, d’où <span class="math inline">\(F_X(x) = x/6\)</span>, <span class="math inline">\(x = 1, \dots, 6\)</span>. De l’exercice&nbsp;<span class="citation" data-cites="base">@base</span>.@sec-base-stat_ordre_repart, on a que <span class="math display">\[
+<p>On a que <span class="math inline">\(X\)</span> est distribuée uniformément sur <span class="math inline">\(\{1, \dots, 6\}\)</span>, d’où <span class="math inline">\(F_X(x) = x/6\)</span>, <span class="math inline">\(x = 1, \dots, 6\)</span>. De l’exercice <a href="#sec-base-stat_ordre_repart" class="quarto-xref"><span>1.11</span></a>, on a que <span class="math display">\[
 \begin{aligned}
       F_{X_{(1)}}(x)
       &amp;= 1 - (1 - F_X(x))^5 \\
@@ -954,7 +984,7 @@ f(x)=4(1-x)^3, \quad \text{ pour } 0\leq x\leq 1.
 </div>
 <div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>De l’exercice&nbsp;<span class="citation" data-cites="base">@base</span>.@sec-base-stat_ordre_repart, on a <span class="math display">\[
+<p>De l’exercice <a href="#sec-base-stat_ordre_repart" class="quarto-xref"><span>1.11</span></a>, on a <span class="math display">\[
 \begin{aligned}
       F_{X_{(1)}}(x)
       &amp;= 1 - (1 - F_X(x))^n \\
@@ -1109,7 +1139,7 @@ r = y - x \text{  et } t= \frac{x + y}{2}
 </div>
 <div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Ici, <span class="math inline">\(f_X(x)=1\)</span> pour <span class="math inline">\(x\in(0,1)\)</span> et <span class="math inline">\(F_X(x)=x\)</span>, pour <span class="math inline">\(x\in(0,1)\)</span>. Selon l’exercice <span class="citation" data-cites="base">@base</span>.@sec-base-stat_ordre_etendue, on trouve que <span class="math display">\[
+<p>Ici, <span class="math inline">\(f_X(x)=1\)</span> pour <span class="math inline">\(x\in(0,1)\)</span> et <span class="math inline">\(F_X(x)=x\)</span>, pour <span class="math inline">\(x\in(0,1)\)</span>. Selon l’exercice <a href="#sec-base-stat_ordre_etendue" class="quarto-xref"><span>1.17</span></a>, on trouve que <span class="math display">\[
 \begin{aligned}
 f_{R, T}(r, t) &amp;= n (n - 1)\{ F_X(t + r/2) - F_X(t - r/2)\}^{n - 2}
     f_X(t + r/2) f_X(t - r/2)\\
@@ -1163,7 +1193,7 @@ t - \frac{r}{2} &gt; 0 &amp;\implies \; t &gt; \frac{r}{2} \\
 </div>
 <div id="callout-38" class="callout-38-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Soit <span class="math inline">\(R\)</span> l’étendue de l’échantillon aléatoire. Avec l’exercice <span class="citation" data-cites="base">@base</span>.@sec-base-stat_ordre_densite_etendue, on sait que <span class="math display">\[
+<p>Soit <span class="math inline">\(R\)</span> l’étendue de l’échantillon aléatoire. Avec l’exercice <a href="#sec-base-stat_ordre_densite_etendue" class="quarto-xref"><span>1.18</span></a>, on sait que <span class="math display">\[
       f_R(x) = n (n - 1) x^{n - 2} (1 - x), \text{ pour } x\in(0,1).
     \]</span> Par conséquent <span class="math display">\[
 \begin{aligned}
@@ -1192,7 +1222,7 @@ t - \frac{r}{2} &gt; 0 &amp;\implies \; t &gt; \frac{r}{2} \\
 </div>
 <div id="callout-39" class="callout-39-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>intégrer la densité conjointe des deux valeurs de l’échantillon au-dessus de la surface correspondant à la probabilité recherchée.</p>
+<p>Intégrer la densité conjointe des deux valeurs de l’échantillon au-dessus de la surface correspondant à la probabilité recherchée.</p>
 </div>
 </div>
 </div>
@@ -1233,22 +1263,22 @@ t - \frac{r}{2} &gt; 0 &amp;\implies \; t &gt; \frac{r}{2} \\
     \end{aligned}
 \]</span> On cherche <span class="math inline">\(\prob{X_2 \geq 2X_1 \cup X_1 \geq 2X_2}\)</span>. Par définition, <span class="math display">\[
       \prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
-      = \iint\limits_{\mathcal{R}} f_{X_1 X_2}(x_1, x_2)   dx_2  dx_1,
-    \]</span> où <span class="math inline">\(\mathcal{R}\)</span> est la région du domaine de définition de <span class="math inline">\(f_{X_1X_2}\)</span> telle que <span class="math inline">\(x_1 &gt; 2x_2\)</span> ou <span class="math inline">\(x_2 &gt; 2x_1\)</span>. Cette région est représentée à la figure&nbsp;<a href="#sec-base-stat_ordre_beta" class="quarto-xref"><span>Section 1.20</span></a>. On a donc <span class="math display">\[
+      = \iint\limits_{\mathcal{R}} f_{X_1 X_2}(x_1, x_2)  dx_2 dx_1,
+    \]</span> où <span class="math inline">\(\mathcal{R}\)</span> est la région du domaine de définition de <span class="math inline">\(f_{X_1X_2}\)</span> telle que <span class="math inline">\(x_1 &gt; 2x_2\)</span> ou <span class="math inline">\(x_2 &gt; 2x_1\)</span>. Cette région est représentée à la figure <a href="#sec-base-stat_ordre_beta" class="quarto-xref"><span>1.20</span></a>. On a donc <span class="math display">\[
 \begin{aligned}
       \prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
-      &amp;= 4 \int_0^{1/2} \int_{2x_1}^1 (1 - x_1)(1 - x_2)  dx_2 dx_1 \\
+      &amp;= 4 \int_0^{1/2} \int_{2x_1}^1 (1 - x_1)(1 - x_2) dx_2dx_1 \\
       &amp;\phantom{=}
-      + 4 \int_0^{1/2} \int_{2x_2}^1 (1 - x_1)(1 - x_2)  dx_1 dx_2 \\
+      + 4 \int_0^{1/2} \int_{2x_2}^1 (1 - x_1)(1 - x_2) dx_1dx_2 \\
       &amp;= 4 \int_0^{1/2} (1 - x_1)
       \left(
         \frac{1}{2} - 2x_1 + 2x_1^2
-      \right)  dx_1 \\
+      \right) dx_1 \\
       &amp;\phantom{=}
       + 4 \int_0^{1/2} (1 - x_2)
       \left(
         \frac{1}{2} - 2x_2 + 2x_2^2
-      \right)  dx_2 \\
+      \right) dx_2 \\
       &amp;= \frac{7}{12}.
     \end{aligned}
 \]</span></p>
@@ -1261,9 +1291,8 @@ t - \frac{r}{2} &gt; 0 &amp;\implies \; t &gt; \frac{r}{2} \\
 </div>
 </div>
 </div>
-<pre><code>  : Domaine de définition de $f_{X_1X_2(x_1, x_2) =  4 (1
-    - x_1)(1 - x_2)$, $x_1, x_2 \in (0, 1)$. Les zones hachurées
-    représentent les aires où $x_2 &gt; 2x_1$ ou $x_1 &gt; 2x_2$.}</code></pre>
+<p>Domaine de définition de <span class="math inline">\(f_{X_1X_2(x_1, x_2) =  4 (1
+        - x_1)(1 - x_2)\)</span>, <span class="math inline">\(x_1, x_2 \in (0, 1)\)</span>. Les zones hachurées représentent les aires où <span class="math inline">\(x_2 &gt; 2x_1\)</span> ou <span class="math inline">\(x_1 &gt; 2x_2\)</span>.}</p>
 </div>
 </div>
 </div>
@@ -1302,23 +1331,20 @@ t - \frac{r}{2} &gt; 0 &amp;\implies \; t &gt; \frac{r}{2} \\
 <p>Soit <span class="math inline">\(T = (X_{(1)} + X_{(n)})/2\)</span> la mi-étendue et <span class="math inline">\(R\)</span> l’étendue. On sait que, pour <span class="math inline">\(r &gt; 0\)</span> et <span class="math inline">\(-\infty &lt; t &lt; \infty\)</span>, <span class="math display">\[
       f_{RT}(r, t) = n(n-1)r^{n - 2}.
     \]</span> On doit calculer la densité marginale de <span class="math inline">\(T\)</span>. Il faut voir que le domaine de <span class="math inline">\(R\)</span> (et donc le domaine d’intégration) dépend indirectement de <span class="math inline">\(T\)</span>.</p>
-<pre><code>Le domaine de $T$ est d'abord $0 \leq t \leq 1$ comme $X_{(1)}$ et          $X_{(n)}$ sont chacun au maximum 1. Leur somme donne au maximum 2. On            conclut que $T = \frac{X_{(1)} + X_{(n)}}{2} \in (0, 1) $.
-
-Alors, si $0 \leq t \leq 1/2$, on doit
-avoir $0 &lt; r &lt; 2t$. Par contre, si $1/2 &lt; t &lt; 1$, il faut que $0 &lt;
-r &lt; 2(1-t)$. On obtient
-$$</code></pre>
-<span class="math display">\[\begin{aligned}
+<p>Le domaine de <span class="math inline">\(T\)</span> est d’abord <span class="math inline">\(0 \leq t \leq 1\)</span> comme <span class="math inline">\(X_{(1)}\)</span> et <span class="math inline">\(X_{(n)}\)</span> sont chacun au maximum 1. Leur somme donne au maximum 2. On conclut que $T = (0, 1) $.</p>
+<p>Alors, si <span class="math inline">\(0 \leq t \leq 1/2\)</span>, on doit avoir <span class="math inline">\(0 &lt; r &lt; 2t\)</span>. Par contre, si <span class="math inline">\(1/2 &lt; t &lt; 1\)</span>, il faut que <span class="math inline">\(0 &lt;
+    r &lt; 2(1-t)\)</span>. On obtient</p>
+<p><span class="math display">\[
+\begin{aligned}
       f_T(t) &amp;=
       \begin{cases}
         n(2t)^{n-1}, &amp; 0 &lt; t &lt; 1/2 \\
         n(2(1 - t))^{n - 1}, &amp; 1/2 &lt; t &lt; 1.
       \end{cases}
-    \end{aligned}\]</span>
-<span class="math display">\[
-    Ainsi,
-    \]</span>
-<span class="math display">\[\begin{aligned}
+    \end{aligned}
+\]</span> Ainsi,</p>
+<p><span class="math display">\[
+\begin{aligned}
       \esp{T} &amp;= 2^{n - 1} n
       \left(
         \int_0^{1/2}t^n dt +
@@ -1329,11 +1355,11 @@ $$</code></pre>
         \frac{0,5^{n+1}}{n+1} +
         \int_{1/2}^1 t (1 - t)^{n - 1}  dt
       \right)
-     \end{aligned}\]</span>
-<p>$$</p>
-<pre><code> Pour l'intégrale entre $t = \frac{1}{2}$ et $t = 1$, on utiliser l'intégration par parties en posant $u = t$ et $\text{d}v = (1 - t)^{n-1}\text{d}t$. Ainsi, on obtient
- $$</code></pre>
-<span class="math display">\[\begin{aligned}
+     \end{aligned}
+\]</span></p>
+<p>Pour l’intégrale entre <span class="math inline">\(t = \frac{1}{2}\)</span> et <span class="math inline">\(t = 1\)</span>, on utiliser l’intégration par parties en posant <span class="math inline">\(u = t\)</span> et <span class="math inline">\(\text{d}v = (1 - t)^{n-1}\text{d}t\)</span>. Ainsi, on obtient</p>
+<p><span class="math display">\[
+\begin{aligned}
       \esp{T} &amp;= 2^{n-1}n
       \left(
         \frac{0,5^{n+1}}{n+1} +
@@ -1352,15 +1378,16 @@ $$</code></pre>
         \frac{n+2}{2^{n+1}n(n+1)}
       \right)\\
       &amp;= \frac{1}{2}
-    \end{aligned}\]</span>
-<p>$$</p>
+    \end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
 </section>
 <section id="sec-base-stat_ordre_ech_aleatoire_uniforme" class="level2" data-number="1.22">
 <h2 data-number="1.22" class="anchored" data-anchor-id="sec-base-stat_ordre_ech_aleatoire_uniforme"><span class="header-section-number">1.22</span> Espérance et variance de l’étendue et de la mi-étendue d’un échantillon tiré d’une loi uniforme</h2>
-<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une loi uniforme sur l’intervalle <span class="math inline">\((0, 1)\)</span>. <strong>a)</strong> Calculer la moyenne et la variance de <span class="math inline">\(R = X_{(n)} - X_{(1)}\)</span>.</p>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une loi uniforme sur l’intervalle <span class="math inline">\((0, 1)\)</span>.</p>
+<p><strong>a)</strong> Calculer la moyenne et la variance de <span class="math inline">\(R = X_{(n)} - X_{(1)}\)</span>.</p>
 <p><strong>b)</strong> Calculer la moyenne et la variance de <span class="math inline">\(T = (X_{(1)} + X_{(n)})/2\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
@@ -1401,7 +1428,7 @@ f_{X_{(1)}}(x)=\frac{\Gamma(1+n)}{\Gamma(1)\Gamma(n)}x^{1-1}(1-x)^{n-1}.
    F_{X_{(n)}}(x)= (F_X(x))^n =x^n \text{ et }f_{X_{(n)}}(x)=\frac{\d}{\d x} F_{X_{(n)}}(x) = n x^{n-1}
 \]</span> qui peut se réécrire sous la forme <span class="math display">\[
 f_{X_{(n)}}(x)=\frac{\Gamma(n+1)}{\Gamma(n)\Gamma(1)}x^{n-1}(1-x)^{1-1}.
-\]</span> On remarque que <span class="math inline">\(X_{(n)} \sim \text{Bêta}(n, 1)\)</span>. Ainsi, depuis l’exercice&nbsp;<span class="citation" data-cites="base">@base</span>.@sec-base-stat_ordre_conjointe, la densité conjointe de <span class="math inline">\((X_{(1)},X_{(n)})\)</span> peut être exprimée comme suit, pour <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>, <span class="math display">\[
+\]</span> On remarque que <span class="math inline">\(X_{(n)} \sim \text{Bêta}(n, 1)\)</span>. Ainsi, depuis l’exercice <a href="#sec-base-stat_ordre_conjointe" class="quarto-xref"><span>1.16</span></a>, la densité conjointe de <span class="math inline">\((X_{(1)},X_{(n)})\)</span> peut être exprimée comme suit, pour <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>, <span class="math display">\[
 f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.
 \]</span> Ainsi, <span class="math display">\[
        \Esp{X_{(1)}X_{(n)}} = n (n - 1) \int_0^1 x \int_x^1
@@ -1856,6 +1883,9 @@ f_{X_{(1)},X_{(n)}}(x, y) = n(n - 1)(y - x)^{n-2}.
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../chapitres/echantillonnage.html" class="pagination-link" aria-label="Distributions d'échantillonnage">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

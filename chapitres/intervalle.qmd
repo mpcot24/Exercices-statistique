@@ -1,0 +1,28 @@
+# Estimation par intervalle
+
+{{< include intervalle/ex_pivot_gamma.qmd >}}
+
+{{< include intervalle/ex_moyenne_normale.qmd >}}
+
+{{< include intervalle/ex_taille_pour_couverture.qmd >}}
+
+{{< include intervalle/ex_intervalles_mu_sigma.qmd >}}
+
+{{< include intervalle/ex_taille_etudiants.qmd >}}
+
+{{< include intervalle/ex_intervalle_sigma.qmd >}}
+
+{{< include intervalle/ex_taille_longueur_intervalle.qmd >}}
+
+{{< include intervalle/ex_taille_longueur_minimale.qmd >}}
+
+{{< include intervalle/ex_resultats_sat.qmd >}}
+
+{{< include intervalle/ex_laboratoires_cuivre.qmd >}}
+
+{{< include intervalle/ex_aines_cycles_superieurs.qmd >}}
+
+{{< include intervalle/ex_intervalle_mle_exponentielle.qmd >}}
+
+{{< include intervalle/ex_intervalle_mle_bernoulli.qmd >}}
+

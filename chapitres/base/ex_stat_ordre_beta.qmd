@@ -1,0 +1,75 @@
+## Échantillon d'une loi Bêta de taille 2 {#sec-base-stat_ordre_beta}
+
+Si un échantillon de taille $2$ est tiré d'une loi bêta avec
+  paramètres $\alpha = 1$ et $\beta = 2$, quelle est la probabilité
+  que l'une des deux valeurs de l'échantillon soit au moins deux fois
+  plus grande que l'autre?
+
+::: {.callout-tip collapse="true" title="Astuce"}
+Intégrer la densité
+  conjointe des deux valeurs de l'échantillon au-dessus de la surface
+  correspondant à la probabilité recherchée.
+:::
+
+
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$7/12$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a que $X \sim \text{Bêta}(1, 2)$, c'est-à-dire que $f_X(x) =
+    2(1 - x)$, $0 < x < 1$. Soit $X_1, X_2$ un échantillon aléatoire
+    tiré de cette densité. Par indépendance, on a
+    $$
+\begin{aligned}
+      f_{X_1 X_2}(x_1, x_2)
+      &= f_{X_1}(x) f_{X_2}(x) \\
+      &= 4 (1 - x_1)(1 - x_2).
+    \end{aligned}
+$$
+    On cherche $\prob{X_2 \geq 2X_1 \cup X_1 \geq 2X_2}$. Par
+    définition,
+    $$
+      \prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
+      = \iint\limits_{\mathcal{R}} f_{X_1 X_2}(x_1, x_2)  dx_2 dx_1,
+    $$
+    où $\mathcal{R}$ est la région du domaine de définition de
+    $f_{X_1X_2}$ telle que $x_1 > 2x_2$ ou $x_2 > 2x_1$. Cette région
+    est représentée à la figure [-@sec-base-stat_ordre_beta]. On a
+    donc
+    $$
+\begin{aligned}
+      \prob{X_1 \geq 2X_2 \cup X_2 \geq 2X_1}
+      &= 4 \int_0^{1/2} \int_{2x_1}^1 (1 - x_1)(1 - x_2) dx_2dx_1 \\
+      &\phantom{=}
+      + 4 \int_0^{1/2} \int_{2x_2}^1 (1 - x_1)(1 - x_2) dx_1dx_2 \\
+      &= 4 \int_0^{1/2} (1 - x_1)
+      \left(
+        \frac{1}{2} - 2x_1 + 2x_1^2
+      \right) dx_1 \\
+      &\phantom{=}
+      + 4 \int_0^{1/2} (1 - x_2)
+      \left(
+        \frac{1}{2} - 2x_2 + 2x_2^2
+      \right) dx_2 \\
+      &= \frac{7}{12}.
+    \end{aligned}
+$$
+    
+```{r echo}
+#| echo: false
+#| fig-show: asis
+#| out-width: "0.6\\textwidth"
+
+plot(0:1, 0:1, pch = NA, xlab = expression(x[1]), ylab = expression(x[2]))
+rect(0, 0, 1, 1, lwd = 2)
+polygon(c(0, 0, 0.5), c(0, 1, 1), density = 10, angle = 135)
+polygon(c(0, 1, 1), c(0, 0, 0.5), density = 10, angle = 135)
+```
+
+Domaine de définition de $f_{X_1X_2(x_1, x_2) =  4 (1
+        - x_1)(1 - x_2)$, $x_1, x_2 \in (0, 1)$. Les zones hachurées
+        représentent les aires où $x_2 > 2x_1$ ou $x_1 > 2x_2$.}
+:::
+

@@ -1,0 +1,28 @@
+## Convergence pour deux populations normalement distribuées {#sec-echantillonnage-tcl_deux_populations}
+
+On suppose que $X_1,\ldots,X_n$ et $Y_1,\ldots,Y_n$ sont des échantillons aléatoires indépendants de populations avec moyennes $\mu_1$ et $\mu_2$ et variances $\sigma_1^2>0$ et $\sigma_2^2>0$, respectivement. Démontrer que, quand $n\to\infty$,
+$$
+U_n = \frac{(\bar X_n-\bar Y_n)-(\mu_1-\mu_2)}{\sqrt{(\sigma_1^2+\sigma_2^2)/n}}
+$$
+est asymptotiquement $\mathcal{N}(0,1)$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Pour chaque $i \in \{1,\dots, n \}$, on pose $D_i = X_i - Y_i$. $D_1, \ldots, D_n$ sont mutuellement indépendants et identiquement distribués avec moyenne
+$$
+\ex(D_1) = \ex(X_1) - \ex(Y_1) = \mu_1 - \mu_2
+$$
+et variance
+$$
+\vr(D_1) = \vr(X_1) + \vr(Y_1) = \sigma_1^2 + \sigma_2^2.
+$$
+Par le Théorème central limite, on a donc que, quand $n \to \infty$,
+$$
+\sqrt{n}   \frac{\bar D_n - \ex[D_1]}{\sqrt{\vr(D_1)}} = \frac{(\bar X_n - \bar Y_n) - (\mu_1 -\mu_2)}{\sqrt{(\sigma_1^2 + \sigma_2^2)/n}} = Z_n
+$$
+converge en distribution vers $\mathcal{N}(0,1)$.
+:::
+

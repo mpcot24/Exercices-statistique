@@ -1,0 +1,31 @@
+# Tests
+
+{{< include tests/ex_proportion_objets_defectueux.qmd >}}
+
+{{< include tests/ex_theta_1_2.qmd >}}
+
+{{< include tests/ex_poisson.qmd >}}
+
+{{< include tests/ex_duree_vie_moyenne_pneu.qmd >}}
+
+{{< include tests/ex_poids_bebefille_naissance.qmd >}}
+
+{{< include tests/ex_poids_bebegarcon_naissance.qmd >}}
+
+{{< include tests/ex_concentration_particule_suspension.qmd >}}
+
+{{< include tests/ex_dentifrice.qmd >}}
+
+{{< include tests/ex_smarties_rouge.qmd >}}
+
+{{< include tests/ex_taxe_tabac.qmd >}}
+
+{{< include tests/ex_arpenteur.qmd >}}
+
+{{< include tests/ex_reassurance_incendie.qmd >}}
+
+{{< include tests/ex_poissons_aquarium.qmd >}}
+
+{{< include tests/ex_classes_titanic.qmd >}}
+
+

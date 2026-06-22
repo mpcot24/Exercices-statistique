@@ -1,0 +1,33 @@
+## Variance d'une loi normale centrée {#sec-estimation-exhaust_centered_normal}
+
+Soit $X_1$ une observation d'une loi normale avec moyenne $0$ et
+  variance $\sigma^2$, $\sigma > 0$. Démontrer que $\abs{X_1}$ est une
+  statistique exhaustive pour $\sigma^2$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a un échantillon aléatoire de taille 1. Or,
+    $$
+\begin{aligned}
+      f(x_1; \sigma^2)
+      &= \frac{1}{\sqrt{2\pi \sigma^2}}  e^{-x_1^2/(2 \sigma^2)} \\
+      &= \frac{1}{\sqrt{2\pi\sigma^2}}  e^{-\abs{x_1}^2/(2 \sigma^2)} \\
+      &= g(\abs{x_1}; \sigma^2) h(x_1), \\
+      \end{aligned}
+$$
+
+avec
+
+$$
+\begin{aligned}
+      g(x; \sigma^2)
+      &= \frac{1}{\sqrt{2\pi\sigma^2}}  e^{-x^2/(2 \sigma^2)}
+    \end{aligned}
+$$
+    et $h(x) = 1$. Ainsi, par le théorème de factorisation de Fisher--Neyman,
+    $\abs{X_1}$ est une statistique exhaustive pour $\sigma^2$.
+:::
+

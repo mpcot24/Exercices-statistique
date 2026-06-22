@@ -1,0 +1,56 @@
+## Paramètre de la loi Poisson {#sec-estimation-exhaust_poisson}
+
+Démontrer que la somme des éléments d'un échantillon aléatoire issu
+  d'une loi de Poisson est une statistique exhaustive pour le
+  paramètre de cette loi.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Nous allons démontrer un résultat général applicable à plusieurs
+    distributions, dont la Poisson. Il existe une famille de
+    distributions que l'on nomme la *famille exponentielle* (il
+    ne s'agit pas d'une référence à la densité exponentielle, bien que
+    cette dernière soit un cas particulier de la famille
+    exponentielle). Cette famille comprend toutes les distributions
+    dont la densité peut s'écrire sous la forme
+    $$
+      f(x; \theta) = h(x) c(\theta) e^{\eta(\theta) t(x)},
+    $$
+    où $h$, $c$, $\eta$ et $t$ sont des fonctions quelconques. Par
+    exemple, la fonction de masse de probabilité de la loi de Poisson
+    peut s'écrire comme suit:
+    $$
+\begin{aligned}
+      f(x; \theta) &= \frac{\theta^x e^{-\theta}}{x!} \\
+      &= \left( \frac{1}{x!} \right) e^{-\theta} e^{\ln(\theta) x} \\
+      &= h(x) c(\theta) e^{\eta(\theta) t(x)},
+    \end{aligned}
+$$
+    avec $h(x) = (x!)^{-1}$, $c(\theta) = e^{-\theta}$, 
+    $\eta(\theta) = \ln \theta$ et $t(x) = x$. La loi est donc membre de la famille
+    exponentielle. Les lois binomiale, gamma, normale et bêta font
+    aussi partie de la famille exponentielle. En revanche, des lois
+    comme l'uniforme sur $(0,\theta)$ et l'exponentielle translatée
+    n'en font pas partie.
+
+Pour tous les membres de la famille exponentielle, on a
+    $$
+      f(x_1, \dots, x_n; \theta) =
+      \left( \prod_{i = 1}^n h(x_i) \right)
+      (c(\theta))^n
+      e^{ \eta(\theta) \sum_{i=1}^n x_i}.
+    $$
+    
+Ainsi, on voit que le théorème de factorisation permet de conclure
+    que la statistique
+    $$
+      T(X_1, \dots, X_n)  = \sum_{i = 1}^n X_i
+    $$
+est une statistique exhaustive pour le paramètre $\theta$ pour
+    tous les membres de la famille exponentielle, dont la loi de
+    Poisson.
+:::
+

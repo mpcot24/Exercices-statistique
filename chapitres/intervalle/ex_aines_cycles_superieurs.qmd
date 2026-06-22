@@ -1,0 +1,25 @@
+## Enfants aînés aux cycles supérieurs {#sec-intervalle-aines_cycles_superieurs}
+
+Dans une étude sur la relation entre l'ordre de naissance et la réussite scolaire, un chercheur a trouvé que $126$ étudiants aux cycles supérieurs sur un échantillon de $180$ étaient enfants ainés. Dans un échantillon de $100$ personnes n'étudiant pas aux cycles supérieurs d'âge et de situation socio-économique comparable, le nombre d'ainés étaient de $54$.
+**a)** Construire un intervalle de confiance bilatéral approximatif à $90$ \
+
+**b)** Basé sur l'intervalle en a), est-ce que la différence entre les proportions d'ainés des deux populations semble significative?
+
+**c)** Si les chercheurs souhaitent questionner un nombre égal $n$ d'étudiants aux cycles supérieurs et de personnes qui ne le sont pas, quelle est la valeur minimale de $n$ requise pour estimer la différence entre les proportions avec une erreur inférieure ou égale à $\pm 0.05$ avec un niveau de confiance de $90$ \
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $(\Sexpr{round(0.16 -qnorm(0.95)*sqrt((0.7*0.3)/180 + (0.54*0.46)/100),5)},   \Sexpr{round(0.16 +qnorm(0.95)*sqrt((0.7*0.3)/180 + (0.54*0.46)/100),5)})$
+
+**b)** Non
+
+**c)** $n \geq 542$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Les proportions échantillonnales sont $$ p_n = \frac{126}{180}=0,7, \quad q_m = \frac{54}{100}=0,54. $$ Les tailles d'échantillons sont respectivement de $n=180$ et $m=100$. Puisque les deux sont assez grandes, une approximation d'un intervalle de confiance à $90$ \
+
+**b)** Puisque l'intervalle de confiance calculé en a) ne contient pas $0$, la proportion d'enfants ainés semble être significativement plus grande dans la population d'étudiants aux cycles supérieurs au niveau de confiance $90$ \
+
+**c)** En supposant $n=m$, la taille d'échantillon de chaque groupe peut être calculée en résolvant l'équation $$ \Sexpr{round(qnorm(0.95),3)}\sqrt{\frac{p(1-p)}{n} + \frac{q(1-q)}{n}} = 0,05. $$ On trouve $$ n = \left(\frac{\Sexpr{round(qnorm(0.95),3)}}{0.05}\right)^2 \{ p(1-p)+ q(1-q)\}. $$ Sachant que pour tout $p\in(0,1)$, $p(1-p) \le 1/4$, une estimation conservatrice des tailles d'échantillon requises est $$ n = m=  \left(\frac{\Sexpr{round(qnorm(0.95),3)}}{0.05}\right)^2 \times \left(\frac{1}{4} + \frac{1}{4} \right) \approx \Sexpr{0.5*round(qnorm(0.95),3)^2/0.05^2}. $$ Ainsi, pour atteindre la précision requise, chaque groupe doit comprendre au moins $542$ personnes.
+:::
+

@@ -1,0 +1,37 @@
+## Test d'hypothèse pour la valeur de $\theta$ {#sec-tests-theta_1_2}
+
+Soit $X$ une variable aléatoire dont la fonction de densité de
+  probabilité est
+  $$
+    f(x; \theta) = \theta x^{\theta - 1}, \quad 0 < x < 1.
+  $$
+  On suppose que $\theta$ peut prendre exclusivement les valeurs
+  $\theta = 1$ ou  $\theta = 2$.
+**a)** Trouver une statistique exhaustive pour le paramètre $\theta$ de cette distribution.
+
+**b)** On teste l'hypothèse $ \mathcal{H}_0: \theta = 1$ versus $ \mathcal{H}_1: \theta = 2$ à partir d'un échantillon aléatoire $X_1, X_2$. Si la région critique est $C = \{(x_1, x_2); x_1 x_2 \geq 3/4\}$, calculer la probabilité de faire une erreur de type I ($\alpha$) et la probabilité de faire une erreur de type II ($\beta$).
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $\prod_{i = 1}^n X_i$
+
+**b)** $\alpha = 0,034$, $\beta = 0,886$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a $$
+\begin{aligned} f(x_1, \dots, x_n;\theta) &= \prod_{i=1}^n f(x_i;\theta) \\ &= \theta^n\prod_{i=1}^nx_i^{\theta-1} \\ &= \left( \theta^n \prod_{i=1}^n x_i^\theta \right) \left( \prod_{i=1}^n x_i^{-1} \right) \\ &= g(t(x_1, \dots, x_n); \theta) h(x_1, \dots, x_n), \end{aligned}
+$$ où $$
+\begin{aligned} g(y; \theta) &= \theta^n y^n \\ t(x_1, \dots, x_n) &= \prod_{i=1}^n x_i \\ h(x_1, \dots, x_n) &= \prod_{i=1}^n x_i^{-1}. \end{aligned}
+$$ Ainsi, par le théorème de factorisation de Fisher--Neyman, $T(X_1, \dots, X_n) = \prod_{i = 1}^n X_i$ est une statistique exhaustive pour $\theta$.
+
+**b)** D'une part, l'erreur de type I consiste à rejeter l'hypothèse $ \mathcal{H}_0$ alors qu'elle est vraie. La probabilité de faire ce type d'erreur, notée $\alpha$, correspond donc à la probabilité que la statistique du test se retrouve dans la région critique lorsque l'hypothèse $ \mathcal{H}_0$ est vraie. On a donc $$
+\begin{aligned} \alpha &= \Prob{X_1X_2 \geq \frac{3}{4}; \theta = 1} \\ &= \iint_C f_{X_1 X_2}(x_1, x_2; 1)  dx_2 dx_1, \end{aligned}
+$$ où $C = \{(x_1, x_2); x_1 x_2 \geq 3/4\}$. Or, $$ f_{X_1 X_2}(x_1, x_2; \theta) = f_{X_1}(x_1; \theta) f_{X_2}(x_2; \theta) = \theta^2 x_1^{\theta - 1} x_2^{\theta - 1}, $$ d'où $f_{X_1 X_2}(x_1, x_2; 1) = 1$, $0 < x_1, x_2 < 1$. La région critique $C$ est représentée à la figure @sec-tests-theta_1_2. 
+\begin{aligned} \alpha &= \int_{3/4}^1 \int_{3/(4 x_1)}^1  dx_2 dx_1 \\ &= \int_{3/4}^1 \left( 1 - \frac{3}{4x_1} \right)  dx_1 \\ &= \frac{1}{4} + \frac{3}{4} \ln \frac{3}{4} \\ &\approx 0,034. \end{aligned}
+$$ D'autre part, l'erreur de type II consiste à ne pas rejeter l'hypothèse $ \mathcal{H}_0$ alors qu'elle est fausse. La valeur $\beta$ est donc la probabilité que la statistique se retrouve à l'extérieur de la région critique lorsque l'hypothèse $ \mathcal{H}_0$ est fausse, c'est-à-dire $$
+\begin{aligned} \beta &= \Prob{X_1 X_2 < \frac{3}{4}; \theta = 2} \\ &= 1 - \Prob{X_1 X_2 \geq \frac{3}{4}; \theta = 2}\\ &= 1 - \iint_C f_{X_1 X_2}(x_1, x_2; 2)  dx_2 dx_1. \end{aligned}
+$$ Dès lors, puisque $f_{X_1 X_2}(x_1, x_2; 2) = 4 x_1 x_2$, $$
+\begin{aligned} \beta &= 1 - \int_{3/4}^1 \int_{3/(4x_1)}^1 4 x_1 x_2  dx_2  dx_1\\ &= \frac{9}{16} - \frac{9}{8}\ln \frac{3}{4} \\ &\approx 0,886. \end{aligned}
+$$
+:::
+

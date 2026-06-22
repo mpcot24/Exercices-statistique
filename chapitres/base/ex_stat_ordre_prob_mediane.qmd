@@ -1,0 +1,31 @@
+## Calcul avec la médiane {#sec-base-stat_ordre_prob_mediane}
+
+Soit $X_1, X_2, X_3$ un échantillon aléatoire issu d'une loi bêta de
+  paramètres $\alpha = 2$ et $\beta = 1$. Calculer la probabilité que
+  la plus petite valeur de l'échantillon soit supérieure à la médiane
+  (théorique) de la distribution.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$1/8$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Soit $m$ la médiane de la distribution. On cherche $\prob{X_{(1)}
+      > m}$. 
+
+Avec le résultat de
+    l'exercice [-@sec-base-stat_ordre_repart],
+    $$
+\begin{aligned}
+      \prob{X_{(1)} > m}
+      &= 1 - \prob{X_{(1)} \leq m} \\
+      &= 1 - F_{X_{(1)}}(m) \\
+      &= 1 - (1 - (1 - F_X(m))^3)\\
+      &= (1 - F_X(m))^3 \\
+      &= \frac{1}{8},
+    \end{aligned}
+$$
+    car $F_X(m) = 1 - F_X(m) = 1/2$ par définition de la médiane. Le
+    type de distribution ne joue donc aucun rôle dans cet exercice.
+:::
+

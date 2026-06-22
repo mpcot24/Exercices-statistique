@@ -1,0 +1,36 @@
+## Estimateur du maximum de vraisemblance non unique {#sec-ajustement-mle_uniforme}
+
+Soient $X_{(1)} < \dots < X_{(n)}$ les statistiques d'ordre d'un
+  échantillon aléatoire tiré d'une distribution uniforme sur
+  l'intervalle $[\theta - \frac{1}{2}, \theta + \frac{1}{2}]$,
+  $-\infty < \theta < \infty$. Démontrer que toute statistique $T(X_1,
+  \dots, X_n)$ satisfaisant l'inégalité
+  $$
+    X_{(n)} - \frac{1}{2} \leq T(X_1, \dots, X_n) \leq
+    X_{(1)} + \frac{1}{2}
+  $$
+  est un estimateur du maximum de vraisemblance de $\theta$. Ceci est
+  un exemple où l'estimateur du maximum de
+  vraisemblance n'est pas unique.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Il est clair ici que, comme $f(x;\theta) = 1$, on ne pourra pas
+    utiliser la technique habituelle pour calculer l'estimateur du
+    maximum de vraisemblance. Il faut d'abord déterminer l'ensemble
+    des valeurs de $\theta$ possibles selon l'échantillon obtenu.
+    Comme toutes les données de l'échantillon doivent se trouver dans
+    l'intervalle $[\theta - 1/2, \theta + 1/2]$, on a $\theta \geq
+    X_{(n)} - 1/2$ et $\theta \leq X_{(1)} + 1/2$. De plus, puisque
+    $X_{(n)} - X_{(1)} \leq 1$, on a que $X_{(n)} - 1/2 \leq \theta
+    \leq X_{(1)} + 1/2$. Ainsi, toute statistique satisfaisant ces
+    inégalités est un estimateur du maximum de vraisemblance de
+    $\theta$. On a donc que
+    $$
+      X_{(n)} - \frac{1}{2} \leq T(X_1, \dots, T_n) \leq X_{(1)} + \frac{1}{2}.
+    $$
+:::
+

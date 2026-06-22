@@ -1,0 +1,28 @@
+## Inverse de la loi $F$ {#sec-echantillonnage-f_inverse}
+
+Soit $F$ une variable aléatoire distribuée selon une loi *F*
+  avec $\nu_1$ et $\nu_2$ degrés de liberté (dans l'ordre). Démontrer que
+  $1/F$ est aussi distribuée selon une loi *F*, mais avec $\nu_2$
+  et $\nu_1$ degrés de liberté.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** Démo: réutiliser la définition de la loi F
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On a
+    $$
+\begin{aligned}
+      \frac{1}{F} &=
+      \left(\frac{U/\nu_1}{V/\nu_2}\right)^{-1} \\
+      &=\frac{V/\nu_2}{U/\nu_1}
+    \end{aligned}
+$$
+    où $U \sim \chi^2(\nu_1)$ et $V \sim \chi^2(\nu_2)$. Puisqu'il s'agit
+    d'un ratio de deux variables aléatoires $\chi^2$ divisées chacune
+    par son nombre de degrés de liberté, on a donc que
+    $$
+      \frac{1}{F} \sim F(\nu_2, \nu_1).
+    $$
+:::
+

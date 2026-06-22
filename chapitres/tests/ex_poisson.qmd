@@ -1,0 +1,41 @@
+## Test d'hypothèse pour le paramètre d'une distribution Poisson {#sec-tests-poisson}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire tiré d'une distribution Poisson avec paramètre $\lambda$ inconnu. Soit $\lambda_0$ et $\lambda_1$ des valeurs spécifiques telles que $0 < \lambda_0 < \lambda_1$ et on souhaite tester les hypothèses suivantes:
+$$
+\begin{aligned}
+\mathcal{H}_0 \: : \: \lambda & = \lambda_0, \\
+\mathcal{H}_1 \: : \: \lambda & = \lambda_1.
+\end{aligned}
+$$
+[*On sait que si $Z_1 \sim \mathcal{P*(\mu_1)$ est indépendante de $Z_2 \sim \mathcal{P}(\mu_2)$, alors $Z_1 +Z_2 \sim \mathcal{P}(\mu_1 + \mu_2)$.}]
+
+**a)** Montrer que le test optimal au seuil $\alpha$ rejette $\mathcal{H}_0$ quand $\bar X_n > c$. Spécifier la valeur de $c$.
+
+**b)** Montrer que le test $\delta$ qui minimise $\alpha(\delta) + \beta(\delta)$ rejette $\mathcal{H}_0$ quand $\bar X_n > c^\star$. Trouver la valeur de $c^\star$.
+
+**c)** On suppose que $n=20$, $\lambda_0 = 1/20$ et $\lambda_1=1/10$. Calculer la valeur de la constante $c$ en a) quand $\alpha = 0,08$ et calculer les probabilités d'erreur de type I et II.
+
+**d)** On suppose que $n=20$, $\lambda_0 = 1/20$ et $\lambda_1=1/10$. Calculer la valeur de $c^\star$ en b) et déterminer la valeur minimale que peut atteindre $\alpha(\delta) + \beta(\delta)$. Quelles sont les probabilités d'erreur de type I et II?
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** Démo
+
+**b)** Démo. $C^* = \frac{\lambda_1 - \lambda_0}{\ln{\lambda_1} - \ln{\lambda_0}}$.
+
+**c)** $c = 0,1$
+
+**d)** $\alpha = 0,264$ et $\beta = 0,6766764$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Ici, la fonction de distribution de l'échantillon est donnée par $$ f(\boldsymbol{x}; \lambda) = e^{-\lambda n} \frac{\lambda^{x_1 + \dots + x_n}}{x_1! \times \dots \times x_n!} $$ et le rapport de vraisemblance est $$ \frac{f(\boldsymbol{x}; \lambda_1)}{f(\boldsymbol{x}; \lambda_0)} = e^{-\lambda_1 n + \lambda_0 n} \left(\frac{\lambda_1}{\lambda_0}\right)^{x_1 + \dots + x_n} = \exp\left\{ -(\lambda_1 - \lambda_0)n + n \bar x_n \ln\left(\frac{\lambda_1}{\lambda_0}\right) \right\}. $$ Parce que les hypothèses sont simples, le Lemme de Neyman--Pearson dit que le test optimal rejette l'hypothèse nulle si pour une valeur critique $k>0$, $$ \frac{f(\boldsymbol{x}; \lambda_1)}{f(\boldsymbol{x}; \lambda_0)} > \frac{1}{k} $$ ce qui est équivalent à $$ \exp\left\{ -(\lambda_1 - \lambda_0)n + n \bar x_n \ln\left(\frac{\lambda_1}{\lambda_0}\right) \right\} > \frac{1}{k}. $$ Prendre le logarithme des deux côtés de l'inégalité donne $$ \bar x_n > \underbrace{\frac{-\ln(k)/n + (\lambda_1 -\lambda_0)}{\ln(\lambda_1) - \ln(\lambda_0)}}_{=c}. $$ Sous l'hypothèse nulle, on note que $n\bar X_n = X_1 + \dots + X_n$ est une distribution Poisson avec moyenne $n\lambda_0$. Ainsi, la valeur $c$ devrait être choisie telle que $$ \Pr( n \bar X_n > nc  |  \lambda = \lambda_0) = \alpha $$ pour un seuil $\alpha$, c'est-à-dire que $nc$ est le quantile $1-\alpha$ de la distribution Poisson avec moyenne $n\lambda_0$. À noter que le seuil de signification ne sera peut-être pas exact étant donné que la distribution Poisson est discrète.
+
+**b)** Ici, le test optimal rejette l'hypothèse nulle si $$ \frac{f(\boldsymbol{x}; \lambda_1)}{f(\boldsymbol{x}; \lambda_0)} = \exp\left\{ -(\lambda_1 - \lambda_0)n + n \bar x_n \ln\left(\frac{\lambda_1}{\lambda_0}\right) \right\} > 1, $$ c'est-à-dire lorsque $$ \bar x_n > \underbrace{\frac{\lambda_1 -\lambda_0}{\ln(\lambda_1) - \ln(\lambda_0)}}_{=c^*}. $$
+
+**c)** Si $n=20$ et $\lambda_0 = 1/20$, $n\bar X_n$ est une loi de Poisson avec moyenne $1$ sous l'hypothèse nulle. Le quantile de niveau $1-0,08 = 0,92$ de cette distribution est $2$ puisque \begin{center} \begin{tabular}{lcc} $x$ & $\Pr(n\bar X_n =x)$ & $\Pr(n\bar X_n \leq x)$ \\ $0$ & $0,368$ & $0,368$ \\ $1$ & $0,368$ & $0,736$ \\ $2$ & $0,184$ & $0,920$ \\ \end{tabular} \end{center} 
+\begin{aligned} \Pr( n \bar X_n > nc  |  \lambda = \lambda_0) &= \alpha \\ 1-\Pr( n \bar X_n \leq nc  |  \lambda = \lambda_0) &= \alpha \end{aligned}
+$$ 
+
+**d)** Ici, la valeur de $c^\star$ est donnée par $$ \frac{\lambda_1 -\lambda_0}{\ln(\lambda_1) - \ln(\lambda_0)} = \frac{1/20}{\ln(1/10) - \ln(1/20)} = \Sexpr{round(0.05/(log(0.1) - log(0.05)),5)}, $$ donc le test rejette l'hypothèse nulle si $$ n\bar X_n > nc^* = 20\times \Sexpr{round(0.05/(log(0.1) - log(0.05)),5)} = \Sexpr{round(20*0.05/(log(0.1) - log(0.05)),5)}, $$ i.e. si $n \bar X_n > 1$. La probabilité d'erreur de type I est $$ \Pr(n \bar X_n > 1  |  \lambda =1/20) = \Sexpr{round(1-ppois(1,lambda=1),3)}. $$ La probabilité d'erreur de type II est $$ \Pr(n \bar X_n \le 1  |  \lambda =1/10) = \Sexpr{round(ppois(1,lambda=2),3)}, $$ et la valeur minimale que peut atteindre $\alpha(\delta) + \beta(\delta)$ est $$ \alpha(\delta) + \beta(\delta) = \Sexpr{round(1-ppois(1,lambda=1),3)} + \Sexpr{round(ppois(1,lambda=2),3)} = \Sexpr{round(1-ppois(1,lambda=1),3)+round(ppois(1,lambda=2),3)}. $$
+:::
+

@@ -1,0 +1,18 @@
+## Constante de minimisation {#sec-base-moments_constante_c}
+
+Soit $X$ une variable aléatoire de moyenne $\mu$ et de variance
+  $\sigma^2$. Déterminer la valeur de $c$ qui minimise $\esp{(X -
+    c)^2}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$c = \mu$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On doit trouver le point où la fonction $f(c) = \esp{(X - c)^2}$
+    atteint son minimum. Pour ce faire, il faut dériver par rapport à $c$. Or, $\frac{\text{d}}{\text{d}c} f(c) = -2 \esp{X - c} = 0$
+    lorsque $\esp{X} - c = 0$, soit $c = \esp{X} = \mu$. De plus, il
+    s'agit bien d'un minimum puisque $\frac{\text{d}^2}{\text{d}^2c} f(c)= 2 > 0$
+    pour tout $c$.
+:::
+

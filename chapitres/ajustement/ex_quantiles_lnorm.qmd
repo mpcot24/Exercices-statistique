@@ -1,0 +1,36 @@
+## Quantiles - Loi log-normale {#sec-ajustement-quantiles_lnorm}
+
+Soit $X_1, \dots, X_n$ un échantillon aléatoire tiré d'une distribution log-normale. Les 20e et 80e quantiles empiriques sont respectivement de $\hat{\pi}_{0,20} = 18,25$ et $\hat{\pi}_{0,80} = 35,8$. Estimer les paramètres de la distribution en utilisant la méthode des quantiles, puis utiliser ces estimations pour estimer la probabilité d'observer une valeur excédant 30.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$\hat{\mu}=3,241$, $\hat{\sigma}=0,4$ et $\widehat{\Pr(X>30)}= 0,3446$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Les équations à résoudre sont
+$$
+\begin{aligned}
+0,2 &= F(18,25) = \Phi\left(\frac{\ln(18,25)-\hat{\mu}}{\hat{\sigma}}\right), \\
+0,8 &= F(35,8) = \Phi\left(\frac{\ln(35,8)-\hat{\mu}}{\hat{\sigma}}\right).
+\end{aligned}
+$$
+Les 20e et 80e quantiles de la loi normale standard sont -0,842 et 0,842, respectivement. Les équations deviennent
+$$
+\begin{aligned}
+-0,842 &= \frac{2,904-\hat{\mu}}{\hat{\sigma}}, \\
+0,842 &= \frac{3,578-\hat{\mu}}{\hat{\sigma}}.
+\end{aligned}
+$$
+Diviser la première équation par la deuxième donne
+$$
+-1 = \frac{2,904-\hat{\mu}}{3,578-\hat{\mu}}.
+$$
+La solution est $\hat{\mu}=3,241$ et $\hat{\sigma}=0,4$. La probabilité d'excéder 30 est estimée par
+$$
+\begin{aligned}
+\widehat{\Pr(X>30)} &= 1-F(30; \hat\mu,\hat\sigma) = 1-\Phi\left(\frac{\ln(30)-3,241}{0,4}\right) = 1-\Phi(0,4) \\
+&= 1-0,6554 = 0,3446.
+\end{aligned}
+$$
+:::
+

@@ -28,5 +28,26 @@
   },
   "chapitres/base.qmd": {
     "base.html": "085b3a7c"
+  },
+  "chapitres/1_base.qmd": {
+    "1_base.html": "8dcb226f"
+  },
+  "chapitres/2_echantillonnage.qmd": {
+    "2_echantillonnage.html": "89c05a8e"
+  },
+  "chapitres/3_ajustement.qmd": {
+    "3_ajustement.html": "bb1a84cf"
+  },
+  "chapitres/echantillonnage.qmd": {
+    "echantillonnage.html": "050efa5f"
+  },
+  "chapitres/estimation.qmd": {
+    "estimation.html": "aac87c24"
+  },
+  "chapitres/intervalle.qmd": {
+    "intervalle.html": "0c4bac12"
+  },
+  "chapitres/tests.qmd": {
+    "tests.html": "6371624a"
   }
 }

@@ -1,0 +1,103 @@
+## Démonstration guidée {#sec-estimation-mvue_demo}
+
+Démontrer que, sous les hypothèses appropriées,
+  $$
+    \Esp{\left( \frac{\partial}{\partial \theta}
+        \ln f(X; \theta) \right)^2} =
+    - \Esp{\frac{\partial^2}{\partial \theta^2}
+      \ln f(X; \theta)}.
+  $$
+  Pour ce faire, dériver par rapport à $\theta$ l'identité
+  $$
+    \int_{-\infty}^\infty f(x; \theta)  dx = 1
+  $$
+  afin d'obtenir
+  $$
+    \int_{-\infty}^\infty
+    \left(
+      \frac{\partial}{\partial \theta} \ln f(x; \theta)
+    \right) f(x; \theta)  dx = 0,
+  $$
+  puis dériver de nouveau par rapport à $\theta$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+Pour commencer, on a l'identité suivante:
+    $$
+\begin{aligned}
+      \frac{\partial}{\partial \theta} \ln f(x;\theta) &=
+      \frac{1}{f(x;\theta)}\frac{\partial}{\partial \theta}
+      f(x;\theta) \\
+      \end{aligned}
+$$
+
+qui peut être réécrite sous la forme
+
+$$
+\begin{aligned}
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+      \right) f(x;\theta)
+      &= \frac{\partial}{\partial \theta} f(x;\theta).
+    \end{aligned}
+$$
+    Ainsi, en dérivant de part et d'autre
+    $$
+      \int_{-\infty}^\infty f(x; \theta)  dx = 1,
+    $$
+    par rapport à $\theta$, on obtient
+    $$
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+        \right) f(x;\theta)  dx = 0.
+    $$
+    En dérivant une seconde fois cette identité, on a alors
+    
+$$
+    \begin{aligned}
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial^2}{\partial \theta^2} \ln f(x;\theta)
+      \right) f(x;\theta)  dx +
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+      \right)
+      \left(
+        \frac{\partial}{\partial \theta} f(x;\theta)
+      \right) dx = 0 \\
+      \end{aligned}
+$$
+
+ou, de manière équivalente,
+
+$$
+\begin{aligned}
+      \int_{-\infty}^\infty
+      \left(
+        \frac{\partial}{\partial \theta} \ln f(x;\theta)
+      \right)^2
+      f(x;\theta)  dx =
+      - \int_{-\infty}^\infty
+      \left(
+        \frac{\partial^2}{\partial \theta^2} \ln f(x;\theta)
+      \right) f(x;\theta)  dx, \\
+      \end{aligned}
+$$
+
+soit
+
+$$
+\begin{aligned}
+      \Esp{\left( \frac{\partial}{\partial \theta}
+          \ln f(X; \theta) \right)^2} =
+      - \Esp{\frac{\partial^2}{\partial \theta^2}
+        \ln f(X; \theta)}.
+    \end{aligned}
+$$
+:::
+

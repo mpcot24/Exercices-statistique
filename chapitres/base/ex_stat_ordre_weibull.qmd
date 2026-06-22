@@ -1,0 +1,34 @@
+## Statistiques d'ordre d'échantillon tiré d'une loi de Weibull {#sec-base-stat_ordre_weibull}
+
+Soient $X_{(1)} \leq \dots \leq X_{(n)}$ les statistiques d'ordre
+  d'un échantillon aléatoire tiré d'une loi de Weibull, dont la
+  fonction de répartition est $F_X(x) = 1 - e^{-\beta x^\alpha}$.
+  Calculer la fonction de répartition, la fonction de densité et
+  l'espérance de $X_{(1)}$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$X_{(1)} \sim \text{Weibull}(\alpha, n\beta)$.
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+De l'exercice [-@sec-base-stat_ordre_repart], on
+    a
+    $$
+\begin{aligned}
+      F_{X_{(1)}}(x)
+      &= 1 - (1 - F_X(x))^n \\
+      &= 1 - (e^{-\beta x^\alpha})^n \\
+      &= 1 - e^{-n \beta x^\alpha},
+    \end{aligned}
+$$
+    d'où $X_{(1)} \sim \text{Weibull}(\alpha, n \beta)$. Ainsi, la fonction de densité de probabilité du minimum de
+    l'échantillon est
+    $$
+      f_{X_{(1)}}(x) = n \beta \alpha x^{\alpha - 1} e^{-n \beta x^\alpha}
+    $$
+    et l'espérance est
+    $$
+      \esp{X_{(1)}} = \frac{\Gamma(1 + 1/\alpha)}{(n \beta)^{\frac{1}{\alpha}}}.
+    $$
+:::
+

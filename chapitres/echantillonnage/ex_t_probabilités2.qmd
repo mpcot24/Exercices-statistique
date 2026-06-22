@@ -1,0 +1,20 @@
+## Bornes pour atteindre une probabilité avec la loi $T$ {#sec-echantillonnage-t_probabilités2}
+
+Soit $T$ une variable aléatoire distribuée selon une loi *t*
+  avec $14$ degrés de liberté.
+**a)** Trouver la valeur de $b$ tel que $\prob{-b < T < b} = 0,90$ à l'aide d'une table de la loi *t*.
+
+**b)** Répéter la partie a) à l'aide \textsf{R}. La fonction \texttt{qt(p, n)} retourne le \texttt{p}{\ieme} quantile d'une loi *t* avec \texttt{n} degrés de liberté, c'est-à-dire la valeur de $x$ où la fonction de répartition vaut \texttt{p}.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$1,761$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Par symétrie de la loi $t$, $$
+\begin{aligned} \prob{-b < T < b} &= \prob{T < b} - \prob{T < -b} \\ &= \prob{T < b} - (1 - \prob{T < b}) \\ &= 2 \prob{T < b} - 1 \\ &= 0,90. \end{aligned}
+$$ On cherche donc la valeur de $b$ tel que $\prob{T < b} = (1 + 0,90)/2 = 0,95$, où $T \sim t(14)$. Dans la table de la loi $t$ de l'annexe on trouve que $b = 1,761$.
+
+**b)** En définitive, on cherche le 95ième centile d'une loi $t(14)$. Avec R, on obtient `r qt(0.95, 14) ` (`qt(0.95, 14)`).
+:::
+

@@ -1,0 +1,27 @@
+## Pertes de réassurance par incendie {#sec-tests-reassurance_incendie}
+
+Télécharger le fichier \texttt{contents.csv} sur le site de cours. Il contient les pertes de biens, dues à un incendie, de plus d'un million de couronnes danoises provenant de réclamations faites à la compagnie de réassurance Copenhagen Re entre 1980 et 1990. Les données peuvent être importées en \textsf{R} comme suit, après avoir changé l'environnement de travail de \textsf{R} au dossier dans lequel vous avez enregistré le fichier \texttt{contents.csv}:
+
+```{r}
+
+ct <- read.csv("donnees/contents.csv",header=TRUE,row.names=1)
+attach(ct)
+data <- Contents
+```
+
+Les données peuvent aussi être importées par \textsf{RStudio} en cliquant sur ``Import Dataset''.
+On se rappelle également que la distribution exponentielle est un cas spécial de la distribution Gamma quand le paramètre $\alpha$ égal $1$.
+**a)** Ajuster la distribution Gamma aux données et construire un intervalle de confiance à $95$\
+
+**b)** Tester l'hypothèse que $\alpha=1$ à un niveau de $5$\
+
+**c)** Tester l'hypothèse que le modèle exponentiel est une simplification adéquate du modèle Gamma en utilisant un test du rapport de vraisemblance au niveau $5$\
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Premièrement, on ajuste le modèle Gamma aux données. ```{r} library(MASS) m3 <- fitdistr(data,densfun="gamma",start=list(shape=0.5,rate=0.2)) ``` L'estimation du paramètre $\alpha$ et l'estimation de son écart-type sont ```{r} m3$estimate[1] m3$sd[1] ``` Le quantile $97,5$\
+
+**b)** Les hypothèses de test sont: $$ \mathcal{H}_0  :  \alpha = 1, \mathcal{H}_1 :  \alpha \ne 1 $$ et la statistique de Wald est donnée par $$ w_n = \frac{\hat \alpha - 1}{\hat \sigma_{\hat \alpha}}  = \frac{\Sexpr{round(as.numeric(m3$estimate[1]),5)}-1}{\Sexpr{round(as.numeric(m3$sd[1]),5)}} = \Sexpr{round((as.numeric(m3$estimate[1])-1)/as.numeric(m3$sd[1]),5)}. $$ Clairement, $w_n$ est plus petite que $$ - z_{0,025} = -\Sexpr{round(qnorm(0.975),3)}. $$ Ainsi, $\mathcal{H}_0$ est rejetée à un niveau de confiance $5$\
+
+**c)** Pour calculer la statistique de test, on ajuste d'abord le modèle exponentiel aux données: ```{r} m2 <- fitdistr(data,densfun="exponential") ``` La log-vraisemblance des deux modèles est donnée par ```{r} m3$loglik m2$loglik ``` ce qui donne la statistique du rapport de vraisemblance $$ w= 2\{\ell(\hat \alpha,\hat \beta)-\ell(\hat \beta)\} = 2 (\Sexpr{round(m3$loglik,4)} + \Sexpr{round(-m2$loglik,4)}) = \Sexpr{round(2*(m3$loglik-m2$loglik),4)}. $$ Clairement, l'hypothèse que $\alpha=1$ est rejetée parce que la valeur de la statistique du rapport de vraisemblance est beaucoup plus grande que le quantile $95$\
+:::
+

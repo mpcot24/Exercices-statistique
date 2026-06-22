@@ -1,0 +1,40 @@
+## Concentration de particules en suspension dans l'air {#sec-tests-concentration_particule_suspension}
+
+Parmi les statistiques relevées par l'Organisation mondiale de
+  la santé (OMS) on compte la concentration en $\mu g/m^3$ de
+  particules en suspension dans l'air. Soit $X$ et $Y$ les
+  concentrations en $\mu g/m^3$ de particules en suspension dans l'air
+  aux centres-villes de Melbourne (Australie) et Houston (Texas),
+  respectivement. On suppose que $X$ et $Y$ sont normalement distribuées. À partir de $n = 13$ observations de la variable
+  aléatoire $X$ et $m = 16$ observations de la variable aléatoire $Y$,
+  on souhaite tester $ \mathcal{H}_0: \mu_X \ge \mu_Y$ versus $ \mathcal{H}_1: \mu_X < \mu_Y$.
+**a)** Définir la statistique du test et la région critique en supposant égales les variances des distributions de $X$ et $Y$. Utiliser un seuil de signification de $5$ \
+
+**b)** Si $\bar{x} = 72,9$, $s_X = 25,6$, $\bar{y} = 81,7$ et $s_Y = 28,3$, quelle est la conclusion pour ce test?
+
+**c)** Calculer la valeur $p$ de ce test. Est-elle conforme à la conclusion en b)?
+
+**d)** Tester si l'hypothèse de variances égales faite en a) est valide avec un niveau de confiance de $90$ \
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+**a)** $T = [(\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)]/\sqrt{((n-1)S_X^2 + (m-1)S_Y^2) (n^{-1} + m^{-1})/(n + m - 2)}$, $T \sim t(n + m - 2)$
+
+**b)** $t = -0,838 > t_{0,05}(27)$
+
+**c)** $p = \Sexpr{format(pt(-.838, 27), digits = 4, dec = ",")}$
+
+**d)** $f = 0,8311 < f_{0,05}(12, 15)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** Nous avons un test unilatéral à gauche sur la différence entre deux moyennes. En supposant égales les variances des deux populations, on a $X \sim \mathcal{N}(\mu_X, \sigma^2)$ et $Y \sim  \mathcal{N}(\mu_Y, \sigma^2)$. On sait que $\bar{X} \sim \mathcal{N}(\mu_X, \sigma^2/n)$ et $\bar{Y} \sim \mathcal{N}(\mu_Y, \sigma^2/m)$, d'où un estimateur de $\mu_X - \mu_Y$ sur lequel baser un test est $$ \bar{X} - \bar{Y} \sim \mathcal{N}\left( \mu_X - \mu_Y, \frac{\sigma^2}{n} + \frac{\sigma^2}{m} \right). $$ La variance $\sigma^2$ est toutefois inconnue. Un estimateur de ce paramètre est l'estimateur combiné, soit la moyenne pondérée des estimateurs de chaque échantillon: $$ S_p^2 = \frac{(n - 1) S_X^2 + (m - 1) S_Y^2}{n + m - 2}. $$ Or, $(n + m - 2) S_p^2/\sigma^2 \sim \chi^2(n + m - 2)$. Par conséquent, $$
+\begin{aligned} T &= \frac{\D \frac{(\bar{X} - \bar{Y}) - (\mu_X-\mu_Y)}{
+$$ On rejette $ \mathcal{H}_0: \mu_X \ge \mu_Y$ en faveur de $ \mathcal{H}_1: \mu_X < \mu_y$ si $t \leq -t_{0,05}(n + m - 2)$.
+
+**b)** Avec les données de l'énoncé, la valeur de la statistique développée en a) est $t = -0,838$, alors que le 95{\ieme} centile d'une loi $t$ avec $13 + 16 - 2 = 27$ degrés de liberté est $t_{0,05}(27) = 1,703$. Puisque $\abs{t} < 1,703$, on ne rejette pas $ \mathcal{H}_0$.
+
+**c)** On a $p = \prob{T < -0,838}$, où $T \sim t(27)$. À l'aide de \textsf{R}, on trouve ```{r echo} pt(-0.838, df = 27) ``` Puisque $p = \Sexpr{format(pt(-.838, 27), digits = 4, dec = ",")} > 0,05$, on ne rejette pas $ \mathcal{H}_0$. La conclusion est évidemment la même qu'en a).
+
+**d)** On souhaite tester l'égalité de deux variances, c'est-à-dire $ \mathcal{H}_0: \sigma_X^2 = \sigma_Y^2$ versus $ \mathcal{H}_1: \sigma_X^2 \ne \sigma_Y^2$. Pour ce faire, on se base sur le fait que $(n-1) S_X^2/\sigma_X^2 \sim \chi^2(n - 1)$ et que $(m-1) S_Y^2/\sigma_Y^2 \sim \chi^2(m - 1)$. Ainsi, sous $ \mathcal{H}_0$ (c'est-à-dire lorsque  $\sigma_X^2 = \sigma_Y^2$), $$ F = \frac{(n-1) S_X^2/(n - 1)}{(m-1) S_Y^2/(m - 1)} \sim F(n - 1, m - 1). $$ On rejette $ \mathcal{H}_0$ si la valeur de la statistique est supérieure au $100(1 - \alpha/2)${\ieme} centile d'une loi $F$ avec $n - 1$ et $m - 1$ degrés de liberté. Ici, on a $f = 0,8311$ et $f_{0,05}(12, 15) = 2,48$, et pour l'autre côté, la valeur de $f_{0,95}(12, 15)$ (ou de $f_{0,05}(15, 12)$) n'est pas donnée dans la table, mais on peut la trouver avec \textsf{R} comme suit: ```{r} qf(0.05,12,15) ``` Puisque $\Sexpr{round(qf(0.05,12,15),2)} < 0,8311 < 2,48$,  on ne rejette donc pas $ \mathcal{H}_0$. L'hypothèse des variances égales est donc raisonnable.
+:::
+

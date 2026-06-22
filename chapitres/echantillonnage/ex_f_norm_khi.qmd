@@ -1,0 +1,21 @@
+## Lien entre la normale, la khi carré et la $F$ {#sec-echantillonnage-f_norm_khi}
+
+Soit $T = W/\sqrt{V/r}$, où $W$ et $V$ sont des variables aléatoires
+  indépendantes avec une distribution, respectivement, normale centrée
+  réduite et khi carré avec $r$ degrés de liberté. Démontrer que la
+  distribution de $T^2$ est $F$ avec $1$ et $r$ degrés de liberté.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+Démo
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On sait que $W^2 \sim \chi^2(1)$. Ainsi,
+    $$
+      T^2 = \frac{W^2/1}{V/r},
+    $$
+    qui est un ratio de deux variables aléatoires $\chi^2$ divisées
+    par leur nombre de degrés de liberté. Par définition de la loi
+    $F$, on a donc que $T^2 \sim F(1, r)$.
+:::
+

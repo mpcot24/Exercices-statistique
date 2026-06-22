@@ -1,0 +1,46 @@
+# Modèles statistiques de base {#base}
+
+{{< include base/ex_ech_alea_oui_non.qmd >}}
+
+{{< include base/ex_ech_identifier_distribution.qmd >}}
+
+{{< include base/ex_ech_va_weibull.qmd >}}
+
+{{< include base/ex_ech_va_beta.qmd >}}
+
+{{< include base/ex_va_fgm_poisson.qmd >}}
+
+{{< include base/ex_va_station_essence.qmd >}}
+
+{{< include base/ex_moments_constante_c.qmd >}}
+
+{{< include base/ex_moments_transformations_fgm.qmd >}}
+
+{{< include base/ex_loi_grands_nombres.qmd >}}
+
+{{< include base/ex_loi_grands_nombres_convergence.qmd >}}
+
+{{< include base/ex_stat_ordre_repart.qmd >}}
+
+{{< include base/ex_stat_ordre_prob.qmd >}}
+
+{{< include base/ex_stat_ordre_prob_mediane.qmd >}}
+
+{{< include base/ex_stat_ordre_fmp.qmd >}}
+
+{{< include base/ex_stat_ordre_weibull.qmd >}}
+
+{{< include base/ex_stat_ordre_conjointe.qmd >}}
+
+{{< include base/ex_stat_ordre_etendue.qmd >}}
+
+{{< include base/ex_stat_ordre_densite_etendue.qmd >}}
+
+{{< include base/ex_stat_ordre_etendue_uniforme.qmd >}}
+
+{{< include base/ex_stat_ordre_beta.qmd >}}
+
+{{< include base/ex_stat_ordre_esperance_mietendue.qmd >}}
+
+{{< include base/ex_stat_ordre_ech_aleatoire_uniforme.qmd >}}
+

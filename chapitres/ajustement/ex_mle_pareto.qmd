@@ -1,0 +1,57 @@
+## Estimateurs pour les paramètres d'une distribution Pareto type II {#sec-ajustement-mle_pareto}
+
+Soit $X_1, \ldots, X_n$ un échantillon aléatoire issu d'une distribution Pareto type II tel que pour tout $i \in \{ 1, \ldots , n\}$ et $x >0$,
+$$
+F(x)=1-\left(\frac{\theta}{x+\theta}\right)^\alpha
+\quad \text{ et } \quad
+f(x)=\frac{\alpha\theta^\alpha}{(x+\theta)^{\alpha+1}},
+$$
+avec paramètres inconnus $\alpha>0$ et $\theta>0$.
+**a)** Trouver $\ex[X_1]$ et $\vr(X_1)$.
+
+**b)** On suppose $\alpha>2$. Construire des estimateurs pour les paramètres $\alpha$ et $\theta$ en utilisant la méthode des moments.
+
+**c)** Écrire la vraisemblance, la log-vraisemblance et les deux équations qui doivent être résolues pour trouver les estimateurs du maximum de vraisemblance pour $\alpha$ et $\theta$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+a) $\ex[X_1]= \theta/(\alpha-1)$ et $
+	\vr(X_1)=\alpha\theta^2/\{(\alpha-1)^2(\alpha-2)\}$
+
+	b) $\hat\alpha = 2S_n^2/(S_n^2-\bar X_n^2)$ et $			  \hat\theta=\bar X_n (S_n^2+\bar X_n^2)/(S_n^2-\bar X_n^2)$1
+
+$$
+\begin{aligned}
+\frac{n}{\hat\alpha}+n\ln \hat\theta-\sum_{i=1}^n\ln(x_i+\hat\theta)&=0\\
+\frac{n\hat\alpha}{ \hat\theta}-(\hat\alpha+1)\sum_{i=1}^n\frac{1}{x_i+\hat\theta}&=0.
+\end{aligned}
+$$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+**a)** On a $$
+\begin{aligned} \ex[X_1]&=\int_0^\infty x \frac{\alpha\theta^\alpha}{(x+\theta)^{\alpha+1}}\d x. \end{aligned}
+$$ On pose $t=x+\theta$, $$
+\begin{aligned} \ex[X_1] &= \int_\theta^\infty (t-\theta) \frac{\alpha\theta^\alpha}{t^{\alpha+1}}\text{d} t\\ &=\int_\theta^\infty \frac{\alpha\theta^\alpha}{t^{\alpha}}\d t-\int_\theta^\infty \frac{\alpha\theta^{\alpha+1}}{t^{\alpha+1}}\text{d} t\\ &= \left.\frac{-\alpha\theta^\alpha}{(\alpha-1)t^{\alpha-1}}\right|_\theta^\infty+ \left.\frac{\alpha\theta^{\alpha+1}}{\alpha t^{\alpha}}\right|_\theta^\infty, \quad \alpha>1\\ &=\frac{\alpha\theta}{\alpha-1}-\theta = \frac{\theta}{\alpha-1}. \end{aligned}
+$$ De même, $$
+\begin{aligned} \ex[X_1^2]&=\int_0^\infty x^2 \frac{\alpha\theta^\alpha}{(x+\theta)^{\alpha+1}}\d x. \end{aligned}
+$$ On pose $t=x+\theta$, $$
+\begin{aligned} \ex[X_1^2]&=\int_\theta^\infty (t-\theta)^2 \frac{\alpha\theta^\alpha}{t^{\alpha+1}}\d t \end{aligned}
+$$ En intégrant par parties, $$
+\begin{aligned} \ex[X_1^2]&= \left.\frac{-(t-\theta)^2\theta^\alpha}{t^{\alpha}}\right|_\theta^\infty+ \int_\theta^\infty 2(t-\theta)\frac{\theta^{\alpha}}{ t^{\alpha}}\d t\\ &=\left.\frac{-2(t-\theta)\theta^\alpha}{(\alpha-1)t^{\alpha-1}}\right|_\theta^\infty+ \int_\theta^\infty 2\frac{\theta^{\alpha}}{ (\alpha-1)t^{\alpha-1}}\d t\\ &=\left.\frac{-2\theta^\alpha}{(\alpha-1)(\alpha-2)t^{\alpha-2}}\right|_\theta^\infty, \quad \alpha>2\\ &=\frac{2\theta^\alpha}{(\alpha-1)(\alpha-2)\theta^{\alpha-2}}= \frac{2\theta^2}{(\alpha-1)(\alpha-2)}. \end{aligned}
+$$ Ainsi $$ \vr(X_1)=\frac{2\theta^2}{(\alpha-1)(\alpha-2)}-\frac{\theta^2}{(\alpha-1)^2}=\frac{\alpha\theta^2}{(\alpha-1)^2(\alpha-2)}. $$
+
+**b)** On a $\bar X_n=\frac{1}{n}\sum_{i=1}^nX_i$ pour la moyenne échantillonnale et $S_n^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X_n)^2$ pour la variance échantillonnale. Les estimateurs des moments sont tels que $$
+\begin{aligned} \bar X_n &= \frac{\hat\theta}{\hat\alpha-1} \\ S_n^2 &= \frac{\hat\alpha\hat\theta^2}{(\hat\alpha-1)^2(\hat\alpha-2)} \end{aligned}
+$$ En utilisant \eqref{eq:ajust3}, on a $\hat\theta=\bar X_n (\hat\alpha -1)$. Aussi, on note que $$
+\begin{aligned} S_n^2= \frac{\hat\alpha\hat\theta^2}{(\hat\alpha-1)^2(\hat\alpha-2)}&= \left(\frac{\hat\theta}{\hat\alpha-1}\right)^2\frac{\hat\alpha}{\hat\alpha-2}\\ & = \bar X_n^2\frac{\hat\alpha}{\hat\alpha-2}, \quad \text{ avec \eqref{eq:ajust3}}. \end{aligned}
+$$ On réarrange pour trouver $$ \hat\alpha = \frac{2S_n^2}{S_n^2-\bar X_n^2} $$ et $$ \hat\theta=\bar X_n \left(\frac{2S_n^2}{S_n^2-\bar X_n^2} -1\right)=\bar X_n \frac{S_n^2+\bar X_n^2}{S_n^2-\bar X_n^2}. $$
+
+**c)** La vraisemblance est $$ \mathcal{L}(\alpha,\theta)=\prod_{i=1}^n\frac{\alpha\theta^\alpha}{(x_i+\theta)^{\alpha+1}}=\frac{\alpha^n\theta^{n\alpha}}{\prod_{i=1}^n(x_i+\theta)^{\alpha+1}} $$ et la log-vraisemblance est $$
+\begin{aligned} \ell(\alpha,\theta)&=n\ln \alpha+n\alpha\ln \theta-\ln\left\{\prod_{i=1}^n(x_i+\theta)^{\alpha+1}\right\}\\ &=n\ln \alpha+n\alpha\ln \theta-(\alpha+1)\sum_{i=1}^n\ln(x_i+\theta). \end{aligned}
+$$ Les dérivées partielles sont $$
+\begin{aligned} \frac{\partial\ell(\alpha,\theta)}{\partial \alpha}&=\frac{n}{ \alpha}+n\ln \theta-\sum_{i=1}^n\ln(x_i+\theta)\\ \frac{\partial\ell(\alpha,\theta)}{\partial \theta}&=\frac{n\alpha}{ \theta}-(\alpha+1)\sum_{i=1}^n\frac{1}{x_i+\theta}. \end{aligned}
+$$ Les estimateurs du maximum de vraisemblance sont tels que $$
+\begin{aligned} \frac{n}{\hat\alpha}+n\ln \hat\theta-\sum_{i=1}^n\ln(x_i+\hat\theta)&=0\\ \frac{n\hat\alpha}{ \hat\theta}-(\hat\alpha+1)\sum_{i=1}^n\frac{1}{x_i+\hat\theta}&=0. \end{aligned}
+$$
+:::
+

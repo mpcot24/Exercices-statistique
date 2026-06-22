@@ -1,0 +1,44 @@
+## Intervalle de confiance pour la moyenne d'une loi normale avec variance connue {#sec-intervalle-moyenne_normale}
+
+La valeur observée de la moyenne empirique $\bar{X}$ d'un
+  échantillon aléatoire de taille $20$ tiré d'une $N(\mu, 80)$ est
+  $81,2$. Déterminer un estimateur par intervalle de niveau $95 \
+  pour $\mu$.
+
+::: {.callout-note collapse="true" title="Éléments de réponse"}
+$(77,28,   85,12)$
+:::
+
+::: {.callout-tip collapse="true" title="Solution complète"}
+On cherche deux statistiques $L$ et $U$ tel que
+    $$
+      \prob{L \leq \mu \leq U} = 1 - \alpha.
+    $$
+    On sait que si $X_1, \dots, X_n$ est un échantillon aléatoire tiré
+    d'une distribution $N(\mu, \sigma^2)$, alors $\bar{X} \sim N(\mu,
+    \sigma^2/n)$ ou, de manière équivalente, que
+    $$
+      \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \sim N(0, 1).
+    $$
+    Par conséquent,
+    $$
+      \Prob{-z_{\alpha/2} \leq \frac{\bar{X} - \mu}{\alpha/\sqrt{n}} \leq
+        z_{\alpha/2}} = 1 - \alpha,
+    $$
+    d'où
+    $$
+      \Prob{\bar{X} - \frac{\sigma}{\sqrt{n}}  z_{\alpha/2} \leq \mu
+        \leq \bar{X} + \frac{\sigma}{\sqrt{n}}  z_{\alpha/2}} = 1 - \alpha.
+    $$
+    Les statistiques $L$ et $U$ sont dès lors connues: $L = \bar{X} -
+    \sigma z_{\alpha/2}/\sqrt{n}$ et $U = \bar{X} + \sigma
+    z_{\alpha/2}/\sqrt{n}$. Un estimateur par intervalle de $\mu$ est
+    donc
+    $$
+      (\bar{X} - \sigma z_{\alpha/2}/\sqrt{n}, 
+      \bar{X} + \sigma z_{\alpha/2}/\sqrt{n}).
+    $$
+    Avec $n = 20$, $\sigma^2 = 80$ et $\bar{x} = 81,2$, on obtient
+    l'intervalle $(77,28, \; 85,12)$.
+:::
+
