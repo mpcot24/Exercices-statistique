@@ -4,6 +4,8 @@ Soit $X_1, \dots, X_n$ un échantillon aléatoire issu des
   distributions ci-dessous. Dans chaque cas, trouver l'estimateur du
   paramètre $\theta$ à l'aide de la méthode des moments.
   
+  
+  
 **a)** $f(x; \theta) = \theta^x e^{-\theta}/x!$, $x = 0, 1, \dots$, $\theta > 0$.
 
 **b)** $f(x; \theta) = \theta x^{\theta - 1}$, $0 < x < 1$, $\theta > 0$.
@@ -31,7 +33,7 @@ Soit $X_1, \dots, X_n$ un échantillon aléatoire issu des
 
 **b)** La densité est celle d'une distribution bêta de paramètres $\theta$ et $1$. Ainsi, $\esp{X} = \theta/(\theta + 1)$ et en posant $$ \frac{\theta}{\theta + 1} = \bar{X} $$ on trouve que l'estimateur des moments de $\theta$ est $$ \hat{\theta} = \frac{\bar{X}}{1 - \bar{X}}. $$
 
-**c)** On reconnaît la densité d'une distribution Gamma de paramètres $1$ et $\theta$. Ainsi, on sait que $\esp{X} = \theta$, d'où l'estimateur des moments est $\hat{\theta} = \bar{X}$.
+**c)** On reconnaît la densité d'une distribution Gamma de paramètres $1$ et $\theta$. Ainsi, on sait que $\esp{X} = \theta$, d'où l'estimateur des moments est $\hat{\theta} = \bar{X}.$
 
 **d)** Cette densité est celle de la loi de Laplace. On remarque d'abord que $$
 \begin{aligned} -|x - \theta| &= \begin{cases} -x + \theta &\text{pour} \;  x \geq \theta \\ x - \theta &\text{pour} \; x \leq \theta \\ \end{cases}. \end{aligned}

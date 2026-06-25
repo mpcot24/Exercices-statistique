@@ -3,30 +3,18 @@
 Soit $Y$ le poids en grammes d'un garçon né au Québec et
   supposons que $Y \sim \mathcal{N}(\mu_Y, \sigma_Y^2)$. On a les
   observations suivantes:
-  \begin{center}
-    \begin{tabular}{llllll}
-      \nombre{4082}, &
-      \nombre{3686}, &
-      \nombre{4111}, &
-      \nombre{3686}, &
-      \nombre{3175}, &
-      \nombre{4139}, \\
-      \nombre{3686}, &
-      \nombre{3430}, &
-      \nombre{3289}, &
-      \nombre{3657}, &
-      \nombre{4082}.
-    \end{tabular}
-  \end{center}
+  
+```{r}
+knitr::kable(c(4082, 3686, 4111, 3686, 3175, 4139, 3686, 3430, 3289, 3657,4082))
+```
+ 
   Refaire les questions de
-  l'exercice @tests.@sec-tests-poids_bebefille_naissance. Les réponses
+  l'exercice [-@sec-tests-poids_bebefille_naissance]. Les réponses
   obtenues dans ces deux exercices suggèrent-elles d'autres hypothèses
   à explorer? Faire les tests appropriés le cas échéant.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
-\stepcounter{enumi}
-
-**a)** $t = 4,028 > t_{10,  0,01}$ \stepcounter{enumi}
+**a)** $t = 4,028 > t_{10,  0,01}$
 
 **b)** $y = 4,223 > \chi_{10,   0,95}^2$
 
@@ -34,22 +22,41 @@ Soit $Y$ le poids en grammes d'un garçon né au Québec et
 :::
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
-**a)** La statistique à utiliser est la même qu'à l'exercice @tests.@sec-tests-poids_bebefille_naissance.
+**a)** La statistique à utiliser est la même qu'à l'exercice [-@sec-tests-poids_bebefille_naissance].
 
-**b)** On commence par calculer les statistiques $\bar{Y}$ et $S_Y^2$, $$ \bar{Y} = 3729,36 \quad \text{ et } \quad S_Y^2 = \nombre{116388,85}. $$ On trouve que $t = 4,028 > t_{10,  0,01} = 2,764$, on rejette donc $ \mathcal{H}_0$ à un seuil de signification de $1$ \
+**b)** On commence par calculer les statistiques $\bar{Y}$ et $S_Y^2$, $$ \bar{Y} = 3729,36 \quad \text{ et } \quad S_Y^2 = 116388,85. $$ On trouve que $t = 4,028 > t_{10,  0,01} = 2,764$, on rejette donc $\mathcal{H}_0$ à un seuil de signification de $1~\%$.
 
-**c)** La statistique à utiliser est la même qu'à l'exercice @tests.@sec-tests-poids_bebefille_naissance.
+**c)** La statistique à utiliser est la même qu'à l'exercice [-@sec-tests-poids_bebefille_naissance].
 
-**d)** On a $y = 4,223 > 3,94$. On ne rejette donc pas $ \mathcal{H}_0$.
+**d)** On a $y = 4,223 > 3,94$. On ne rejette donc pas $\mathcal{H}_0$.
 
-**e)** Les moyennes semblent être différentes entre les deux groupes, mais les variances égales. On commence par vérifier si le ratio des variances est près de $1$. On teste $$
+**e)** Les moyennes semblent être différentes entre les deux groupes, mais les variances égales. On commence par vérifier si le ratio des variances est près de $1$. On teste 
+$$
 \begin{aligned} \mathcal{H}_0 &: \sigma_X^2 / \sigma_Y^2 = 1 \\ \mathcal{H}_1 &: \sigma_X^2 / \sigma_Y^2 \ne 1 \end{aligned}
-$$ La statistique à utiliser pour ce test est $$
+$$ 
+
+La statistique à utiliser pour ce test est 
+$$
 \begin{aligned} F = \frac{S_Y^2 / \sigma_Y^2}{S_X^2 / \sigma_X^2} \sim \mathcal{F}_{m-1, n-1} \end{aligned}
-$$ Avec les données des deux numéros, on trouve que $f = 0,97$. À un seuil de signification de $\alpha = 10$\
-\begin{aligned} \mathcal{H}_0 &: \mu_X = \mu_Y \\ \mathcal{H}_1 &: \mu_X \ne \mu_Y \end{aligned}
-$$ en supposant les variances égales. La statistique utilisée pour ce test est $$
-\begin{aligned} W &= \frac{(\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)}{S_p} \sim t_{n+m-2}, \\ \text{où}   S_p^2 &= \frac{S_X^2 (n-1) + S_Y^2 (m - 1)}{n + m - 2}. \end{aligned}
-$$ Avec les données des deux numéros, on trouve que $w = -1,0139$. À un seuil de signification de $\alpha = 5$\
+$$ 
+
+Avec les données des deux numéros, on trouve que $f = 0,97$. À un seuil de signification de $\alpha = 10$\%, on trouve $\mathcal{F}_{10, 10, \, 0,05} = 2,98$ et $\mathcal{F}_{10, 10, \, 0,95} = 0,34$. On ne rejette donc pas $\mathcal{H}_0$ au seuil de $10$\%. Ainsi, on peut tester
+$$
+      \begin{align*}
+         \mathcal{H}_0 &: \mu_X = \mu_Y \\
+         \mathcal{H}_1 &: \mu_X \ne \mu_Y
+      \end{align*}
+$$
+
+
+en supposant les variances égales. La statistique utilisée pour ce test est
+$$
+\begin{align*}
+W &= \frac{(\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)}{S_p} \sim t_{n+m-2}, \\
+\text{où} \, S_p^2 &= \frac{S_X^2 (n-1) + S_Y^2 (m - 1)}{n + m - 2}.
+\end{align*}
+$$
+
+Avec les données des deux numéros, on trouve que $w = -1,0139$. À un seuil de signification de $\alpha = 5~\%$, on trouve $t_{20, \, 0,025} = -2,086$ et $t_{20, \, 0,975} = 2,086$. On ne rejette donc pas $\mathcal{H}_0$ au seuil de $5~\%$. On n'a donc pas assez d'information pour conclure que les fillettes et les garçons nés au Québec ont un poids moyen différent les uns des autres au seuil $\alpha = 5~\%$.
 :::
 

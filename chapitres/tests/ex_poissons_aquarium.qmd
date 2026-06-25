@@ -17,11 +17,12 @@ table(obs)
 Comme vous êtes quelqu'un de concept, vous désirez tester si le modèle Poisson est adéquat pour ces données, et ce, à l'aide d'un test du chi-carré de Pearson.
 
 Malgré votre soif de "concept", vous êtes une personne occupée, donc vous utilisez ce test en supposant 6 cellules: 0, 1, 2, 3, 4, 5 et 6 et plus.
+
 **a)** Identifier les hypothèses de ce test assez ludique.
 
 **b)** Calculer $\bar{x}_n$.
 
-**c)** Tester et conclure dans le contexte au seuil 5\
+**c)** Tester et conclure dans le contexte au seuil $5~\%.$
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
 **a)** $\mathcal{H}_0: X \sim \mathcal{P}\text{oisson}$ et $\mathcal{H}_1$: $X$ ne suit pas une loi de Poisson.
@@ -54,6 +55,6 @@ $$
 \begin{aligned} X_{\text{obs}}^2 &=  \sum_{i = 0}^6 \frac{(n_i - \widehat{\esp{n_i}})^2}{\widehat{\esp{n_i}}} \\ &= \frac{(21 - 9,26)^2}{9,26} + \frac{(18 - 22,03)^2}{22,03} + \frac{(27 - 26,21)^2}{26,21} \\ &+ \frac{(10 - 20,79)^2}{20,79} + \frac{(8 - 12,37)^2}{12,37} + \frac{(5 - 5,89)^2}{5,89} \\ &+ \frac{(11 - 3,45)^2}{11} \\ &= 39,48769 \end{aligned}
 $$ 
 
-Comme nous avons posé 2 conditions, $X_{\text{obs}}^2$ suit une $\mathcal{X}^2$ avec $7 - 2 = 5$ degrés de liberté. Puisque, $\mathcal{X}^2_{5, 5\
+Comme nous avons posé 2 conditions, $X_{\text{obs}}^2$ suit une $\mathcal{X}^2$ avec $7 - 2 = 5$ degrés de liberté. Puisque, $\mathcal{X}^2_{5, 5~\%} = 11,0705 \leq 39,48769$, on rejette $\mathcal{H}_0$. Dommage, la loi de Poisson n'est pas adéquate pour ces données qui concernent pourtant des poissons.
 :::
 

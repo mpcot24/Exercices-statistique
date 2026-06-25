@@ -1,35 +1,59 @@
 ## Classe de tarification du Titanic {#sec-tests-classes_titanic}
 
 Le tableau de contingence suivant montre le destin des passagers du Titanic en fonction de la classe de tarification du billet, représentant le statut socio-économique.
-```{r echo}
+```{r}
 #| echo: false
 
 (mytab <- t(apply(apply(Titanic,c(3,4),rowSums),3,rowSums)))
 ```
 
-**a)** Peut-on conclure que la probabilité de survie au naufrage du Titanic était différente selon la classe tarifaire au seuil de 5 \
+**a)** Peut-on conclure que la probabilité de survie au naufrage du Titanic était différente selon la classe tarifaire au seuil de $5~\%$?
 
-**b)** Avec \textsf{R}, calculer le seuil observé du test utilisé en a).
+**b)** Avec R, calculer le seuil observé du test utilisé en a).
 
-**c)** Avec \textsf{R}, visualiser les probabilités de survie estimées avec un diagramme en mosaïque.
+**c)** Avec R, visualiser les probabilités de survie estimées avec un diagramme en mosaïque.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
-a) oui \quad b) $\Sexpr{pchisq(190.39,3,lower.tail=FALSE)}$
+a) oui \quad b) $`r pchisq(190.39,3,lower.tail=FALSE)`$
 :::
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
 **a)** L'hypothèse nulle est $\mathcal{H}_0 :$ les lignes et les colonnes sont indépendantes. On doit donc faire un test du $\chi^2$. On calcule les totaux des lignes: $$
-\begin{aligned} r_1 &= 122+167+528+673 = \Sexpr{122+167+528+673}\\ r_2 &= 203+118+178+212 = \Sexpr{203+118+178+212} \end{aligned}
+\begin{aligned} r_1 &= 122+167+528+673 = `r 122+167+528+673` \\ r_2 &= 203+118+178+212 =  `r 203+118+178+212` \end{aligned}
 $$ On calcule les totaux des colonnes: $$
-\begin{aligned} c_1 &= 122+203 = \Sexpr{122+203}\\ c_2 &= 167+118 = \Sexpr{167+118}\\ c_3 &= 528+178 = \Sexpr{528+178}\\ c_4 &= 673+212 = \Sexpr{673+212}\\ \end{aligned}
+\begin{aligned} c_1 &= 122+203 = `r 122+203`\\ c_2 &= 167+118 = `r 167+118`\\ c_3 &= 528+178 = `r 528+178`\\ c_4 &= 673+212 = `r 673+212`\\ \end{aligned}
 $$ On a $n=2201$ et les nombre espérés dans les cellules sont calculés comme suit. $$
-\begin{aligned} \widehat{\esp{n_{ij}}} &= r_ic_j/n\\ \widehat{\esp{n_{11}}} &= \Sexpr{122+167+528+673}*\Sexpr{122+203}/2201= \Sexpr{(122+167+528+673)*(122+203)/2201}. \end{aligned}
-$$ On trouve donc les compte espérés ```{r echo} #| echo: false rowtots <- rowSums(mytab) coltots <- colSums(mytab) (Ei <- round(matrix(rep(rowtots,4),nrow=2)*matrix(rep(coltots,2),byrow=TRUE,nrow=2)/sum(mytab),2)) Xstat <- sum((mytab-Ei)^2/Ei) ``` La statistique du $\chi^2$ est $$
-\begin{aligned} X^2 =&\sum_{i=1}^2\sum_{j=1}^4 \frac{\{n_{ij}-\widehat{\esp{n_{ij}}}\}^2}{\widehat{\esp{n_{ij}}}}\\ & = \frac{(122-220.01)^2}{220.01}+\cdots+\frac{(212-285.89)^2}{285.89}\\ &= \Sexpr{round(Xstat,2)} \end{aligned}
-$$ Le nombre de degrés de liberté est $1\times 3 = 3$ et la valeur critique donnée dans la table est $\chi^2_{3,95\
+\begin{aligned} \widehat{\esp{n_{ij}}} &= r_ic_j/n\\ \widehat{\esp{n_{11}}} &= `r 122+167+528+673` * `r 122+203` /2201= `r (122+167+528+673)*(122+203)/2201`. \end{aligned}
+$$ On trouve donc les compte espérés 
+```{r} 
+#| echo: false 
 
-**b)** On trouve ```{r} pchisq(190.39,3,lower.tail=FALSE) ```
+rowtots <- rowSums(mytab) 
 
-**c)** On peut tracer le diagramme en mosaïque avec les commandes suivantes. Le résultat se trouve dans la Figure @sec-tests-classes_titanic. ```{r eval} #| eval: false tableau <- matrix(c(122,203,167,118,528,178,673,212),nrow=2, dimnames=list(Survived=c("No","Yes"), Class=c("1st","2nd","3rd","Crew"))) mosaicplot(t(tableau), color=TRUE, main="") ```
+coltots <- colSums(mytab) 
+
+(Ei <- round(matrix(rep(rowtots,4),nrow=2)*matrix(rep(coltots,2),byrow=TRUE,nrow=2)/sum(mytab),2)) 
+
+Xstat <- sum((mytab-Ei)^2/Ei) 
+``` 
+
+La statistique du $\chi^2$ est $$
+\begin{aligned} X^2 =&\sum_{i=1}^2\sum_{j=1}^4 \frac{\{n_{ij}-\widehat{\esp{n_{ij}}}\}^2}{\widehat{\esp{n_{ij}}}}\\ & = \frac{(122-220.01)^2}{220.01}+\cdots+\frac{(212-285.89)^2}{285.89}\\ &= `r round(Xstat,2)` \end{aligned}
+$$ Le nombre de degrés de liberté est $1\times 3 = 3$ et la valeur critique donnée dans la table est $\chi^2_{3,95~\%} = 7.81473$. Puisque $`r round(Xstat,2)`>7.81473$, on rejette l'hypothèse nulle au seuil de $5~\%$. La probabilité de survie dépend de la classe tarifaire.
+
+**b)** On trouve 
+
+```{r} 
+
+pchisq(190.39,3,lower.tail=FALSE) 
+
+```
+
+**c)** On peut tracer le diagramme en mosaïque avec les commandes suivantes. 
+```{r} 
+tableau <- matrix(c(122,203,167,118,528,178,673,212),nrow=2, dimnames=list(Survived=c("No","Yes"), Class=c("1st","2nd","3rd","Crew")))
+
+mosaicplot(t(tableau), color=TRUE, main="") 
+```
 :::
 

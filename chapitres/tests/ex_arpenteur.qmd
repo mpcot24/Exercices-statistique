@@ -30,6 +30,7 @@ $$
 f(x; \alpha, \beta) = \frac{\alpha}{\beta} x^{\alpha - 1} e^{-\left(\frac{x}{\beta}\right)^{\alpha}}   \beta,\alpha, x > 0
 $$
 où \verb|shape| est $\alpha$ et \verb|scale| est $\beta$.
+
 **a)** Démontrer que la somme des observations est une statistique exhaustive pour $\beta$ dans le cas de la loi exponentielle.
 
 **b)** Quelle est la statistique exhaustive pour $\beta$ dans le cas d'une loi Weibull de cette paramétrisation?
@@ -55,7 +56,7 @@ où \verb|shape| est $\alpha$ et \verb|scale| est $\beta$.
 
 **b)** $T = \sum_{i = 1}^n x_i^{\alpha}$
 
-**c)** $\hat{beta}_{mv} = \bar{X}_n$ et $l(\hat{beta}_{mv}   = $
+**c)** $\hat{\beta}_{mv} = \bar{X}_n$
 
 **d)** Démo
 
@@ -83,7 +84,7 @@ $$ Donc $T = \sum_{i = 1}^n x_i^{\alpha}$ est exhaustive pour $\beta$ dans une l
 \begin{aligned} l(x; \beta) &= \log{\frac{1}{\beta^n}} e^{-\frac{1}{\beta} \sum_{i = 1}^n x_i} \\ \frac{\text{d}}{\text{d}\beta} l(x; \beta) &= \frac{-n}{\beta} + \frac{1}{\beta^2} \sum_{i = 1}^n x_i \end{aligned}
 $$ et on pose le tout égal à 0 pour maximiser de telle sorte que $$
 \begin{aligned} -n \hat{\beta}_{mv} &= \sum_{i = 1}^n x_i \\ \hat{\beta}_{mv} &= \bar{X}_n. \end{aligned}
-$$ Dans ce problème, on trouve que $\bar{x}_{10} = 2,684001 / 10 = 0,2684001$ et la log-vraisemblance maximisée est $l(\hat{\beta}_{mv}   = -10 \times \log{0.2684001} - 1 / 0.268 4001 \times 2.684001 = 3,15277.$
+$$ Dans ce problème, on trouve que $\bar{x}_{10} = 2,684001 / 10 = 0,2684001$ et la log-vraisemblance maximisée est $l(\hat{\beta}_{mv})   = -10 \times \log{0.2684001} - 1 / 0.268 4001 \times 2.684001 = 3,15277.$
 
 **c)** En substituant $\alpha = 1$ dans la fonction de densité de la loi Weibull, on a $f(x; 1, \beta) = 1 \beta x^0 \text{exp}(-\beta x^{1})$, ce qui est exactement la densité d'une loi exponentielle. Par le théorème de l'unicité des fonctions de densité, on peut conclure le résultat voulu.
 
@@ -91,11 +92,11 @@ $$ Dans ce problème, on trouve que $\bar{x}_{10} = 2,684001 / 10 = 0,2684001$ e
 
 **e)** Dans tous les cas, elles sont composites. Pour $\mathcal{H}_0$, même si on connaît $\alpha$, la distribution n'est pas connue en entier comme on ne connaît rien de $\beta$.
 
-**f)** Notre test du rapport de vraisemblance a $p = 2$ et $r = 1$. Ainsi, on utilise les valeurs données dans l'énoncé pour les valeurs maximisées des fonctions log-vraisemblance pour obtenir. $$ w_{10} = 2(5,505213 - 3,152766) = 4,704894. $$
+**f)** Notre test du rapport de vraisemblance a $p = 2$ et $r = 1$. Ainsi, on utilise les valeurs données dans l'énoncé pour les valeurs maximisées des fonctions log-vraisemblance pour obtenir $$ w_{10} = 2(5,505213 - 3,152766) = 4,704894. $$
 
-**g)** La statistique de test suit donc une loi $\chi^2$ avec $p - r$ degrés de liberté. Ainsi, on a que $W_{10} \sim \chi^2_{(1)}$. Le quantile supérieur au seuil 1\
+**g)** La statistique de test suit donc une loi $\chi^2$ avec $p - r$ degrés de liberté. Ainsi, on a que $W_{10} \sim \chi^2_{(1)}$. Le quantile supérieur au seuil $1~\%$ est 6,635. C'est notre valeur critique.
 
-**h)** Comme 4.704894 < 6.635, on ne peut pas rejeter $\mathcal{H}_0$ au seuil 1\
+**h)** Comme 4.704894 < 6.635, on ne peut pas rejeter $\mathcal{H}_0$ au seuil $1~\%$. Ainsi, le modèle exponentiel est une bonne simplification du modèle Weibull pour ces données.
 
 **i)** Selon le principe du rasoir d'Okham, on recommande toujours d'utiliser le modèle le plus simple possible. En particulier ici, l'arpenteur pourrait tout simplement utiliser $\bar{X}_n$ pour poursuivre son analyse au lieu de devoir ajuster pour trouver une valeur de $\alpha$ également s'il utilisait le modèle Weibull.
 :::

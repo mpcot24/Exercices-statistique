@@ -7,7 +7,7 @@ Soit $X_1, X_2, \dots, X_n$ un échantillon aléatoire d'une
   moyenne ne dépasse pas $0,05$.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
-\nombre{108 241}
+108241
 :::
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
@@ -20,6 +20,6 @@ On sait que
 $$
     La longueur de l'intervalle de confiance est $2 (1,645) (5) /
     \sqrt{n} = 16,45/\sqrt{n}$. Si l'on souhaite que $16,45/\sqrt{n}
-    \leq 0,05$, alors $n \geq \nombre{108 241}$.
+    \leq 0,05$, alors $n \geq 108 241$.
 :::
 

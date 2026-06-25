@@ -8,18 +8,19 @@ Lors d'un sondage mené auprès de $800$ adultes dont $605$
   l'affirmative à cette question. Les résultats du sondage sont les
   suivants: $x_1 = 351$ non-fumeurs ont répondu oui, contre $x_2 = 41$
   fumeurs.
-**a)** Tester l'hypothèse nulle que $\theta_1 = \theta_2$ versus la contre-hypothèse $\theta_1 \ne \theta_2$ avec un seuil de signification de $5 \
+  
+**a)** Tester l'hypothèse nulle que $\theta_1 = \theta_2$ versus la contre-hypothèse $\theta_1 \ne \theta_2$ avec un seuil de signification de $5~\%$.
 
-**b)** Trouver un intervalle de confiance à $95 \
+**b)** Trouver un intervalle de confiance à $95~\%$ pour $\theta_1 -\theta_2$. Cet intervalle permet-il d'obtenir la même conclusion qu'en a)?
 
-**c)** Trouver un intervalle de confiance à $95 \
+**c)** Trouver un intervalle de confiance à $95~\%$ pour la proportion de la population totale en faveur de l'introduction d'une nouvelle taxe sur le tabac.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
 **a)** $z = 10,45 > 1,96$
 
-**b)** $(0,3005,   0,4393)$
+**b)** $(0,3005,  0,4393)$
 
-**c)** $(0,4555,   0,5246)$
+**c)** $(0,4555,  0,5246)$
 :::
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
@@ -29,15 +30,21 @@ $$ Pour $n$ et $m$ grands, on a, approximativement, $$
 \begin{aligned} X &\sim N(n\theta_1, n\theta_1(1 - \theta_1)) \\ Y &\sim N(m\theta_2, m\theta_2(1 - \theta_2), \end{aligned}
 $$ et donc, toujours approximativement, $$
 \begin{aligned} \hat{\theta}_1 &= \frac{X}{n} \sim N\left(\theta_1, \frac{\theta_1(1-\theta_1)}{n}\right) \\ \hat{\theta}_2 &= \frac{Y}{m} \sim N\left(\theta_2, \frac{\theta_2(1-\theta_2)}{m}\right). \end{aligned}
-$$ Par conséquent, $$ \frac{(\hat{\theta}_1 - \hat{\theta}_2) - (\theta_1 - \theta_2)}{\sqrt{\theta_1(1-\theta_1)/n + \theta_2(1-\theta_2)/m}} \sim N(0, 1). $$ Pour pouvoir calculer la valeur de cette statistique pour un échantillon aléatoire, on remplace $\theta_1$ et $\theta_2$ dans le radical par $\hat{\theta}_1 = X/n$ et $\hat{\theta}_2 = Y/m$, dans l'ordre. Un intervalle de confiance de niveau $1 - \alpha$ pour $\theta_1 - \theta_2$ est donc $$ (\hat{\theta}_1 - \hat{\theta}_2) \pm z_{\alpha/2} \sqrt{\frac{\hat{\theta}_1 (1 - \hat{\theta}_1)}{n} + \frac{\hat{\theta}_2 (1 - \hat{\theta}_2)}{m}}. $$ De manière similaire, la statistique utilisée pour tester la différence entre les deux proportions $\theta_1$ et $\theta_2$ est $$ Z =  \frac{(\hat{\theta}_1 - \hat{\theta}_2) - (\theta_1 - \theta_2)}{\sqrt{\hat{\theta}_1 (1 - \hat{\theta}_1)/n + \hat{\theta}_2 (1 - \hat{\theta}_2)/m}}, $$ et on rejette $ \mathcal{H}_0: \theta_1 = \theta_2$ en faveur de $ \mathcal{H}_1: \theta_1 \ne \theta_2$ si $\abs{z} > z_{\alpha/2}$. Ici, on a $x = 351$, $y = 41$, $n = 605$ et $m = 800 - 605 = 195$. Ainsi, $\hat{\theta}_1 = 0,5802$, $\hat{\theta}_2 = 0,2103$ et $\abs{z} = 10,44 > 1,96$. On rejette donc $ \mathcal{H}_0$ à un seuil de signification de $5$ \
+$$ Par conséquent, $$ \frac{(\hat{\theta}_1 - \hat{\theta}_2) - (\theta_1 - \theta_2)}{\sqrt{\theta_1(1-\theta_1)/n + \theta_2(1-\theta_2)/m}} \sim N(0, 1). $$ Pour pouvoir calculer la valeur de cette statistique pour un échantillon aléatoire, on remplace $\theta_1$ et $\theta_2$ dans le radical par $\hat{\theta}_1 = X/n$ et $\hat{\theta}_2 = Y/m$, dans l'ordre. Un intervalle de confiance de niveau $1 - \alpha$ pour $\theta_1 - \theta_2$ est donc $$ (\hat{\theta}_1 - \hat{\theta}_2) \pm z_{\alpha/2} \sqrt{\frac{\hat{\theta}_1 (1 - \hat{\theta}_1)}{n} + \frac{\hat{\theta}_2 (1 - \hat{\theta}_2)}{m}}. $$ De manière similaire, la statistique utilisée pour tester la différence entre les deux proportions $\theta_1$ et $\theta_2$ est $$ Z =  \frac{(\hat{\theta}_1 - \hat{\theta}_2) - (\theta_1 - \theta_2)}{\sqrt{\hat{\theta}_1 (1 - \hat{\theta}_1)/n + \hat{\theta}_2 (1 - \hat{\theta}_2)/m}}, $$ et on rejette $\mathcal{H}_0: \theta_1 = \theta_2$ en faveur de $\mathcal{H}_1: \theta_1 \ne \theta_2$ si $\abs{z} > z_{\alpha/2}$. Ici, on a $x = 351$, $y = 41$, $n = 605$ et $m = 800 - 605 = 195$. Ainsi, $\hat{\theta}_1 = 0,5802$, $\hat{\theta}_2 = 0,2103$ et $\abs{z} = 10,44 > 1,96$. On rejette donc $\mathcal{H}_0$ à un seuil de signification de $5~\%$.
 
-**b)** L'intervalle de confiance est $$ (\theta_1 - \theta_2) \in (0,3005,   0,4393). $$ Comme $0$ n'appartient pas à cet intervalle, on rejette $ \mathcal{H}_0$.
+**b)** L'intervalle de confiance est $$ (\theta_1 - \theta_2) \in (0,3005,   0,4393). $$ Comme $0$ n'appartient pas à cet intervalle, on rejette $\mathcal{H}_0$.
 
-**c)** On cherche maintenant un intervalle de confiance pour la proportion de la population en faveur de l'introduction du taxe sur le tabac. On a une observation $x = 351 + 41 = 392$ d'une distribution Binomiale$(800, \theta)$, d'où $\hat{\theta} = 392/800 = 0,49$. Un intervalle de confiance à 95 \
-\begin{aligned} \theta &\in \hat{\theta} \pm 1,96 \sqrt{\frac{\hat{\theta} (1 - \hat{\theta})}{800}} \\ &\in 0,49 \pm 1,96 \sqrt{\frac{0,49 (0,51)}{800}} \\ &\in (0,4555,   0,5246). \end{aligned}
-$$ Vérification avec \textsf{R}: ```{r echo} prop.test(351 + 41, 800, correct = FALSE)$conf.int @ 
+**c)** On cherche maintenant un intervalle de confiance pour la proportion de la population en faveur de l'introduction du taxe sur le tabac. On a une observation $x = 351 + 41 = 392$ d'une distribution Binomiale$(800, \theta)$, d'où $\hat{\theta} = 392/800 = 0,49$. Un intervalle de confiance à $95~\%$
 
-  
+$$
+\begin{aligned} \theta &\in \hat{\theta} \pm 1,96 \sqrt{\frac{\hat{\theta} (1 - \hat{\theta})}{800}} \\ &\in 0,49 \pm 1,96 \sqrt{\frac{0,49 (0,51)}{800}} \\ &\in (0,4555,   0,5246). 
+\end{aligned}
+$$
+
+Vérification avec R: 
+
+```{r} 
+prop.test(351 + 41, 800, correct = FALSE)$conf.int  
 ```
 :::
 

@@ -18,6 +18,7 @@ book:
   search: true
   sidebar:
     style: docked
+  
 
 format:
   html:
@@ -51,4 +52,6 @@ format:
         </script>
 
 lang: fr
-
+bibliography: stat.bib
+nocite: |
+  @*

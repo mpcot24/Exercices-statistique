@@ -20,8 +20,15 @@ c) $[0,0692;0,01828]\quad$
 \begin{aligned} I(\theta)&=\ex\left[-\frac{\partial^2}{\partial\theta^2} \ln f(X;\theta) \right]=\ex\left[-\frac{\partial^2}{\partial\theta^2} \left(X\ln\theta-\ln(1 - \theta) (1 - X) \right)\right]=\ex\left[\frac{X}{\theta^2} + \frac{1 - X}{(1 - \theta)^2} \right] =\frac{1}{\theta (1 - \theta)}. \end{aligned}
 $$
 
-**c)** La distribution limite de l'EMV est $$ \frac{\hat\theta_n-\theta}{\sqrt{1/\{nI(\theta)\}}} $$ est asymptotiquement $\mathcal{N}(0,1)$. On peut estimer $nI(\lambda)$ au dénominateur par $nI(\hat\theta)=\frac{n}{\hat\theta(1 - \theta)}$, pour obtenir, quand $n\to\infty$, $$ \frac{\hat\theta-\theta}{\hat\theta/\sqrt{n}} $$ est asymptotiquement $\mathcal{N}(0,1)$. D'une autre façon, on peut estimer $nI(\theta)$ par $$ -\left.\frac{\partial^2}{\partial\lambda^2} \ell(\theta)\right|_{\theta=\hat\theta}=\frac{n}{\hat\theta (1 - \hat\theta)}, $$ ce qui revient à la même réponse. Sachant que $z_{2\
-\begin{aligned} \left[\hat\theta-z_{\alpha/2}\sqrt{\frac{\hat\theta(1 - \hat\theta)}{n}},\hat\theta+z_{\alpha/2}\sqrt{\frac{\hat\theta(1 - \hat\theta)}{n}}\right]&=\left[\bar x_n-z_{\alpha/2}\sqrt{\frac{\bar{x}_n(1 - \bar{x}_n)}{n}}, \bar x_n+z_{\alpha/2}\sqrt{\frac{\bar{x}_n(1 - \bar{x}_n)}{n}}\right]\\ &=0,126\pm\frac{2,054 \times \sqrt{0,126 \times 0,874}}{12} \\ &=\left[\Sexpr{round(0.126-2.054*sqrt(0.126 * 0.874/144),5)},\Sexpr{round(0.126+2.054*sqrt(0.126 * 0.874 / 144),5)}\right]. \end{aligned}
+**c)** La distribution limite de l'EMV est $$ \frac{\hat\theta_n-\theta}{\sqrt{1/\{nI(\theta)\}}} $$ est asymptotiquement $\mathcal{N}(0,1)$. On peut estimer $nI(\lambda)$ au dénominateur par $nI(\hat\theta)=\frac{n}{\hat\theta(1 - \theta)}$, pour obtenir, quand $n\to\infty$, $$ \frac{\hat\theta-\theta}{\hat\theta/\sqrt{n}} $$ est asymptotiquement $\mathcal{N}(0,1)$. D'une autre façon, on peut estimer $nI(\theta)$ par $$ -\left.\frac{\partial^2}{\partial\lambda^2} \ell(\theta)\right|_{\theta=\hat\theta}=\frac{n}{\hat\theta (1 - \hat\theta)}, $$ ce qui revient à la même réponse. Sachant que $z_{2\%}=`r round(qnorm(0.98),3)`$ et $\hat\theta=\bar x=0,126$, un intervalle de confiance approximatif de niveau $96~\%$ pour $\theta$ est
+
 $$
+\begin{align*}
+\left[\hat\theta-z_{\alpha/2}\sqrt{\frac{\hat\theta(1 - \hat\theta)}{n}},\hat\theta+z_{\alpha/2}\sqrt{\frac{\hat\theta(1 - \hat\theta)}{n}}\right]&=\left[\bar x_n-z_{\alpha/2}\sqrt{\frac{\bar{x}_n(1 - \bar{x}_n)}{n}}, \bar x_n+z_{\alpha/2}\sqrt{\frac{\bar{x}_n(1 - \bar{x}_n)}{n}}\right]\\
+&=0,126\pm\frac{2,054 \times \sqrt{0,126 \times 0,874}}{12} \\
+&=\left[`r round(0.126-2.054*sqrt(0.126 * 0.874/144),5)`, `r round(0.126+2.054*sqrt(0.126 * 0.874 / 144),5)`\right].
+\end{align*}
+$$
+
 :::
 

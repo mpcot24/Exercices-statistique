@@ -1,23 +1,49 @@
 ## Pivot pour le paramètre d'échelle d'une loi gamma {#sec-intervalle-pivot_gamma}
 
 Soit $X_1, \ldots, X_n$ un échantillon aléatoire de taille $n$ tiré d'une distribution Gamma avec paramètres $\alpha=2$ et $\beta$ inconnu.
-**a)** Montrer que $T = 2(X_1 +\cdots+X_n)/\beta$ est un pivot et que sa distribution est khi-carrée avec $4n$ degrés de liberté. [Astuce: utiliser les fonctions génératrices des moments.]
 
-**b)** Utiliser le pivot $T$ pour construire un intervalle de confiance bilatéral de niveau 95 \
+**a)** Montrer que $T = 2(X_1 +\cdots+X_n)/\beta$ est un pivot et que sa distribution est khi-carrée avec $4n$ degrés de liberté. 
 
-**c)** Si la moyenne échantillonnale est de $\bar x = 5,6$ et que $n=5$, utiliser le résultat en b) pour donner un intervalle de confiance de niveau 95 \
+*Astuce:* utiliser les fonctions génératrices des moments.
+
+**b)** Utiliser le pivot $T$ pour construire un intervalle de confiance bilatéral de niveau 95 % pour $\beta$.
+
+**c)** Si la moyenne échantillonnale est de $\bar x = 5,6$ et que $n=5$, utiliser le résultat en b) pour donner un intervalle de confiance de niveau 95 % pour $\mu$.
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
 **a)** La fonction génératrice des moments d'une distribution Gamma avec paramètres $\alpha = 2$ et $\beta > 0$ est donnée par $$ M_X(t) = (1-\beta t)^{-2}, \quad t < 1/\beta. $$ La fonction génératrice des moments de $T = 2(X_1 + \cdots + X_n)/\beta$ est donc $$ M_T(t) = \ex (e^{(2t/\beta) \sum_{i=1}^n X_i}) = \prod_{i=1}^n \ex \left\{ e^{(2t/\beta) X_i} \right\} = \{ M_X(2t/\beta)\}^n = (1-2t)^{-2n} $$ à condition que $2t/\beta < 1/\beta$, i.e., si $t < 1/2$. Sachant que $(1-2t)^{-2n}$ est la fonction génératrice des moments d'une distribution khi-carrée avec $4n$ degrés de liberté, $T \sim \chi^2_{(4n)}$. Ainsi, $T$ est une fonction de l'échantillon aléatoire et du paramètre $\beta$, avec une distribution connue qui ne dépend d'aucun paramètre inconnu : $T$ est donc un pivot.
 
-**b)** Pour construire l'intervalle de confiance bilatéral à partir de $T$, on note $\chi^2_{0,975,   4n}$ et $\chi^2_{0,025,   4n}$ les quantiles $2,5$\
+**b)** Pour construire l'intervalle de confiance bilatéral à partir de $T$, on note $\chi^2_{0,975,   4n}$ et $\chi^2_{0,025,   4n}$ les quantiles $2,5\%$ et $97,5\%$
+
+$$
 \begin{aligned} \chi^2_{0,975,   4n} \le T \le \chi^2_{0,025,   4n} \\ \chi^2_{0,975,   4n} \le \frac{2}{\beta} \sum_{i=1}^n X_i \le \chi^2_{0,025,   4n} \\ \frac{\chi^2_{0,975,   4n} }{2\sum_{i=1}^n X_i}  \le \frac{1}{\beta}  \le \frac{\chi^2_{0,025,   4n}}{2\sum_{i=1}^n X_i} \\ \frac{2n \bar{X}_n}{\chi^2_{0,025,   4n} }  \le \beta  \le \frac{2n \bar{X}_n}{\chi^2_{0,975,   4n}}, \end{aligned}
-$$ ce qui donne un l'intervalle de confiance bilatéral de niveau $95$ \
+$$ 
+ce qui donne un l'intervalle de confiance bilatéral de niveau $95$%
+
+$$
 \begin{aligned} \left[ \frac{2n \bar X_n}{ \chi^2_{0,025,   4n}}   , \frac{2n \bar X_n}{ \chi^2_{0,975,   4n}}\right]. \end{aligned}
 $$
 
-**c)** Avec $n = 5$, les quantiles requis d'une distribution khi-carrée avec $4n = 20$ degrés de liberté sont $$ \chi^2_{0,975,   20} = \Sexpr{round(qchisq(0.025,df=20),2)}, \quad  \chi^2_{0,025,   20} = \Sexpr{round(qchisq(0.975,df=20),2)}. $$ Sachant que $\bar x_n = 5,6$, l'intervalle de confiance de niveau $95$ \
-\begin{aligned} \left[ \frac{2\times 5\times 5,6}{ \Sexpr{round(qchisq(0.975,df=20),2)}}   , \frac{2\times 5\times 5,6}{ \Sexpr{round(qchisq(0.025,df=20),2)}}\right] = [ \Sexpr{round(2*5*5.6/qchisq(0.975,df=20),2)}, \Sexpr{round(2*5*5.6/qchisq(0.025,df=20),2)}]. \end{aligned}
+**c)** Avec $n = 5$, les quantiles requis d'une distribution khi-carrée avec $4n = 20$ degrés de liberté sont 
+```{r}
+#| echo: false
+chi_lower <- round(qchisq(0.025, df = 20), 2)
+chi_upper <- round(qchisq(0.975, df = 20), 2)
+```
+
+
+$$
+\begin{aligned}
+\chi^2_{0,975,   20} = `r chi_lower`, &\quad  \chi^2_{0,025,   20} = `r chi_upper`.
+\end{aligned}
+$$
+
+
+Sachant que $\bar x_n = 5,6$, l'intervalle de confiance de niveau $95$% est
+
+$$
+\begin{aligned} \left[ \frac{2\times 5\times 5,6}{ `r round(qchisq(0.975,df=20),2)`}   , \frac{2\times 5\times 5,6}{ `r round(qchisq(0.025,df=20),2)`}\right] = [ `r round(2*5*5.6/qchisq(0.975,df=20),2)`, `r round(2*5*5.6/qchisq(0.025,df=20),2)`]. 
+\end{aligned}
 $$
 :::
 

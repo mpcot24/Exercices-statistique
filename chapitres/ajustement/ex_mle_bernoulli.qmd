@@ -21,7 +21,9 @@ Soit $X_1, \dots, X_n$ un échantillon aléatoire issu d'une
 :::
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
-**a)** La distribution de $X$ est une Bernoulli avec une restriction sur la valeur du paramètre $\theta$. On a donc que $\esp{X} = \theta$. L'estimateur des moments de $\theta$ est donc $\tilde{\theta} = \bar{X}$. Pour l'estimateur du maximum de vraisemblance, on a, en posant $y = \sum_{i = 1}^n x_i$, $$
+**a)** La distribution de $X$ est une Bernoulli avec une restriction sur la valeur du paramètre $\theta$. On a donc que $\esp{X} = \theta$. L'estimateur des moments de $\theta$ est donc $\tilde{\theta} = \bar{X}$. Pour l'estimateur du maximum de vraisemblance, on a, en posant $y = \sum_{i = 1}^n x_i$, 
+
+$$
 \begin{aligned} L(\theta) &= \theta^{y} (1 - \theta)^{n - y}, \\ l(\theta) &= y \ln(\theta) + (n - y) \ln(1 - \theta) \\ \end{aligned}
 $$
 
@@ -29,7 +31,9 @@ et
 
 $$
 \begin{aligned} l^\prime(\theta) &= \frac{y}{\theta} - \frac{(n - y)}{1 - \theta}\\ &= \frac{y - n\theta}{\theta (1 - \theta)}\\ &= \frac{n \bar{x} - n \theta}{\theta (1 - \theta)}. \end{aligned}
-$$ Ainsi, la log-vraisemblance est croissante pour $\theta \leq \bar{x}$ et décroissante pour $\theta > \bar{x}$ (voir la figure @sec-ajustement-mle_bernoulli). Le maximum est donc atteint en $\bar{x}$. Cependant, puisque $0 \leq \theta \leq 1/2$ on doit avoir $\hat{\theta} \leq 1/2$. On a donc $\hat{\theta} = \min(\bar{X}, 1/2)$. 
+$$ 
+
+Ainsi, la log-vraisemblance est croissante pour $\theta \leq \bar{x}$ et décroissante pour $\theta > \bar{x}$. Le maximum est donc atteint en $\bar{x}$. Cependant, puisque $0 \leq \theta \leq 1/2$ on doit avoir $\hat{\theta} \leq 1/2$. On a donc $\hat{\theta} = \min(\bar{X}, 1/2)$. 
 
 **b)** Premièrement, on remarque que $Y = \sum_{i = 1}^n X_i = n \bar{X} \sim \text{Binomiale}(n, \theta)$ avec $0 \leq \theta \leq 1/2$. Deuxièmement, on sait que $\text{EQM}(\hat{\theta}) = \var{\hat{\theta}} + b(\hat{\theta})^2$, où $\hat{\theta}$ est un estimateur quelconque d'un paramètre $\theta$ et $b(\hat{\theta}) = \esp{\hat{\theta}} - \theta$ est le biais de l'estimateur. Pour l'estimateur des moments $\tilde{\theta} = Y/n$, on a $$
 \begin{aligned} \text{EQM}(\tilde{\theta}) &= \frac{\Var{Y}}{n^2} + b(Y/n)^2 \\ &= \frac{\theta (1 - \theta)}{n}, \end{aligned}

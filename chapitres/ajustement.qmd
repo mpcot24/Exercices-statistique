@@ -32,5 +32,3 @@
 
 {{< include ajustement/ex_qualite_ajustement_assuranceIARDUS.qmd >}}
 
-{{< include ajustement/ex_telecharger_fichier_contents_csv_sur_site.qmd >}}
-

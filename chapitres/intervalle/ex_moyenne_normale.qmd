@@ -2,7 +2,7 @@
 
 La valeur observée de la moyenne empirique $\bar{X}$ d'un
   échantillon aléatoire de taille $20$ tiré d'une $N(\mu, 80)$ est
-  $81,2$. Déterminer un estimateur par intervalle de niveau $95 \
+  $81,2$. Déterminer un estimateur par intervalle de niveau $95\%$
   pour $\mu$.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}

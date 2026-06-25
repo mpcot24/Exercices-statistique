@@ -11,7 +11,7 @@ $24$ ou $25$
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
 On a $X \sim N(\mu, 9)$. Tel que démontré à
-    l'exercice @intervalle.@sec-intervalle-moyenne_normale,
+    l'exercice [-@sec-intervalle-moyenne_normale],
     $$
       \Prob{\bar{X} - \frac{\sigma}{\sqrt{n}}  z_{0,05} \leq \mu
         \leq \bar{X} + \frac{\sigma}{\sqrt{n}}  z_{0,05}} = 0,90.

@@ -3,6 +3,8 @@
 On a un dé régulier avec $\theta$ faces numérotées de $1$ à
   $\theta$, où $\theta$ est un entier inconnu. Soit $X_1, \dots,
   X_n$ un échantillon aléatoire composé de $n$ lancers de dés indépendants.
+  
+  
 **a)** Déterminer l'estimateur des moments de $\theta$.
 
 **b)** Calculer l'estimateur des moments de $\theta$ si $n = 4$ et $x_1 = x_2 = x_3 = 3$ et $x_4 = 12$. Interpréter le résultat.

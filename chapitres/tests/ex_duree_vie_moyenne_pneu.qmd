@@ -1,30 +1,29 @@
 ## Durée de vie moyenne d'un pneu {#sec-tests-duree_vie_moyenne_pneu}
 
 On suppose que la durée de vie d'un pneu en kilomètres a une
-  distribution normale de moyenne $\nombre{30000}$ et d'écart type
-  $\nombre{5000}$. Le fabricant du nouveau pneu *Super Endurator
+  distribution normale de moyenne $30000$ et d'écart type
+  $5000$. Le fabricant du nouveau pneu *Super Endurator
     X24* prétend que la durée de vie moyenne de ce pneu est bien
-  supérieure à $\nombre{30000}$ km. Afin de vérifier les prétentions
-  du fabricant, on testera $ \mathcal{H}_0: \mu \leq \nombre{30000}$ versus
-  la contre-hypothèse $ \mathcal{H}_1: \mu > \nombre{30000}$ à partir de $n$
-  observations indépendantes $x_1, \dots, x_n$. On rejettera $ \mathcal{H}_0$ si
+  supérieure à $30000$ km. Afin de vérifier les prétentions
+  du fabricant, on testera $\mathcal{H}_0: \mu \leq 30000$ versus
+  la contre-hypothèse $\mathcal{H}_1: \mu > 30000$ à partir de $n$
+  observations indépendantes $x_1, \dots, x_n$. On rejettera $\mathcal{H}_0$ si
   $\bar{x} \geq c$. Trouver les valeurs de $n$ et de $c$ de sorte que
-  la probabilité de faire une erreur de type I en $\mu =
-  \nombre{30000}$ est $0,01$ et que la probabilité de faire une erreur
-  de type II en $\mu = \nombre{35000}$ est $0,02$.
+  la probabilité de faire une erreur de type I en $\mu = 30000$ est $0,01$ et que la probabilité de faire une erreur
+  de type II en $\mu = 35000$ est $0,02$.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
-$n = 19 \text{ ou } 20$, $c = \nombre{32658}$
+$n = 19 \text{ ou } 20$, $c = 32658$
 :::
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
 On sait que $\bar{X} \sim \mathcal{N}(\mu, 5000^2/n)$. Or,
     $$
 \begin{aligned}
-      \alpha &= \prob{\bar{X} \geq c; \mu = \nombre{30 000}} \\
+      \alpha &= \prob{\bar{X} \geq c; \mu = 30 000} \\
       &= 1 -
       \Phi\left(
-        \frac{\sqrt{n}(c - \nombre{30000})}{\nombre{5000}}
+        \frac{\sqrt{n}(c - 30000)}{5000}
       \right) \\
       \end{aligned}
 $$
@@ -34,15 +33,15 @@ d'où
 $$
 \begin{aligned}
       z_\alpha &=
-      \frac{\sqrt{n}(c-\nombre{30000})}{\nombre{5000}}.
+      \frac{\sqrt{n}(c-30000)}{5000}.
     \end{aligned}
 $$
     De même,
     $$
 \begin{aligned}
-      \beta &= \prob{\bar{X} < c; \mu = \nombre{35000}}\\
+      \beta &= \prob{\bar{X} < c; \mu = 35000}\\
       &= \Phi\left(
-        \frac{\sqrt{n}(c - \nombre{35000})}{\nombre{5000}}
+        \frac{\sqrt{n}(c - 35000)}{5000}
       \right), \\
       \end{aligned}
 $$
@@ -52,14 +51,12 @@ d'où
 $$
 \begin{aligned}
       z_{1 - \beta} &=
-      \frac{\sqrt{n}(c-\nombre{35000})}{\nombre{5000}}.
+      \frac{\sqrt{n}(c-35000)}{5000}.
     \end{aligned}
 $$
-    On trouve dans une table de la loi normale que $z_\alpha =
-    z_{0,01} = 2,326$ et que $z_{1 - \beta} = z_{0,98} = -2,05$. En
+    On trouve dans une table de la loi normale que $z_\alpha = z_{0,01} = 2,326$ et que $z_{1 - \beta} = z_{0,98} = -2,05$. En
     résolvant pour $n$ et $c$ le système à deux équations et deux
-    inconnues, on obtient $n = 19,15$ et $c = \nombre{32658}$. Aux
-    fins du test, on choisira donc une taille d'échantillon de $n =
-    19$ ou $n = 20$.
+    inconnues, on obtient $n = 19,15$ et $c = 32658$. Aux
+    fins du test, on choisira donc une taille d'échantillon de $n =19$ ou $n = 20$.
 :::
 

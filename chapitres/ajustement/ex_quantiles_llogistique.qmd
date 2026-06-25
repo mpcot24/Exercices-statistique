@@ -4,7 +4,7 @@ Un échantillon aléatoire de réclamations est tiré d'une distribution log-log
 $$
 F(x)=\frac{(x/\theta)^\tau}{1+(x/\theta)^\tau}, \quad x>0,   \theta >0,   \tau >0.
 $$
-Dans l'échantillon, 80\
+Dans l'échantillon, 80% des réclamations excèdent 100 et 20% des réclamations excèdent 400. Estimer les paramètres $\theta$ et $\tau$ par la méthode des quantiles.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
 $\hat{\tau}=2$ et $\hat{\theta}=200$

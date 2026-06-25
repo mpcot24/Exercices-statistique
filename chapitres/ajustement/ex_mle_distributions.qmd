@@ -2,7 +2,7 @@
 
 Trouver l'estimateur du maximum de vraisemblance du paramètre
   $\theta$ de chacune des distributions de
-  l'exercice @ajustement.@sec-ajustement-moments_distributions.
+  l'exercice [-@sec-ajustement-moments_distributions].
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
 **a)** $\bar{X}$
@@ -23,8 +23,17 @@ Dans tous les cas, la fonction de vraisemblance est $L(\theta) =
     \ln f(x_i; \theta)$. L'estimateur du maximum de vraisemblance du
     paramètre $\theta$ est la solution de l'équation $l^\prime(\theta)
     = 0$.
-**a)** On a $$
-\begin{aligned} L(\theta) &= \frac{e^{-n\theta} \theta^{\sum_{i=1}^n x_i}}{
+    
+**a)** On a 
+$$
+\begin{aligned} 
+L(\theta) &= \frac{e^{-n\theta} \theta^{\sum_{i=1}^n x_i}}{%
+          \prod_{i=1}^n x_i!}, \\
+        l(\theta) &= -n \theta  + \sum_{i = 1}^n x_i \ln(\theta)
+        - \sum_{i=1}^n \ln(x_i!) \\
+        \text{et} \quad
+        l^\prime(\theta) &= -n + \frac{\sum_{i = 1}^n x_i}{\theta}.
+\end{aligned}
 $$
 
 et
@@ -59,6 +68,6 @@ $$ Or, $$
 \begin{aligned} \frac{d}{da} \esp{\abs{X - a}} &= \int_{-\infty}^a f(x)  dx + \int_a^\infty f(x)  dx \\ &= F_X(a) - (1 - F_X(a)) \\ &= 2F_X(a) - 1 \end{aligned}
 $$ Par conséquent, le minimum est atteint au point $a$ tel que $2F_X(a) - 1 = 0$, soit $F_X(a) = 1/2$. Par définition, cette valeur est la médiane de $X$.
 
-**e)** On remarque que le support de la densité dépend du paramètre $\theta$. La vraisemblance est $$ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\prod_{i=1}^n\mathbf{1}(x_i>\theta) $$ S'il y a une indicatrice qui est 0, alors la vraisemblance sera 0, elles doivent donc toutes être égales à 1 simultanément, ce qui est équivalent à $$ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\mathbf{1}(\min(x_1,\ldots,x_n)>\theta). $$ La fonction $e^{n\theta - \sum_{i=1}^n x_i}$ est strictement croissante en fonction de $\theta$, ce qui indique de choisir une valeur de $\theta$ la plus grande possible. Par contre, on a la contrainte $min(x_1,\ldots,x_n)>\theta$, c'est-à-dire que $\theta$ doit être plus inférieur ou égal à la plus petite valeur de l'échantillon. Par conséquent, $\hat{\theta} = \min(X_1, \dots, X_n) = X_{(1)}$.
+**e)** On remarque que le support de la densité dépend du paramètre $\theta$. La vraisemblance est $$ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\prod_{i=1}^n\mathbf{1}(x_i>\theta) $$ S'il y a une indicatrice qui est 0, alors la vraisemblance sera 0, elles doivent donc toutes être égales à 1 simultanément, ce qui est équivalent à $$ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\mathbf{1}(\min(x_1,\ldots,x_n)>\theta). $$ La fonction $e^{n\theta - \sum_{i=1}^n x_i}$ est strictement croissante en fonction de $\theta$, ce qui indique de choisir une valeur de $\theta$ la plus grande possible. Par contre, on a la contrainte $\min(x_1,\ldots,x_n)>\theta$, c'est-à-dire que $\theta$ doit être plus inférieur ou égal à la plus petite valeur de l'échantillon. Par conséquent, $\hat{\theta} = \min(X_1, \dots, X_n) = X_{(1)}$.
 :::
 

@@ -5,18 +5,12 @@ Soit $S^2_n$ la variance échantillonnale d'un échantillon aléatoire de taille
   des paramètres inconnus. On sait que $Y = (n-1)S^2_n/\sigma^2 \sim
   \chi^2(n - 1)$. Soit $g(y)$ la fonction de densité de $Y$ et $G(y)$
   la fonction de répartition. Soit $a$ et $b$ des constantes telles
-  que $((n-1) s^2/b, (n-1) s^2/a)$ est un intervalle de confiance de niveau $1
-  - \alpha$ pour $\sigma^2$. La longueur de cet intervalle est donc $(n-1)
-  s^2 (b - a)/(ab)$. Démontrer que la longueur de l'intervalle de
-  confiance est minimale si $a$ et $b$ satisfont la condition $a^2
-  g(a) = b^2 g(b)$.  - G(a) = 1 - \alpha$.)
-
-::: {.callout-tip collapse="true" title="Astuce"}
-minimiser la longueur de
-  l'intervalle sous la contrainte que $G(b
-:::
-
-
+  que $((n-1) s^2/b, (n-1) s^2/a)$ est un intervalle de confiance de niveau 
+  $1- \alpha$ pour $\sigma^2$. La longueur de cet intervalle est donc $(n-1)  s^2 (b - a)/(ab)$. Démontrer que la longueur de l'intervalle de
+  confiance est minimale si $a$ et $b$ satisfont la condition $a^2  g(a) = b^2 g(b)$. 
+  
+  *Astuce:* minimiser la longueur de
+  l'intervalle sous la contrainte que $G(b) - G(a) = 1 - \alpha$.
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
 On cherche à minimiser la longueur de l'intervalle de confiance

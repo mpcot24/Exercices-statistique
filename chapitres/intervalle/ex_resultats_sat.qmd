@@ -10,45 +10,75 @@ Moyenne échantillonnale & 505 & 495\\
 \end{tabular}
 \end{center}
 
-**a)** Trouver un intervalle de confiance bilatéral à 90 \
+**a)** Trouver un intervalle de confiance bilatéral à $90~\%$ pour la moyenne des résultats du test de langue des étudiants de l'école secondaire.
 
 **b)** Est-ce que l'intervalle trouvé en a) inclut la valeur 508, la moyenne exacte du test de langue en 2005? Que peut-on en conclure?
 
-**c)** Trouver un intervalle de confiance bilatéral à 90 \
+**c)** Trouver un intervalle de confiance bilatéral à $90~\%$ pour la moyenne des résultats du test de mathématiques des étudiants de l'école secondaire. Est-ce que l'intervalle inclut la valeur 520, la moyenne du test de mathématiques en 2005? Que peut-on en conclure?
 
 **d)** Peut-on utiliser la méthode discutée en classe pour un construire un intervalle de confiance bilatéral pour la différence entre les moyennes des deux tests (langue et mathématiques), en supposant que leur variance est égale? Expliquer.
 
-**e)** Construire un intervalle de confiance bilatéral de niveau 90 \
+**e)** Construire un intervalle de confiance bilatéral de niveau $90~\%$ pour la variance $\sigma^2$ des résultats au test de mathématiques. Comment peut-on construire un intervalle de confiance bilatéral à $90~\%$ pour $\sigma$? Expliquer.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}
-**a)** $(\Sexpr{round(505-qt(0.95,df=19)*55/sqrt(20),3)},   \Sexpr{round(505+qt(0.95,df=19)*55/sqrt(20),3)})$
+**a)** $(`r round(505-qt(0.95,df=19)*55/sqrt(20),3)`,  `r round(505+qt(0.95,df=19)*55/sqrt(20),3)`)$
 
 **b)** Oui
 
-**c)** $(\Sexpr{round(495-qt(0.95,df=19)*70/sqrt(20),3)},   \Sexpr{round(495+qt(0.95,df=19)*70/sqrt(20),3)})$
+**c)** $(`r round(495-qt(0.95,df=19)*70/sqrt(20),3)`,   `r round(495+qt(0.95,df=19)*70/sqrt(20),3)`)$
 
 **d)** Non
 
-**e)** $(\Sexpr{round(sqrt((19*4900)/qchisq(0.95,df=19)),3)},   \Sexpr{round(sqrt((19*4900)/qchisq(0.05,df=19)),3)})$
+**e)** $(`r round(sqrt((19*4900)/qchisq(0.95,df=19)),3)`,   `r round(sqrt((19*4900)/qchisq(0.05,df=19)),3)`)$
 :::
 
 ::: {.callout-tip collapse="true" title="Solution complète"}
-**a)**  L'intervalle de confiance bilatéral pour $\mu$ a la forme $$ \left[ \bar X_n - t_{n-1,\alpha/2} \frac{S_n}{\sqrt{n}}, \bar X_n + t_{n-1,\alpha/2} \frac{S_n}{\sqrt{n}} \right]. $$ Sachant que $n=20$ et $\alpha =0,1$, le quantile approprié de la distribution de Student est $$ t_{19,   0,05} = \Sexpr{round(qt(0.95,df=19),3)}. $$ Avec $\bar x_n = 505$ et $S_n = 55$, l'intervalle devient $$
-\begin{aligned} \left[ 505 -  \Sexpr{round(qt(0.95,df=19),3)}   \frac{55}{\sqrt{20}}   , 505 + \Sexpr{round(qt(0.95,df=19),3)}   \frac{55}{\sqrt{20}} \right] = [ \Sexpr{round(505-qt(0.95,df=19)*55/sqrt(20),3)} ,\Sexpr{round(505+qt(0.95,df=19)*55/sqrt(20),3)}]. \end{aligned}
+**a)**  L'intervalle de confiance bilatéral pour $\mu$ a la forme $$ \left[ \bar X_n - t_{n-1,\alpha/2} \frac{S_n}{\sqrt{n}}, \bar X_n + t_{n-1,\alpha/2} \frac{S_n}{\sqrt{n}} \right]. $$ Sachant que $n=20$ et $\alpha =0,1$, le quantile approprié de la distribution de Student est $$ t_{19,   0,05} = `r round(qt(0.95,df=19),3)`. $$ Avec $\bar x_n = 505$ et $S_n = 55$, l'intervalle devient
+
+$$
+\begin{aligned} \left[ 505 -  `r round(qt(0.95,df=19),3)`   \frac{55}{\sqrt{20}}   , 505 + `r round(qt(0.95,df=19),3)`   \frac{55}{\sqrt{20}} \right] = [ `r round(505-qt(0.95,df=19)*55/sqrt(20),3)` , `r round(505+qt(0.95,df=19)*55/sqrt(20),3)`]. \end{aligned}
 $$
 
-**b)** Puisque l'intervalle inclut $508$, il n'y a pas de preuve à l'effet que la moyenne du test de langue a significativement changé depuis 2005, à un niveau de confiance $90$ \
 
-**c)**  L'intervalle a la même forme qu'en a) et le même quantile. Avec la moyenne échantillonnale et l'écart-type échantillonnal, l'intervalle peut être calculé comme suit $$
-\begin{aligned} \left[ 495 -  \Sexpr{round(qt(0.95,df=19),3)}   \frac{70}{\sqrt{20}}  ,495 + \Sexpr{round(qt(0.95,df=19),3)}   \frac{70}{\sqrt{20}} \right] = [ \Sexpr{round(495-qt(0.95,df=19)*70/sqrt(20),3)},  \Sexpr{round(495+qt(0.95,df=19)*70/sqrt(20),3)}]. \end{aligned}
-$$ L'intervalle inclut $520$, il n'y a donc pas une différence significative dans la moyenne du test de mathématiques depuis 2005, à un niveau de confiance $90$ \
+**b)** Puisque l'intervalle inclut $508$, il n'y a pas de preuve à l'effet que la moyenne du test de langue a significativement changé depuis 2005, à un niveau de confiance $90~\%$.
+
+**c)**  L'intervalle a la même forme qu'en a) et le même quantile. Avec la moyenne échantillonnale et l'écart-type échantillonnal, l'intervalle peut être calculé comme suit 
+$$
+\begin{aligned} \left[ 495 -  `r round(qt(0.95,df=19),3)`   \frac{70}{\sqrt{20}}  ,495 + `r round(qt(0.95,df=19),3)`   \frac{70}{\sqrt{20}} \right] = [ `r round(495-qt(0.95,df=19)*70/sqrt(20),3)`,  `r round(495+qt(0.95,df=19)*70/sqrt(20),3) ` ]. \end{aligned}
+$$ 
+
+L'intervalle inclut $520$, il n'y a donc pas une différence significative dans la moyenne du test de mathématiques depuis 2005, à un niveau de confiance $90~\%$.
 
 **d)**  Non, la méthode ne peut pas être utilisée car les échantillons ne sont pas indépendants, les tests ont été effectués par les 20 mêmes étudiants dans les deux cas.
 
-**e)**  L'intervalle de confiance a la forme $$ \left[\frac{n-1}{\chi^2_{n-1,\alpha/2}}   S_n^2,\frac{n-1}{\chi^2_{n-1,1-\alpha/2}}   S_n^2\right]. $$ Les quantiles appropriés d'une distribution khi-carrée avec $n-1=19$ degrés de liberté et $\alpha=0,1$ sont $$ \chi^2_{n-1,1-\alpha/2} = \Sexpr{round(qchisq(0.05,df=19),3)}, \quad \chi^2_{n-1,\alpha/2} = \Sexpr{round(qchisq(0.95,df=19),3)}. $$ Avec la variance échantillonnale $S_n^2 = 70^2 = \Sexpr{70^2}$, on obtient $$
-\begin{aligned} \left[\frac{19}{\Sexpr{round(qchisq(0.95,df=19),3)}}\times4900,\frac{19}{\Sexpr{round(qchisq(0.05,df=19),3)}}\times4900\right] = [\Sexpr{round((19*4900)/qchisq(0.95,df=19),3)},\Sexpr{round((19*4900)/qchisq(0.05,df=19),3)}]. \end{aligned}
-$$ Une possibilité d'intervalle de confiance bilatéral à $100 \times (1-\alpha)$ \
-\begin{aligned} [\sqrt{\Sexpr{round((19*4900)/qchisq(0.95,df=19),3)}},\sqrt{\Sexpr{round((19*4900)/qchisq(0.05,df=19),3)}}] = [\Sexpr{round(sqrt((19*4900)/qchisq(0.95,df=19)),3)},\Sexpr{round(sqrt((19*4900)/qchisq(0.05,df=19)),3)}]. \end{aligned}
+**e)**  L'intervalle de confiance a la forme 
+
+$$ 
+\left[\frac{n-1}{\chi^2_{n-1,\alpha/2}}   S_n^2,\frac{n-1}{\chi^2_{n-1,1-\alpha/2}}   S_n^2\right]. 
+$$ 
+
+Les quantiles appropriés d'une distribution khi-carrée avec $n-1=19$ degrés de liberté et $\alpha=0,1$ sont 
+$$ 
+\chi^2_{n-1,1-\alpha/2} = `r round(qchisq(0.05,df=19),3)`, \quad \chi^2_{n-1,\alpha/2} = `r round(qchisq(0.95,df=19),3)`. 
+$$ 
+Avec la variance échantillonnale $S_n^2 = 70^2 = `r 70^2`$, on obtient 
 $$
+\begin{aligned} \left[\frac{19}{`r round(qchisq(0.95,df=19),3)`}\times4900,\frac{19}{`r round(qchisq(0.05,df=19),3)`}\times4900\right] = [`r round((19*4900)/qchisq(0.95,df=19),3)`, `r round((19*4900)/qchisq(0.05,df=19),3)`]. \end{aligned}
+$$ 
+
+Une possibilité d'intervalle de confiance bilatéral à $100 \times (1-\alpha)$~\% pour $\sigma$ est
+$$
+\left[\sqrt{\frac{n-1}{\chi^2_{n-1,\alpha/2}}} \, S_n,\sqrt{\frac{n-1}{\chi^2_{n-1,1-\alpha/2}}} \, S_n\right],
+$$
+car
+
+\begin{align*}
+\Pr\left(\sqrt{\frac{n-1}{\chi^2_{n-1,\alpha/2}}} \, S_n \le \sigma \le \sqrt{\frac{n-1}{\chi^2_{n-1,1-\alpha/2}}} \, S_n \right)\\ &= \Pr\left(\frac{n-1}{\chi^2_{n-1,\alpha/2}} \, S_n^2 \le \sigma^2 \le \frac{n-1}{\chi^2_{n-1,1-\alpha/2}} \, S_n^2 \right) = 1-\alpha.
+\end{align*}
+
+L'intervalle devient
+\begin{align*}
+[\sqrt{`r round((19*4900)/qchisq(0.95,df=19),3)`} ,\sqrt{`r  round((19*4900)/qchisq(0.05,df=19),3)`}] = [`r round(sqrt((19*4900)/qchisq(0.95,df=19)),3)`, `r round(sqrt((19*4900)/qchisq(0.05,df=19)),3)`].
+\end{align*}
 :::
 

@@ -1,6 +1,7 @@
 ## Estimateurs pour $\theta$ {#sec-ajustement-mle_theta_uniforme}
 
 On suppose que $X_1, \ldots, X_n$ forment un échantillon aléatoire d'une loi uniforme sur l'intervalle $(0, 2\theta +1)$ pour un paramètre inconnu $\theta > -1/2$.
+
 **a)** Calculer l'estimateur du maximum de vraisemblance pour $\theta$.
 
 **b)** Calculer l'EMV de $\vr (X)$, où $X$ suit une distribution $\mathcal{U}(0, 2\theta+1)$.

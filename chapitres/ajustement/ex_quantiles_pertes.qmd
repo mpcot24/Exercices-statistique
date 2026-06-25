@@ -1,12 +1,14 @@
 ## 20 pertes sur un an {#sec-ajustement-quantiles_pertes}
 
 Les 20 pertes suivantes (en millions de dollars) ont été enregistrées sur une période d'un an:
-\begin{center}
-\begin{tabular}{cccccccccc}
-1 & 1 & 1 & 1 & 1 & 2 & 2 & 3 & 3 & 4 \\
-6 & 6 & 8 & 10 & 13 & 14 & 15 & 18 & 22 & 25
-\end{tabular}
-\end{center}
+
+```{r}
+#| echo: false
+
+knitr::kable(c(1, 1, 1, 1, 1, 2, 2, 3, 3, 4, 6, 6, 
+  8, 10, 13, 14, 15, 18, 22, 25))
+```
+
 Déterminer le 75e quantile empirique par la méthode des quantiles empiriques lissés.
 
 ::: {.callout-note collapse="true" title="Éléments de réponse"}

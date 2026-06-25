@@ -7,7 +7,8 @@ $$
 \mathcal{H}_1 \: : \: \lambda & = \lambda_1.
 \end{aligned}
 $$
-[*On sait que si $Z_1 \sim \mathcal{P*(\mu_1)$ est indépendante de $Z_2 \sim \mathcal{P}(\mu_2)$, alors $Z_1 +Z_2 \sim \mathcal{P}(\mu_1 + \mu_2)$.}]
+
+*Astuce:* On sait que si $Z_1 \sim \mathcal{P}(\mu_1)$ est indépendante de $Z_2 \sim \mathcal{P}(\mu_2)$, alors $Z_1 +Z_2 \sim \mathcal{P}(\mu_1 + \mu_2)$.
 
 **a)** Montrer que le test optimal au seuil $\alpha$ rejette $\mathcal{H}_0$ quand $\bar X_n > c$. Spécifier la valeur de $c$.
 
@@ -32,10 +33,31 @@ $$
 
 **b)** Ici, le test optimal rejette l'hypothèse nulle si $$ \frac{f(\boldsymbol{x}; \lambda_1)}{f(\boldsymbol{x}; \lambda_0)} = \exp\left\{ -(\lambda_1 - \lambda_0)n + n \bar x_n \ln\left(\frac{\lambda_1}{\lambda_0}\right) \right\} > 1, $$ c'est-à-dire lorsque $$ \bar x_n > \underbrace{\frac{\lambda_1 -\lambda_0}{\ln(\lambda_1) - \ln(\lambda_0)}}_{=c^*}. $$
 
-**c)** Si $n=20$ et $\lambda_0 = 1/20$, $n\bar X_n$ est une loi de Poisson avec moyenne $1$ sous l'hypothèse nulle. Le quantile de niveau $1-0,08 = 0,92$ de cette distribution est $2$ puisque \begin{center} \begin{tabular}{lcc} $x$ & $\Pr(n\bar X_n =x)$ & $\Pr(n\bar X_n \leq x)$ \\ $0$ & $0,368$ & $0,368$ \\ $1$ & $0,368$ & $0,736$ \\ $2$ & $0,184$ & $0,920$ \\ \end{tabular} \end{center} 
-\begin{aligned} \Pr( n \bar X_n > nc  |  \lambda = \lambda_0) &= \alpha \\ 1-\Pr( n \bar X_n \leq nc  |  \lambda = \lambda_0) &= \alpha \end{aligned}
-$$ 
+**c)** Si $n=20$ et $\lambda_0 = 1/20$, $n\bar X_n$ est une loi de Poisson avec moyenne $1$ sous l'hypothèse nulle. Le quantile de niveau $1-0,08 = 0,92$ de cette distribution est $2$ puisque 
 
-**d)** Ici, la valeur de $c^\star$ est donnée par $$ \frac{\lambda_1 -\lambda_0}{\ln(\lambda_1) - \ln(\lambda_0)} = \frac{1/20}{\ln(1/10) - \ln(1/20)} = \Sexpr{round(0.05/(log(0.1) - log(0.05)),5)}, $$ donc le test rejette l'hypothèse nulle si $$ n\bar X_n > nc^* = 20\times \Sexpr{round(0.05/(log(0.1) - log(0.05)),5)} = \Sexpr{round(20*0.05/(log(0.1) - log(0.05)),5)}, $$ i.e. si $n \bar X_n > 1$. La probabilité d'erreur de type I est $$ \Pr(n \bar X_n > 1  |  \lambda =1/20) = \Sexpr{round(1-ppois(1,lambda=1),3)}. $$ La probabilité d'erreur de type II est $$ \Pr(n \bar X_n \le 1  |  \lambda =1/10) = \Sexpr{round(ppois(1,lambda=2),3)}, $$ et la valeur minimale que peut atteindre $\alpha(\delta) + \beta(\delta)$ est $$ \alpha(\delta) + \beta(\delta) = \Sexpr{round(1-ppois(1,lambda=1),3)} + \Sexpr{round(ppois(1,lambda=2),3)} = \Sexpr{round(1-ppois(1,lambda=1),3)+round(ppois(1,lambda=2),3)}. $$
+```{r}
+#| echo: false
+
+knitr::kable(data.frame("x" = c(0, 1, 2),
+                        "Masse" = c(0.368, 0.368, 0.184),
+                        "Répartition" = c(0.368, 0.736, 0.920)))
+```
+
+
+Vu que 
+$$
+\begin{aligned} \Pr( n \bar X_n > nc  |  \lambda = \lambda_0) &= \alpha \\ 1-\Pr( n \bar X_n \leq nc  |  \lambda = \lambda_0) &= \alpha \end{aligned},
+$$ 
+la valeur critique $c$ égale  $2/20 = 0,1$ et le test rejette $\mathcal{H}_0$ si $n \bar X_n > 2$. La probabilité d'erreur de type I est donc
+$$
+\Pr(n\bar X_n > 2  |  \lambda = 1/20) = 0,08.
+$$
+La probabilité d'erreur de type II est donnée par
+$$
+\Pr(n \bar X_n \le 2  |  \lambda =1/10) = 0,6766764
+$$
+et peut être calculée par le fait que quand $\lambda =1/10$, $n\bar X_n$ est une loi de Poisson avec moyenne $2$.
+
+**d)** Ici, la valeur de $c^\star$ est donnée par $$ \frac{\lambda_1 -\lambda_0}{\ln(\lambda_1) - \ln(\lambda_0)} = \frac{1/20}{\ln(1/10) - \ln(1/20)} = `r round(0.05/(log(0.1) - log(0.05)),5)`, $$ donc le test rejette l'hypothèse nulle si $$ n\bar X_n > nc^* = 20\times `r round(0.05/(log(0.1) - log(0.05)),5)` = `r round(20*0.05/(log(0.1) - log(0.05)),5)`, $$ i.e. si $n \bar X_n > 1$. La probabilité d'erreur de type I est $$ \Pr(n \bar X_n > 1  |  \lambda =1/20) = `r round(1-ppois(1,lambda=1),3)`. $$ La probabilité d'erreur de type II est $$ \Pr(n \bar X_n \le 1  |  \lambda =1/10) = `r round(ppois(1,lambda=2),3)`, $$ et la valeur minimale que peut atteindre $\alpha(\delta) + \beta(\delta)$ est $$ \alpha(\delta) + \beta(\delta) = `r round(1-ppois(1,lambda=1),3)` + `r round(ppois(1,lambda=2),3)` = `r round(1-ppois(1,lambda=1),3)+round(ppois(1,lambda=2),3)`. $$
 :::
 
