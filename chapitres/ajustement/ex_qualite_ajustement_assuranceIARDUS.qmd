@@ -151,11 +151,11 @@ nn <- length(usprivautoclaim[,5])
 
 par(mfrow=c(1,2)) 
 
-plot(qlnorm((1:nn)/(nn+1),bla1$estimate[1],bla1$estimate[2]),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles théoriques de la log-normale")
+plot(qlnorm((1:nn)/(nn+1),bla1$estimate[1],bla1$estimate[2]),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles théoriques de la log-normale", asp = 1)
 
 abline(0,1) 
 
-plot(qpareto((1:nn)/(nn+1),alpha2,theta2),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles théoriques de la Pareto",xlim=c(0,40000))
+plot(qpareto((1:nn)/(nn+1),alpha2,theta2),sort(usprivautoclaim[,5]),ylab="Quantiles empiriques",xlab="Quantiles théoriques de la Pareto",xlim=c(0,40000), asp = 1)
 
 abline(0,1) 
 

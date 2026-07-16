@@ -2,13 +2,26 @@
 
 Le *Scholastic Assessment Test* (SAT) est un test d'aptitudes standardisé largement utilisé dans les admissions aux universités américaines. Les résultats au test, qui avaient lentement diminués au fil des ans depuis son implantation, ont commencé à remonter. Initialement, un résultat de 500 était considéré dans la moyenne. En 2005, les résultats moyens étaient approximativement de 508 pour le test de langue et 520 pour le test de mathématiques. Un échantillon aléatoire de résultats de 20 étudiants d'une école secondaire a produit les moyennes et écart-types listés ci-dessous. On suppose que les résultats aux tests sont normalement distribués.
 
-\begin{center}
-\begin{tabular}{lcc}
-& Langue & Mathématiques\\ \hline
-Moyenne échantillonnale & 505 & 495\\
-Écart-type échantillonnal & 55 & 70\\ \hline
-\end{tabular}
-\end{center}
+```{r}
+#| echo: false
+
+library(knitr)
+
+dat <- data.frame(
+  Quantité = c(
+    "Moyenne échantillonnale",
+    "Écart-type échantillonnal"
+  ),
+  Langue = c(505, 55),
+  Mathématiques = c(495, 70)
+)
+
+kable(
+  dat,
+  col.names = c("", "Langue", "Mathématiques"),
+  align = c("l", "c", "c")
+)
+```
 
 **a)** Trouver un intervalle de confiance bilatéral à $90~\%$ pour la moyenne des résultats du test de langue des étudiants de l'école secondaire.
 

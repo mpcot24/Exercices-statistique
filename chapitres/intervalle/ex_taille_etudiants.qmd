@@ -7,19 +7,29 @@ Lors d'une très sérieuse et importante analyse statistique de la
   le tableau ci-dessous. On suppose que les deux échantillons
   aléatoires sont indépendants et que la taille des étudiantes est
   distribuée selon une loi normale.
-  \begin{center}
-    \begin{tabular}{lD{.}{,}{3.0}D{.}{,}{3.0}}
-      \toprule
-      Quantité &
-      \multicolumn{1}{c}{Actuariat} &
-      \multicolumn{1}{c}{Génie civil} \\
-      \midrule
-      Taille de l'échantillon     & 15 & 20 \\
-      Taille moyenne (en cm)      & 152 & 154 \\
-      Variance (en $\text{cm}^2$) & 101 & 112 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
+
+```{r}
+#| echo: false
+
+library(knitr)
+
+dat <- data.frame(
+  Quantité = c(
+    "Taille de l'échantillon",
+    "Taille moyenne (en cm)",
+    "Variance (en cm²)"
+  ),
+  Actuariat = c(15, 152, 101),
+  `Génie civil` = c(20, 154, 112)
+)
+
+kable(
+  dat,
+  align = c("l", "r", "r")
+)
+
+```
+
 **a)** Déterminer un intervalle de confiance à $90~\%$ pour la taille moyenne des étudiantes de chacun des deux programmes en supposant que l'écart type de la distribution normale est 9 cm.
 
 **b)** Répéter la partie a) en utilisant plutôt les variances des échantillons.
