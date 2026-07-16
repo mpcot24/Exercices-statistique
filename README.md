@@ -60,4 +60,6 @@ les erreurs.
 
 8. Lire le `.html` rendu pour s'assurer que la conversion s'est bien déroulée, surtout pour les références entre exercices.
 
-- Pour ouvrir le recueil, il faut ouvrir `index.html` dans le dossier `_book/` créé dans le processus. 
+- Pour ouvrir le recueil, il faut ouvrir `index.html` dans le dossier `docs/` créé dans le processus. 
+
+Il faut que le `output-dir` du `quarto.yml` soit `docs` pour que le résultat se trouve dans le fichier `docs/`. C'est nécessaire que la sortie soit dans `docs/` pour pouvoir le déployer sur GitHub Pages.
