@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Ajustement de modèles – ACT2000 — Recueil d'exercices</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapitres/intervalle.html" rel="next">
+<link href="../chapitres/estimation.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a522afb83bf8ae494942cf1b0ac9d4c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      Esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      ex:     "\\mathbb{E}",
+      var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      Var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      vr:     "\\mathrm{Var}",
+      prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Cov:    "\\mathrm{Cov}",
+      d:      "\\mathrm{d}",
+      bm:     ["\\boldsymbol{#1}", 1],
+      abs: ["\\left|#1\\right|", 1],
+      texttt: ["`#1`", 1],
+      textsf: ["`#1`", 1]
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/ajustement.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">ACT2000 — Recueil d’exercices</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Préface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exercices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/echantillonnage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/ajustement.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/intervalle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation par intervalle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#sec-ajustement-moments_distributions" id="toc-sec-ajustement-moments_distributions" class="nav-link active" data-scroll-target="#sec-ajustement-moments_distributions"><span class="header-section-number">4.1</span> Estimateur des moments pour plusieurs distributions</a></li>
+  <li><a href="#sec-ajustement-moments_lnorm" id="toc-sec-ajustement-moments_lnorm" class="nav-link" data-scroll-target="#sec-ajustement-moments_lnorm"><span class="header-section-number">4.2</span> Moments - Loi log-normale</a></li>
+  <li><a href="#sec-ajustement-moments_geo" id="toc-sec-ajustement-moments_geo" class="nav-link" data-scroll-target="#sec-ajustement-moments_geo"><span class="header-section-number">4.3</span> Moments - Loi géométrique</a></li>
+  <li><a href="#sec-ajustement-moments_des" id="toc-sec-ajustement-moments_des" class="nav-link" data-scroll-target="#sec-ajustement-moments_des"><span class="header-section-number">4.4</span> Un dé régulier mais spécial</a></li>
+  <li><a href="#sec-ajustement-quantiles_lnorm" id="toc-sec-ajustement-quantiles_lnorm" class="nav-link" data-scroll-target="#sec-ajustement-quantiles_lnorm"><span class="header-section-number">4.5</span> Quantiles - Loi log-normale</a></li>
+  <li><a href="#sec-ajustement-quantiles_llogistique" id="toc-sec-ajustement-quantiles_llogistique" class="nav-link" data-scroll-target="#sec-ajustement-quantiles_llogistique"><span class="header-section-number">4.6</span> Quantiles - Loi log-logistique</a></li>
+  <li><a href="#sec-ajustement-quantiles_pertes" id="toc-sec-ajustement-quantiles_pertes" class="nav-link" data-scroll-target="#sec-ajustement-quantiles_pertes"><span class="header-section-number">4.7</span> 20 pertes sur un an</a></li>
+  <li><a href="#sec-ajustement-mle_distributions" id="toc-sec-ajustement-mle_distributions" class="nav-link" data-scroll-target="#sec-ajustement-mle_distributions"><span class="header-section-number">4.8</span> Estimateur du maximum de vraisemblance pour plusieurs distributions</a></li>
+  <li><a href="#sec-ajustement-mle_expo_translatee" id="toc-sec-ajustement-mle_expo_translatee" class="nav-link" data-scroll-target="#sec-ajustement-mle_expo_translatee"><span class="header-section-number">4.9</span> Maximum de vraisemblance pour une distribution exponentielle translatée</a></li>
+  <li><a href="#sec-ajustement-mle_uniforme" id="toc-sec-ajustement-mle_uniforme" class="nav-link" data-scroll-target="#sec-ajustement-mle_uniforme"><span class="header-section-number">4.10</span> Estimateur du maximum de vraisemblance non unique</a></li>
+  <li><a href="#sec-ajustement-mle_invgauss" id="toc-sec-ajustement-mle_invgauss" class="nav-link" data-scroll-target="#sec-ajustement-mle_invgauss"><span class="header-section-number">4.11</span> Estimateurs du maximum de vraisemblance pour une distribution inverse gaussienne</a></li>
+  <li><a href="#sec-ajustement-mle_pareto" id="toc-sec-ajustement-mle_pareto" class="nav-link" data-scroll-target="#sec-ajustement-mle_pareto"><span class="header-section-number">4.12</span> Estimateurs pour les paramètres d’une distribution Pareto type II</a></li>
+  <li><a href="#sec-ajustement-mle_bornes_uniforme" id="toc-sec-ajustement-mle_bornes_uniforme" class="nav-link" data-scroll-target="#sec-ajustement-mle_bornes_uniforme"><span class="header-section-number">4.13</span> Estimateurs du maximum de vraisemblance pour les bornes d’une uniforme</a></li>
+  <li><a href="#sec-ajustement-mle_theta_uniforme" id="toc-sec-ajustement-mle_theta_uniforme" class="nav-link" data-scroll-target="#sec-ajustement-mle_theta_uniforme"><span class="header-section-number">4.14</span> Estimateurs pour <span class="math inline">\(\theta\)</span></a></li>
+  <li><a href="#sec-ajustement-mle_bernoulli" id="toc-sec-ajustement-mle_bernoulli" class="nav-link" data-scroll-target="#sec-ajustement-mle_bernoulli"><span class="header-section-number">4.15</span> Estimateurs pour la probabilité de succès</a></li>
+  <li><a href="#sec-ajustement-qualite_ajustement_assuranceIARDUS" id="toc-sec-ajustement-qualite_ajustement_assuranceIARDUS" class="nav-link" data-scroll-target="#sec-ajustement-qualite_ajustement_assuranceIARDUS"><span class="header-section-number">4.16</span> Assurance automobile privée américaine</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/ajustement.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-ajustement-moments_distributions" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-ajustement-moments_distributions"><span class="header-section-number">4.1</span> Estimateur des moments pour plusieurs distributions</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire issu des distributions ci-dessous. Dans chaque cas, trouver l’estimateur du paramètre <span class="math inline">\(\theta\)</span> à l’aide de la méthode des moments.</p>
+<p><strong>a)</strong> <span class="math inline">\(f(x; \theta) = \theta^x e^{-\theta}/x!\)</span>, <span class="math inline">\(x = 0, 1, \dots\)</span>, <span class="math inline">\(\theta &gt; 0\)</span>.</p>
+<p><strong>b)</strong> <span class="math inline">\(f(x; \theta) = \theta x^{\theta - 1}\)</span>, <span class="math inline">\(0 &lt; x &lt; 1\)</span>, <span class="math inline">\(\theta &gt; 0\)</span>.</p>
+<p><strong>c)</strong> <span class="math inline">\(f(x; \theta) = \theta^{-1} e^{-x/\theta}\)</span>, <span class="math inline">\(\theta &gt; 0\)</span>.</p>
+<p><strong>d)</strong> <span class="math inline">\(f(x; \theta) = e^{-|x - \theta|}/2\)</span>, <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>, <span class="math inline">\(-\infty &lt; \theta &lt; \infty\)</span>.</p>
+<p><strong>e)</strong> <span class="math inline">\(f(x; \theta) = e^{-(x - \theta)}\)</span>, <span class="math inline">\(x \geq \theta\)</span>, <span class="math inline">\(\theta &gt; 0\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\bar{X}\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(\bar{X}/(1 - \bar{X})\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(\bar{X}\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(\bar{X}\)</span></p>
+<p><strong>e)</strong> <span class="math inline">\(\bar{X} - 1\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a une une distribution de Poisson de paramètre <span class="math inline">\(\theta\)</span>, d’où <span class="math inline">\(\esp{X} = \theta\)</span>. L’estimateur des moments est donc <span class="math inline">\(\hat{\theta} = \bar{X}\)</span>.</p>
+<p><strong>b)</strong> La densité est celle d’une distribution bêta de paramètres <span class="math inline">\(\theta\)</span> et <span class="math inline">\(1\)</span>. Ainsi, <span class="math inline">\(\esp{X} = \theta/(\theta + 1)\)</span> et en posant <span class="math display">\[ \frac{\theta}{\theta + 1} = \bar{X} \]</span> on trouve que l’estimateur des moments de <span class="math inline">\(\theta\)</span> est <span class="math display">\[ \hat{\theta} = \frac{\bar{X}}{1 - \bar{X}}. \]</span></p>
+<p><strong>c)</strong> On reconnaît la densité d’une distribution Gamma de paramètres <span class="math inline">\(1\)</span> et <span class="math inline">\(\theta\)</span>. Ainsi, on sait que <span class="math inline">\(\esp{X} = \theta\)</span>, d’où l’estimateur des moments est <span class="math inline">\(\hat{\theta} = \bar{X}.\)</span></p>
+<p><strong>d)</strong> Cette densité est celle de la loi de Laplace. On remarque d’abord que <span class="math display">\[
+\begin{aligned} -|x - \theta| &amp;= \begin{cases} -x + \theta &amp;\text{pour} \;  x \geq \theta \\ x - \theta &amp;\text{pour} \; x \leq \theta \\ \end{cases}. \end{aligned}
+\]</span> Ainsi, on divise l’intégrale en deux selon les cas pour la valeur absolue: <span class="math display">\[
+\begin{aligned} \esp{X} &amp;= \frac{1}{2} \left( \int_{-\infty}^\theta x e^{x-\theta}  dx + \int_{\theta}^\infty xe^{-x + \theta}  dx \right). \end{aligned}
+\]</span> On intègre ensuite par parties pour obtenir <span class="math display">\[
+\begin{aligned} \esp{X} &amp;= \frac{1}{2} \left( \left[x e^{x - \theta}   \right]_{-\infty}^{\theta} -  \int_{-\infty}^\theta e^{x-\theta}  dx - \left[ x e^{-x + \theta} \right]_{\theta}^{\infty} + \int_{\theta}^\infty e^{-x + \theta}  dx \right) \\ &amp;= \frac{1}{2}(2\theta)\\ &amp;= \theta. \end{aligned}
+\]</span> L’estimateur des moments de <span class="math inline">\(\theta\)</span> est donc <span class="math inline">\(\hat{\theta} = \bar{X}\)</span>.</p>
+<p><strong>e)</strong> On a la densité d’une exponentielle de paramètre 1 translatée de <span class="math inline">\(\theta\)</span> vers la droite. Par conséquent, <span class="math inline">\(\esp{X} = \theta + 1\)</span>, un résultat facile à vérifier en intégrant. En posant <span class="math inline">\(\theta + 1 = \bar{X}\)</span>, on trouve facilement que <span class="math inline">\(\hat{\theta} = \bar{X} - 1\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-moments_lnorm" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-ajustement-moments_lnorm"><span class="header-section-number">4.2</span> Moments - Loi log-normale</h2>
+<p>Si <span class="math inline">\(Z\sim \mathcal{N}(\mu,\sigma^2)\)</span> et <span class="math inline">\(Y=e^{Z}\)</span>, alors <span class="math inline">\(Y\)</span> a une distribution log-normale avec paramètres <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\sigma^2\)</span>. La fonction de répartition est <span class="math display">\[
+F(y)=\Phi\left(\frac{\ln(y)-\mu}{\sigma}\right), \quad y&gt;0,
+\]</span> où <span class="math inline">\(\Phi\)</span> est la fonction de répartition de la loi normale standard.</p>
+<p><strong>a)</strong> Utiliser la fonction génératrice des moments de la loi normale pour montrer que les deux premiers moments de la loi log-normale sont <span class="math display">\[ \ex[Y]=e^{\mu+\sigma^2/2}\quad \text{ et } \ex[Y^2]=e^{2\mu+2\sigma^2}. \]</span></p>
+<p><strong>b)</strong> Utiliser la méthode des moments pour construire un estimateur de <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\sigma^2\)</span> si <span class="math inline">\(Y_1, \ldots, Y_n\)</span> forment un échantillon aléatoire d’une loi log-normale.</p>
+<p><strong>c)</strong> Montrer que les estimateurs trouvés en (b) sont convergents.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol start="2" type="a">
+<li><span class="math inline">\(\hat \mu = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\}\)</span> et <span class="math inline">\(\hat\sigma^2 = \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\}\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La fonction génératrice des moments de <span class="math inline">\(Z\sim\mathcal{N}(\mu,\sigma^2)\)</span> est <span class="math display">\[ M_{Z}(t)=\ex[e^{tZ}]=\exp(\mu t +\sigma^2 t^2/2). \]</span> Ainsi, <span class="math display">\[
+\begin{aligned} \ex[Y]&amp;= \ex[e^{Z}]=M_Z(1)=\exp(\mu +\sigma^2/2),\\ \ex[Y^2]&amp;= \ex[e^{2Z}]=M_Z(2)=\exp(2\mu +\sigma^2 2^2/2). \end{aligned}
+\]</span></p>
+<p><strong>b)</strong> On doit résoudre les deux équations où <span class="math inline">\(m_1=\bar Y_n\)</span> est égal à <span class="math inline">\(\ex[Y]\)</span> et <span class="math inline">\(m_2=\frac{1}{n}\sum_{i=1}^n Y_i^2\)</span> est égal à <span class="math inline">\(\ex[Y^2]\)</span>: <span class="math display">\[
+\begin{aligned} \exp(\hat\mu +\hat\sigma^2/2)&amp;=\bar Y_n \\ \exp(2\hat\mu +2\hat\sigma^2 )&amp;=\frac{1}{n}\sum_{i=1}^n Y_i^2. \end{aligned}
+\]</span> On note que <span class="math display">\[
+\begin{aligned} \exp(2\hat\mu +2\hat\sigma^2 )&amp;=\left\{\exp(\hat\mu +\hat\sigma^2/2)\right\}^2\exp(\hat\sigma^2)\\ &amp;=\bar Y_n^2 \exp(\hat\sigma^2).\quad \end{aligned}
+\]</span> On obtient que <span class="math display">\[ \bar{Y}_n^2 \exp(\hat\sigma^2) = \frac{1}{n}\sum_{i=1}^n Y_i^2 \]</span> est équivalent à <span class="math display">\[ \hat\sigma^2 = \ln\left\{\frac{\sum_{i=1}^n Y_i^2/n}{\bar{Y}_n^2} \right\}. \]</span> Ainsi, <span class="math inline">\(\hat\mu +\hat\sigma^2/2=\ln(\bar Y_n )\)</span>, donc <span class="math display">\[
+\begin{aligned} \hat\mu &amp; = \ln(\bar Y_n )-\frac{1}{2}\ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\}\\ &amp; = \ln(\bar Y_n )+\ln\left\{\frac{\bar Y_n}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\}\\ &amp; = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\}. \end{aligned}
+\]</span> Ainsi, les estimateurs des moments sont <span class="math display">\[ \hat \mu = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\} \quad \text{ et }\quad \hat\sigma^2 = \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\}. \]</span></p>
+<p><strong>c)</strong> Pour montrer la convergence, on note premièrement que, selon la Loi faible des grands nombres <span class="math display">\[
+\begin{aligned} \bar Y &amp;\stackrel{P}{\rightarrow} \ex[Y]=e^{\mu+\sigma^2/2}\\ \frac{1}{n}\sum_{i=1}^n Y_i^2 &amp;\stackrel{P}{\rightarrow} \ex[Y^2]=e^{2\mu+2\sigma^2}\\ \end{aligned}
+\]</span> Puisque <span class="math inline">\(\ln\)</span>, le carré et la racine carrée sont toutes des fonctions continues, on trouve que, quand <span class="math inline">\(n\to\infty\)</span>, <span class="math display">\[
+\begin{aligned} \hat\mu = \ln\left\{\frac{\bar Y_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n Y_i^2}} \right\} &amp;\stackrel{P}{\rightarrow} \ln\left\{\frac{ e^{2\mu+\sigma^2}}{\sqrt{e^{2\mu+2\sigma^2}}} \right\}=\ln\left\{ e^{2\mu+\sigma^2-\mu-\sigma^2} \right\}=\mu\\ \hat\sigma^2 = \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n Y_i^2}{\bar Y_n^2} \right\} &amp;\stackrel{P}{\rightarrow} \ln\left\{\frac{e^{2\mu+2\sigma^2}}{e^{2\mu+\sigma^2}} \right\}=\ln\left\{e^{2\mu+2\sigma^2-2\mu-\sigma^2} \right\}=\sigma^2. \end{aligned}
+\]</span> Ainsi, les estimateurs sont convergents.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-moments_geo" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-ajustement-moments_geo"><span class="header-section-number">4.3</span> Moments - Loi géométrique</h2>
+Considérer la distribution géométrique avec fonction de masse de probabilité <span class="math display">\[
+    \prob{X = x} = \theta (1 - \theta)^x, \quad x = 0, 1, \dots.
+  \]</span> On a obtenu l’échantillon aléatoire suivant de cette distribution:
+<p>Utiliser la méthode des moments pour obtenir une estimation ponctuelle du paramètre <span class="math inline">\(\theta\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(0,2381\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Pour obtenir l’estimateur des moments de <span class="math inline">\(\theta\)</span>, on pose <span class="math display">\[
+      \esp{X} = \frac{1 - \theta}{\theta} = \bar{X},
+    \]</span> d’où <span class="math display">\[
+      \hat{\theta} = \frac{1}{\bar{X} + 1}.
+    \]</span> La moyenne de l’échantillon est <span class="math inline">\(\bar{x} = 64/20 = 3,2\)</span>. On a donc <span class="math display">\[
+      \hat{\theta} = \frac{1}{4,2} = 0,2381.
+    \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-moments_des" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-ajustement-moments_des"><span class="header-section-number">4.4</span> Un dé régulier mais spécial</h2>
+<p>On a un dé régulier avec <span class="math inline">\(\theta\)</span> faces numérotées de <span class="math inline">\(1\)</span> à <span class="math inline">\(\theta\)</span>, où <span class="math inline">\(\theta\)</span> est un entier inconnu. Soit <span class="math inline">\(X_1, \dots,
+  X_n\)</span> un échantillon aléatoire composé de <span class="math inline">\(n\)</span> lancers de dés indépendants.</p>
+<p><strong>a)</strong> Déterminer l’estimateur des moments de <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>b)</strong> Calculer l’estimateur des moments de <span class="math inline">\(\theta\)</span> si <span class="math inline">\(n = 4\)</span> et <span class="math inline">\(x_1 = x_2 = x_3 = 3\)</span> et <span class="math inline">\(x_4 = 12\)</span>. Interpréter le résultat.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\hat{\theta} = 2 \bar{X} - 1\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(9,5\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Il s’agit ici de trouver l’estimateur des moments du paramètre <span class="math inline">\(\theta\)</span> d’une distribution uniforme discrète sur <span class="math inline">\(1, 2, \dots, \theta\)</span>, c’est-à-dire que <span class="math inline">\(\prob{X = x} = 1/\theta\)</span> pour <span class="math inline">\(x = 1, \dots, \theta\)</span>. En posant <span class="math display">\[
+\begin{aligned} \esp{X} = \sum_{x=1}^{\theta} x \prob{X = x} = \frac{1}{\theta} \sum_{x = 1}^{\theta} x = \frac{\theta (\theta + 1)}{2 \theta} = \frac{\theta + 1}{2} = \bar{X}_n, \end{aligned}
+\]</span> on trouve facilement que l’estimateur des moments de <span class="math inline">\(\theta\)</span> est <span class="math inline">\(\hat{\theta} = 2 \bar{X} - 1\)</span>.</p>
+<p><strong>b)</strong> Avec <span class="math inline">\(x_1 = x_2 = x_3 = 3\)</span> et <span class="math inline">\(x_4 = 12\)</span>, on a <span class="math inline">\(\hat{\theta} = 2 (3 + 3 + 3 + 12)/4 - 1 = 9,5\)</span>. Or, cet estimateur est absurde puisque, en ayant roulé le résultat 12, on sait qu’il y a au moins douze faces sur le dé! En d’autres termes, <span class="math inline">\(9,5\)</span> est une valeur de <span class="math inline">\(\theta\)</span> impossible. On constate que l’estimateur obtenu à l’aide de la méthode des moments n’est pas toujours un estimateur possible.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-quantiles_lnorm" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-ajustement-quantiles_lnorm"><span class="header-section-number">4.5</span> Quantiles - Loi log-normale</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire tiré d’une distribution log-normale. Les 20e et 80e quantiles empiriques sont respectivement de <span class="math inline">\(\hat{\pi}_{0,20} = 18,25\)</span> et <span class="math inline">\(\hat{\pi}_{0,80} = 35,8\)</span>. Estimer les paramètres de la distribution en utilisant la méthode des quantiles, puis utiliser ces estimations pour estimer la probabilité d’observer une valeur excédant 30.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\hat{\mu}=3,241\)</span>, <span class="math inline">\(\hat{\sigma}=0,4\)</span> et <span class="math inline">\(\widehat{\Pr(X&gt;30)}= 0,3446\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Les équations à résoudre sont <span class="math display">\[
+\begin{aligned}
+0,2 &amp;= F(18,25) = \Phi\left(\frac{\ln(18,25)-\hat{\mu}}{\hat{\sigma}}\right), \\
+0,8 &amp;= F(35,8) = \Phi\left(\frac{\ln(35,8)-\hat{\mu}}{\hat{\sigma}}\right).
+\end{aligned}
+\]</span> Les 20e et 80e quantiles de la loi normale standard sont -0,842 et 0,842, respectivement. Les équations deviennent <span class="math display">\[
+\begin{aligned}
+-0,842 &amp;= \frac{2,904-\hat{\mu}}{\hat{\sigma}}, \\
+0,842 &amp;= \frac{3,578-\hat{\mu}}{\hat{\sigma}}.
+\end{aligned}
+\]</span> Diviser la première équation par la deuxième donne <span class="math display">\[
+-1 = \frac{2,904-\hat{\mu}}{3,578-\hat{\mu}}.
+\]</span> La solution est <span class="math inline">\(\hat{\mu}=3,241\)</span> et <span class="math inline">\(\hat{\sigma}=0,4\)</span>. La probabilité d’excéder 30 est estimée par <span class="math display">\[
+\begin{aligned}
+\widehat{\Pr(X&gt;30)} &amp;= 1-F(30; \hat\mu,\hat\sigma) = 1-\Phi\left(\frac{\ln(30)-3,241}{0,4}\right) = 1-\Phi(0,4) \\
+&amp;= 1-0,6554 = 0,3446.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-quantiles_llogistique" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-ajustement-quantiles_llogistique"><span class="header-section-number">4.6</span> Quantiles - Loi log-logistique</h2>
+<p>Un échantillon aléatoire de réclamations est tiré d’une distribution log-logistique avec fonction de répartition <span class="math display">\[
+F(x)=\frac{(x/\theta)^\tau}{1+(x/\theta)^\tau}, \quad x&gt;0,   \theta &gt;0,   \tau &gt;0.
+\]</span> Dans l’échantillon, 80% des réclamations excèdent 100 et 20% des réclamations excèdent 400. Estimer les paramètres <span class="math inline">\(\theta\)</span> et <span class="math inline">\(\tau\)</span> par la méthode des quantiles.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\hat{\tau}=2\)</span> et <span class="math inline">\(\hat{\theta}=200\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Les équations à résoudre sont <span class="math display">\[
+\begin{aligned}
+0,2 &amp;= F(100) = \frac{(100/\hat{\theta})^{\hat{\tau}}}{1+(100/\hat{\theta})^{\hat{\tau}}}, \\
+0,8 &amp;= F(400) = \frac{(400/\hat{\theta})^{\hat{\tau}}}{1+(400/\hat{\theta})^{\hat{\tau}}}.
+\end{aligned}
+\]</span> Avec la première équation, on obtient <span class="math display">\[
+0,2=0,8(100/\hat{\theta})^{\hat{\tau}} \text{ ou encore } \hat{\theta}^{\hat{\tau}}=4(100)^{\hat{\tau}}.
+\]</span> En insérant le résultat dans la deuxième équation, on obtient <span class="math display">\[
+0,8 = \frac{\frac{400^{\hat{\tau}}}{\hat{\theta}^{\hat{\tau}}}}{1+\frac{400^{\hat{\tau}}}{\hat{\theta}^{\hat{\tau}}}}
+=\frac{\frac{(4 \times 100)^{\hat{\tau}}}{(4 \times (100)^{\hat{\tau}})}}{1+\frac{(4 \times 100)^{\hat{\tau}}}{(4 \times (100)^{\hat{\tau}})}}
+= \frac{4^{\hat{\tau}-1}}{1+4^{\hat{\tau}-1}}.
+\]</span> On résoud pour obtenir <span class="math inline">\(\hat{\tau}=2\)</span> et <span class="math inline">\(\hat{\theta}=200\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-quantiles_pertes" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-ajustement-quantiles_pertes"><span class="header-section-number">4.7</span> 20 pertes sur un an</h2>
+<p>Les 20 pertes suivantes (en millions de dollars) ont été enregistrées sur une période d’un an:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Déterminer le 75e quantile empirique par la méthode des quantiles empiriques lissés.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>13,75</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a besoin de la <span class="math inline">\(0,75(21)=15,75\)</span>e plus petite observation. On obtient <span class="math inline">\(0,25(13) + 0,75(14)= 13,75\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_distributions" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="sec-ajustement-mle_distributions"><span class="header-section-number">4.8</span> Estimateur du maximum de vraisemblance pour plusieurs distributions</h2>
+<p>Trouver l’estimateur du maximum de vraisemblance du paramètre <span class="math inline">\(\theta\)</span> de chacune des distributions de l’exercice&nbsp;<a href="#sec-ajustement-moments_distributions" class="quarto-xref"><span>4.1</span></a>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\bar{X}\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(-n/\ln(X_1 \cdots X_n)\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(\bar{X}\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(\text{med}(X_1, \dots, X_n)\)</span></p>
+<p><strong>e)</strong> <span class="math inline">\(X_{(1)}\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dans tous les cas, la fonction de vraisemblance est <span class="math inline">\(L(\theta) =
+    \prod_{i = 1}^n f(x_i; \theta)\)</span> et la fonction de log-vraisemblance est <span class="math inline">\(l(\theta) = \ln L(\theta) = \sum_{i = 1}^n
+    \ln f(x_i; \theta)\)</span>. L’estimateur du maximum de vraisemblance du paramètre <span class="math inline">\(\theta\)</span> est la solution de l’équation <span class="math inline">\(l^\prime(\theta)
+    = 0\)</span>.</p>
+<p><strong>a)</strong> On a <span class="math display">\[
+\begin{aligned}
+L(\theta) &amp;= \frac{e^{-n\theta} \theta^{\sum_{i=1}^n x_i}}{%
+          \prod_{i=1}^n x_i!}, \\
+        l(\theta) &amp;= -n \theta  + \sum_{i = 1}^n x_i \ln(\theta)
+        - \sum_{i=1}^n \ln(x_i!) \\
+        \text{et} \quad
+        l^\prime(\theta) &amp;= -n + \frac{\sum_{i = 1}^n x_i}{\theta}.
+\end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned} l^\prime(\theta) &amp;= -n + \frac{\sum_{i = 1}^n x_i}{\theta}. \end{aligned}
+\]</span> En résolvant l’équation <span class="math inline">\(l^\prime(\theta) = 0\)</span> pour <span class="math inline">\(\theta\)</span>, on trouve que l’estimateur du maximum de vraisemblance est <span class="math inline">\(\hat{\theta} = \bar{X}\)</span>.</p>
+<p><strong>b)</strong> On a <span class="math display">\[
+\begin{aligned} L(\theta) &amp;= \theta^n \left( \prod_{i = 1}^n x_i \right)^{\theta - 1}, \\ l(\theta) &amp;= n \ln(\theta) + (\theta - 1) \sum_{i = 1}^n \ln(x_i) \\ \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned} l^\prime(\theta) &amp;= \frac{n}{\theta} + \sum_{i = 1}^n \ln(x_i). \end{aligned}
+\]</span> On trouve donc que <span class="math display">\[ \hat{\theta} = -\frac{n}{\sum_{i=1}^n \ln(X_i)} = -\frac{n}{\ln(X_1 \cdots X_n)}. \]</span></p>
+<p><strong>c)</strong> On a <span class="math display">\[
+\begin{aligned} L(\theta) &amp;= \theta^{-n} e^{-\sum_{i=1}^n x_i/\theta}, \\ l(\theta) &amp;= -n \ln(\theta) - \frac{\sum_{i=1}^n x_i}{\theta} \\ \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned} l^\prime(\theta) &amp;= -\frac{n}{\theta} + \frac{\sum_{i=1}^n x_i}{\theta^2}. \end{aligned}
+\]</span> On obtient que <span class="math inline">\(\hat{\theta} = \bar{X}\)</span>.</p>
+<p><strong>d)</strong> On a <span class="math display">\[ L(\theta) = \left( \frac{1}{2} \right)^n e^{-\sum_{i = 1}^n \abs{x_i - \theta}} \]</span> La présence de la valeur absolue rend cette fonction non différentiable en <span class="math inline">\(\theta\)</span>. On remarque que la fonction de vraisemblance sera maximisée lorsque l’expression <span class="math inline">\(\sum_{i=1}^n \abs{x_i - \theta}\)</span> sera minimisée. On établit donc que <span class="math inline">\(\hat{\theta} = \text{med}(X_1, \dots, X_n)\)</span>, puisqu’on connaît le résultat suivant sur la médiane. En général, si <span class="math inline">\(X\)</span> est une variable aléatoire continue et <span class="math inline">\(a\)</span> est une constante, on peut trouver le minimum de <span class="math display">\[
+\begin{aligned} \esp{\abs{X - a}} &amp;= \int_{-\infty}^\infty \abs{x - a} f(x) dx \\ &amp;= \int_{-\infty}^a (a - x)f(x)  dx + \int_a^\infty (x - a)f(x) dx. \end{aligned}
+\]</span> Or, <span class="math display">\[
+\begin{aligned} \frac{d}{da} \esp{\abs{X - a}} &amp;= \int_{-\infty}^a f(x)  dx + \int_a^\infty f(x)  dx \\ &amp;= F_X(a) - (1 - F_X(a)) \\ &amp;= 2F_X(a) - 1 \end{aligned}
+\]</span> Par conséquent, le minimum est atteint au point <span class="math inline">\(a\)</span> tel que <span class="math inline">\(2F_X(a) - 1 = 0\)</span>, soit <span class="math inline">\(F_X(a) = 1/2\)</span>. Par définition, cette valeur est la médiane de <span class="math inline">\(X\)</span>.</p>
+<p><strong>e)</strong> On remarque que le support de la densité dépend du paramètre <span class="math inline">\(\theta\)</span>. La vraisemblance est <span class="math display">\[ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\prod_{i=1}^n\mathbf{1}(x_i&gt;\theta) \]</span> S’il y a une indicatrice qui est 0, alors la vraisemblance sera 0, elles doivent donc toutes être égales à 1 simultanément, ce qui est équivalent à <span class="math display">\[ L(\theta) = e^{n\theta - \sum_{i=1}^n x_i}\mathbf{1}(\min(x_1,\ldots,x_n)&gt;\theta). \]</span> La fonction <span class="math inline">\(e^{n\theta - \sum_{i=1}^n x_i}\)</span> est strictement croissante en fonction de <span class="math inline">\(\theta\)</span>, ce qui indique de choisir une valeur de <span class="math inline">\(\theta\)</span> la plus grande possible. Par contre, on a la contrainte <span class="math inline">\(\min(x_1,\ldots,x_n)&gt;\theta\)</span>, c’est-à-dire que <span class="math inline">\(\theta\)</span> doit être plus inférieur ou égal à la plus petite valeur de l’échantillon. Par conséquent, <span class="math inline">\(\hat{\theta} = \min(X_1, \dots, X_n) = X_{(1)}\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_expo_translatee" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="sec-ajustement-mle_expo_translatee"><span class="header-section-number">4.9</span> Maximum de vraisemblance pour une distribution exponentielle translatée</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire de la distribution exponentielle translatée avec fonction de répartition</p>
+<p><span class="math display">\[
+\begin{aligned}
+    F(x; \mu, \lambda)
+    &amp;= 1 - e^{-\lambda (x - \mu)} \\
+    \end{aligned}
+\]</span></p>
+<p>et densité</p>
+<p><span class="math display">\[
+\begin{aligned}
+    f(x; \mu, \lambda)
+    &amp;= \lambda e^{-\lambda (x - \mu)}, \quad x \geq \mu,
+  \end{aligned}
+\]</span> où <span class="math inline">\(-\infty &lt; \mu &lt; \infty\)</span> et <span class="math inline">\(\lambda &gt; 0\)</span>.</p>
+<p><strong>a)</strong> Démontrer que la distribution exponentielle translatée est obtenue par la transformation <span class="math inline">\(X = Z + \mu,\)</span> où <span class="math inline">\(Z \sim \text{Exponentielle}(\lambda)\)</span> et <span class="math inline">\(\esp{Z} = \frac{1}{\lambda}\)</span>.</p>
+<p><strong>b)</strong> Calculer l’espérance et la variance de cette distribution.</p>
+<p><strong>c)</strong> Calculer les estimateurs du maximum de vraisemblance des paramètres <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\lambda\)</span>.</p>
+<p><strong>d)</strong> Simuler 100 observations d’une loi Exponentielle translatée de paramètres <span class="math inline">\(\mu = 1000\)</span> et <span class="math inline">\(\lambda = 0,001\)</span> à l’aide de la fonction <code>rexp</code> de R et de la transformation en a). Calculer des estimations ponctuelles de <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\lambda\)</span> pour l’échantillon ainsi obtenu. Ces estimations sont-elles proches des vraies valeurs des échantillons? Répéter l’expérience plusieurs fois au besoin.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Démo</p>
+<p><strong>b)</strong> <span class="math inline">\(\esp{X} = \mu + \lambda^{-1}\)</span>, <span class="math inline">\(\var{X} = \lambda^{-2}\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(\hat{\mu} = X_{(1)}\)</span>, <span class="math inline">\(\hat{\lambda} = n/\sum_{i = 1}^n (X_i - X_{(1)})\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a <span class="math inline">\(X = Z + \mu\)</span> où <span class="math inline">\(Z \sim \text{Exponentielle}(\lambda)\)</span>. Alors,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F_X(x) &amp;= \prob{Z + \mu \leq x}\\ &amp;= F_Z(x - \mu) \\ &amp;= 1 - e^{-\lambda (x-\mu)}, \quad x &gt; \mu \\
+\end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+f_X(x) &amp;= \lambda e^{-\lambda (x - \mu)}, \quad x &gt; \mu.
+\end{aligned}
+\]</span></p>
+<p><strong>b)</strong> On a simplement</p>
+<p><span class="math display">\[
+\begin{aligned} \Esp{X} &amp;= \Esp{Z + \mu}\\ &amp;= \Esp{Z} + \mu\\ &amp;= \frac{1}{\lambda} + \mu
+\end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Var{X} &amp;= \Var{Z + \mu}\\ &amp;= \Var{Z}\\ &amp;= \frac{1}{\lambda^2}. \end{aligned}
+\]</span></p>
+<p><strong>c)</strong> On a</p>
+<p><span class="math display">\[
+\begin{aligned}
+L(\mu,\lambda) &amp;= \lambda^n e^{-\lambda\sum_{i=1}^n(x_i -\mu)}\prod_{i=1}^n\mathbf{1}(x_i\geq \mu)\\ l(\mu,\lambda) &amp;= n\ln(\lambda) - \lambda\sum_{i=1}^n (x_i - \mu) +\log(\mathbf{1}\{\min(x_1,\ldots,x_n)\geq \mu\}) \\ \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial l(\mu,\lambda)}{\partial \lambda} &amp;= \frac{n}{\lambda} - \sum_{i=1}^n (x_i - \mu), \\ \end{aligned}
+\]</span></p>
+<p>d’où</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\lambda} &amp;= \frac{n}{\sum_{i=1}^n (x_i - \hat{\mu})}.
+\end{aligned}
+\]</span></p>
+<p>On voit dans la fonction de vraisemblance que la fonction <span class="math inline">\(e^{-\lambda\sum_{i=1}^n(x_i -\mu)}\)</span> est strictement croissante en fonction de <span class="math inline">\(\mu\)</span>. Ainsi, il faut prendre la valeur de <span class="math inline">\(\hat{\mu}\)</span> la plus grande possible telle que <span class="math inline">\(\log(\mathbf{1}\{\min(x_1,\ldots,x_n)\geq \hat{\mu}\})=0\)</span>. On a donc</p>
+<p><span class="math display">\[
+\begin{aligned} \hat{\mu} &amp;= x_{(1)} \\ \hat{\lambda} &amp;= \frac{n}{\sum_{i=1}^n (x_i - x_{(1)})}. \end{aligned}
+\]</span></p>
+<p><strong>d)</strong> On a, par exemple, les résultats suivants pour une exponentielle translatée de paramètres <span class="math inline">\(\mu = \lambda^{-1} = 1000\)</span>:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">100</span>, <span class="at">rate =</span> <span class="fl">0.001</span>) <span class="sc">+</span> <span class="dv">1000</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x) </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1030.522</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">/</span> <span class="fu">sum</span>(x <span class="sc">-</span> <span class="fu">min</span>(x)) </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001042372</code></pre>
+</div>
+</div>
+<p>Les estimations obtenues sont près des vraies valeurs des paramètres, même pour un relativement petit échantillon de taille 100.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_uniforme" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="sec-ajustement-mle_uniforme"><span class="header-section-number">4.10</span> Estimateur du maximum de vraisemblance non unique</h2>
+<p>Soient <span class="math inline">\(X_{(1)} &lt; \dots &lt; X_{(n)}\)</span> les statistiques d’ordre d’un échantillon aléatoire tiré d’une distribution uniforme sur l’intervalle <span class="math inline">\([\theta - \frac{1}{2}, \theta + \frac{1}{2}]\)</span>, <span class="math inline">\(-\infty &lt; \theta &lt; \infty\)</span>. Démontrer que toute statistique <span class="math inline">\(T(X_1,
+  \dots, X_n)\)</span> satisfaisant l’inégalité <span class="math display">\[
+    X_{(n)} - \frac{1}{2} \leq T(X_1, \dots, X_n) \leq
+    X_{(1)} + \frac{1}{2}
+  \]</span> est un estimateur du maximum de vraisemblance de <span class="math inline">\(\theta\)</span>. Ceci est un exemple où l’estimateur du maximum de vraisemblance n’est pas unique.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Il est clair ici que, comme <span class="math inline">\(f(x;\theta) = 1\)</span>, on ne pourra pas utiliser la technique habituelle pour calculer l’estimateur du maximum de vraisemblance. Il faut d’abord déterminer l’ensemble des valeurs de <span class="math inline">\(\theta\)</span> possibles selon l’échantillon obtenu. Comme toutes les données de l’échantillon doivent se trouver dans l’intervalle <span class="math inline">\([\theta - 1/2, \theta + 1/2]\)</span>, on a <span class="math inline">\(\theta \geq
+    X_{(n)} - 1/2\)</span> et <span class="math inline">\(\theta \leq X_{(1)} + 1/2\)</span>. De plus, puisque <span class="math inline">\(X_{(n)} - X_{(1)} \leq 1\)</span>, on a que <span class="math inline">\(X_{(n)} - 1/2 \leq \theta
+    \leq X_{(1)} + 1/2\)</span>. Ainsi, toute statistique satisfaisant ces inégalités est un estimateur du maximum de vraisemblance de <span class="math inline">\(\theta\)</span>. On a donc que <span class="math display">\[
+      X_{(n)} - \frac{1}{2} \leq T(X_1, \dots, T_n) \leq X_{(1)} + \frac{1}{2}.
+    \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_invgauss" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="sec-ajustement-mle_invgauss"><span class="header-section-number">4.11</span> Estimateurs du maximum de vraisemblance pour une distribution inverse gaussienne</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire issu de la distribution inverse gaussienne, dont la densité est <span class="math display">\[
+    f(x; \mu,\lambda) =
+    \left(
+      \frac{\lambda}{2\pi x^3}
+    \right)^{1/2}
+    \exp\left\{
+      -\frac{\lambda (x - \mu)^2}{2\mu^2 x}
+    \right\}, \quad x &gt; 0.
+  \]</span> Calculer les estimateurs du maximum de vraisemblance de <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\lambda\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\hat{\mu} = \bar{X}\)</span>, <span class="math inline">\(\hat{\lambda} = n/\sum_{i = 1}^n
+    (X_i^{-1} - \bar{X}^{-1})\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a <span class="math display">\[
+      L(\mu ,\lambda) =
+      \left(
+        \frac{\lambda}{2\pi}
+      \right)^{n/2}
+      \left(
+        \prod_{i = 1}^n \frac{1}{x_i^3}
+      \right)^{1/2}
+      \exp\left\{
+        -\frac{\lambda}{2}
+        \sum_{i=1}^n \frac{(x_i - \mu)^2}{\mu^2 x_i}
+      \right\}.
+    \]</span> Il est plus simple de trouver d’abord l’estimateur du maximum de vraisemblance du paramètre <span class="math inline">\(\mu\)</span>. On constate qu’il s’agit de la valeur qui minimise la somme dans l’exponentielle. Or, <span class="math display">\[
+\begin{aligned}
+      \frac{\partial}{\partial \mu} 
+      \sum_{i=1}^n \frac{(x_i - \mu)^2}{\mu^2 x_i} &amp;= \sum_{i = 1}^{n} \left[ \frac{-2 (x_i - \mu)}{\mu^2 x_i} + \frac{(x_i - \mu)^2}{x_i} \frac{-2}{\mu^3} \right] \\
+      &amp;= \sum_{i = 1}^{n} \left[ \frac{-2 \mu(x_i - \mu) - 2 (x_i - \mu)^2}{\mu^3 x_i} \right] \\
+      &amp;= -2 \sum_{i = 1}^{n} \left[\frac{\mu x_i - \mu^2 + x_i^2 - 2 x_i \mu + \mu^2}{\mu^3 x_i} \right] \\
+      &amp;= -2 \sum_{i = 1}^{n} \left[\frac{x_i^2 - x_i \mu}{\mu^3 x_i} \right] \\
+      &amp;= - \sum_{i = 1}^{n} \frac{2}{\mu^2} \left[ \frac{x_i}{\mu} - 1 \right]
+    \end{aligned}
+\]</span> En posant <span class="math display">\[
+      \sum_{i=1}^n \left( \frac{x_i}{\mu} - 1 \right) = 0,
+    \]</span> on trouve que <span class="math inline">\(\hat{\mu} = \bar{X}\)</span>. Pour trouver l’estimateur du maximum de vraisemblance de <span class="math inline">\(\lambda\)</span>, on établit d’abord que <span class="math display">\[
+      L(\hat{\mu}, \lambda) \propto \lambda^{n/2} e^{-\lambda H},
+    \]</span> où <span class="math display">\[
+\begin{aligned}
+      H &amp;= \sum_{i = 1}^n \frac{(x_i - \bar{x})^2}{2 \bar{x}^2 x_i} \\
+      &amp;= \frac{1}{2} \sum_{i = 1}^n
+      \left(
+        \frac{1}{x_i} - \frac{1}{\bar{x}}
+      \right).
+    \end{aligned}
+\]</span> On obtient donc <span class="math display">\[
+\begin{aligned}
+      \hat{\lambda} &amp;= \frac{n}{2H}\\
+      &amp;= \frac{n}{\sum_{i = 1}^n X_i^{-1} - \bar{X}^{-1}}.
+    \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_pareto" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="sec-ajustement-mle_pareto"><span class="header-section-number">4.12</span> Estimateurs pour les paramètres d’une distribution Pareto type II</h2>
+<p>Soit <span class="math inline">\(X_1, \ldots, X_n\)</span> un échantillon aléatoire issu d’une distribution Pareto type II tel que pour tout <span class="math inline">\(i \in \{ 1, \ldots , n\}\)</span> et <span class="math inline">\(x &gt;0\)</span>, <span class="math display">\[
+F(x)=1-\left(\frac{\theta}{x+\theta}\right)^\alpha
+\quad \text{ et } \quad
+f(x)=\frac{\alpha\theta^\alpha}{(x+\theta)^{\alpha+1}},
+\]</span> avec paramètres inconnus <span class="math inline">\(\alpha&gt;0\)</span> et <span class="math inline">\(\theta&gt;0\)</span>.</p>
+<p><strong>a)</strong> Trouver <span class="math inline">\(\ex[X_1]\)</span> et <span class="math inline">\(\vr(X_1)\)</span>.</p>
+<p><strong>b)</strong> On suppose <span class="math inline">\(\alpha&gt;2\)</span>. Construire des estimateurs pour les paramètres <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\theta\)</span> en utilisant la méthode des moments.</p>
+<p><strong>c)</strong> Écrire la vraisemblance, la log-vraisemblance et les deux équations qui doivent être résolues pour trouver les estimateurs du maximum de vraisemblance pour <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\theta\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p><span class="math inline">\(\ex[X_1]= \theta/(\alpha-1)\)</span> et <span class="math inline">\(\vr(X_1)=\alpha\theta^2/\{(\alpha-1)^2(\alpha-2)\}\)</span></p></li>
+<li><p><span class="math inline">\(\hat\alpha = 2S_n^2/(S_n^2-\bar X_n^2)\)</span> et <span class="math inline">\(\hat\theta=\bar X_n (S_n^2+\bar X_n^2)/(S_n^2-\bar X_n^2)\)</span></p></li>
+<li></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{n}{\hat\alpha}+n\ln \hat\theta-\sum_{i=1}^n\ln(x_i+\hat\theta)&amp;=0\\
+\frac{n\hat\alpha}{ \hat\theta}-(\hat\alpha+1)\sum_{i=1}^n\frac{1}{x_i+\hat\theta}&amp;=0.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a <span class="math display">\[
+\begin{aligned} \ex[X_1]&amp;=\int_0^\infty x \frac{\alpha\theta^\alpha}{(x+\theta)^{\alpha+1}}\d x. \end{aligned}
+\]</span></p>
+<p>On pose <span class="math inline">\(t=x+\theta\)</span>, <span class="math display">\[
+\begin{aligned} \ex[X_1] &amp;= \int_\theta^\infty (t-\theta) \frac{\alpha\theta^\alpha}{t^{\alpha+1}}\text{d} t\\ &amp;=\int_\theta^\infty \frac{\alpha\theta^\alpha}{t^{\alpha}}\d t-\int_\theta^\infty \frac{\alpha\theta^{\alpha+1}}{t^{\alpha+1}}\text{d} t\\ &amp;= \left.\frac{-\alpha\theta^\alpha}{(\alpha-1)t^{\alpha-1}}\right|_\theta^\infty+ \left.\frac{\alpha\theta^{\alpha+1}}{\alpha t^{\alpha}}\right|_\theta^\infty, \quad \alpha&gt;1\\ &amp;=\frac{\alpha\theta}{\alpha-1}-\theta = \frac{\theta}{\alpha-1}. \end{aligned}
+\]</span> De même,</p>
+<p><span class="math display">\[
+\begin{aligned} \ex[X_1^2]&amp;=\int_0^\infty x^2 \frac{\alpha\theta^\alpha}{(x+\theta)^{\alpha+1}}\d x. \end{aligned}
+\]</span> On pose <span class="math inline">\(t=x+\theta\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned} \ex[X_1^2]&amp;=\int_\theta^\infty (t-\theta)^2 \frac{\alpha\theta^\alpha}{t^{\alpha+1}}\d t \end{aligned}
+\]</span> En intégrant par parties</p>
+<p><span class="math display">\[
+\begin{aligned} \ex[X_1^2]&amp;= \left.\frac{-(t-\theta)^2\theta^\alpha}{t^{\alpha}}\right|_\theta^\infty+ \int_\theta^\infty 2(t-\theta)\frac{\theta^{\alpha}}{ t^{\alpha}}\d t\\ &amp;=\left.\frac{-2(t-\theta)\theta^\alpha}{(\alpha-1)t^{\alpha-1}}\right|_\theta^\infty+ \int_\theta^\infty 2\frac{\theta^{\alpha}}{ (\alpha-1)t^{\alpha-1}}\d t\\ &amp;=\left.\frac{-2\theta^\alpha}{(\alpha-1)(\alpha-2)t^{\alpha-2}}\right|_\theta^\infty, \quad \alpha&gt;2\\ &amp;=\frac{2\theta^\alpha}{(\alpha-1)(\alpha-2)\theta^{\alpha-2}}= \frac{2\theta^2}{(\alpha-1)(\alpha-2)}. \end{aligned}
+\]</span></p>
+<p>Ainsi</p>
+<p><span class="math display">\[
+\vr(X_1)=\frac{2\theta^2}{(\alpha-1)(\alpha-2)}-\frac{\theta^2}{(\alpha-1)^2}=\frac{\alpha\theta^2}{(\alpha-1)^2(\alpha-2)}.
+\]</span></p>
+<p><strong>b)</strong> On a <span class="math inline">\(\bar X_n=\frac{1}{n}\sum_{i=1}^nX_i\)</span> pour la moyenne échantillonnale et <span class="math inline">\(S_n^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X_n)^2\)</span> pour la variance échantillonnale. Les estimateurs des moments sont tels que</p>
+<p><span class="math display">\[
+\begin{aligned} \bar X_n &amp;= \frac{\hat\theta}{\hat\alpha-1} \\ S_n^2 &amp;= \frac{\hat\alpha\hat\theta^2}{(\hat\alpha-1)^2(\hat\alpha-2)} \end{aligned}
+\]</span></p>
+<p>On a <span class="math inline">\(\hat\theta=\bar X_n (\hat\alpha -1)\)</span>. Aussi, on note que</p>
+<p><span class="math display">\[
+\begin{aligned} S_n^2= \frac{\hat\alpha\hat\theta^2}{(\hat\alpha-1)^2(\hat\alpha-2)}&amp;= \left(\frac{\hat\theta}{\hat\alpha-1}\right)^2\frac{\hat\alpha}{\hat\alpha-2}\\ &amp; = \bar X_n^2\frac{\hat\alpha}{\hat\alpha-2}. \end{aligned}
+\]</span></p>
+<p>On réarrange pour trouver</p>
+<p><span class="math display">\[
+\hat\alpha = \frac{2S_n^2}{S_n^2-\bar X_n^2}
+\]</span> et <span class="math display">\[
+\hat\theta=\bar X_n \left(\frac{2S_n^2}{S_n^2-\bar X_n^2} -1\right)=\bar X_n \frac{S_n^2+\bar X_n^2}{S_n^2-\bar X_n^2}.
+\]</span></p>
+<p><strong>c)</strong> La vraisemblance est</p>
+<p><span class="math display">\[
+\mathcal{L}(\alpha,\theta)=\prod_{i=1}^n\frac{\alpha\theta^\alpha}{(x_i+\theta)^{\alpha+1}}=\frac{\alpha^n\theta^{n\alpha}}{\prod_{i=1}^n(x_i+\theta)^{\alpha+1}}
+\]</span></p>
+<p>la log-vraisemblance est</p>
+<p><span class="math display">\[
+\begin{aligned} \ell(\alpha,\theta)&amp;=n\ln \alpha+n\alpha\ln \theta-\ln\left\{\prod_{i=1}^n(x_i+\theta)^{\alpha+1}\right\}\\ &amp;=n\ln \alpha+n\alpha\ln \theta-(\alpha+1)\sum_{i=1}^n\ln(x_i+\theta). \end{aligned}
+\]</span></p>
+<p>Les dérivées partielles sont <span class="math display">\[
+\begin{aligned} \frac{\partial\ell(\alpha,\theta)}{\partial \alpha}&amp;=\frac{n}{ \alpha}+n\ln \theta-\sum_{i=1}^n\ln(x_i+\theta)\\ \frac{\partial\ell(\alpha,\theta)}{\partial \theta}&amp;=\frac{n\alpha}{ \theta}-(\alpha+1)\sum_{i=1}^n\frac{1}{x_i+\theta}. \end{aligned}
+\]</span></p>
+<p>Les estimateurs du maximum de vraisemblance sont tels que <span class="math display">\[
+\begin{aligned} \frac{n}{\hat\alpha}+n\ln \hat\theta-\sum_{i=1}^n\ln(x_i+\hat\theta)&amp;=0\\ \frac{n\hat\alpha}{ \hat\theta}-(\hat\alpha+1)\sum_{i=1}^n\frac{1}{x_i+\hat\theta}&amp;=0. \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_bornes_uniforme" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="sec-ajustement-mle_bornes_uniforme"><span class="header-section-number">4.13</span> Estimateurs du maximum de vraisemblance pour les bornes d’une uniforme</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire issu d’une loi uniforme sur l’intervalle <span class="math inline">\((a, b)\)</span> où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont des constantes inconnues. Calculer l’estimateur du maximum de vraisemblance de <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\hat{a} = \min(X_1, \dots, X_n)\)</span> et <span class="math inline">\(\hat{b} = \max(X_1, \dots,
+    X_n)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La fonction de vraisemblance est <span class="math display">\[
+      L(a, b) = \left( \frac{1}{b - a} \right)^n\mathbf{1} \{a &lt; x_1, \dots, x_n &lt; b \} = \left( \frac{1}{b - a} \right)^n\mathbf{1}\{a &lt; x_{(1)}\} \mathbf{1}\{b &gt; x_{(n)}\}.
+    \]</span> Pour maximiser cette fonction, il faut minimiser la quantité <span class="math inline">\(b - a\)</span> en choisissant une valeur de <span class="math inline">\(b\)</span> la plus petite possible et une valeur de <span class="math inline">\(a\)</span> la plus grande possible. Étant donné le support de la distribution, on choisit donc <span class="math inline">\(\hat{a} = \min(X_1, \dots, X_n)\)</span> et <span class="math inline">\(\hat{b} = \max(X_1,
+    \dots, X_n)\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_theta_uniforme" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="sec-ajustement-mle_theta_uniforme"><span class="header-section-number">4.14</span> Estimateurs pour <span class="math inline">\(\theta\)</span></h2>
+<p>On suppose que <span class="math inline">\(X_1, \ldots, X_n\)</span> forment un échantillon aléatoire d’une loi uniforme sur l’intervalle <span class="math inline">\((0, 2\theta +1)\)</span> pour un paramètre inconnu <span class="math inline">\(\theta &gt; -1/2\)</span>.</p>
+<p><strong>a)</strong> Calculer l’estimateur du maximum de vraisemblance pour <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>b)</strong> Calculer l’EMV de <span class="math inline">\(\vr (X)\)</span>, où <span class="math inline">\(X\)</span> suit une distribution <span class="math inline">\(\mathcal{U}(0, 2\theta+1)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><span class="math inline">\(\{\max(X_1,\dots,X_n) -1\}/2\)</span></li>
+<li><span class="math inline">\(\{\max(X_1,\dots,X_n)\}^2/12\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La fonction de vraisemblance de <span class="math inline">\(\theta\)</span> pour <span class="math inline">\(x_1,\dots, x_n\)</span> est <span class="math display">\[
+\begin{aligned} L(\theta) &amp;= \left(\frac{1}{2 \theta + 1}\right)^n \boldsymbol{1}(x_1 \le 2 \theta + 1) \times \dots \times\boldsymbol{1}(x_n \le 2 \theta + 1)\\ &amp; = \left(\frac{1}{2 \theta + 1}\right)^n \boldsymbol{1}\{\max(x_1,\dots,x_n) \le 2 \theta + 1\}\\ &amp; = \left(\frac{1}{2 \theta + 1}\right)^n \boldsymbol{1}\left\{  \theta \ge \frac{\max(x_1,\dots,x_n) -1}{2}\right\}. \end{aligned}
+\]</span> Puisque <span class="math inline">\(\{1/(2\theta+1)\}^n\)</span> est décroissante en <span class="math inline">\(\theta\)</span>, <span class="math inline">\(L(\theta)\)</span> est maximisée à <span class="math display">\[ \hat \theta_n = \frac{\max(x_1,\dots,x_n) -1}{2} \]</span> L’EMV de <span class="math inline">\(\theta\)</span> est donc <span class="math display">\[ \hat \theta_n = \frac{\max(X_1,\dots,X_n) -1}{2}. \]</span></p>
+<p><strong>b)</strong> La variance peut être calculée comme suit&nbsp;: <span class="math display">\[ \ex(X) = \int_0^{2\theta  +1} x   \frac{1}{2\theta + 1}   \text{d} x = \frac{2 \theta  +1}{2} \]</span> et <span class="math display">\[ \ex(X^2) =  \int_0^{2\theta  +1} x^2   \frac{1}{2\theta + 1}   \text{d}x = \frac{(2\theta + 1)^2}{3}   . \]</span> Par conséquent, <span class="math display">\[ \vr(X) = \ex(X^2) - \{\ex(X)\}^2 = \frac{(2\theta + 1)^2}{3}- \frac{(2\theta + 1)^2}{4} = \frac{(2\theta + 1)^2}{12}   . \]</span> Puisque l’application <span class="math inline">\(g : (0,\infty) \to (0,\infty)\)</span> donnée par <span class="math display">\[ g(x) = \frac{(2x + 1)^2}{12} \]</span> est strictement croissante (et donc un-pour-un), la propriété d’invariance de l’EMV donne que l’EMV de <span class="math inline">\(\vr(X)\)</span> est <span class="math display">\[
+\begin{aligned} \frac{(2\hat\theta_n + 1)^2}{12} = \frac{\{\max(X_1,\dots,X_n)\}^2}{12}   . \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-mle_bernoulli" class="level2" data-number="4.15">
+<h2 data-number="4.15" class="anchored" data-anchor-id="sec-ajustement-mle_bernoulli"><span class="header-section-number">4.15</span> Estimateurs pour la probabilité de succès</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire issu d’une distribution dont la loi de probabilité est <span class="math display">\[
+    \prob{X = x} = \theta^x (1 - \theta)^{1 - x}, \quad x = 0, 1,
+    \quad 0 \leq \theta \leq \frac{1}{2}.
+  \]</span> <strong>a)</strong> Calculer les estimateurs du maximum de vraisemblance et des moments de <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>b)</strong> Calculer l’erreur quadratique moyenne pour les estimateurs développés en a).</p>
+<p><strong>c)</strong> Lequel des estimateurs obtenus en a) est le meilleur? Justifier.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\tilde{\theta} = \bar{X}\)</span>, <span class="math inline">\(\hat{\theta} = \min(\bar{X}, 1/2)\)</span></p>
+<p><strong>b)</strong> EQM<span class="math inline">\((\tilde{\theta}) = \theta (1 - \theta)/n\)</span>, EQM<span class="math inline">\((\hat{\theta}) = \sum_{y = 0}^{[n/2]} (y/n - \theta)^2 \binom{n}{y} \theta^y (1 - \theta)^{n-y} + \sum_{y = [n/2] + 1}^n (1/2 - \theta)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y}\)</span></p>
+<p><strong>c)</strong> EQM<span class="math inline">\((\hat{\theta}) \leq\)</span> EQM<span class="math inline">\((\tilde{\theta})\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La distribution de <span class="math inline">\(X\)</span> est une Bernoulli avec une restriction sur la valeur du paramètre <span class="math inline">\(\theta\)</span>. On a donc que <span class="math inline">\(\esp{X} = \theta\)</span>. L’estimateur des moments de <span class="math inline">\(\theta\)</span> est donc <span class="math inline">\(\tilde{\theta} = \bar{X}\)</span>. Pour l’estimateur du maximum de vraisemblance, on a, en posant <span class="math inline">\(y = \sum_{i = 1}^n x_i\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned} L(\theta) &amp;= \theta^{y} (1 - \theta)^{n - y}, \\ l(\theta) &amp;= y \ln(\theta) + (n - y) \ln(1 - \theta) \\ \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned} l^\prime(\theta) &amp;= \frac{y}{\theta} - \frac{(n - y)}{1 - \theta}\\ &amp;= \frac{y - n\theta}{\theta (1 - \theta)}\\ &amp;= \frac{n \bar{x} - n \theta}{\theta (1 - \theta)}. \end{aligned}
+\]</span></p>
+<p>Ainsi, la log-vraisemblance est croissante pour <span class="math inline">\(\theta \leq \bar{x}\)</span> et décroissante pour <span class="math inline">\(\theta &gt; \bar{x}\)</span>. Le maximum est donc atteint en <span class="math inline">\(\bar{x}\)</span>. Cependant, puisque <span class="math inline">\(0 \leq \theta \leq 1/2\)</span> on doit avoir <span class="math inline">\(\hat{\theta} \leq 1/2\)</span>. On a donc <span class="math inline">\(\hat{\theta} = \min(\bar{X}, 1/2)\)</span>.</p>
+<p><strong>b)</strong> Premièrement, on remarque que <span class="math inline">\(Y = \sum_{i = 1}^n X_i = n \bar{X} \sim \text{Binomiale}(n, \theta)\)</span> avec <span class="math inline">\(0 \leq \theta \leq 1/2\)</span>. Deuxièmement, on sait que <span class="math inline">\(\text{EQM}(\hat{\theta}) = \var{\hat{\theta}} + b(\hat{\theta})^2\)</span>, où <span class="math inline">\(\hat{\theta}\)</span> est un estimateur quelconque d’un paramètre <span class="math inline">\(\theta\)</span> et <span class="math inline">\(b(\hat{\theta}) = \esp{\hat{\theta}} - \theta\)</span> est le biais de l’estimateur. Pour l’estimateur des moments <span class="math inline">\(\tilde{\theta} = Y/n\)</span>, on a <span class="math display">\[
+\begin{aligned} \text{EQM}(\tilde{\theta}) &amp;= \frac{\Var{Y}}{n^2} + b(Y/n)^2 \\ &amp;= \frac{\theta (1 - \theta)}{n}, \end{aligned}
+\]</span> puique <span class="math inline">\(\esp{Y/n} = \theta\)</span>. Pour l’estimateur du maximum de vraisemblance <span class="math display">\[ \hat{\theta} = \begin{cases} \frac{Y}{n}, &amp; Y \leq \frac{n}{2} \\ \frac{1}{2}, &amp; Y &gt; \frac{n}{2}, \end{cases} \]</span> il est plus simple de développer l’erreur quadratique moyenne ainsi: <span class="math display">\[
+\begin{aligned} \text{EQM}(\hat{\theta}) &amp;= \esp{(\hat{\theta} - \theta)^2} \\ &amp;= \sum_{y = 0}^n (\hat{\theta} - \theta)^2 \prob{Y = y} \\ &amp;= \sum_{y = 0}^{[n/2]} \left( \frac{y}{n} - \theta \right)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y} \\ &amp;\phantom{=} + \sum_{y = [n/2] + 1}^n \left( \frac{1}{2} - \theta \right)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y}. \end{aligned}
+\]</span></p>
+<p><strong>c)</strong> On compare les erreurs quadratiques moyennes des deux estimateurs. Soit <span class="math display">\[ \text{EQM}(\tilde{\theta}) = \sum_{y = 0}^n \left( \frac{y}{n} - \theta \right)^2 \binom{n}{y} \theta^y (1 - \theta)^{n - y}, \]</span> d’où <span class="math display">\[
+\begin{aligned} \text{EQM}(\tilde{\theta}) - \text{EQM}(\hat{\theta}) &amp;= \sum_{y=[n/2] + 1}^n \left( \frac{y}{n} + \frac{1}{2} - 2 \theta \right) \left( \frac{y}{n} - \frac{1}{2} \right) \\ &amp;\phantom{=} \times \binom{n}{y} \theta^y (1 - \theta)^{n - y}. \end{aligned}
+\]</span> Étant donné que <span class="math inline">\(y/n &gt; 1/2\)</span> et que <span class="math inline">\(\theta \leq 1/2\)</span>, tous les termes dans la somme sont positifs. On a donc que <span class="math inline">\(\text{EQM}(\tilde{\theta}) - \text{EQM}(\hat{\theta}) &gt; 0\)</span> ou, de manière équivalente, <span class="math inline">\(\text{EQM}(\hat{\theta}) &lt; \text{EQM}(\tilde{\theta})\)</span>. En terme d’erreur quadratique moyenne, l’estimateur du maximum de vraisemblance est meilleur que l’estimateur des moments selon ce critère.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-ajustement-qualite_ajustement_assuranceIARDUS" class="level2" data-number="4.16">
+<h2 data-number="4.16" class="anchored" data-anchor-id="sec-ajustement-qualite_ajustement_assuranceIARDUS"><span class="header-section-number">4.16</span> Assurance automobile privée américaine</h2>
+<p>Un assureur IARD américain souhaite modéliser les montants des sinistres pour une assurance automobile privée. Les données disponibles contiennent <span class="math inline">\(n=6773\)</span> réclamations, et <span class="math inline">\(X_1,\ldots,X_n\)</span> représentent les montants en dollars US. Les réclamations sont considérées indépendantes. Un sommaire et un histogramme des réclamations sont fournis ci-dessous. On a également <span class="math display">\[
+\frac{1}{n}\sum_{i=1}^n x_i=1&nbsp;853 \quad \text{ et }\quad \frac{1}{n}\sum_{i=1}^n x_i^2=10&nbsp;438&nbsp;832.
+\]</span></p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: xts</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'xts' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: zoo</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'zoo' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'zoo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: survival</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(usprivautoclaim)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(usprivautoclaim)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PAID)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    9.5   523.7  1001.7  1853.0  2137.4 60000.0 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(PAID,<span class="at">breaks=</span><span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5000</span>,<span class="dv">2500</span>),<span class="fu">seq</span>(<span class="dv">10000</span>,<span class="dv">60000</span>,<span class="dv">10000</span>)),<span class="at">freq=</span><span class="cn">FALSE</span>,<span class="at">main=</span><span class="st">"Histogramme des montants de sinistres"</span>,<span class="at">xlab=</span><span class="st">"Montants ($)"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ajustement_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>a)</strong> En utilisant les informations fournies, argumenter qu’une loi normale ne devrait pas être utilisée pour modéliser les montants de réclamations. Proposer (au moins) une distribution qui semble appropriée et justifier.</p>
+<p><strong>b)</strong> On suppose que les montants de réclamations suivent une loi log-normale définie à l’exercice&nbsp;<a href="#sec-ajustement-moments_lnorm" class="quarto-xref"><span>4.2</span></a>. Trouver les estimateurs des moments des paramètres <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><strong>c)</strong> On suppose que les montants de réclamations sont distribués selon une loi Pareto type II définie à l’exercice&nbsp;<a href="#sec-ajustement-mle_pareto" class="quarto-xref"><span>4.12</span></a>. Trouver les estimateurs des paramètres <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\theta\)</span> par la méthode des moments.</p>
+<p><strong>d)</strong> Les estimateurs du maximum de vraisemblance des distributions log-normale et Pareto peuvent être calculés par optimisation numérique en utilisant les estimateurs des moments trouvés en b) et c) comme valeurs de départ. Les résultats sont les suivants:</p>
+<p>[Log-normale]: Les estimateurs sont <span class="math inline">\(\hat\mu_{MV}=6,95561\)</span> et <span class="math inline">\(\hat\sigma^2_{MV}=1,14698\)</span> et la valeur de log-vraisemblance est <span class="math inline">\(-57&nbsp;185,11\)</span>.</p>
+<p>[Pareto]: Les estimateurs sont <span class="math inline">\(\hat\alpha_{MV}=4,71364\)</span> et <span class="math inline">\(\hat\theta_{MV}=6&nbsp;819,891\)</span> et la valeur de log-vraisemblance est <span class="math inline">\(-57&nbsp;500,12\)</span>.</p>
+<p>Calculer l’AIC pour chacune des distributions. Quelle distribution semble être préférable selon ce critère?</p>
+<p><strong>e)</strong> Les diagrammes quantile-quantile de chacun des modèles sont présentés ci-dessous. Commenter sur l’ajustement des modèles. Quel modèle recommandez-vous à l’assureur? Pourquoi?</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'MASS' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'actuar' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'actuar'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    sd, var</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:grDevices':
+
+    cm</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ajustement_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>f)</strong> L’assureur s’intéresse à la queue à droite de la distribution et souhaite savoir les quantiles de niveau 99 % et 99,5% pour les distributions des montants. Donner une estimation de ces quantiles sous les modèles log-normal et Pareto ajustés en d).</p>
+<p><em>Astuce:</em> Observer qu’il est possible d’inverser explicitement la fonction de répartition de la Pareto, et que les quantiles de la log-normale peuvent être exprimés en termes de quantiles de la loi normale.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>Gamma, log-normale ou Pareto</li>
+<li><span class="math inline">\(\hat \mu =6.969\)</span> et <span class="math inline">\(\hat\sigma^2 =1.112\)</span></li>
+<li><span class="math inline">\(\hat\alpha =3.922\)</span> et <span class="math inline">\(\hat\theta=5414.77\)</span></li>
+<li>Log-normale&nbsp;: <span class="math inline">\(114&nbsp;374,2\)</span>, Pareto&nbsp;: <span class="math inline">\(115&nbsp;004,2\)</span></li>
+<li>11&nbsp;296,76, 14&nbsp;166,68, 12&nbsp;720,54 et 16&nbsp;537,1</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La loi normale est définie sur les nombres réels, alors que les montants sont positifs seulement. Le domaine d’une loi normale n’est donc pas le même que le domaine des montants de réclamation. La moyenne échantillonnale et la médiane ne sont pas égales, ce qui serait le cas si le modèle normal était approprié. L’histogramme des montants ne ressemblent pas à une cloche symétrique. De bonnes options seraient les distributions Gamma, log-normale ou Pareto puisqu’elles sont toutes définies sur les réels positifs et sont asymétriques.</p>
+<p><strong>b)</strong> On a <span class="math inline">\(\bar x_n=1&nbsp;853\)</span> et <span class="math inline">\(m_2=\frac{1}{n}\sum_{i=1}^n x_i^2 = 10&nbsp;438&nbsp;832\)</span>. Selon l’exercice&nbsp;<a href="#sec-ajustement-moments_lnorm" class="quarto-xref"><span>4.2</span></a> b), on a</p>
+<p><span class="math display">\[
+\begin{aligned} \hat \mu &amp;= \ln\left\{\frac{\bar x_n^2}{\sqrt{\frac{1}{n}\sum_{i=1}^n x_i^2}} \right\}=\ln\left\{\frac{1&nbsp;853^2}{\sqrt{10&nbsp;438&nbsp;832}} \right\}=6.969\\ \hat\sigma^2 &amp;= \ln\left\{\frac{\frac{1}{n}\sum_{i=1}^n x_i^2}{\bar x_n^2} \right\}=  \ln\left\{\frac{10&nbsp;438&nbsp;832}{1&nbsp;853^2} \right\}=1.112. \end{aligned}
+\]</span></p>
+<p><strong>c)</strong> On a <span class="math inline">\(\bar x_n=1853\)</span> et <span class="math inline">\(m_2=\frac{1}{n}\sum_{i=1}^n x_i^2 = 10 438 832\)</span>, donc</p>
+<p><span class="math display">\[
+\begin{aligned} s_n^2&amp;=\frac{1}{n-1}\sum_{i=1}^n x_i^2 - \frac{n}{n-1}\bar x_n^2\\ &amp; = \frac{n}{n-1}(m_2-\bar x_n^2)\\ &amp;=\frac{6773}{6772}(10438832-1853^2)=7006257. \end{aligned}
+\]</span></p>
+<p>Selon l’exercice <a href="#sec-ajustement-mle_pareto" class="quarto-xref"><span>4.12</span></a> b), on trouve</p>
+<p><span class="math display">\[
+\begin{aligned} \hat\alpha &amp;= \frac{2s_n^2}{s_n^2-\bar x_n^2}=3.922\\ \hat\theta&amp;=\bar x_n \left(\frac{2s_n^2}{s_n^2-\bar x_n^2} -1\right)=5414.77. \end{aligned}
+\]</span></p>
+<p><strong>d)</strong> L’AIC est donné par <span class="math inline">\(2(-\ell(\hat\theta)+k)\)</span>, où <span class="math inline">\(\ell(\hat\theta)\)</span> est la valeur maximale de la vraisemblance et <span class="math inline">\(k\)</span> le nombre de paramètres dans le modèle. Il y a deux paramètres dans chaque modèle. Les AIC sont donc</p>
+<p>[Log-normale]: <span class="math inline">\(2\times(57&nbsp;185,11+2)=114&nbsp;374,2\)</span>.</p>
+<p>[Pareto]: <span class="math inline">\(2\times(57&nbsp;500,12+2)=115&nbsp;004,2\)</span></p>
+<p>Selon le critère AIC, le meilleur modèle est celui avec la valeur la plus petite, la distribution log-normale est donc préférable.</p>
+<p><strong>e)</strong> L’ajustement des deux modèles n’est pas parfait parce que les points ne sont pas exactement alignés, plus spécialement pour de grandes valeurs de <span class="math inline">\(x\)</span>. Les points sont au-dessus de la ligne dans le graphique Quantiles-Quantiles de la Pareto, ce qui signifie que la queue de la distribution empirique est plus épaisse que celle de la Pareto. Cela devrait inquiéter l’assureur puisque ça signifie qu’il sous-estimerait les réclamations. L’ajustement de la log-normale n’est pas parfait non plus, mais il y a moins de sous-estimation, car plusieurs points se retrouvent sous la ligne et les extrêmes sont moins éloignés. Par conséquent, on recommande l’utilisation du modèle log-normal.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ajustement_files/figure-html/message-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>f)</strong> Les quantiles de la loi Pareto sont l’inverse de sa fonction de répartition. Si <span class="math inline">\(\omega_\kappa\)</span> est le <span class="math inline">\((1-\kappa)\)</span>e quantile, c’est-à-dire qu’il est tel que <span class="math inline">\(F(\omega_\kappa)=1-\kappa\)</span>, alors en utilisant la fonction de répartition fournie à l’exercice <a href="#sec-ajustement-mle_pareto" class="quarto-xref"><span>4.12</span></a>, on a</p>
+<p><span class="math display">\[
+\begin{aligned} 1-\left(\frac{\theta}{\omega_\kappa+\theta}\right)^\alpha &amp;= 1-\kappa\\ \frac{\theta}{\omega_\kappa+\theta} &amp;= \kappa^{1/\alpha}\\ \omega_\kappa= \frac{\theta}{\kappa^{1/\alpha}}-\theta. \end{aligned}
+\]</span></p>
+<p>Une estimation du quantile 99~% est <span class="math display">\[
+\hat\nu_{1\%}= \exp(\hat\sigma z_{1\%}+\hat\mu),
+\]</span> où <span class="math inline">\(z_{1\%}=2,33\)</span>. En utilisant l’EMV donné en d), on a <span class="math display">\[
+\hat\nu_{1\%}= \exp(\sqrt{1,14698}\times 2,33+6,95561)=12~720,54
+\]</span> et une estimation du quantile 99,5% est <span class="math display">\[
+\hat\nu_{0,5\%}= \exp(\sqrt{1,14698}\times 2,575+6,95561)=16~537,1
+\]</span> Tel attendu en regardant les diagrammes quantile-quantile, les quantiles estimés par la distribution log-normale sont supérieurs à ceux estimés par la distribution Pareto.</p>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Freund:mathstat:1992" class="csl-entry" role="listitem">
+Freund, J. E. 1992. <em>Mathematical Statistics</em>. 5ᵉ éd. Prentice Hall.
+</div>
+<div id="ref-Hogg:mathstat:6e:2005" class="csl-entry" role="listitem">
+Hogg, R. V., A. T. Craig, et J. W. McKean. 2005. <em>Introduction to Mathematical Statistics</em>. 6ᵉ éd. Prentice Hall.
+</div>
+<div id="ref-Hogg:probstat:2001" class="csl-entry" role="listitem">
+Hogg, R. V., et E. A. Tanis. 2001. <em>Probability and Statistical Inference</em>. 6ᵉ éd. Prentice Hall.
+</div>
+<div id="ref-Mood:mathstat:1974" class="csl-entry" role="listitem">
+Mood, A. M., F. A. Graybill, et D. C. Boes. 1974. <em>Introduction to the Theory of Statistics</em>. 3ᵉ éd. McGraw-Hill.
+</div>
+<div id="ref-R" class="csl-entry" role="listitem">
+R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-Wackerly:mathstat:7e:2008" class="csl-entry" role="listitem">
+Wackerly, D., W. Mendenhall, et R. L. Scheaffer. 2007a. <em>Mathematical Statistics with Applications</em>. 7ᵉ éd. Thomson Brooks/Cole. <a href="https://books.google.ca/books?id=lTgGAAAAQBAJ">https://books.google.ca/books?id=lTgGAAAAQBAJ</a>.
+</div>
+<div id="ref-Wackerly:solutions:7e:2008" class="csl-entry" role="listitem">
+Wackerly, D., W. Mendenhall, et R. L. Scheaffer. 2007b. <em>Student’s solution manual to Mathematical Statistics with Applications</em>. 7ᵉ éd. Thomson Brooks/Cole. <a href="https://books.google.ca/books?id=lTgGAAAAQBAJ">https://books.google.ca/books?id=lTgGAAAAQBAJ</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapitres/estimation.html" class="pagination-link" aria-label="Estimation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapitres/intervalle.html" class="pagination-link" aria-label="Estimation par intervalle">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation par intervalle</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

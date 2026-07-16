@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Distributions d’échantillonnage – ACT2000 — Recueil d'exercices</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapitres/estimation.html" rel="next">
+<link href="../chapitres/base.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a522afb83bf8ae494942cf1b0ac9d4c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      Esp:    ["\\mathbb{E}\\!\\left[#1\\right]", 1],
+      ex:     "\\mathbb{E}",
+      var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      Var:    ["\\mathrm{Var}\\!\\left(#1\\right)", 1],
+      vr:     "\\mathrm{Var}",
+      prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Prob:   ["\\Pr\\!\\left[#1\\right]", 1],
+      Cov:    "\\mathrm{Cov}",
+      d:      "\\mathrm{d}",
+      bm:     ["\\boldsymbol{#1}", 1],
+      abs: ["\\left|#1\\right|", 1],
+      texttt: ["`#1`", 1],
+      textsf: ["`#1`", 1]
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/echantillonnage.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">ACT2000 — Recueil d’exercices</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Préface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exercices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/echantillonnage.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/ajustement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ajustement de modèles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/intervalle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimation par intervalle</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapitres/tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tests</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#sec-echantillonnage-norm_ech_taille5" id="toc-sec-echantillonnage-norm_ech_taille5" class="nav-link active" data-scroll-target="#sec-echantillonnage-norm_ech_taille5"><span class="header-section-number">2.1</span> Échantillon de taille 5</a></li>
+  <li><a href="#sec-echantillonnage-norm_ech_taille_inconnue" id="toc-sec-echantillonnage-norm_ech_taille_inconnue" class="nav-link" data-scroll-target="#sec-echantillonnage-norm_ech_taille_inconnue"><span class="header-section-number">2.2</span> Échantillon de taille inconnue</a></li>
+  <li><a href="#sec-echantillonnage-norm_deux_ech" id="toc-sec-echantillonnage-norm_deux_ech" class="nav-link" data-scroll-target="#sec-echantillonnage-norm_deux_ech"><span class="header-section-number">2.3</span> Comparaison de deux échantillons issus d’une loi normale</a></li>
+  <li><a href="#sec-echantillonnage-norm_distr_statistique" id="toc-sec-echantillonnage-norm_distr_statistique" class="nav-link" data-scroll-target="#sec-echantillonnage-norm_distr_statistique"><span class="header-section-number">2.4</span> Distribution de statistiques fondées sur un échantillon issu d’une loi normale</a></li>
+  <li><a href="#sec-echantillonnage-norm_variance_ech" id="toc-sec-echantillonnage-norm_variance_ech" class="nav-link" data-scroll-target="#sec-echantillonnage-norm_variance_ech"><span class="header-section-number">2.5</span> Distribution de la variance échantillonnale d’un échantillon issu d’une loi normale</a></li>
+  <li><a href="#sec-echantillonnage-norm_variance_prob" id="toc-sec-echantillonnage-norm_variance_prob" class="nav-link" data-scroll-target="#sec-echantillonnage-norm_variance_prob"><span class="header-section-number">2.6</span> Probabilités avec la variance échantillonnale d’un échantillon issu d’une loi normale</a></li>
+  <li><a href="#sec-echantillonnage-norm_variance_distr" id="toc-sec-echantillonnage-norm_variance_distr" class="nav-link" data-scroll-target="#sec-echantillonnage-norm_variance_distr"><span class="header-section-number">2.7</span> Fonction de densité de la variance échantillonnale d’un échantillon issu d’une loi normale</a></li>
+  <li><a href="#sec-echantillonnage-norm_transformation" id="toc-sec-echantillonnage-norm_transformation" class="nav-link" data-scroll-target="#sec-echantillonnage-norm_transformation"><span class="header-section-number">2.8</span> Transformations d’une variable aléatoire normale</a></li>
+  <li><a href="#sec-echantillonnage-khi2_definition" id="toc-sec-echantillonnage-khi2_definition" class="nav-link" data-scroll-target="#sec-echantillonnage-khi2_definition"><span class="header-section-number">2.9</span> Définition de la loi khi carré</a></li>
+  <li><a href="#sec-echantillonnage-khi2_transformations" id="toc-sec-echantillonnage-khi2_transformations" class="nav-link" data-scroll-target="#sec-echantillonnage-khi2_transformations"><span class="header-section-number">2.10</span> Transformations</a></li>
+  <li><a href="#sec-echantillonnage-t_probabilités" id="toc-sec-echantillonnage-t_probabilités" class="nav-link" data-scroll-target="#sec-echantillonnage-t_probabilités"><span class="header-section-number">2.11</span> Utiliser une table de la loi <span class="math inline">\(T\)</span></a></li>
+  <li><a href="#sec-echantillonnage-t_probabilités2" id="toc-sec-echantillonnage-t_probabilités2" class="nav-link" data-scroll-target="#sec-echantillonnage-t_probabilités2"><span class="header-section-number">2.12</span> Bornes pour atteindre une probabilité avec la loi <span class="math inline">\(T\)</span></a></li>
+  <li><a href="#sec-echantillonnage-f_definition" id="toc-sec-echantillonnage-f_definition" class="nav-link" data-scroll-target="#sec-echantillonnage-f_definition"><span class="header-section-number">2.13</span> Définition de la loi <span class="math inline">\(F\)</span></a></li>
+  <li><a href="#sec-echantillonnage-f_inverse" id="toc-sec-echantillonnage-f_inverse" class="nav-link" data-scroll-target="#sec-echantillonnage-f_inverse"><span class="header-section-number">2.14</span> Inverse de la loi <span class="math inline">\(F\)</span></a></li>
+  <li><a href="#sec-echantillonnage-f_table" id="toc-sec-echantillonnage-f_table" class="nav-link" data-scroll-target="#sec-echantillonnage-f_table"><span class="header-section-number">2.15</span> Utiliser une table de la loi <span class="math inline">\(F\)</span></a></li>
+  <li><a href="#sec-echantillonnage-f_norm_khi" id="toc-sec-echantillonnage-f_norm_khi" class="nav-link" data-scroll-target="#sec-echantillonnage-f_norm_khi"><span class="header-section-number">2.16</span> Lien entre la normale, la khi carré et la <span class="math inline">\(F\)</span></a></li>
+  <li><a href="#sec-echantillonnage-tcl_gamma" id="toc-sec-echantillonnage-tcl_gamma" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_gamma"><span class="header-section-number">2.17</span> TCL avec la loi gamma</a></li>
+  <li><a href="#sec-echantillonnage-tcl_x100_khi2" id="toc-sec-echantillonnage-tcl_x100_khi2" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_x100_khi2"><span class="header-section-number">2.18</span> TCL avec un échantillon aléatoire d’une loi khi carré</a></li>
+  <li><a href="#sec-echantillonnage-tcl_approx" id="toc-sec-echantillonnage-tcl_approx" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_approx"><span class="header-section-number">2.19</span> Approximation avec le TCL pour un échantillon tiré d’une loi gamma</a></li>
+  <li><a href="#sec-echantillonnage-tcl_approx_2" id="toc-sec-echantillonnage-tcl_approx_2" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_approx_2"><span class="header-section-number">2.20</span> Approximation avec le TCL</a></li>
+  <li><a href="#sec-echantillonnage-tcl_deux_populations" id="toc-sec-echantillonnage-tcl_deux_populations" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_deux_populations"><span class="header-section-number">2.21</span> Convergence pour deux populations normalement distribuées</a></li>
+  <li><a href="#sec-echantillonnage-tcl_machine_embouteillage" id="toc-sec-echantillonnage-tcl_machine_embouteillage" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_machine_embouteillage"><span class="header-section-number">2.22</span> La machine d’embouteillage</a></li>
+  <li><a href="#sec-echantillonnage-tcl_souscription_aeact" id="toc-sec-echantillonnage-tcl_souscription_aeact" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_souscription_aeact"><span class="header-section-number">2.23</span> Sélection des risques pour AÉACT</a></li>
+  <li><a href="#sec-echantillonnage-tcl_cl50" id="toc-sec-echantillonnage-tcl_cl50" class="nav-link" data-scroll-target="#sec-echantillonnage-tcl_cl50"><span class="header-section-number">2.24</span> Concentration létale médiane</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapitres/base.html">Exercices</a></li><li class="breadcrumb-item"><a href="../chapitres/echantillonnage.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distributions d’échantillonnage</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-echantillonnage-norm_ech_taille5" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-echantillonnage-norm_ech_taille5"><span class="header-section-number">2.1</span> Échantillon de taille 5</h2>
+<p>Soit <span class="math inline">\(\bar{X}_{5}\)</span> la moyenne d’un échantillon de taille <span class="math inline">\(5\)</span> tiré d’une distribution normale avec moyenne <span class="math inline">\(10\)</span> et variance <span class="math inline">\(125\)</span>. Trouver la constante <span class="math inline">\(c\)</span> telle que <span class="math inline">\(\prob{\bar{X}_{5} &lt; c} = 0,90\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(16,41\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\(\bar{X}_{5} \sim \mathcal{N}(\esp{\bar{X}_{5}}, \var{\bar{X}_{5}})\)</span> avec <span class="math inline">\(\esp{\bar{X}_{5}} = \esp{X} = 10\)</span> et <span class="math inline">\(\var{\bar{X}_{5}} = \var{X}/n =
+      125/5 = 5\)</span>. Par conséquent, <span class="math display">\[
+\begin{aligned}
+      \prob{\bar{X}_{5} &lt; c}
+      &amp;= \Prob{\frac{\bar{X}_{5} - 10}{\sqrt{25}} &lt;
+        \frac{c - 10}{\sqrt{25}}} \\
+      &amp;= \prob{Z &lt; z_\alpha} \\
+      &amp;= 1 - \alpha
+    \end{aligned}
+\]</span> avec <span class="math inline">\(Z \sim \mathcal{N}(0, 1)\)</span> et <span class="math inline">\(z_\alpha = (c - 10)/5\)</span>. Ici, on a <span class="math inline">\(1 -
+    \alpha = 0,90\)</span>. On trouve dans une table de quantiles de la loi normale que <span class="math inline">\(z_{0,10} = 1,282\)</span>, d’où <span class="math inline">\(c = 16,41\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-norm_ech_taille_inconnue" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-echantillonnage-norm_ech_taille_inconnue"><span class="header-section-number">2.2</span> Échantillon de taille inconnue</h2>
+<p>Si <span class="math inline">\(\bar{X}_n\)</span> est la moyenne d’un échantillon de taille <span class="math inline">\(n\)</span> tiré d’une distribution normale de moyenne <span class="math inline">\(\mu\)</span> et de variance <span class="math inline">\(100\)</span>, trouver la valeur de <span class="math inline">\(n\)</span> telle que <span class="math inline">\(\Prob{\mu - 5 &lt; \bar{X}_n &lt; \mu +
+    5} = 0,954\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(16\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a <span class="math inline">\(\esp{\bar{X}_n} = \esp{X} = \mu\)</span>, <span class="math inline">\(\var{\bar{X}_n} = \var{X}/n =
+    100/n\)</span> et <span class="math inline">\(\bar{X}_n\sim \mathcal{N}(\mu, 100/n)\)</span>. Ainsi, on cherche <span class="math inline">\(n\)</span> tel que <span class="math display">\[
+\begin{aligned}
+      \prob{\mu - 5 &lt; \bar{X}_n&lt; \mu + 5}
+      &amp;= \Prob{-\frac{5}{10/\sqrt{n}} &lt;
+        \frac{\bar{X}_n- \mu}{10/\sqrt{n}} &lt;
+        \frac{5}{10/\sqrt{n}}} \\
+      &amp;= \Phi\left( \frac{5 \sqrt{n}}{10} \right)
+      - \Phi\left( -\frac{5 \sqrt{n}}{10} \right) \\
+      &amp;= 2 \Phi\left( \frac{5\sqrt{n}}{10} \right) - 1 \\
+      &amp;= 0,954,
+    \end{aligned}
+\]</span> soit <span class="math display">\[
+     \Phi \left( \frac{5\sqrt{n}}{10} \right) = 0,977.
+    \]</span> On trouve dans une table de loi normale que <span class="math inline">\(5 \sqrt{n}/10 = 2\)</span>, d’où <span class="math inline">\(n = 16\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-norm_deux_ech" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-echantillonnage-norm_deux_ech"><span class="header-section-number">2.3</span> Comparaison de deux échantillons issus d’une loi normale</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_{25}\)</span> un échantillon aléatoire issu d’une distribution <span class="math inline">\(\mathcal{N}(0, 16)\)</span> et <span class="math inline">\(Y_1, \dots, Y_{25}\)</span> un échantillon aléatoire issu d’une distribution <span class="math inline">\(\mathcal{N}(1, 9)\)</span>. Les deux échantillons sont indépendants. Soient <span class="math inline">\(\bar{X}_{25}\)</span> et <span class="math inline">\(\bar{Y}_{25}\)</span> les moyennes des deux échantillons. Calculer la probabilité <span class="math inline">\(\prob{\bar{X}_{25} &gt; \bar{Y}_{25}}\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(0,159\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a <span class="math inline">\(\bar{X}_{25} \sim \mathcal{N}(0, 16/25)\)</span>, <span class="math inline">\(\bar{Y}_{25} \sim \mathcal{N}(1, 9/25)\)</span> et, par conséquent, <span class="math inline">\(\bar{X}_{25} - \bar{Y}_{25} \sim \mathcal{N}(-1, 1)\)</span>. On a donc <span class="math display">\[
+\begin{aligned}
+      \prob{\bar{X}_{25} &gt; \bar{Y}_{25}}
+      &amp;= \prob{\bar{X}_{25} - \bar{Y}_{25} &gt; 0} \\
+      &amp;= \Prob{\frac{\bar{X}_{25}-\bar{Y}_{25} - (-1)}{\sqrt{1}} &gt;
+        \frac{0 - (-1)}{\sqrt{1}}} \\
+      &amp;= 1 - \Phi(1)\\
+      &amp;= 0,159.
+    \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-norm_distr_statistique" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-echantillonnage-norm_distr_statistique"><span class="header-section-number">2.4</span> Distribution de statistiques fondées sur un échantillon issu d’une loi normale</h2>
+<p>Soit <span class="math inline">\(Y_1,\ldots,Y_8\)</span> un échantillon aléatoire issu d’une distribution <span class="math inline">\(\mathcal{N}(0,1)\)</span> et <span class="math display">\[
+\bar Y= (Y_1+\cdots+Y_7)/7.
+\]</span> Quelle est la distribution des statistiques suivantes? Justifiez vos réponses.</p>
+<p><strong>a)</strong> <span class="math inline">\(W = \sum_{i=1}^7 Y_i^2\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(U = \sum_{i=1}^7 (Y_i-\bar Y)^2\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(Y_8^2+U\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(\sqrt{7} Y_8/\sqrt{W}\)</span></p>
+<p><strong>e)</strong> <span class="math inline">\(\sqrt{6}Y_8/\sqrt{U}\)</span></p>
+<p><strong>f)</strong> <span class="math inline">\(3(7\bar Y^2+Y_8^2)/U\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> <span class="math inline">\(\chi^2(7)\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(\chi^2(6)\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(\chi^2(7)\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(t(7)\)</span></p>
+<p><strong>e)</strong> <span class="math inline">\(t(6)\)</span></p>
+<p><strong>f)</strong> <span class="math inline">\(F(2, 6)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La statistique <span class="math inline">\(W = Y_1^2 + \cdots + Y^2_7\)</span> suit une loi khi carré avec <span class="math inline">\(7\)</span> degrés de liberté, <span class="math inline">\(\chi^2_{(7)}\)</span>, puisque <span class="math inline">\(W\)</span> est une somme de sept variables <strong>indépendantes</strong>, chacune d’entre elle étant le carré d’une variable aléatoire normale centrée réduite.</p>
+<p><strong>b)</strong> Si <span class="math inline">\(Y_1, \ldots , Y_n\)</span> forme un échantillon aléatoire tiré d’une <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span>, alors <span class="math display">\[ \frac{(n-1)S^2_n}{\sigma^2} = \frac{1}{\sigma^2} \sum_{i=1}^n (Y_i - {\bar Y}_n)^2 \]</span> a une distribution khi carré avec <span class="math inline">\(n-1\)</span> degrés de liberté, <span class="math inline">\(\chi^2_{(n-1)}\)</span>. Si on pose <span class="math inline">\(n=7\)</span> et <span class="math inline">\(\sigma^2 =1\)</span>, on trouve que <span class="math display">\[ U = \sum_{i=1}^7 (Y_i - {\bar Y})^2 \sim \chi^2_{(6)}. \]</span></p>
+<p><strong>c)</strong> Selon (b), <span class="math inline">\(U\)</span> a une distribution <span class="math inline">\(\chi^2_{(6)}\)</span>. Cela signifie que la somme a la même distribution que <span class="math inline">\(Z_1^2 + \cdots + Z_6^2\)</span>, où <span class="math inline">\(Z_1, \ldots , Z_6\)</span> sont iid <span class="math inline">\(\mathcal{N}(0,1)\)</span> et indépendantes de <span class="math inline">\(Y_8\)</span>, qui suit aussi une <span class="math inline">\(\mathcal{N}(0,1)\)</span>. Ainsi, <span class="math display">\[ Y_8^2 +U \sim \chi^2_{(7)}. \]</span></p>
+<p><strong>d)</strong> D’abord, on observe que <span class="math inline">\(\sqrt{7}   Y_8 /\sqrt{W} = Y_8/\sqrt{W/7}\)</span>, où <span class="math inline">\(Y_8 \sim \mathcal{N}(0,1)\)</span> et <span class="math inline">\(W \sim \chi^2_{(7)}\)</span> selon a). De plus, <span class="math inline">\(W\)</span> et <span class="math inline">\(Y_8\)</span> sont des variables aléatoires indépendantes. Ainsi, <span class="math inline">\(Y_8/\sqrt{W/7}\)</span> suit une loi Student <span class="math inline">\(t_{(7)}\)</span>.</p>
+<p><strong>e)</strong> On note que <span class="math inline">\(U \sim \chi^2_{(6)}\)</span> selon b). Ensuite, <span class="math inline">\(U\)</span> est indépendant de <span class="math inline">\(Y_8 \sim \mathcal{N}(0,1)\)</span>. Ainsi, <span class="math display">\[ \frac{\sqrt{6}Y_8}{\sqrt{U}} = \frac{Y_8}{\sqrt{U/6}} \sim t_{(6)}. \]</span></p>
+<p><strong>f)</strong> On sait que la moyenne échantillonnale <span class="math inline">\({\bar Y}\)</span> est indépendante de la variance échantillonnale <span class="math inline">\(U/6\)</span>. Donc, <span class="math inline">\({\bar Y}\)</span> et <span class="math inline">\(Y_8\)</span> sont toutes deux indépendantes de <span class="math inline">\(U\)</span>. Puisque <span class="math inline">\({\bar Y} \sim \mathcal{N}(0,1/7)\)</span>, on a <span class="math inline">\(\sqrt{7}   {\bar Y} \sim \mathcal{N}(0,1)\)</span> et ainsi <span class="math display">\[ 7{\bar Y}^2 + Y^2_8 = (\sqrt{7}   {\bar Y})^2 + Y^2_8 \sim \chi^2_{(2)}. \]</span> De plus, <span class="math inline">\(U \sim \chi^2_{(6)}\)</span> avec (b). Il en découle que <span class="math display">\[ \frac{3(7{\bar Y}^2 + Y^2_8)}{U} = \frac{\displaystyle \frac{(\sqrt{7}   {\bar Y})^2+Y^2_8}{2}}{U/6} \sim \mathcal{F}_{(2,6)}. \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-norm_variance_ech" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-echantillonnage-norm_variance_ech"><span class="header-section-number">2.5</span> Distribution de la variance échantillonnale d’un échantillon issu d’une loi normale</h2>
+<p>Soit <span class="math inline">\(X_1, \dots, X_n\)</span> un échantillon aléatoire d’une loi normale de moyenne <span class="math inline">\(\mu\)</span> et variance&nbsp;<span class="math inline">\(\sigma^2\)</span>. Trouver la moyenne et la variance de la statistique <span class="math display">\[
+    S^2_n = \frac{1}{(n-1)}\sum_{i=1}^n (X_i - \bar{X})^2.
+  \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\esp{S^2_n} = \sigma^2\)</span>, <span class="math inline">\(\var{S^2_n} = 2 \sigma^4/(n-1)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\((n-1)S^2_n/\sigma^2 \sim \chi^2(n - 1)\)</span>, que l’espérance d’une loi <span class="math inline">\(\chi^2\)</span> est égale à son nombre de degrés de liberté et que sa variance est égale à deux fois son nombre de degrés de liberté. On a donc <span class="math display">\[
+\begin{aligned}
+      \esp{S^2_n}
+      &amp;= \frac{\sigma^2}{(n-1)}  \Esp{\frac{(n-1)S^2_n}{\sigma^2}}\\\
+      &amp;= \frac{(n - 1) \sigma^2}{(n-1)}=\sigma^2 \\
+      \end{aligned}
+\]</span></p>
+<p>et</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \var{S^2_n}
+      &amp;= \frac{\sigma^4}{(n-1)^2}  \Var{\frac{(n-1)S^2_n}{\sigma^2}}\\
+      &amp;= \frac{2 (n - 1) \sigma^4}{(n-1)^2}= \frac{2 \sigma^4}{(n-1)}
+    \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-norm_variance_prob" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-echantillonnage-norm_variance_prob"><span class="header-section-number">2.6</span> Probabilités avec la variance échantillonnale d’un échantillon issu d’une loi normale</h2>
+<p>Soit <span class="math inline">\(S^2_6\)</span> la variance d’un échantillon de taille <span class="math inline">\(6\)</span> d’une distribution normale de moyenne <span class="math inline">\(\mu\)</span> et de variance <span class="math inline">\(10\)</span>. Calculer <span class="math inline">\(\prob{2,30 &lt; S^2_6 &lt; 22,2}\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(0,90\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\(5S^2_6/\sigma^2 \sim \chi^2(5)\)</span>. Soit <span class="math inline">\(Y \sim
+    \chi^2(5)\)</span>. On a donc, <span class="math display">\[
+\begin{aligned}
+      \prob{2,30 &lt; S^2_6 &lt; 22,2}
+      &amp;= \Prob{\frac{5 (2,30)}{10} &lt;
+        \frac{5 S^2_6}{10} &lt;
+        \frac{5 (22,2)}{10}} \\
+      &amp;= \prob{1,15 &lt; Y &lt; 11,1}\\
+      &amp;= \prob{Y &lt; 11,1} - \prob{Y &lt;  1,15}.
+    \end{aligned}
+\]</span> On trouve dans une table de quantiles de la loi khi&nbsp;carré (ou avec la fonction <code>qchisq</code> dans R, par exemple) que <span class="math inline">\(\prob{Y &lt; 11,1} = 0,95\)</span> et <span class="math inline">\(\prob{Y &lt; 1,15} = 0,05\)</span>. Par conséquent, <span class="math inline">\(\prob{2,30 &lt; S^2_6 &lt; 22,2} = 0,90\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-norm_variance_distr" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-echantillonnage-norm_variance_distr"><span class="header-section-number">2.7</span> Fonction de densité de la variance échantillonnale d’un échantillon issu d’une loi normale</h2>
+<p>Trouvez la fonction de densité de <span class="math inline">\(S_n^2\)</span>, la variance échantillonale d’un échantillon de taille <span class="math inline">\(n\)</span> d’une distribution <span class="math inline">\(\mathcal{N}(0,\sigma^2)\)</span>. Est-ce que la distribution échantillonale de <span class="math inline">\(S_n^2\)</span> fait partie d’une famille de distributions connues? Utilisez ce résultat pour trouver la moyenne et la variance de <span class="math inline">\(S_n^2\)</span>.</p>
+<p><em>Truc:</em> Considérez <span class="math inline">\((n-1)S_n^2/\sigma^2\sim \chi^2_{(n-1)}\)</span> et utilisez la méthode de la fonction de répartition pour obtenir la densité de la variable aléatoire transformée.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Oui. <span class="math inline">\(S^2_n \sim Ga(n-1/2, 2\sigma^2 / (n-1))\)</span> donc <span class="math inline">\(\esp{S^2_n} = \sigma^2\)</span> et <span class="math inline">\(\var{S^2_n} = \frac{2\sigma^4}{n-1}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\(W=(n-1)S_n^2/\sigma^2\sim \chi^2_{(n-1)}\)</span>, et on cherche à trouver la fonction de densité de <span class="math inline">\(S_n^2=\sigma^2 W /(n-1)\)</span>. Puisque c’est une transformation d’échelle, on peut utiliser la méthode de la fonction de répartition. D’abord, on exprime la fonction de répartition de <span class="math inline">\(S_n^2\)</span> en termes de la fonction de répartition de <span class="math inline">\(W\)</span>: <span class="math display">\[
+\begin{aligned}
+F_{S_n^2}(s)&amp;=\Pr[S_n^2\leq s]=\Pr\left[\frac{\sigma^2 W}{n-1}\leq s\right]=\Pr[W\leq s(n-1)/\sigma^2]=F_W\left(\frac{s(n-1)}{\sigma^2}\right).
+\end{aligned}
+\]</span> Ensuite, on dérive <span class="math inline">\(F_{S_n^2}(s)\)</span> en fonction de <span class="math inline">\(s\)</span> pour trouver la densité: <span class="math display">\[
+\begin{aligned}
+f_{S_n^2}(s) &amp;=\frac{\d}{\d s}F_W\left(\frac{s(n-1)}{\sigma^2}\right) = f_W\left(\frac{s(n-1)}{\sigma^2}\right)\frac{n-1}{\sigma^2}.
+\end{aligned}
+\]</span> Finalement, la densité de <span class="math inline">\(W\)</span> est la distribution d’une <span class="math inline">\(\chi^2_{n-1}\)</span>. Donc, pour <span class="math inline">\(s&gt;0\)</span>, <span class="math display">\[
+\begin{aligned}
+f_{S_n^2}(s) &amp;= \frac{n-1}{\sigma^2}\frac{1}{2^{(n-1)/2}\Gamma(\frac{n-1}{2})}\left(\frac{(n-1)s}{\sigma^2}\right)^{(n-1)/2-1}\exp\left(-\frac{(n-1)s}{2\sigma^2}\right)\\
+&amp;=\left(\frac{n-1}{2\sigma^2}\right)^{(n-1)/2}\frac{1}{\Gamma(\frac{n-1}{2})}s^{(n-1)/2-1}\exp\left(-\frac{s}{2\sigma^2/(n-1)}\right).
+\end{aligned}
+\]</span> Par conséquent, <span class="math inline">\(S_n^2\)</span> suit une distribution gamma avec paramètres <span class="math inline">\(\alpha=(n-1)/2\)</span> et <span class="math inline">\(\beta=2\sigma^2/(n-1)\)</span>. La moyenne et la variance sont: <span class="math display">\[
+\begin{aligned}
+\ex[S_n^2]&amp;= \alpha\beta= \frac{n-1}{2}\frac{2\sigma^2}{n-1}=\sigma^2\\
+\vr(S_n^2)&amp;=\alpha\beta^2=\frac{n-1}{2}\frac{4\sigma^4}{(n-1)^2}=\frac{2\sigma^4}{n-1}.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-norm_transformation" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="sec-echantillonnage-norm_transformation"><span class="header-section-number">2.8</span> Transformations d’une variable aléatoire normale</h2>
+<p>Soit <span class="math inline">\(Z \sim \mathcal{N}(0, 1)\)</span> avec fonction de densité de probabilité <span class="math display">\[
+\begin{aligned}
+    \phi(z) &amp;= \frac{1}{\sqrt{2 \pi}}  e^{-\frac{1}{2}  z^2}, \quad
+    - \infty &lt; z &lt; \infty, \\
+    \end{aligned}
+\]</span></p>
+<p>et fonction de répartition</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \Phi(z) &amp;= \int_{-\infty}^z \phi(x)  dx.
+  \end{aligned}
+\]</span> Exprimer les fonctions de densité et de répartition de <span class="math inline">\(X = \mu +
+  \sigma Z\)</span> en fonction de <span class="math inline">\(\phi(\cdot)\)</span> et <span class="math inline">\(\Phi(\cdot)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(f_X(x) = \sigma^{-1} \phi((x - \mu)/\sigma)\)</span>, <span class="math inline">\(F_X(x) = \Phi((x - \mu)/\sigma)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a <span class="math inline">\(X = \mu + \sigma Z\)</span>. Par la technique de la fonction de répartition, on obtient: <span class="math display">\[
+\begin{aligned}
+      F_X(x) &amp;= \prob{X \leq x}\\
+      &amp;= \prob{\mu + \sigma Z \leq x}\\
+      &amp;= \Prob{Z \leq \frac{x - \mu}{\sigma}}\\
+      &amp;= \Phi\left(\frac{x-\mu}{\sigma}\right).
+    \end{aligned}
+\]</span> Ainsi, la fonction de densité de probabilité de <span class="math inline">\(X\)</span> est <span class="math display">\[
+      f_X(x) = \frac{d}{dx}  \Phi\left(\frac{x - \mu}{\sigma}\right) =
+      \frac{1}{\sigma}  \phi\left(\frac{x-\mu}{\sigma}\right).
+    \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-khi2_definition" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="sec-echantillonnage-khi2_definition"><span class="header-section-number">2.9</span> Définition de la loi khi carré</h2>
+<p>Soit la variable aléatoire <span class="math inline">\(Z \sim \mathcal{N}(0, 1)\)</span>. Démontrer que <span class="math inline">\(Z^2 \sim
+  \chi^2(1)\)</span> avec la technique de la fonction génératrice des moments.</p>
+<p><em>Note</em>: il faut intégrer pour trouver la fonction génératrice des moments de <span class="math inline">\(Z^2\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soit <span class="math inline">\(Z \sim \mathcal{N}(0, 1)\)</span>. La fonction génératrice des moments de la variable aléatoire <span class="math inline">\(Z^2\)</span> est <span class="math display">\[
+\begin{aligned}
+      M_{Z^2}(t) &amp;= \Esp{e^{Z^2 t}} \\
+      &amp;= \int_{-\infty}^\infty e^{z^2 t} \phi(z)  dz \\
+      &amp;= \int_{-\infty}^\infty
+      \frac{1}{\sqrt{2\pi}}  e^{z^2 t} e^{-z^2/2}  dz\\
+      &amp;= \int_{-\infty}^\infty
+      \frac{1}{\sqrt{2\pi}}  e^{-z^2 (1 - 2t)/2}  dz.
+    \end{aligned}
+\]</span> En posant <span class="math inline">\(\sigma^2 = (1 - 2t)^{-1}\)</span>, on voit que l’on peut écrire l’expression ci-dessus sous la forme <span class="math display">\[
+      M_{Z^2}(t) = \sigma \int_{-\infty}^\infty
+      \frac{1}{\sigma \sqrt{2\pi}}  e^{-z^2/(2 \sigma^2)} dz.
+    \]</span> On reconnaît alors sous l’intégrale la densité d’une loi normale de moyenne <span class="math inline">\(0\)</span> et de variance <span class="math inline">\(\sigma^2\)</span>. Par conséquent, <span class="math display">\[
+      M_{Z^2}(t) = \sigma = \left( \frac{1}{1 - 2t}\right)^{1/2},
+    \]</span> soit la fonction génératrice des moments d’une loi gamma de paramètres <span class="math inline">\(\alpha = 1/2 \text{ et } \beta = 2\)</span> ou, de manière équivalente, d’une distribution <span class="math inline">\(\chi^2(1)\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-khi2_transformations" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="sec-echantillonnage-khi2_transformations"><span class="header-section-number">2.10</span> Transformations</h2>
+<p><strong>a)</strong> Soit <span class="math inline">\(X \sim \mathcal{N}(0, \sigma^2)\)</span>. Trouver la distribution de <span class="math inline">\(Y = X^2\)</span>.</p>
+<p><strong>b)</strong> Soient <span class="math inline">\(X_1\)</span> et <span class="math inline">\(X_2\)</span> deux variables aléatoires indépendantes chacune distribuée selon une loi normale centrée réduite. Trouver la distribution de <span class="math display">\[ Y = \frac{(X_1 - X_2)^2}{2}. \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Gamma<span class="math inline">\((1/2, 2\sigma^2)\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(\chi^2(1)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a <span class="math inline">\(X \sim \mathcal{N}(0, \sigma^2)\)</span> et <span class="math inline">\(Y = X^2\)</span>. Il faut voir que <span class="math inline">\(Y = X^2\)</span> n’est pas une transformation bijective. On pose donc d’abord <span class="math inline">\(Z = \abs{X}\)</span> et on trouve la densité de <span class="math inline">\(Z\)</span> à l’aide de la technique de la fonction de répartition: <span class="math display">\[
+\begin{aligned} F_Z(z) &amp;= \prob{\abs{X}\leq z}\\ &amp;= \prob{-z \leq X \leq z}\\ &amp;= F_X(z) - F_X(-z) \\ \end{aligned}
+\]</span></p>
+<p>d’où</p>
+<p><span class="math display">\[
+\begin{aligned} f_Z(z) &amp;= f_X(z) + f_X(-z)\\ &amp;= \frac{2}{\sigma \sqrt{2\pi}}  e^{-x^2/(2 \sigma^2)}, \quad z &gt; 0. \end{aligned}
+\]</span> Ensuite, on pose la transformation bijective <span class="math inline">\(Y = Z^2 = \abs{X}^2 = X^2\)</span>. Par la technique du changement de variable, on a <span class="math display">\[
+\begin{aligned} f_Y(y) &amp;= f_Z(y^{1/2}) \left| \frac{1}{2\sqrt{y}} \right| \\ &amp;= \frac{2}{\sigma \sqrt{2\pi}}  e^{-y/(2 \sigma^2)} \left( \frac{1}{2\sqrt{y}} \right) \\ &amp;= \frac{(2 \sigma^2)^{-1/2}}{\Gamma(\frac{1}{2})}  y^{1/2 - 1} e^{-y/(2 \sigma^2)}, \quad y &gt; 0 \end{aligned}
+\]</span> puisque <span class="math inline">\(\Gamma(\frac{1}{2}) = \sqrt{\pi}\)</span>. On voit donc que <span class="math display">\[ Y \sim \text{Gamma}\left(\frac{1}{2}, 2\sigma^2\right). \]</span> Plus directement, on peut aussi voir que <span class="math display">\[ X = \pm \sqrt{y}.\]</span> Par la méthode du changement de variable, on développe <span class="math display">\[
+\begin{aligned} F_Y(y) &amp;= \prob{Y\leq y}\\ &amp;= \prob{X^2 \leq y}\\ &amp;= \prob{-\sqrt{y} \leq X \leq \sqrt{y}}\\ &amp;= F_X(\sqrt{y}) - F_X(-\sqrt{y}). \end{aligned}
+\]</span> On dérive ensuite pour trouver la fonction de densité: <span class="math display">\[
+\begin{aligned} \frac{\text{d}}{\text{d}y} F_Y(y) &amp;= \frac{1}{2\sqrt{y}} f_x(\sqrt{y})- \frac{-1}{2\sqrt{y}} f_x(\sqrt{y})\\ &amp;= \frac{f_x(\sqrt{Y})}{\sqrt{y}}\\ &amp;= \frac{1}{\sqrt{2 \pi \sigma^2 y}} e^{-y\frac{1}{2 \sigma^2}} \\ &amp;= \frac{(2 \sigma^2)^{-1/2}}{\Gamma(\frac{1}{2})}  y^{1/2 - 1} e^{-y/(2 \sigma^2)}, \quad y &gt; 0. \end{aligned}
+\]</span></p>
+<p><strong>b)</strong> On sait que <span class="math inline">\(Z = X_1 - X_2 \sim \mathcal{N}(0, 2)\)</span> et que <span class="math inline">\(Z/\sqrt{2} \sim \mathcal{N}(0, 1)\)</span>. En utilisant le résultat de la partie a), on a immédiatement que <span class="math inline">\(Y = Z^2/2 \sim \chi^2(1)\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-t_probabilités" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="sec-echantillonnage-t_probabilités"><span class="header-section-number">2.11</span> Utiliser une table de la loi <span class="math inline">\(T\)</span></h2>
+<p>Soit <span class="math inline">\(T\)</span> une variable aléatoire distribuée selon une loi <em>t</em> avec <span class="math inline">\(10\)</span> degrés de liberté.</p>
+<p><strong>a)</strong> Trouver <span class="math inline">\(\prob{\abs{T} &gt; 2,228}\)</span> à l’aide d’une table de la loi <em>t</em>.</p>
+<p><strong>b)</strong> Répéter la partie a) à l’aide de R. La fonction donne la valeur de la fonction de répartition en d’une loi <em>t</em> avec degrés de liberté.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(0,05\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Puisque la loi <span class="math inline">\(t\)</span> est symétrique autour de zéro, on a <span class="math display">\[
+\begin{aligned} \prob{\abs{T} &gt; 2,228} &amp;= \prob{T &gt; 2,228} + \prob{T &lt; -2,228} \\ &amp;= 2 \prob{T &gt; 2,228}. \end{aligned}
+\]</span> Or, on trouve dans la table de la loi <span class="math inline">\(t\)</span> de l’annexe que <span class="math inline">\(\prob{T \leq 2,228} = 0,975\)</span> si <span class="math inline">\(T \sim t(10)\)</span>. Par conséquent, <span class="math inline">\(\prob{\abs{T} &gt; 2,228} = 2 (1 - 0,975) = 0,05\)</span>.</p>
+<p><strong>b)</strong> Toutes les fonction R servant à évaluer des fonctions de répartition ont un argument <code>lower.tail</code>. Ce argument est <code>TRUE</code> par défaut, mais lorsque qu’il est <code>FALSE</code>, la fonction retourne la probabilité <em>au-dessus</em> du point <code>x</code>. Ainsi, la probabilité cherchée ici est 0.0500118 (obtenue avec <code>2 * pt(2.228, 10, lower.tail = FALSE)</code>). Il est recommandé d’utiliser cette approche parce qu’elle est, de manière générale, plus précise que le calcul du type , surtout loin dans les queues des distributions.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-t_probabilités2" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="sec-echantillonnage-t_probabilités2"><span class="header-section-number">2.12</span> Bornes pour atteindre une probabilité avec la loi <span class="math inline">\(T\)</span></h2>
+<p>Soit <span class="math inline">\(T\)</span> une variable aléatoire distribuée selon une loi <em>t</em> avec <span class="math inline">\(14\)</span> degrés de liberté. <strong>a)</strong> Trouver la valeur de <span class="math inline">\(b\)</span> tel que <span class="math inline">\(\prob{-b &lt; T &lt; b} = 0,90\)</span> à l’aide d’une table de la loi <em>t</em>.</p>
+<p><strong>b)</strong> Répéter la partie a) à l’aide . La fonction retourne le {} quantile d’une loi <em>t</em> avec degrés de liberté, c’est-à-dire la valeur de <span class="math inline">\(x\)</span> où la fonction de répartition vaut .</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(1,761\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Par symétrie de la loi <span class="math inline">\(t\)</span>, <span class="math display">\[
+\begin{aligned} \prob{-b &lt; T &lt; b} &amp;= \prob{T &lt; b} - \prob{T &lt; -b} \\ &amp;= \prob{T &lt; b} - (1 - \prob{T &lt; b}) \\ &amp;= 2 \prob{T &lt; b} - 1 \\ &amp;= 0,90. \end{aligned}
+\]</span> On cherche donc la valeur de <span class="math inline">\(b\)</span> tel que <span class="math inline">\(\prob{T &lt; b} = (1 + 0,90)/2 = 0,95\)</span>, où <span class="math inline">\(T \sim t(14)\)</span>. Dans la table de la loi <span class="math inline">\(t\)</span> de l’annexe on trouve que <span class="math inline">\(b = 1,761\)</span>.</p>
+<p><strong>b)</strong> En définitive, on cherche le 95ième centile d’une loi <span class="math inline">\(t(14)\)</span>. Avec R, on obtient 1.7613101 (<code>qt(0.95, 14)</code>).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-f_definition" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="sec-echantillonnage-f_definition"><span class="header-section-number">2.13</span> Définition de la loi <span class="math inline">\(F\)</span></h2>
+<p>Soit <span class="math inline">\(U \sim \chi^2(r_1)\)</span> et <span class="math inline">\(V \sim \chi^2(r_2)\)</span>, deux variables aléatoires indépendantes.</p>
+<p><strong>a)</strong> Démontrer que la densité de <span class="math display">\[ F = \frac{U/r_1}{V/r_2} \]</span> est <span class="math display">\[ f(x) = \frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+        \Gamma(r_1/2) \Gamma(r_2/2) (1 + r_1 x/r_2)^{(r_1 + r_2)/2}} \]</span></p>
+<p><strong>b)</strong> Calculer <span class="math inline">\(\esp{F}\)</span>.</p>
+<p><strong>c)</strong> Calculer <span class="math inline">\(\var{F}\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Démo</p>
+<p><strong>b)</strong> <span class="math inline">\(r_2/(r_2 - 2)\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(2 [r_2^2 (r_2 + r_1 - 2)]/[r_1 (r_2 - 2)^2 (r_2 - 4)]\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a <span class="math inline">\(U \sim \chi^2(r_1)\)</span> et <span class="math inline">\(V \sim \chi^2(r_2)\)</span>. On pose <span class="math inline">\(F = (U/r_1)/(V/r_2)\)</span> et, disons, <span class="math inline">\(G = V\)</span>. Pour trouver la densité (marginale) de <span class="math inline">\(F\)</span>, il faudra passer par la densité conjointe de <span class="math inline">\(F\)</span> et <span class="math inline">\(G\)</span>. Les équations régissant la transformation de variables aléatoires sont</p>
+<p><span class="math display">\[
+\begin{aligned} x &amp;= \frac{r_2}{r_1}\left(\frac{u}{v}\right) &amp; u &amp;= \frac{r_1}{r_2}  x y \\ y &amp;= v &amp; v &amp;= y. \end{aligned}
+\]</span></p>
+<p>Ainsi, le jacobien de la transformation est</p>
+<p><span class="math display">\[
+J = \begin{vmatrix} r_1 y/r_2 &amp; r_1 x/r_2 \\ 0         &amp; 1 \end{vmatrix} = \frac{r_1}{r_2}  y
+\]</span></p>
+<p>et la densité conjointe de <span class="math inline">\(F\)</span> et <span class="math inline">\(G\)</span> est</p>
+<p><span class="math display">\[
+\begin{aligned}
+        f_{FG}(x, y)
+        &amp;= f_{UV}\left(\frac{r_1}{r_2}\, xy, y\right)
+        \left|\frac{r_1}{r_2}\, y\right| \\
+        &amp;= \left(\frac{r_1}{r_2}\right) y
+        f_U\left(\frac{r_1}{r_2}\, xy\right) f_V(y) \\
+        &amp;= \frac{
+          (r_1/r_2)
+          (1/2)^{(r_1 + r_2)/2}
+          (r_1 xy/r_2)^{r_1/2 - 1}
+          y^{r_2/2}
+          e^{-(r_1 x/r_2 + 1) y/2}}{
+          \Gamma(r_1/2) \Gamma(r_2/2)}
+\end{aligned}
+\]</span> pour <span class="math inline">\(x &gt; 0\)</span> et <span class="math inline">\(y &gt; 0\)</span>.</p>
+<p>En intégrant, on trouve la densité marginale de <span class="math inline">\(F\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned} f_F(x) &amp;= \int_0^{\infty} f_{FG}(x, y)  dy \\ &amp;= \frac{(r_1/r_2)^{(r_1 + r_2)/2} x^{r_1/2 - 1}}{
+          \Gamma(r_1/2) \Gamma(r_2/2)} \\
+        &amp;\phantom{=} \times
+        \int_0^\infty
+        \left(\frac{1}{2}\right)^{(r_1 + r_2)/2}
+        y^{(r_1 + r_2)/2 - 1}
+        e^{-(r_1 x/r_2 + 1) y/2}\, dy \\
+        &amp;= \frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+          \Gamma(r_1/2) \Gamma(r_2/2) (r_1 x/r_2 + 1)^{(r_1 + r_2)/2}} \\
+        &amp;\phantom{=} \times
+        \int_0^\infty
+        \frac{(1/2)^{(r_1 + r_2)/2} (r_1 x/r_2 + 1)^{(r_1 + r_2)/2}}{
+          \Gamma((r_1 + r_2)/2)}\,
+        y^{(r_1 + r_2)/2 - 1}
+        e^{-(r_1 x/r_2 + 1) y/2}\, dy \\
+        &amp;= \frac{\Gamma((r_1 + r_2)/2) (r_1/r_2)^{r_1/2} x^{r_1/2 - 1}}{
+        \Gamma(r_1/2) \Gamma(r_2/2) (1 + r_1 x/r_2)^{(r_1 + r_2)/2}},
+\end{aligned}
+\]</span></p>
+<p>puisque l’intégrande ci-dessus est la densité d’une loi gamma. La loi de la variable aléatoire <span class="math inline">\(F\)</span> est appelée loi <span class="math inline">\(F\)</span> avec <span class="math inline">\(r_1\)</span> et <span class="math inline">\(r_2\)</span> degrés de liberté.</p>
+<p><strong>b)</strong> Par indépendance entre les variables aléatoires <span class="math inline">\(U\)</span> et <span class="math inline">\(V\)</span>, on a</p>
+<p><span class="math display">\[
+\begin{aligned}
+        \esp{F} &amp;= \Esp{\frac{U/r_1}{V/r_2}} \\
+        &amp;= \frac{r_2}{r_1}\, \Esp{\frac{U}{V}} \\
+        &amp;= \frac{r_2}{r_1}\, \esp{U} \Esp{\frac{1}{V}}.
+\end{aligned}
+\]</span></p>
+<p>Or, <span class="math inline">\(\esp{U} = r_1\)</span> et</p>
+<p><span class="math display">\[
+\begin{align*}
+        \Esp{\frac{1}{V}}
+        &amp;= \int_0^\infty \frac{1}{v}\, f_V(v)\, dv \\
+        &amp;= \int_0^\infty
+        \frac{1}{2^{r_2/2} \Gamma(r_2/2)}\,
+        v^{r_2/2 - 1 - 1} e^{-v/2}\, dv \\
+        &amp;= \frac{2^{r_2/2 - 1} \Gamma(r_2/2 - 1)}{
+          2^{r_2/2} \Gamma(r_2/2)}, \quad
+        \frac{r_2}{2} - 1 &gt; 0.
+\end{align*}
+\]</span></p>
+<p>Avec la propriété de la fonction gamma <span class="math inline">\(\Gamma(x) = (x - 1) \Gamma(x - 1)\)</span>, cette expression se simplifie en</p>
+<p><span class="math display">\[ \Esp{\frac{1}{V}} = \frac{1}{r_2 - 2}, \]</span> d’où, enfin,</p>
+<p><span class="math display">\[ \esp{F} = \frac{r_2}{r_2 - 2} \]</span> pour <span class="math inline">\(r_2 &gt; 2\)</span>.</p>
+<p><strong>c)</strong> En procédant comme en b), on trouve que <span class="math inline">\(\esp{U^2} = \var{U} + \esp{U}^2 = 2 r_1 + r_1^2\)</span>, que <span class="math display">\[
+\Esp{\frac{1}{V^2}} = \frac{1}{(r_2 - 2)(r_2 - 4)}
+\]</span> et donc que <span class="math display">\[
+\begin{aligned} \esp{F^2} &amp;= \frac{r_2^2}{r_1^2}  \esp{U^2} \Esp{\frac{1}{V^2}} \\ &amp;= \frac{r_2^2 (r_1 + 2)}{r_1 (r_2 - 2)(r_2 - 4)}. \end{aligned}
+\]</span> Par conséquent, <span class="math display">\[
+\begin{aligned} \var{F} &amp;= \frac{r_2^2 (r_1 + 2)}{r_1 (r_2 - 2)(r_2 - 4)} - \left(\frac{r_2}{r_2 - 2}\right)^2 \\ &amp;= 2 \left(\frac{r_2}{r_2 - 2}\right)^2 \left(\frac{r_2 + r_1 - 2}{r_1 (r_2 - 4)}\right), \end{aligned}
+\]</span> pour <span class="math inline">\(r_2 &gt; 4\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-f_inverse" class="level2" data-number="2.14">
+<h2 data-number="2.14" class="anchored" data-anchor-id="sec-echantillonnage-f_inverse"><span class="header-section-number">2.14</span> Inverse de la loi <span class="math inline">\(F\)</span></h2>
+<p>Soit <span class="math inline">\(F\)</span> une variable aléatoire distribuée selon une loi <em>F</em> avec <span class="math inline">\(\nu_1\)</span> et <span class="math inline">\(\nu_2\)</span> degrés de liberté (dans l’ordre). Démontrer que <span class="math inline">\(1/F\)</span> est aussi distribuée selon une loi <em>F</em>, mais avec <span class="math inline">\(\nu_2\)</span> et <span class="math inline">\(\nu_1\)</span> degrés de liberté.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Démo: réutiliser la définition de la loi F</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a <span class="math display">\[
+\begin{aligned}
+      \frac{1}{F} &amp;=
+      \left(\frac{U/\nu_1}{V/\nu_2}\right)^{-1} \\
+      &amp;=\frac{V/\nu_2}{U/\nu_1}
+    \end{aligned}
+\]</span> où <span class="math inline">\(U \sim \chi^2(\nu_1)\)</span> et <span class="math inline">\(V \sim \chi^2(\nu_2)\)</span>. Puisqu’il s’agit d’un ratio de deux variables aléatoires <span class="math inline">\(\chi^2\)</span> divisées chacune par son nombre de degrés de liberté, on a donc que <span class="math display">\[
+      \frac{1}{F} \sim F(\nu_2, \nu_1).
+    \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-f_table" class="level2" data-number="2.15">
+<h2 data-number="2.15" class="anchored" data-anchor-id="sec-echantillonnage-f_table"><span class="header-section-number">2.15</span> Utiliser une table de la loi <span class="math inline">\(F\)</span></h2>
+<p>Si <span class="math inline">\(F\)</span> a une distribution <em>F</em> avec paramètres <span class="math inline">\(\nu_1 = 5\)</span> et <span class="math inline">\(\nu_2
+  = 10\)</span>, trouver <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> de sorte que <span class="math inline">\(\prob{F \leq a} = 0,05\)</span> et <span class="math inline">\(\prob{F \leq b} = 0,95\)</span>. Les quantiles de la loi <em>F</em> peuvent être trouvés soit dans une table, soit à l’aide de la fonction <code>qf(x, v1, v2)</code> de R.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Astuce">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Astuce
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>en travaillant avec une table, utiliser le fait que <span class="math inline">\(\prob{F \leq a} = \prob{F^{-1}
+    \geq a^{-1}} = 1 - \prob{F^{-1} \leq a^{-1}}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(a = 0,211\)</span> et <span class="math inline">\(b = 3,33\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On a <span class="math inline">\(F \sim F(5, 10)\)</span> et l’on cherche <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> tel que <span class="math inline">\(\prob{F
+      \leq a} = 0,05\)</span> et <span class="math inline">\(\prob{F \leq b} = 0,95\)</span>. Dans une table de loi <span class="math inline">\(F\)</span>, on trouve que <span class="math inline">\(\prob{F \leq 3,326} = 0,95\)</span> et donc que <span class="math inline">\(b
+    = 3,33\)</span>. Puisque les quantiles inférieurs ne sont pas inclus dans la table de l’annexe, on doit utiliser pour trouver <span class="math inline">\(a\)</span> la relation <span class="math inline">\(\prob{F \leq a} = 1 - \prob{F^{-1} \leq a^{-1}}\)</span> où, tel que démontré à l’exercice <a href="#sec-echantillonnage-f_inverse" class="quarto-xref"><span>2.14</span></a>, <span class="math inline">\(F^{-1} \sim F(10, 5)\)</span>. Dans une table, on trouve que <span class="math inline">\(a^{-1} =
+    4,74\)</span>, d’où <span class="math inline">\(a = 0,211\)</span>.</p>
+<pre><code>Avec R, on obtient les mêmes résultats encore plus
+simplement:</code></pre>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>), <span class="dv">5</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2111904 3.3258345</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-f_norm_khi" class="level2" data-number="2.16">
+<h2 data-number="2.16" class="anchored" data-anchor-id="sec-echantillonnage-f_norm_khi"><span class="header-section-number">2.16</span> Lien entre la normale, la khi carré et la <span class="math inline">\(F\)</span></h2>
+<p>Soit <span class="math inline">\(T = W/\sqrt{V/r}\)</span>, où <span class="math inline">\(W\)</span> et <span class="math inline">\(V\)</span> sont des variables aléatoires indépendantes avec une distribution, respectivement, normale centrée réduite et khi carré avec <span class="math inline">\(r\)</span> degrés de liberté. Démontrer que la distribution de <span class="math inline">\(T^2\)</span> est <span class="math inline">\(F\)</span> avec <span class="math inline">\(1\)</span> et <span class="math inline">\(r\)</span> degrés de liberté.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On sait que <span class="math inline">\(W^2 \sim \chi^2(1)\)</span>. Ainsi, <span class="math display">\[
+      T^2 = \frac{W^2/1}{V/r},
+    \]</span> qui est un ratio de deux variables aléatoires <span class="math inline">\(\chi^2\)</span> divisées par leur nombre de degrés de liberté. Par définition de la loi <span class="math inline">\(F\)</span>, on a donc que <span class="math inline">\(T^2 \sim F(1, r)\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_gamma" class="level2" data-number="2.17">
+<h2 data-number="2.17" class="anchored" data-anchor-id="sec-echantillonnage-tcl_gamma"><span class="header-section-number">2.17</span> TCL avec la loi gamma</h2>
+<p>Démontrer à l’aide du Théorème central limite que la distribution gamma avec paramètre de forme <span class="math inline">\(\alpha\)</span> entier et paramètre d’échelle <span class="math inline">\(\beta\)</span> tend vers la distribution normale avec moyenne <span class="math inline">\(\alpha\beta\)</span> et variance <span class="math inline">\(\alpha\beta^2\)</span> lorsque <span class="math inline">\(\alpha\)</span> tend vers l’infini. Trouver la distribution asymptotique de <span class="math inline">\(Y\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Astuce">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Astuce
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>définir <span class="math inline">\(Y = X_1 + \dots + X_\alpha,\)</span> où <span class="math inline">\(X_i \sim \text{Exponentielle}(\beta)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\lim_{\alpha \rightarrow \infty} Y \sim N\left(\alpha\beta, \alpha\beta^2\right)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soit <span class="math display">\[
+      Y = \sum_{i = 1}^\alpha X_i
+\]</span> avec <span class="math inline">\(X_i \sim \text{Exponentielle}(\beta)\)</span> et <span class="math inline">\(X_1, \dots,
+    X_\alpha\)</span> indépendantes. Par le Théorème central limite,</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \lim_{\alpha \rightarrow \infty} Y =
+      \lim_{\alpha  \rightarrow \infty} \sum_{i = 1}^\alpha X_i \sim
+      \mathcal{N}(\alpha \esp{X_i}, \alpha \var{X_i}).
+    \end{aligned}
+\]</span> Par conséquent, <span class="math display">\[
+      \lim_{\alpha \rightarrow \infty} Y \sim
+      N\left(\alpha\beta, \alpha\beta^2\right).
+\]</span></p>
+<p>On trouve à la figure <a href="#sec-echantillonnage-tcl_gamma" class="quarto-xref"><span>2.17</span></a> les graphiques de densités gamma pour quelques valeurs du paramètre <span class="math inline">\(\alpha\)</span>. On observe, en effet, que la distribution tend vers une normale lorsque <span class="math inline">\(\alpha\)</span> augmente.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="echantillonnage_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_x100_khi2" class="level2" data-number="2.18">
+<h2 data-number="2.18" class="anchored" data-anchor-id="sec-echantillonnage-tcl_x100_khi2"><span class="header-section-number">2.18</span> TCL avec un échantillon aléatoire d’une loi khi carré</h2>
+<p>Soit <span class="math inline">\(\bar{X}_{100}\)</span> la moyenne d’un échantillon aléatoire de taille <span class="math inline">\(100\)</span> tiré d’une loi <span class="math inline">\(\chi^2(50)\)</span>. <strong>a)</strong> Trouver la distribution exacte de <span class="math inline">\(\bar{X}_{100}\)</span>.</p>
+<p><strong>b)</strong> Calculer à l’aide d’un logiciel statistique la valeur exacte de <span class="math inline">\(\prob{49 &lt; \bar{X}_{100} &lt; 51}\)</span>.</p>
+<p><strong>c)</strong> Calculer une valeur approximative de la probabilité en b).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Gamma<span class="math inline">\((2500, 1/50)\)</span></p>
+<p><strong>b)</strong> 0,6827218</p>
+<p><strong>c)</strong> <span class="math inline">\(0,682\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On a l’échantillon aléatoire <span class="math inline">\(X_1, \dots, X_{100}\)</span>, où <span class="math display">\[ X_i \sim \chi^2(50) \equiv \text{Gamma}\left( \frac{50}{2},  2 \right), \quad i = 1, \dots, 100. \]</span> Or, on sait que <span class="math inline">\(Y = X_1 + \dots + X_{100} \sim \text{Gamma}(100 (25), 2)\)</span> et que <span class="math inline">\(\bar{X}_{100} = Y/100 \sim \text{Gamma}(2500, 2/100)\)</span>. Ce résultat tient parce qu’une somme de <span class="math inline">\(k\)</span> observations d’un échantillon aléatoire tiré d’une loi gamma est telle que <span class="math inline">\(S = \sum_{i = 1}^{k} X_i \sim Gamma(\alpha k, \beta)\)</span>. La distribution de <span class="math inline">\(\bar{X}_{100}\)</span> suit directement de la transformation d’échelle d’une loi gamma, qu’on peut démontrer en utilisant la fonction génératrice de moments. Ainsi,</p>
+<p><span class="math display">\[
+\begin{aligned} \mathcal{M}_{\bar{X}_{100}}(t) &amp;= \esp{e^{t \frac{Y} {100}}} \\ &amp;= \esp{e^{Y \frac{t} {100}}} \\ &amp;= \mathcal{M}_Y(\frac{t}{100}). \end{aligned}
+\]</span></p>
+<p><strong>b)</strong> On peut, par exemple, obtenir la probabilité demandée avec R ainsi:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pgamma</span>(<span class="dv">51</span>, <span class="dv">2500</span>, <span class="dv">50</span>) <span class="sc">-</span> <span class="fu">pgamma</span>(<span class="dv">49</span>, <span class="dv">2500</span>, <span class="dv">50</span>) </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6827218</code></pre>
+</div>
+</div>
+<p><strong>c)</strong> On a <span class="math inline">\(\esp{\bar{X}_{100}} = 2500/50 = 50\)</span> et <span class="math inline">\(\var{\bar{X}_{100}} = 2500/50^2 = 1\)</span>. En utilisant l’approximation normale, on trouve <span class="math display">\[
+\begin{aligned} \prob{49 &lt; \bar{X}_{100} &lt; 51} &amp;= \Prob{\frac{49 - 50}{1} &lt; \frac{\bar{X}_{100} - 50}{1} &lt; \frac{51 - 50}{1}} \\ &amp;\approx \Phi(1) - \Phi(-1) \\ &amp;= 2\Phi(1) - 1 \\ &amp;= 0,682. \end{aligned}
+\]</span> On trouve la valeur de <span class="math inline">\(\Phi(1)\)</span> dans une table de quantiles de la loi normale ou à l’aide d’un logiciel statistique.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_approx" class="level2" data-number="2.19">
+<h2 data-number="2.19" class="anchored" data-anchor-id="sec-echantillonnage-tcl_approx"><span class="header-section-number">2.19</span> Approximation avec le TCL pour un échantillon tiré d’une loi gamma</h2>
+<p>Soit <span class="math inline">\(\bar{X}\)</span> la moyenne d’un échantillon de taille <span class="math inline">\(128\)</span> d’une loi Gamma<span class="math inline">\((2, 4)\)</span>. Trouver une approximation pour <span class="math inline">\(\prob{7 &lt; \bar{X} &lt;
+    9}\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(0,954\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Puique l’on ne demande qu’une valeur approximative pour <span class="math inline">\(\prob{7 &lt;
+      \bar{X} &lt; 9}\)</span>, on va utiliser l’approximation normale. La taille de l’échantillon étant relativement grande, l’approximation sera très bonne. Soit <span class="math inline">\(\bar{X} = (X_1 + \dots + X_{128})/128\)</span>, où <span class="math inline">\(X_i
+    \sim \text{Gamma}(2, 4)\)</span>, <span class="math inline">\(i = 1, \dots, 128\)</span>. On a <span class="math inline">\(\esp{\bar{X}} = \esp{X_i} = 8\)</span> et <span class="math inline">\(\var{\bar{X}} = \var{X_i}/128
+    = 1/4\)</span>. Par conséquent,</p>
+<p><span class="math display">\[
+\begin{aligned}
+      \prob{7 &lt; \bar{X} &lt; 9}
+        &amp;= \Prob{\frac{7 - 8}{\sqrt{1/4}} &lt;
+          \frac{\bar{X} - 8}{\sqrt{1/4}} &lt;
+          \frac{9 - 8}{\sqrt{1/4}}} \\
+      &amp;\approx \Phi(2) - \Phi(-2) \\
+      &amp;= 2 \Phi(2) - 1 \\
+      &amp;= 0,954.
+    \end{aligned}
+\]</span></p>
+<p>On trouve la valeur de <span class="math inline">\(\Phi(2)\)</span> dans une table de quantiles de la loi normale ou à l’aide d’un logiciel statistique.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_approx_2" class="level2" data-number="2.20">
+<h2 data-number="2.20" class="anchored" data-anchor-id="sec-echantillonnage-tcl_approx_2"><span class="header-section-number">2.20</span> Approximation avec le TCL</h2>
+<p>Trouver une valeur approximative de la probabilité que la moyenne d’un échantillon de taille <span class="math inline">\(15\)</span> d’une loi avec densité <span class="math inline">\(f(x) = 3
+  x^2\)</span>, <span class="math inline">\(0 &lt; x &lt; 1\)</span>, soit entre <span class="math inline">\(3/5\)</span> et <span class="math inline">\(4/5\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(0,840\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On souhaitera utiliser l’approximation normale. Cela requiert de connaître les valeurs de l’espérance et de la variance de la moyenne de l’échantillon, <span class="math inline">\(\bar{X}\)</span>, et, par ricochet, celles de la variable aléatoire avec densité <span class="math inline">\(f(x)\)</span>. Or, <span class="math display">\[
+\begin{aligned}
+      \esp{X} &amp;= \int_0^1 3x^3 dx = \frac{3}{4} \\
+      \esp{X^2} &amp;= \int_0^1 3x^4 dx = \frac{3}{5}
+    \end{aligned}
+\]</span> et donc <span class="math inline">\(\var{X} = 3/80\)</span>. Ainsi, <span class="math inline">\(\esp{\bar{X}} = \esp{X} = 3/4\)</span> et <span class="math inline">\(\var{\bar{X}} = \var{X}/15 = 1/400\)</span> et <span class="math display">\[
+\begin{aligned}
+      \Prob{\frac{3}{5} &lt; \bar{X} &lt; \frac{4}{5}}
+      &amp;= \Prob{\frac{3/5 - 3/4}{\sqrt{1/400}} &lt;
+        \frac{\bar{X} - 3/4}{\sqrt{1/400}} &lt;
+        \frac{4/5 - 3/4}{\sqrt{1/400}}} \\
+      &amp;\approx \Phi(1) - \Phi(-3) \\
+      &amp;= 0,840.
+    \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_deux_populations" class="level2" data-number="2.21">
+<h2 data-number="2.21" class="anchored" data-anchor-id="sec-echantillonnage-tcl_deux_populations"><span class="header-section-number">2.21</span> Convergence pour deux populations normalement distribuées</h2>
+<p>On suppose que <span class="math inline">\(X_1,\ldots,X_n\)</span> et <span class="math inline">\(Y_1,\ldots,Y_n\)</span> sont des échantillons aléatoires indépendants de populations avec moyennes <span class="math inline">\(\mu_1\)</span> et <span class="math inline">\(\mu_2\)</span> et variances <span class="math inline">\(\sigma_1^2&gt;0\)</span> et <span class="math inline">\(\sigma_2^2&gt;0\)</span>, respectivement. Démontrer que, quand <span class="math inline">\(n\to\infty\)</span>, <span class="math display">\[
+U_n = \frac{(\bar X_n-\bar Y_n)-(\mu_1-\mu_2)}{\sqrt{(\sigma_1^2+\sigma_2^2)/n}}
+\]</span> est asymptotiquement <span class="math inline">\(\mathcal{N}(0,1)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Démo</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-44" class="callout-44-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Pour chaque <span class="math inline">\(i \in \{1,\dots, n \}\)</span>, on pose <span class="math inline">\(D_i = X_i - Y_i\)</span>. <span class="math inline">\(D_1, \ldots, D_n\)</span> sont mutuellement indépendants et identiquement distribués avec moyenne <span class="math display">\[
+\ex(D_1) = \ex(X_1) - \ex(Y_1) = \mu_1 - \mu_2
+\]</span> et variance <span class="math display">\[
+\vr(D_1) = \vr(X_1) + \vr(Y_1) = \sigma_1^2 + \sigma_2^2.
+\]</span> Par le Théorème central limite, on a donc que, quand <span class="math inline">\(n \to \infty\)</span>, <span class="math display">\[
+\sqrt{n}   \frac{\bar D_n - \ex[D_1]}{\sqrt{\vr(D_1)}} = \frac{(\bar X_n - \bar Y_n) - (\mu_1 -\mu_2)}{\sqrt{(\sigma_1^2 + \sigma_2^2)/n}} = Z_n
+\]</span> converge en distribution vers <span class="math inline">\(\mathcal{N}(0,1)\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_machine_embouteillage" class="level2" data-number="2.22">
+<h2 data-number="2.22" class="anchored" data-anchor-id="sec-echantillonnage-tcl_machine_embouteillage"><span class="header-section-number">2.22</span> La machine d’embouteillage</h2>
+<p>Une machine d’embouteillage peut être réglée de sorte qu’elle remplisse en moyenne les bouteilles de <span class="math inline">\(\mu\)</span> onces de liquide par bouteille. Il a été observé que la quantité de liquide distribuée par la machine suit une loi normale avec <span class="math inline">\(\sigma= 2,5\)</span> onces. <strong>a)</strong> Si <span class="math inline">\(n=9\)</span> bouteilles sont sélectionnées aléatoirement à la sortie de la machine, quelle est la probabilité que la moyenne échantillonnale diffère de <span class="math inline">\(\mu\)</span> d’au plus 0,2 once?</p>
+<p><strong>b)</strong> Trouver la probabilité que la moyenne échantillonale diffère de <span class="math inline">\(\mu\)</span> d’au plus 0,2 once lorsque la taille de l’échantillon est <span class="math inline">\(n = 25, 36,\)</span> et <span class="math inline">\(64\)</span>. Que remarquez-vous lorsque <span class="math inline">\(n\)</span> augmente? Pouvez-vous expliquer cette remarque?</p>
+<p><strong>c)</strong> Quelle est la taille d’échantillon requise pour s’assurer que la probabilité que la moyenne échantillonnale diffère de <span class="math inline">\(\mu\)</span> d’au plus 0,2 once est d’au moins 95<br>
+</p>
+<p><strong>d)</strong> Comment la probabilité obtenue en a) change-t-elle lorsque <span class="math inline">\(\sigma\)</span> est inconnu et que la variance échantillonnale est égale à <span class="math inline">\(s_n^2= 5,5\)</span>?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>0,1896    b) 0,3108&nbsp;; 0,3688&nbsp;; 0,4778    c) 601    d) 0,1955</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> La probabilité peut être calculée comme suit: <span class="math display">\[
+\begin{aligned} \Pr(|\bar X_n - \mu| \le 0,2) &amp; = \Pr(-0,2 \le \bar X_n - \mu \le 0,2) \\ &amp; = \Pr\left(-\frac{0,2}{\sqrt{2,5^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \le \frac{0,2}{\sqrt{2,5^2/9}} \right). \end{aligned}
+\]</span> On sait que <span class="math display">\[ \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \sim \mathcal{N}(0,1), \]</span> la probabilité est alors <span class="math display">\[
+\begin{aligned} \Pr\left(-\frac{0,2}{\sqrt{2,5^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \le \frac{0,2}{\sqrt{2,5^2/9}} \right) &amp;= \Phi\left(\frac{0,2}{\sqrt{2,5^2/9}}\right)-\Phi\left(-\frac{0,2}{\sqrt{2,5^2/9}}\right)\\ &amp; = 2\Phi\left(\frac{0,2}{\sqrt{2,5^2/9}}\right)-1, \end{aligned}
+\]</span> où <span class="math inline">\(\Phi\)</span> représente la fonction de répartition de la loi normale centrée réduite. Cette probabilité peut être évaluée avec une table de la loi normale ou avec R; ce dernier donne 0.1896697 avec la commande <code>2*pnorm(0.2/sqrt(2.5^2/9))-1</code>.</p>
+<p><strong>b)</strong> De la même façon qu’en a), on trouve <span class="math display">\[
+\begin{aligned} \Pr(|\bar X_n - \mu| \le 0,2)&amp; =\Pr\left(-\frac{0,2}{\sqrt{2,5^2/n}} \le \frac{\bar X_n - \mu}{\sqrt{2,5^2/9}} \le \frac{0,2}{\sqrt{2,5^2/n}} \right)\\ &amp; = 2\Phi\left(\frac{0,2}{\sqrt{2,5^2/n}}\right)-1. \end{aligned}
+\]</span> On considère <span class="math inline">\(n=25\)</span>, <span class="math inline">\(n=36\)</span> et <span class="math inline">\(n=64\)</span> dans la formule, ce qui donne</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">36</span>,<span class="dv">64</span>) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="fl">0.2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="fl">2.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n))<span class="sc">-</span><span class="dv">1</span> </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3108435 0.3687726 0.4778274</code></pre>
+</div>
+</div>
+<p>On remarque que la probabilité que la moyenne échantillonnale diffère de la vraie moyenne d’au plus 0,2 once augmente avec <span class="math inline">\(n\)</span>. C’est le résultat qu’on attend selon la Loi faible des grands nombres, qui indique que cette probabilité tend vers <span class="math inline">\(1\)</span> quand <span class="math inline">\(n\to \infty\)</span>.</p>
+<p><strong>c)</strong> Si <span class="math display">\[ \Pr ( | {\bar X}_n - \mu | \le 0,2) = 2\Phi\left(\frac{0,2}{\sqrt{2,5^2/n}}\right)-1 \geq 0,95, \]</span> alors <span class="math inline">\(\Phi \left(0,2\sqrt{n}/2,5\right) \geq 0,975\)</span> et ainsi <span class="math inline">\(0,2\sqrt{n}/2,5 \geq 1,96\)</span>, ce qui implique que <span class="math inline">\(\sqrt{n} \geq 24,5\)</span> ou <span class="math inline">\(n\geq 600,25\)</span>. La taille d’échantillon doit donc être de <span class="math inline">\(n=601\)</span> pour que la probabilité soit <em>le plus près possible, mais pas plus petite que</em> 0,95.</p>
+<p><strong>d)</strong> Dans ce cas, la probabilité à calculer est <span class="math display">\[ \Pr\left(-\frac{0,2}{\sqrt{s_n^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{S_n^2/9}} \le \frac{0,2}{\sqrt{s_n^2/9}} \right). \]</span> On sait que <span class="math display">\[ \frac{\bar X_n - \mu}{\sqrt{S_n^2/9}} \sim t_{(8)}, \]</span> on trouve que <span class="math display">\[
+\begin{aligned} \Pr\left(-\frac{0,2}{\sqrt{s_n^2/9}} \le \frac{\bar X_n - \mu}{\sqrt{S_n^2/9}} \le \frac{0,2}{\sqrt{s_n^2/9}} \right) &amp; =  \Pr\left(-\frac{0,2}{\sqrt{5,5/9}} \le \frac{\bar X_n - \mu}{\sqrt{5,5/9}} \le \frac{0,2}{\sqrt{5,5/9}} \right) \\ &amp;= T_{(8)}\left(\frac{0,2}{\sqrt{5,5/9}} \right) - T_{(8)} \left(-\frac{0,2}{\sqrt{5,5/9}} \right), \end{aligned}
+\]</span> où <span class="math inline">\(T_{(8)}\)</span> est la fonction de répartition d’une loi Student <span class="math inline">\(t\)</span> avec <span class="math inline">\(8\)</span> degrés de liberté. Encore une fois, cette expression peut être évaluée avec une table de la loi normale ou avec R; ce dernier donne 0.1954708 avec la commande <code>pt(0.2/sqrt(5.5/9),df=8) -pt(-0.2/sqrt(5.5/9),df=8)</code>. La probabilité obtenue est plus grande qu’en a) étant donné la variabilité ajoutée avec l’estimation de la variance.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_souscription_aeact" class="level2" data-number="2.23">
+<h2 data-number="2.23" class="anchored" data-anchor-id="sec-echantillonnage-tcl_souscription_aeact"><span class="header-section-number">2.23</span> Sélection des risques pour AÉACT</h2>
+<p>Un assureur de dommages pour entreprises, <em>AÉACT</em>, se demande s’il devrait couvrir les risques de <em>TaPaCt</em>, une entreprise bien établie de production de tapis avec une usine qui comporte des machines fragiles et dispendieuses ou les risques de <em>Markétact</em>, une nouvelle firme de marketing pour laquelle la majorité des employé.e.s sont en télétravail. Les deux entreprises sont basées dans des villes différentes.</p>
+<p>Après une analyse détaillée des projections des dommages de chaque entreprise, l’assureur a déterminé que <span class="math display">\[
+\sigma^2_{TaPaCt} = 32,9   \text{pour un échantillon de taille}   n = 10
+\]</span></p>
+<p>Les analyses de dossiers de nouveaux clients chez <em>AÉACT</em> font l’objet d’une politique interne selon laquelle on pose trois postulats: <strong>a)</strong> Les sinistres sont normalement distribués.</p>
+<p><strong>b)</strong> La variance des dommages des entreprises avec beaucoup de moyens de production est le double de la variance des dommages des entreprises dont la majorité des membres sont en télétravail.</p>
+<p><strong>c)</strong> Comme <em>AÉACT</em> a peu de liquidités, elle choisira l’entreprise avec la variance échantillonnale obtenue dans l’analyse qui est la plus basse.</p>
+<p>Avant de récolter un échantillon pour Markétact de taille <span class="math inline">\(m = 11\)</span>, <em>AÉACT</em> a besoin de votre aide. <strong>a)</strong> La prochaine étape de l’analyse implique d’utiliser la loi F. Quelle hypothèse est manquante dans l’énoncé pour utiliser cette loi?</p>
+<p><strong>b)</strong> Supposons que l’hypothèse manquante en a) est également posée, de quelle façon la loi F peut-elle être utile?</p>
+<p><strong>c)</strong> Calculer <span class="math inline">\(\prob{S^2_{TaPaCt}/S^2_{Markétact} &lt; 1}\)</span>.</p>
+<p><strong>d)</strong> En amont de l’analyse des projections et en regard du résultat précédent, quelle décision est la plus probable pour AÉACT?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>Indépendance    b) Comparer les <span class="math inline">\(S^2\)</span>    c) 0,1558435    d) Markétact</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-48" class="callout-48-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> Il faut également supposer que tous les risques de deux entreprises sont indépendants pour utiliser la loi F. C’est réaliste dans le contexte comme leur domaine de pratique est différent et comme elles sont basées dans des villes différentes.</p>
+<p><strong>b)</strong> La loi F peut être utile afin de comparer les variances échantillonnales des deux entreprises pour les échantillons analysés lors du processus de sélection (les projections). L’assureur pourra faire un choix selon ce résultat pour choisir l’entreprise la moins risquée.</p>
+<p><strong>c)</strong> On a que: <span class="math display">\[
+\begin{aligned} \frac{S^2_{TaPaCt} / \sigma^2_n}{S^2_{Markétact}/\sigma^2_m} &amp;= \frac{S^2_{TaPaCt} / 2 \sigma^2_m}{S^2_{Markétact}/\sigma^2_m} \\ &amp;= \frac{S^2_{TaPaCt}}{  2 S^2_{Markétact}} \\ &amp;\sim F(9, 10) \end{aligned}
+\]</span> Ainsi, <span class="math display">\[
+\begin{aligned} \text{Pr}\left[\frac{S^2_{TaPaCt}}{S^2_{Markétact}} &lt; 1\right] &amp;= \text{Pr}\left[\frac{S^2_{TaPaCt}}{2 S^2_{Markétact}}\right] &lt; 0,5 \\ &amp;= 0,1558435 \end{aligned}
+\]</span></p>
+<p><strong>d)</strong> Comme il est plus probable que <span class="math inline">\(S^2_{TaPaCt}/S^2_{Markétact} \geq 1\)</span> que <span class="math inline">\(S^2_{TaPaCt}/S^2_{Markétact} &lt; 1\)</span>, il est plus probable que <span class="math inline">\(S^2_{TaPaCt} \geq S^2_{Markétact}\)</span>. Ainsi, il est plus probable que Markétact soit retenue que TaPaCt soit retenue à la fin du processus de sélection.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-echantillonnage-tcl_cl50" class="level2" data-number="2.24">
+<h2 data-number="2.24" class="anchored" data-anchor-id="sec-echantillonnage-tcl_cl50"><span class="header-section-number">2.24</span> Concentration létale médiane</h2>
+<p>L’<em>Agence de Protection de l’Environnement</em> est responsable d’établir les critères pour la quantité autorisée de certains produits chimiques en eau douce. Une mesure commune de la toxicité pour les polluants est la concentration d’un produit chimique causant la mort de la moitié d’une population animale donnée dans un laps de temps connu. Cette mesure est appelée CL50 (concentration létale médiane). Dans plusieurs études, les valeurs observées du logarithme naturel de l’indicateur CL50 sont normalement distribuées. L’analyse est donc basée sur les données de ln(CL50).</p>
+<p>Soit <span class="math inline">\(S^2_n\)</span> la variance échantillonnale d’un échantillon de <span class="math inline">\(n=10\)</span> valeurs de ln(CL50) pour le cuivre, et <span class="math inline">\(S^2_m\)</span> la variance échantillonnale d’un échantillon de <span class="math inline">\(m=6\)</span> valeurs de ln(CL50) pour le plomb, tous les deux utilisant la même espèce de poisson. La variance de la population des mesures sur le cuivre est supposée être le double de la variance de la population des mesures sur le plomb. Supposer que <span class="math inline">\(S^2_n\)</span> est indépendante de <span class="math inline">\(S^2_m\)</span>. <strong>a)</strong> Expliquer comment il est possible, en référant à une table statistique appropriée, de trouver les nombres <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> tels que <span class="math display">\[ \Pr\left(\frac{S_n^2}{S_m^2}\leq b\right)=0,95, \quad \Pr\left(\frac{S_n^2}{S_m^2}\geq a\right)=0,95. \]</span> <em>Astuce: Observer que <span class="math inline">\(\Pr[U_1/U_2\leq k]=\Pr[U_2/U_1\geq 1/k]\)</span>.</em></p>
+<p><strong>b)</strong> Si <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont les mêmes qu’en a), calculer <span class="math display">\[ \Pr\left(a\leq\frac{S_n^2}{S_m^2}\leq b\right). \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Éléments de réponse">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Éléments de réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-49" class="callout-49-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>0,5744    b) 0,9</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution complète">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Solution complète
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-50" class="callout-50-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>a)</strong> On peut utiliser le fait que <span class="math display">\[ \frac{S_n^2/\sigma_1^2}{S_m^2/\sigma_2^2} \sim F_{(n-1,m-1)}, \]</span> où <span class="math inline">\(\sigma^2_1\)</span> et <span class="math inline">\(\sigma_2^2\)</span> représentent la variance du premier et du second échantillon, respectivement. Dans ce contexte, <span class="math inline">\(n=10\)</span>, <span class="math inline">\(m=6\)</span> et <span class="math inline">\(\sigma_1^2 = 2\sigma_2^2\)</span>. Donc, <span class="math display">\[ \frac{S_n^2}{2 S_m^2} \sim F(9,5). \]</span> Si <span class="math inline">\(W\)</span> représente une variable aléatoire <span class="math inline">\(F_{(9,5)}\)</span>, on a <span class="math display">\[ \Pr\left(  \frac{S_n^2}{ S_m^2} \le b\right) = \Pr(W \le b/2) \]</span> et donc <span class="math inline">\(b/2\)</span> est le <span class="math inline">\(95\)</span>e quantile de la distribution <span class="math inline">\(F_{(9,5)}\)</span>. 4.7724656 Par conséquent, <span class="math display">\[ b = 2 \times 4.7724656 = 9.5449312. \]</span> Pour trouver <span class="math inline">\(a\)</span>, on note que <span class="math display">\[ \frac{S_m^2/\sigma_2^2}{S_n^2/\sigma_1^2} = 2 \frac{S_m^2}{ S_n^2} \sim F_{(5,9)}. \]</span> Alors, <span class="math display">\[ \Pr\left(  \frac{S_n^2}{ S_m^2} \ge a\right) = \Pr\left(  \frac{S_m^2}{ S_n^2} \le \frac{1}{a}\right) = \Pr\left(  2\frac{S_m^2}{ S_n^2} \le \frac{2}{a}\right). \]</span> Donc, <span class="math inline">\(2/a\)</span> est le <span class="math inline">\(95\)</span>e quantile de la distribution <span class="math inline">\(F_{(5,9)}\)</span>. 3.4816587 et ainsi <span class="math display">\[ a = \frac{2}{3.4816587} = 0.5744389. \]</span></p>
+<p><strong>b)</strong> Cette probabilité égale <span class="math display">\[
+\begin{aligned} \Pr\left(a \le \frac{S_n^2}{S_m^2}\le b\right) &amp; = \Pr\left(\frac{S_n^2}{S_m^2}\le b\right) - \Pr\left(\frac{S_n^2}{S_m^2}\le a\right)\\ &amp; = \Pr\left(\frac{S_n^2}{S_m^2}\le b\right) + \Pr\left(\frac{S_n^2}{S_m^2}\ge a\right) -1 = 2\times 0,95 -1 = 0,9. \end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Freund:mathstat:1992" class="csl-entry" role="listitem">
+Freund, J. E. 1992. <em>Mathematical Statistics</em>. 5ᵉ éd. Prentice Hall.
+</div>
+<div id="ref-Hogg:mathstat:6e:2005" class="csl-entry" role="listitem">
+Hogg, R. V., A. T. Craig, et J. W. McKean. 2005. <em>Introduction to Mathematical Statistics</em>. 6ᵉ éd. Prentice Hall.
+</div>
+<div id="ref-Hogg:probstat:2001" class="csl-entry" role="listitem">
+Hogg, R. V., et E. A. Tanis. 2001. <em>Probability and Statistical Inference</em>. 6ᵉ éd. Prentice Hall.
+</div>
+<div id="ref-Mood:mathstat:1974" class="csl-entry" role="listitem">
+Mood, A. M., F. A. Graybill, et D. C. Boes. 1974. <em>Introduction to the Theory of Statistics</em>. 3ᵉ éd. McGraw-Hill.
+</div>
+<div id="ref-R" class="csl-entry" role="listitem">
+R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-Wackerly:mathstat:7e:2008" class="csl-entry" role="listitem">
+Wackerly, D., W. Mendenhall, et R. L. Scheaffer. 2007a. <em>Mathematical Statistics with Applications</em>. 7ᵉ éd. Thomson Brooks/Cole. <a href="https://books.google.ca/books?id=lTgGAAAAQBAJ">https://books.google.ca/books?id=lTgGAAAAQBAJ</a>.
+</div>
+<div id="ref-Wackerly:solutions:7e:2008" class="csl-entry" role="listitem">
+Wackerly, D., W. Mendenhall, et R. L. Scheaffer. 2007b. <em>Student’s solution manual to Mathematical Statistics with Applications</em>. 7ᵉ éd. Thomson Brooks/Cole. <a href="https://books.google.ca/books?id=lTgGAAAAQBAJ">https://books.google.ca/books?id=lTgGAAAAQBAJ</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapitres/base.html" class="pagination-link" aria-label="Modèles statistiques de base">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Modèles statistiques de base</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapitres/estimation.html" class="pagination-link" aria-label="Estimation">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
